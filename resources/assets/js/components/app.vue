@@ -11,10 +11,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right v-main-menu v-second-nav">
-                        <li><a target="_blank" :href="rootSite + '/features'"><span v-translate>Features</span></a></li>
-                        <li><a target="_blank" :href="rootSite + '/pricing'"><span v-translate>Pricing</span></a></li>
-                        <li><a target="_blank" :href="rootSite + '/support'"><span v-translate>Support</span></a></li>
-                        <li><a target="_blank" :href="rootSite + '/download'" id="a-download"><span id="v-download" v-translate>Download</span></a></li>
+                        <li><a target="_blank" :href="rootReference + '/features'"><span v-translate>Features</span></a></li>
+                        <li><a target="_blank" :href="rootReference + '/pricing'"><span v-translate>Pricing</span></a></li>
+                        <li><a target="_blank" :href="rootReference + '/support'"><span v-translate>Support</span></a></li>
+                        <li><a target="_blank" :href="rootReference + '/download'" id="a-download"><span id="v-download" v-translate>Download</span></a></li>
                         <li v-if="!isAuth"><router-link :to="{name:'registration'}" class="a-sign"><span id="v-sign" v-translate>Sign in</span></router-link></li>
                         <li  v-if="isAuth"class="sub-menu">
                             <router-link :to="{name: 'user'}" class="username hidden-xs"><div>{{getLogin}}</div><img src="/images/icons/icon-userpic-white.png" alt></router-link>
@@ -34,12 +34,12 @@
                     </div>
                 </a>
                 <ul class="nav navmenu-nav start-menu">
-                    <li><a target="_blank" :href="rootSite + '/features'" v-translate>Features</a></li>
-                    <li><a target="_blank" :href="rootSite + '/pricing'" v-translate>Pricing</a></li>
-                    <li><a target="_blank" :href="rootSite + '/support'" v-translate>Support</a></li>
+                    <li><a target="_blank" :href="rootReference + '/features'" v-translate>Features</a></li>
+                    <li><a target="_blank" :href="rootReference + '/pricing'" v-translate>Pricing</a></li>
+                    <li><a target="_blank" :href="rootReference + '/support'" v-translate>Support</a></li>
                 </ul>
                 <ul class="nav load-button">
-                    <li><a target="_blank" :href="rootSite + '/download'" id="a-download"><span id="v-download" v-translate>Download VIPole</span></a></li>
+                    <li><a target="_blank" :href="rootReference + '/download'" id="a-download"><span id="v-download" v-translate>Download VIPole</span></a></li>
                 </ul>
                 <ul v-if="!isAuth" class="nav navmenu-nav">
                     <li><router-link :to="{name:'registration'}" class="a-sign"><span id="v-sign" v-translate>Sign in</span></router-link></li>
@@ -56,6 +56,69 @@
         </div>
     </header>
         <router-view />
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 pds0-xs">
+                        <div class="list-reference">
+                            <div>
+                                <input type="checkbox" id="reference-menu-vipole">
+                                <label for="reference-menu-vipole"><div class="head">VIPole</div></label>
+                                <div class="submenu">
+                                    <div><a :href="rootReference + 'about_vipole'" target="_blank" v-translate>About VIPole</a></div>
+                                    <div><a :href="rootReference + 'features'" target="_blank" v-translate>Features</a></div>
+                                    <div><a :href="rootReference + 'pricing'" target="_blank" v-translate>Pricing</a></div>
+                                    <div><a :href="rootReference + 'download'" target="_blank" v-translate>Download</a></div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="reference-menu-security">
+                                <label for="reference-menu-security"><div class="head" v-translate>Security</div></label>
+                                <div class="submenu">
+                                    <div><a :href="rootReference + '/security'" target="_blank" v-translate>Overview</a></div>
+                                    <div><a :href="rootReference + '/security/protection-levels'" target="_blank" v-translate>Data protection</a></div>
+                                    <div><a :href="rootReference + '/security/encryption'" target="_blank" v-translate>Encryption</a></div>
+                                </div>
+                            </div>
+                            <div class="cl"></div>
+                            <div>
+                                <input type="checkbox" id="reference-menu-partners">
+                                <label for="reference-menu-partners"><div class="head" v-translate>Partners</div></label>
+                                <div class="submenu">
+                                    <div><a :href="rootReference + '/partners'" target="_blank" v-translate>Opportunities</a></div>
+                                    <div><a :href="rootReference + '/partners/affiliates'" target="_blank" v-translate>Affiliate program</a></div>
+                                    <div><a :href="rootReference + '/partners/resellers'" target="_blank" v-translate>Reseller program</a></div>
+                                    <div><a :href="rootReference + '/businessclub'" target="_blank" v-translate>Business Club</a></div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="reference-menu-about">
+                                <label for="reference-menu-about"><div class="head" v-translate>About us</div></label>
+                                <div class="submenu">
+                                    <div><a :href="rootReference + '/about_us'" target="_blank" v-translate>Company</a></div>
+                                    <div><a :href="rootReference + '/news'" target="_blank" v-translate>News</a></div>
+                                    <div><a href="http://blog.vipole.com/" target="_blank" v-translate>Blog</a></div>
+                                    <div><a :href="rootReference + '/feedback'" target="_blank" v-translate>Contact us</a></div>
+                                </div>
+                            </div>
+                            <div class="cl"></div>
+                            <div>
+                                <input type="checkbox" id="reference-menu-support">
+                                <label for="reference-menu-support"><div class="head" v-translate>My Account</div></label>
+                                <div class="submenu">
+                                    <div><a :href="rootReference + '/user'" target="_blank" v-translate>Sign in</a></div>
+                                    <div><a :href="rootReference + '/registration'" id="v-sign-up-link" target="_blank" v-translate>Sign up</a></div>
+
+                                    <div><a :href="rootReference + '/support'" target="_blank" v-translate>Support</a></div>
+                                    <div><a :href="rootReference + '/partners/referrals'" target="_blank" v-translate>Referral program</a></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <footer class="end-page">
             <div class="container">
                 <div class="row icon-footer">
@@ -71,8 +134,8 @@
                     </div>
                     <div class="col-sm-5 language">
                         <div class="dropdown v-choose-language">
-                            <span>Language:</span>
-                            <a href="#" id="drop-down-lang" class="dropdown-toggle" data-toggle="dropdown"><span class="lang">{{getLang}}</span></a>
+                            <span v-translate>Language:</span>
+                            <a href="#" id="drop-down-lang" class="dropdown-toggle" data-toggle="dropdown"><span class="lang">{{currentLanguageName}}</span></a>
                             <ul class="dropdown-menu dropdown-menu-left lang-dropdown-menu">
                                 <li><a href="#" @click="changeLanguage('en')">English (English)</a></li>
                                 <li><a href="#" @click="changeLanguage('ru')">Russian (Русский)</a></li>
@@ -84,10 +147,10 @@
                 <div class="row copyright">
                     <div class="col-md-12">
                         <p class="legal">
-                            <span>© copyright_date VIPole International LP, United Kingdom, All rights reserved. </span>
+                            <span>© {{currentYear}} VIPole International LP, United Kingdom, All rights reserved.</span>
                         </p>
                         <p class="legal">
-                            <span><a :href="getLang + '/user_agreement'">User Agreement</a> | <a :href="getLang + '/terms_of_use'">Terms of Use</a>  | <a :href="getLang + '/confidentiality'">Privacy Policy</a></span>
+                            <span><a :href="rootReference + '/user_agreement'">User Agreement</a> | <a :href="rootReference + '/terms_of_use'">Terms of Use</a>  | <a :href="rootReference + '/confidentiality'">Privacy Policy</a></span>
                         </p>
                     </div>
                 </div>
@@ -105,16 +168,32 @@ export default {
         logo: {type: String, default: ''},
         rootSite: {type: String, default: ''}
     },
-    computed: mapGetters([
-        'isAuth',
-        'getLogin',
-        'getLang'
-      ])
+    computed: {
+        currentLanguageName(){
+          const langs = {
+              ru: 'Русский',
+              en: 'English'
+          }
+          return langs[this.getLang]
+        },
+        currentYear(){
+            let d = new Date()
+            return d.getFullYear();
+        },
+        rootReference() {
+            return this.rootSite + '/' + this.getLang;
+        },
+        ...mapGetters([
+            'isAuth',
+            'getLogin',
+            'getLang'
+        ])
+    }
     ,
     methods: {
         changeLanguage(lang)
         {
-            alert(lang)
+            this.$store.commit("setLang",{lang: lang, translate: this.$translate});
         }
     },
     locales: {
@@ -125,7 +204,32 @@ export default {
             'Support': 'Помощь',
             'Download': 'Скачать',
             'Sign in': 'Войти',
-            'Download VIPole': 'Скачайте VIPole'
+            'Download VIPole': 'Скачайте VIPole',
+            'About VIPole':'О VIPole',
+            'Features':'Возможности',
+            'Pricing':'Тарифы',
+            'Download':'Загрузка',
+            'Security':'Безопасность',
+            'Overview':'Общие сведения',
+            'Data protection':'Уровни защиты',
+            'Encryption':'Шифрование',
+            'Partners':'Партнерам',
+            'Opportunities':'Возможности',
+            'Affiliate program':'Аффилиатная программа',
+            'Reseller program':'Реселлерская программа',
+            'Business Club':'Бизнес клуб',
+            'About us':'О нас',
+            'Company':'Компания',
+            'News':'Новости',
+            'Blog':'Блог',
+            'Contact us':'Контакты',
+            'My Account':'Мой Аккаунт',
+            'Sign in':'Войти',
+            'Sign up':'Регистрация',
+            'Support':'Помощь',
+            'Referral program':'Реферальная программа',
+            'Language:': 'Язык:'
+
         }
     }
 }

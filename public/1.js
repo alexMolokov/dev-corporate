@@ -215,13 +215,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     locales: {
         ru: {
-            'Login to your account': 'МЕНЮ',
-            'Your password has been changed.': 'Ваш пароль был изменен',
-            'Current password': 'Текущий пароль',
-            'New Password': 'Новый Пароль',
-            'Repeat new password': 'Повторить новый пароль',
-            'Password not valid': 'Неверный пароль',
-            'Next': 'Далее'
+            'Login to your account': 'Войдите в ваш Личный кабинет',
+            'Password': 'Пароль',
+            'Login': 'Логин',
+            'Log In': 'Войти',
+            'Forgot password?': 'Забыли пароль?',
+            "Don't have an account?": 'У вас нет аккаунта?',
+            'Sign In': ' Зарегистрируйтесь'
         }
     }
 });
@@ -263,7 +263,14 @@ var render = function() {
           [
             _c("div", { staticClass: "reg-body" }, [
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "login" } }, [_vm._v("Login")]),
+                _c(
+                  "label",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { for: "login" }
+                  },
+                  [_vm._v("Login")]
+                ),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -317,9 +324,14 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "password" } }, [
-                  _vm._v("Password")
-                ]),
+                _c(
+                  "label",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { for: "password" }
+                  },
+                  [_vm._v("Password")]
+                ),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -486,6 +498,7 @@ var render = function() {
               _c(
                 "button",
                 {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "btn btn-primary btn-lg",
                   attrs: { type: "submit" },
                   on: { click: _vm.validate }
@@ -501,7 +514,12 @@ var render = function() {
                 [
                   _c(
                     "router-link",
-                    { attrs: { to: { name: "forgot" }, tabindex: "-1" } },
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { to: { name: "forgot" }, tabindex: "-1" }
+                    },
                     [_vm._v("Forgot password?")]
                   )
                 ],
@@ -514,10 +532,24 @@ var render = function() {
                 "p",
                 { staticClass: "h4 text-center" },
                 [
-                  _vm._v("Don't have an account? "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Don't have an account?")]
+                  ),
+                  _vm._v(" "),
                   _c(
                     "router-link",
-                    { attrs: { to: { name: "registration" }, tabindex: "-1" } },
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { to: { name: "registration" }, tabindex: "-1" }
+                    },
                     [_vm._v("Sign In")]
                   )
                 ],
