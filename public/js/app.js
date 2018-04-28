@@ -1252,8 +1252,6 @@ var dictionary = {
     }
 };
 
-__WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* Validator */].localize("en", dictionary['en']);
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vee_validate__["b" /* default */], { fieldsBagName: 'formFields' });
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_translate_plugin___default.a);
@@ -1303,6 +1301,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
         setLang: function setLang(state, obj) {
             obj.translate.setLang(obj.lang);
             state.lang = obj.lang;
+            __WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* Validator */].localize(obj.lang, dictionary[obj.lang]);
         },
         logout: function logout(state) {
             for (var prop in state.user) {

@@ -41,7 +41,7 @@ const dictionary = {
     }
 };
 
-Validator.localize("en",dictionary['en']);
+
 
 Vue.use(VueRouter);
 Vue.use(VeeValidate, {fieldsBagName: 'formFields'});
@@ -93,6 +93,7 @@ const store = new Vuex.Store({
         {
             obj.translate.setLang(obj.lang);
             state.lang = obj.lang;
+            Validator.localize(obj.lang,dictionary[obj.lang]);
         },
         logout(state)
         {
