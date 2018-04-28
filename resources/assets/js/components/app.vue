@@ -49,12 +49,13 @@
                         <router-link :to="{name: 'user'}" id="sign_up_link"><img src="/images/icons/icon-userpic-white.png" alt >{{getLogin}}</router-link>
                     </li>
                     <li>
-                        <a href="#" class="logout"><img src="/images/icons/icon-sign-out.png" alt=""><span>Sign out</span></a>
+                        <a href="#" class="logout"><img src="/images/icons/icon-sign-out.png" alt=""><span v-translate>Sign out</span></a>
                     </li>
                 </ul>
             </div>
         </div>
     </header>
+        <div class="close-menu hidden-sm hidden-md hidden-lg"></div>
         <div id="content">
             <div class="container v-page">
                 <div class="internal">
@@ -64,7 +65,6 @@
                 </div>
             </div>
         </div>
-
         <footer>
             <div class="container">
                 <div class="row">
@@ -146,8 +146,8 @@
                             <span v-translate>Language:</span>
                             <a href="#" id="drop-down-lang" class="dropdown-toggle" data-toggle="dropdown"><span class="lang">{{currentLanguageName}}</span></a>
                             <ul class="dropdown-menu dropdown-menu-left lang-dropdown-menu">
-                                <li><a href="#" @click="changeLanguage('en')">English (English)</a></li>
-                                <li><a href="#" @click="changeLanguage('ru')">Russian (Русский)</a></li>
+                                <li><a href="#" @click="changeLanguage('en')" @click.prevent.stop>English (English)</a></li>
+                                <li><a href="#" @click="changeLanguage('ru')" @click.prevent.stop>Russian (Русский)</a></li>
                             </ul>
                         </div>
                     </div>
@@ -213,6 +213,7 @@ export default {
             'Support': 'Помощь',
             'Download': 'Скачать',
             'Sign in': 'Войти',
+            'Sign out': 'Выйти',
             'Download VIPole': 'Скачайте VIPole',
             'About VIPole':'О VIPole',
             'Features':'Возможности',

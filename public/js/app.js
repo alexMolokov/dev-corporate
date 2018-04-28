@@ -51938,6 +51938,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             'Support': 'Помощь',
             'Download': 'Скачать',
             'Sign in': 'Войти',
+            'Sign out': 'Выйти',
             'Download VIPole': 'Скачайте VIPole',
             'About VIPole': 'О VIPole'
         }, _defineProperty(_ru, 'Features', 'Возможности'), _defineProperty(_ru, 'Pricing', 'Тарифы'), _defineProperty(_ru, 'Download', 'Загрузка'), _defineProperty(_ru, 'Security', 'Безопасность'), _defineProperty(_ru, 'Overview', 'Общие сведения'), _defineProperty(_ru, 'Data protection', 'Уровни защиты'), _defineProperty(_ru, 'Encryption', 'Шифрование'), _defineProperty(_ru, 'Partners', 'Партнерам'), _defineProperty(_ru, 'Opportunities', 'Возможности'), _defineProperty(_ru, 'Affiliate program', 'Аффилиатная программа'), _defineProperty(_ru, 'Reseller program', 'Реселлерская программа'), _defineProperty(_ru, 'Business Club', 'Бизнес клуб'), _defineProperty(_ru, 'About us', 'О нас'), _defineProperty(_ru, 'Company', 'Компания'), _defineProperty(_ru, 'News', 'Новости'), _defineProperty(_ru, 'Blog', 'Блог'), _defineProperty(_ru, 'Contact us', 'Контакты'), _defineProperty(_ru, 'My Account', 'Мой Аккаунт'), _defineProperty(_ru, 'Sign in', 'Войти'), _defineProperty(_ru, 'Sign up', 'Регистрация'), _defineProperty(_ru, 'Support', 'Помощь'), _defineProperty(_ru, 'Referral program', 'Реферальная программа'), _defineProperty(_ru, 'Language:', 'Язык:'), _ru)
@@ -52335,13 +52336,33 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _c("li", [
+                    _c("a", { staticClass: "logout", attrs: { href: "#" } }, [
+                      _c("img", {
+                        attrs: {
+                          src: "/images/icons/icon-sign-out.png",
+                          alt: ""
+                        }
+                      }),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            { name: "translate", rawName: "v-translate" }
+                          ]
+                        },
+                        [_vm._v("Sign out")]
+                      )
+                    ])
+                  ])
                 ])
               : _vm._e()
           ]
         )
       ])
     ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "close-menu hidden-sm hidden-md hidden-lg" }),
     _vm._v(" "),
     _c("div", { attrs: { id: "content" } }, [
       _c("div", { staticClass: "container v-page" }, [
@@ -52361,7 +52382,7 @@ var render = function() {
                   attrs: { type: "checkbox", id: "reference-menu-vipole" }
                 }),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "submenu" }, [
                   _c("div", [
@@ -52768,7 +52789,7 @@ var render = function() {
     _c("footer", { staticClass: "end-page" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row icon-footer" }, [
-          _vm._m(3),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-5 language" }, [
             _c("div", { staticClass: "dropdown v-choose-language" }, [
@@ -52808,9 +52829,15 @@ var render = function() {
                       {
                         attrs: { href: "#" },
                         on: {
-                          click: function($event) {
-                            _vm.changeLanguage("en")
-                          }
+                          click: [
+                            function($event) {
+                              _vm.changeLanguage("en")
+                            },
+                            function($event) {
+                              $event.preventDefault()
+                              $event.stopPropagation()
+                            }
+                          ]
                         }
                       },
                       [_vm._v("English (English)")]
@@ -52823,9 +52850,15 @@ var render = function() {
                       {
                         attrs: { href: "#" },
                         on: {
-                          click: function($event) {
-                            _vm.changeLanguage("ru")
-                          }
+                          click: [
+                            function($event) {
+                              _vm.changeLanguage("ru")
+                            },
+                            function($event) {
+                              $event.preventDefault()
+                              $event.stopPropagation()
+                            }
+                          ]
                         }
                       },
                       [_vm._v("Russian (Русский)")]
@@ -52884,19 +52917,6 @@ var staticRenderFns = [
     return _c("li", [
       _c("a", { staticClass: "logout", attrs: { href: "#" } }, [
         _vm._v("Sign out")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { staticClass: "logout", attrs: { href: "#" } }, [
-        _c("img", {
-          attrs: { src: "/images/icons/icon-sign-out.png", alt: "" }
-        }),
-        _c("span", [_vm._v("Sign out")])
       ])
     ])
   },
