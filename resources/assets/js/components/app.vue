@@ -55,7 +55,16 @@
             </div>
         </div>
     </header>
-        <router-view />
+        <div id="content">
+            <div class="container v-page">
+                <div class="internal">
+                    <div class="internal_content">
+                        <router-view />
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <div class="container">
                 <div class="row">

@@ -51890,6 +51890,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -51943,40 +51952,319 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "main_container" },
-    [
-      _c("header", [
-        _c("div", { staticClass: "container v-nav-main" }, [
-          _c(
-            "nav",
-            {
-              staticClass: "navbar navbar-default v-navbar",
-              attrs: { role: "navigation" }
-            },
-            [
-              _c("div", { staticClass: "navbar-header" }, [
-                _c("a", { attrs: { href: "/" } }, [
+  return _c("div", { staticClass: "main_container" }, [
+    _c("header", [
+      _c("div", { staticClass: "container v-nav-main" }, [
+        _c(
+          "nav",
+          {
+            staticClass: "navbar navbar-default v-navbar",
+            attrs: { role: "navigation" }
+          },
+          [
+            _c("div", { staticClass: "navbar-header" }, [
+              _c("a", { attrs: { href: "/" } }, [
+                _c("img", {
+                  attrs: {
+                    id: "logo-img-logo",
+                    src: _vm.logo,
+                    width: "113",
+                    height: "37",
+                    border: "0"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "navbar-toggle collapsed navbar-slider-button",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "offcanvas",
+                    "data-target": ".navmenu"
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("MENU")]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "navbar-collapse-1" }
+              },
+              [
+                _c(
+                  "ul",
+                  {
+                    staticClass:
+                      "nav navbar-nav navbar-right v-main-menu v-second-nav"
+                  },
+                  [
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            target: "_blank",
+                            href: _vm.rootReference + "/features"
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Features")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            target: "_blank",
+                            href: _vm.rootReference + "/pricing"
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Pricing")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            target: "_blank",
+                            href: _vm.rootReference + "/support"
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Support")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            target: "_blank",
+                            href: _vm.rootReference + "/download",
+                            id: "a-download"
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              attrs: { id: "v-download" }
+                            },
+                            [_vm._v("Download")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    !_vm.isAuth
+                      ? _c(
+                          "li",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "a-sign",
+                                attrs: { to: { name: "registration" } }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "translate",
+                                        rawName: "v-translate"
+                                      }
+                                    ],
+                                    attrs: { id: "v-sign" }
+                                  },
+                                  [_vm._v("Sign in")]
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.isAuth
+                      ? _c(
+                          "li",
+                          { staticClass: "sub-menu" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "username hidden-xs",
+                                attrs: { to: { name: "user" } }
+                              },
+                              [
+                                _c("div", [_vm._v(_vm._s(_vm.getLogin))]),
+                                _c("img", {
+                                  attrs: {
+                                    src: "/images/icons/icon-userpic-white.png",
+                                    alt: ""
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("ul", [
+                              _c(
+                                "li",
+                                [
+                                  _c(
+                                    "router-link",
+                                    { attrs: { to: { name: "user" } } },
+                                    [_vm._v("Profile")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _vm._m(0)
+                            ])
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "navmenu navmenu-default navmenu-fixed-left offcanvas-sm hidden-sm hidden-md hidden-lg"
+          },
+          [
+            _c("a", { attrs: { href: "/" } }, [
+              _c(
+                "div",
+                { staticClass: "logo-mobile hidden-sm hidden-md hidden-lg" },
+                [
                   _c("img", {
                     attrs: {
                       id: "logo-img-logo",
                       src: _vm.logo,
                       width: "113",
                       height: "37",
-                      border: "0"
+                      border: "0",
+                      title: "Secure Private Messenger"
                     }
                   })
-                ]),
-                _vm._v(" "),
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "nav navmenu-nav start-menu" }, [
+              _c("li", [
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "navbar-toggle collapsed navbar-slider-button",
+                    directives: [{ name: "translate", rawName: "v-translate" }],
                     attrs: {
-                      type: "button",
-                      "data-toggle": "offcanvas",
-                      "data-target": ".navmenu"
+                      target: "_blank",
+                      href: _vm.rootReference + "/features"
+                    }
+                  },
+                  [_vm._v("Features")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: {
+                      target: "_blank",
+                      href: _vm.rootReference + "/pricing"
+                    }
+                  },
+                  [_vm._v("Pricing")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: {
+                      target: "_blank",
+                      href: _vm.rootReference + "/support"
+                    }
+                  },
+                  [_vm._v("Support")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "nav load-button" }, [
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      target: "_blank",
+                      href: _vm.rootReference + "/download",
+                      id: "a-download"
                     }
                   },
                   [
@@ -51985,897 +52273,608 @@ var render = function() {
                       {
                         directives: [
                           { name: "translate", rawName: "v-translate" }
-                        ]
+                        ],
+                        attrs: { id: "v-download" }
                       },
-                      [_vm._v("MENU")]
+                      [_vm._v("Download VIPole")]
                     )
                   ]
                 )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "collapse navbar-collapse",
-                  attrs: { id: "navbar-collapse-1" }
-                },
-                [
-                  _c(
-                    "ul",
-                    {
-                      staticClass:
-                        "nav navbar-nav navbar-right v-main-menu v-second-nav"
-                    },
-                    [
-                      _c("li", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              target: "_blank",
-                              href: _vm.rootReference + "/features"
-                            }
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  { name: "translate", rawName: "v-translate" }
-                                ]
-                              },
-                              [_vm._v("Features")]
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              target: "_blank",
-                              href: _vm.rootReference + "/pricing"
-                            }
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  { name: "translate", rawName: "v-translate" }
-                                ]
-                              },
-                              [_vm._v("Pricing")]
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              target: "_blank",
-                              href: _vm.rootReference + "/support"
-                            }
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  { name: "translate", rawName: "v-translate" }
-                                ]
-                              },
-                              [_vm._v("Support")]
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              target: "_blank",
-                              href: _vm.rootReference + "/download",
-                              id: "a-download"
-                            }
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  { name: "translate", rawName: "v-translate" }
-                                ],
-                                attrs: { id: "v-download" }
-                              },
-                              [_vm._v("Download")]
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      !_vm.isAuth
-                        ? _c(
-                            "li",
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "a-sign",
-                                  attrs: { to: { name: "registration" } }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "translate",
-                                          rawName: "v-translate"
-                                        }
-                                      ],
-                                      attrs: { id: "v-sign" }
-                                    },
-                                    [_vm._v("Sign in")]
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.isAuth
-                        ? _c(
-                            "li",
-                            { staticClass: "sub-menu" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "username hidden-xs",
-                                  attrs: { to: { name: "user" } }
-                                },
-                                [
-                                  _c("div", [_vm._v(_vm._s(_vm.getLogin))]),
-                                  _c("img", {
-                                    attrs: {
-                                      src:
-                                        "/images/icons/icon-userpic-white.png",
-                                      alt: ""
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("ul", [
-                                _c(
-                                  "li",
-                                  [
-                                    _c(
-                                      "router-link",
-                                      { attrs: { to: { name: "user" } } },
-                                      [_vm._v("Profile")]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _vm._m(0)
-                              ])
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "navmenu navmenu-default navmenu-fixed-left offcanvas-sm hidden-sm hidden-md hidden-lg"
-            },
-            [
-              _c("a", { attrs: { href: "/" } }, [
-                _c(
-                  "div",
-                  { staticClass: "logo-mobile hidden-sm hidden-md hidden-lg" },
-                  [
-                    _c("img", {
-                      attrs: {
-                        id: "logo-img-logo",
-                        src: _vm.logo,
-                        width: "113",
-                        height: "37",
-                        border: "0",
-                        title: "Secure Private Messenger"
-                      }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "nav navmenu-nav start-menu" }, [
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: {
-                        target: "_blank",
-                        href: _vm.rootReference + "/features"
-                      }
-                    },
-                    [_vm._v("Features")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: {
-                        target: "_blank",
-                        href: _vm.rootReference + "/pricing"
-                      }
-                    },
-                    [_vm._v("Pricing")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: {
-                        target: "_blank",
-                        href: _vm.rootReference + "/support"
-                      }
-                    },
-                    [_vm._v("Support")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "nav load-button" }, [
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        target: "_blank",
-                        href: _vm.rootReference + "/download",
-                        id: "a-download"
-                      }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: { id: "v-download" }
-                        },
-                        [_vm._v("Download VIPole")]
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              !_vm.isAuth
-                ? _c("ul", { staticClass: "nav navmenu-nav" }, [
-                    _c(
-                      "li",
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "a-sign",
-                            attrs: { to: { name: "registration" } }
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  { name: "translate", rawName: "v-translate" }
-                                ],
-                                attrs: { id: "v-sign" }
-                              },
-                              [_vm._v("Sign in")]
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isAuth
-                ? _c("ul", { staticClass: "nav navmenu-nav end-menu" }, [
-                    _c(
-                      "li",
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: { to: { name: "user" }, id: "sign_up_link" }
-                          },
-                          [
-                            _c("img", {
-                              attrs: {
-                                src: "/images/icons/icon-userpic-white.png",
-                                alt: ""
-                              }
-                            }),
-                            _vm._v(_vm._s(_vm.getLogin))
-                          ]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ])
-                : _vm._e()
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("router-view"),
-      _vm._v(" "),
-      _c("footer", [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-sm-12 pds0-xs" }, [
-              _c("div", { staticClass: "list-reference" }, [
-                _c("div", [
-                  _c("input", {
-                    attrs: { type: "checkbox", id: "reference-menu-vipole" }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "submenu" }, [
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "about_vipole",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("About VIPole")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "features",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Features")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "pricing",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Pricing")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "download",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Download")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    attrs: { type: "checkbox", id: "reference-menu-security" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "reference-menu-security" } }, [
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ],
-                        staticClass: "head"
-                      },
-                      [_vm._v("Security")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "submenu" }, [
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/security",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Overview")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href:
-                              _vm.rootReference + "/security/protection-levels",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Data protection")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/security/encryption",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Encryption")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "cl" }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    attrs: { type: "checkbox", id: "reference-menu-partners" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "reference-menu-partners" } }, [
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ],
-                        staticClass: "head"
-                      },
-                      [_vm._v("Partners")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "submenu" }, [
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/partners",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Opportunities")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/partners/affiliates",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Affiliate program")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/partners/resellers",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Reseller program")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/businessclub",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Business Club")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    attrs: { type: "checkbox", id: "reference-menu-about" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "reference-menu-about" } }, [
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ],
-                        staticClass: "head"
-                      },
-                      [_vm._v("About us")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "submenu" }, [
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/about_us",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Company")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/news",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("News")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: "http://blog.vipole.com/",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Blog")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/feedback",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Contact us")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "cl" }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("input", {
-                    attrs: { type: "checkbox", id: "reference-menu-support" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "reference-menu-support" } }, [
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ],
-                        staticClass: "head"
-                      },
-                      [_vm._v("My Account")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "submenu" }, [
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/user",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Sign in")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/registration",
-                            id: "v-sign-up-link",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Sign up")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/support",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Support")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "a",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          attrs: {
-                            href: _vm.rootReference + "/partners/referrals",
-                            target: "_blank"
-                          }
-                        },
-                        [_vm._v("Referral program")]
-                      )
-                    ])
-                  ])
-                ])
               ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "end-page" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row icon-footer" }, [
-            _vm._m(3),
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-sm-5 language" }, [
-              _c("div", { staticClass: "dropdown v-choose-language" }, [
-                _c(
-                  "span",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }]
-                  },
-                  [_vm._v("Language:")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: {
-                      href: "#",
-                      id: "drop-down-lang",
-                      "data-toggle": "dropdown"
-                    }
-                  },
-                  [
-                    _c("span", { staticClass: "lang" }, [
-                      _vm._v(_vm._s(_vm.currentLanguageName))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  {
-                    staticClass:
-                      "dropdown-menu dropdown-menu-left lang-dropdown-menu"
-                  },
-                  [
-                    _c("li", [
+            !_vm.isAuth
+              ? _c("ul", { staticClass: "nav navmenu-nav" }, [
+                  _c(
+                    "li",
+                    [
                       _c(
-                        "a",
+                        "router-link",
                         {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.changeLanguage("en")
-                            }
-                          }
+                          staticClass: "a-sign",
+                          attrs: { to: { name: "registration" } }
                         },
-                        [_vm._v("English (English)")]
+                        [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              attrs: { id: "v-sign" }
+                            },
+                            [_vm._v("Sign in")]
+                          )
+                        ]
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.changeLanguage("ru")
-                            }
-                          }
-                        },
-                        [_vm._v("Russian (Русский)")]
-                      )
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row copyright" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("p", { staticClass: "legal" }, [
-                _c("span", [
-                  _vm._v(
-                    "© " +
-                      _vm._s(_vm.currentYear) +
-                      " VIPole International LP, United Kingdom, All rights reserved."
+                    ],
+                    1
                   )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.isAuth
+              ? _c("ul", { staticClass: "nav navmenu-nav end-menu" }, [
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "user" }, id: "sign_up_link" } },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "/images/icons/icon-userpic-white.png",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(_vm._s(_vm.getLogin))
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ])
+              : _vm._e()
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "content" } }, [
+      _c("div", { staticClass: "container v-page" }, [
+        _c("div", { staticClass: "internal" }, [
+          _c("div", { staticClass: "internal_content" }, [_c("router-view")], 1)
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("footer", [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-12 pds0-xs" }, [
+            _c("div", { staticClass: "list-reference" }, [
+              _c("div", [
+                _c("input", {
+                  attrs: { type: "checkbox", id: "reference-menu-vipole" }
+                }),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "submenu" }, [
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "about_vipole",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("About VIPole")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "features",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Features")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "pricing",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Pricing")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "download",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Download")]
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "legal" }, [
-                _c("span", [
+              _c("div", [
+                _c("input", {
+                  attrs: { type: "checkbox", id: "reference-menu-security" }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "reference-menu-security" } }, [
                   _c(
-                    "a",
-                    { attrs: { href: _vm.rootReference + "/user_agreement" } },
-                    [_vm._v("User Agreement")]
-                  ),
-                  _vm._v(" | "),
-                  _c(
-                    "a",
-                    { attrs: { href: _vm.rootReference + "/terms_of_use" } },
-                    [_vm._v("Terms of Use")]
-                  ),
-                  _vm._v("  | "),
-                  _c(
-                    "a",
-                    { attrs: { href: _vm.rootReference + "/confidentiality" } },
-                    [_vm._v("Privacy Policy")]
+                    "div",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      staticClass: "head"
+                    },
+                    [_vm._v("Security")]
                   )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "submenu" }, [
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/security",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Overview")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href:
+                            _vm.rootReference + "/security/protection-levels",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Data protection")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/security/encryption",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Encryption")]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "cl" }),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  attrs: { type: "checkbox", id: "reference-menu-partners" }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "reference-menu-partners" } }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      staticClass: "head"
+                    },
+                    [_vm._v("Partners")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "submenu" }, [
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/partners",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Opportunities")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/partners/affiliates",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Affiliate program")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/partners/resellers",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Reseller program")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/businessclub",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Business Club")]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  attrs: { type: "checkbox", id: "reference-menu-about" }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "reference-menu-about" } }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      staticClass: "head"
+                    },
+                    [_vm._v("About us")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "submenu" }, [
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/about_us",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Company")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/news",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("News")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: "http://blog.vipole.com/",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Blog")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/feedback",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Contact us")]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "cl" }),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  attrs: { type: "checkbox", id: "reference-menu-support" }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "reference-menu-support" } }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      staticClass: "head"
+                    },
+                    [_vm._v("My Account")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "submenu" }, [
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/user",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Sign in")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/registration",
+                          id: "v-sign-up-link",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Sign up")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/support",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Support")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        attrs: {
+                          href: _vm.rootReference + "/partners/referrals",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("Referral program")]
+                    )
+                  ])
                 ])
               ])
             ])
           ])
         ])
       ])
-    ],
-    1
-  )
+    ]),
+    _vm._v(" "),
+    _c("footer", { staticClass: "end-page" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row icon-footer" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-5 language" }, [
+            _c("div", { staticClass: "dropdown v-choose-language" }, [
+              _c(
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("Language:")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "dropdown-toggle",
+                  attrs: {
+                    href: "#",
+                    id: "drop-down-lang",
+                    "data-toggle": "dropdown"
+                  }
+                },
+                [
+                  _c("span", { staticClass: "lang" }, [
+                    _vm._v(_vm._s(_vm.currentLanguageName))
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "dropdown-menu dropdown-menu-left lang-dropdown-menu"
+                },
+                [
+                  _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.changeLanguage("en")
+                          }
+                        }
+                      },
+                      [_vm._v("English (English)")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.changeLanguage("ru")
+                          }
+                        }
+                      },
+                      [_vm._v("Russian (Русский)")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row copyright" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("p", { staticClass: "legal" }, [
+              _c("span", [
+                _vm._v(
+                  "© " +
+                    _vm._s(_vm.currentYear) +
+                    " VIPole International LP, United Kingdom, All rights reserved."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "legal" }, [
+              _c("span", [
+                _c(
+                  "a",
+                  { attrs: { href: _vm.rootReference + "/user_agreement" } },
+                  [_vm._v("User Agreement")]
+                ),
+                _vm._v(" | "),
+                _c(
+                  "a",
+                  { attrs: { href: _vm.rootReference + "/terms_of_use" } },
+                  [_vm._v("Terms of Use")]
+                ),
+                _vm._v("  | "),
+                _c(
+                  "a",
+                  { attrs: { href: _vm.rootReference + "/confidentiality" } },
+                  [_vm._v("Privacy Policy")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
