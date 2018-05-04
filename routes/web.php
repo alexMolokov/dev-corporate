@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Auth'], function ()
+Route::group(['prefix' => 'auth'], function ()
 {
     Route::post('/login', 'AuthController@login')->name("login");
     Route::post('/logout', 'AuthController@logout')->name("logout");

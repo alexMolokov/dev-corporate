@@ -7,6 +7,7 @@
         <meta name="csrf-token" content="">
         <link rel="stylesheet" href="{{ env('APP_STYLE') }}" type="text/css">
         <link rel="stylesheet" href="css/page-registration.css" type="text/css">
+        <link rel="stylesheet" href="css/page-user.css" type="text/css">
         <title>{{ config('app.name') }}</title>
     </head>
     <body>

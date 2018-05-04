@@ -53,14 +53,16 @@ const store = new Vuex.Store({
         auth: false,
         lang: "en",
         user: {
-            id: "",
-            login: "",
-            password: "",
-            email: "",
-            firstName:"",
-            lastName: "",
-            jobTitle: "",
-            companyName:"",
+            id: "123",
+            login: "alex",
+            password: "123",
+            name: "Ivanov и К",
+            primary: {
+                email: "alex@yandex.ru",
+                firstName: "Олег",
+                lastName: "Болдырев",
+                jobTitle: "Manager"
+            },
             billing: {
                     address: "",
                     phone: "",
@@ -157,8 +159,18 @@ const routes = [
         component: (resolve) => { require(['./pages/ForgotPassword'], resolve)},
         name: "forgot"
     },
-
-
+    { path: '/user/documents',
+        component: (resolve) => { require(['./pages/Documents'], resolve)},
+        name: "documents"
+    },
+    { path: '/user/tickets',
+        component: (resolve) => { require(['./pages/Tickets'], resolve)},
+        name: "tickets"
+    },
+    { path: '/user/download',
+        component: (resolve) => { require(['./pages/Download'], resolve)},
+        name: "download"
+    }
 ]
 
 export const router = new VueRouter({

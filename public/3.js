@@ -1,18 +1,22 @@
 webpackJsonp([3],{
 
-/***/ 51:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(9)
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(73)
+}
+var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(58)
+var __vue_script__ = __webpack_require__(75)
 /* template */
-var __vue_template__ = __webpack_require__(59)
+var __vue_template__ = __webpack_require__(76)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -25,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\pages\\ForgotPassword.vue"
+Component.options.__file = "resources\\assets\\js\\pages\\Documents.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-32f9f015", Component.options)
+    hotAPI.createRecord("data-v-2259f451", Component.options)
   } else {
-    hotAPI.reload("data-v-32f9f015", Component.options)
+    hotAPI.reload("data-v-2259f451", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49,224 +53,14 @@ module.exports = Component.exports
 /***/ }),
 
 /***/ 58:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'login',
-    data: function data() {
-        return {
-            url: "/login",
-            search: null
-        };
-    },
-
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
-    methods: {}
-
-});
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login-page" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "clearfix", attrs: { id: "sign_in" } }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            attrs: { autocomplete: "off", url: _vm.url },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                $event.stopPropagation()
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "reg-body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "login" } }, [
-                  _vm._v("Login or Email")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("search"),
-                        expression: "errors.has('search')"
-                      }
-                    ],
-                    staticClass: "help is-danger"
-                  },
-                  [_vm._v("*" + _vm._s(_vm.errors.first("search")))]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.search,
-                      expression: "search"
-                    },
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min_value:5",
-                      expression: "'required|min_value:5'"
-                    }
-                  ],
-                  staticClass: "form-control input-alg readonly",
-                  class: { error: _vm.errors.has("search") },
-                  attrs: {
-                    type: "text",
-                    id: "login",
-                    name: "search",
-                    placeholder: ""
-                  },
-                  domProps: { value: _vm.search },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.search = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "reg-left" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-lg",
-                  attrs: { type: "submit" },
-                  on: { click: _vm.validate }
-                },
-                [_vm._v("Next")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "reg-right" }, [
-              _c(
-                "p",
-                { staticClass: "reg-choice" },
-                [
-                  _c("router-link", { attrs: { to: { name: "login" } } }, [
-                    _vm._v("Return to Login")
-                  ])
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "reg-header" }, [
-      _c("h2", { staticClass: "text-primary" }, [
-        _vm._v("Reset your password")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "lead" }, [
-        _vm._v(
-          "If you don’t remember your password, reset it following the instructions."
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "reg-body" }, [
-      _c("div", { staticClass: "captcha-wrapper" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "alert-wrapper" })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-32f9f015", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(9)
+var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(63)
+var __vue_script__ = __webpack_require__(59)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(60)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -283,7 +77,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\mixins\\ajax-form.vue"
+Component.options.__file = "resources\\assets\\js\\components\\userMenu.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -292,9 +86,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5a6e2e06", Component.options)
+    hotAPI.createRecord("data-v-cdcb15be", Component.options)
   } else {
-    hotAPI.reload("data-v-5a6e2e06", Component.options)
+    hotAPI.reload("data-v-cdcb15be", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -306,49 +100,253 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 63:
+/***/ 59:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'ajaxform',
-    props: {
-        show: { type: Boolean, default: false },
-        lang: { type: String, default: 'en' }
+    name: 'userMenu',
+    props: {},
+    computed: {
+        'currentRoute': function currentRoute() {
+            return this.$route.name;
+        }
     },
-    data: function data() {
-        return {
-            id: '',
-            args: {},
-            err: { validation: [], common: [] },
-            redirect: false
-        };
-    },
-
+    methods: {},
     locales: {
         ru: {
-            'Internal Server Error': 'Ошибка сервера. Попробуйте позднее.'
+            'My Account': 'Мой аккаунт',
+            'Tickets': 'Тикеты',
+            'Documents': 'Документы'
         }
+    }
+});
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "partner-menu" }, [
+    _c("input", { attrs: { id: "partner-menu__checkbox", type: "checkbox" } }),
+    _vm._v(" "),
+    _c("div", [
+      _c("div", { staticClass: "wrapper" }, [
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "user" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "user" } }
+              },
+              [_vm._v("My Account")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "download" }
+          },
+          [
+            _c("router-link", { attrs: { to: { name: "download" } } }, [
+              _vm._v("Download")
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "tickets" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "tickets" } }
+              },
+              [_vm._v("Tickets")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "documents" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "documents" } }
+              },
+              [_vm._v("Documents")]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "partner-menu__checkbox" } })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cdcb15be", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 73:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(74);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(12)("0eb0b71d", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2259f451\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Documents.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2259f451\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Documents.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 75:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var userMenu = __webpack_require__(58);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'documents',
+    components: {
+        "user-menu": userMenu
     },
-    methods: {
-        validate: function validate() {
-            var $result = this.$validator.validateAll();
+    data: function data() {
+        return {};
+    },
 
-            console.log($result);
-            this.$validator.validateAll().then(function (result) {
-                if (result) {
-                    console.log("ok");
-                }
-            }).catch(function () {
-                console.log("error");
-            });
-        }
 
+    locales: {
+        ru: {}
     }
 
 });
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "v-user-cabinet-ver1", attrs: { id: "main-user-page" } },
+    [_c("user-menu"), _vm._v(" "), _c("div", { attrs: { id: "modal-list" } })],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2259f451", module.exports)
+  }
+}
 
 /***/ })
 
