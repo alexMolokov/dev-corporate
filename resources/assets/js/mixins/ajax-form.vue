@@ -23,6 +23,7 @@ export default {
         {
             let $result = this.$validator.validateAll();
 
+
             console.log($result);
                 this.$validator.validateAll().then(result => {
                 if (result) {

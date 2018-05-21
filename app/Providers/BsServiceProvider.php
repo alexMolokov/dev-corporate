@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\BsHttpClient;
-use App\Services\BsHttpCorporateClientService;
+use App\Services\Bs\Http\CorporateClientService;
 use Illuminate\Support\ServiceProvider;
 use Response;
 
@@ -27,18 +27,22 @@ class BsServiceProvider extends ServiceProvider
     public function register()
     {
 
-       $this->app->singleton("App\Contracts\CorporateClientInterface", function($app){
+       $this->app->singleton("BsHttpClient", function($app){
 
            $config = [
              'url' =>  config('bsystem.url'),
-             "login" => config("BSYSTEM_USER"),
-             "password" => config("BSYSTEM_PASSWORD"),
-             "credentials_expire" => config("BSYSTEM_CREDETIANALS_EXPIRE"),
-             "port" => config("BSYSTEM_PORT",null),
-             "cookie" => config("BSYSTEM_COOKIE")
+             "login" => config('bsystem.login'),
+             "password" => config('bsystem.password'),
+             "credentials_expire" => config("bsystem.credentials_expire"),
+             "port" => config("bsystem.port",null),
+             "cookie" => config("bsystem.cookie")
            ];
 
-           new BsHttpCorporateClientService(new BsHttpClient($config));
+           return new BsHttpClient($config);
        });
+
+        $this->app->bind("App\Contracts\CorporateClientInterface", function($app){
+               return new CorporateClientService($app->make("BsHttpClient"));
+        });
     }
 }

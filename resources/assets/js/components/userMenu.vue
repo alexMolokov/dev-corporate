@@ -3,7 +3,7 @@
         <input id="partner-menu__checkbox" type="checkbox">
         <div>
             <div class="wrapper">
-                <div class="partner-menu__item" :class="{ active: currentRoute == 'user' }"><router-link :to="{name: 'user'}" v-translate>My Account</router-link></div>
+                <div class="partner-menu__item" :class="{ active: currentRoute == 'userpage' }"><router-link :to="{name: 'userpage'}" v-translate>My Account</router-link></div>
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'download' }"><router-link :to="{name: 'download'}">Download</router-link></div>
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'tickets' }"><router-link :to="{name: 'tickets'}" v-translate>Tickets</router-link></div>
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'documents' }"><router-link :to="{name: 'documents'}" v-translate>Documents</router-link></div>

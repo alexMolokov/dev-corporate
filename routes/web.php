@@ -16,13 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'auth'], function ()
+Route::group(['prefix' => 'auth', 'middleware' => ['web']], function ()
 {
-    Route::post('/login', 'AuthController@login')->name("login");
-    Route::post('/logout', 'AuthController@logout')->name("logout");
+    Route::any('/login', 'Auth\AuthController@login')->name("login");
+    Route::any('/logout', 'Auth\AuthController@logout')->name("logout");
 });
 
-Route::group(['namespace' => 'User'], function ()
+Route::group(['prefix' => 'user', 'middleware' => ['web']], function ()
 {
-
+    Route::any('/contact/update', 'Client\ContactController@update')->name("update_contact");
 });

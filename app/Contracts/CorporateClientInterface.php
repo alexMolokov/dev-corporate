@@ -13,5 +13,18 @@ use App\CorporateClient;
 interface  CorporateClientInterface
 {
     public function add(CorporateClient $corporateClient);
-    public function get($id);
+
+    /**
+     * @param $customerId
+     * @return CorporateClient
+     */
+    public function get($customerId);
+
+    /**
+     * @param $login
+     * @return CorporateClient
+     */
+    public function getByLogin($login);
+
+
 }

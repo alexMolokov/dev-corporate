@@ -152,25 +152,32 @@ const routes = [
         name: "registration"
     },
     { path: '/user',
-        component: (resolve) => { require(['./pages/User'], resolve)},
-        name: "user"
+        component: (resolve) => { require(['./pages/UserStart'], resolve)},
+        name: "user",
+        children: [
+            { path: '',
+                component: (resolve) => { require(['./pages/User'], resolve)},
+                name:"userpage"
+            },
+            { path: 'documents',
+                component: (resolve) => { require(['./pages/Documents'], resolve)},
+                name: "documents"
+            },
+            { path: 'tickets',
+                component: (resolve) => { require(['./pages/Tickets'], resolve)},
+                name: "tickets"
+            },
+            { path: 'download',
+                component: (resolve) => { require(['./pages/Download'], resolve)},
+                name: "download"
+            }
+        ]
     },
     { path: '/forgot',
         component: (resolve) => { require(['./pages/ForgotPassword'], resolve)},
         name: "forgot"
     },
-    { path: '/user/documents',
-        component: (resolve) => { require(['./pages/Documents'], resolve)},
-        name: "documents"
-    },
-    { path: '/user/tickets',
-        component: (resolve) => { require(['./pages/Tickets'], resolve)},
-        name: "tickets"
-    },
-    { path: '/user/download',
-        component: (resolve) => { require(['./pages/Download'], resolve)},
-        name: "download"
-    }
+
 ]
 
 export const router = new VueRouter({

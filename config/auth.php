@@ -73,8 +73,8 @@ return [
             'model' => App\User::class,
         ],
         'corporate' => [
-            'driver' => 'database',
-            'model' => App\User::class,
+            'driver' => 'bsystem',
+            'model' => App\CorporateClient::class,
         ],
 
         // 'users' => [

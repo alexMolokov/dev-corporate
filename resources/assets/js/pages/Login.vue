@@ -60,6 +60,20 @@
             togglePassword: function()
             {
                 this.type_password = (this.type_password == 'password')? 'text' : 'password';
+            },
+            validate: function()
+            {
+                 this.$validator.validateAll().then(result => {
+                    if (result) {
+                        window.axios.post('/auth/login', {"login": this.login, "password": this.password})
+                            .then((response) => {
+
+                            })
+                    }
+                }).catch(() => {
+                    console.log("error");
+                });
+
             }
         },
         locales: {

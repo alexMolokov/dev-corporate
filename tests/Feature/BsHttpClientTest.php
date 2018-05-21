@@ -29,15 +29,11 @@ class BsHttpClientTest extends TestCase
     }
 
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $result = $this->client->sendCommand("add_client", "/admin/corporates", ["login" => "alex"]);
-
+    public function testGetClientByLogin() {
+        $result = $this->client->sendCommand("get_client_by_login", "/admin/corporates/client", ["login" => "vasja"]);
         $this->assertTrue(true);
+        var_dump( $result);
     }
+
+
 }

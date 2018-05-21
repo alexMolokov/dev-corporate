@@ -1,6 +1,6 @@
 <template>
-    <div class="v-user-cabinet-ver1" id="main-user-page">
-        <user-menu/>
+    <div id="user-download-page">
+
 
 
 

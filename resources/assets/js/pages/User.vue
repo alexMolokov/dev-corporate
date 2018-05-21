@@ -1,6 +1,5 @@
 <template>
-    <div class="v-user-cabinet-ver1" id="main-user-page">
-        <user-menu/>
+    <div>
         <div class="flex-row flex_user_card">
             <div class="user-card">
                 <div class="head flex-row">
