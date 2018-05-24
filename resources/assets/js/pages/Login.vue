@@ -10,12 +10,12 @@
                     <div class="reg-body">
                         <div class="form-group">
                             <label for="login"  v-translate>Login</label> <span v-show="errors.has('login')" class="help is-danger">*{{errors.first('login')}}</span>
-                            <input type="text"  id="login" name="login" placeholder="" v-model="login" class="form-control input-alg readonly" :class="{error: errors.has('login')}" v-validate="'required|min_value:5'">
+                            <input type="text"  id="login" name="login" placeholder="" v-model="login" class="form-control input-alg readonly" :class="{error: errors.has('login')}" v-validate="'required|min:6'">
                         </div>
                         <div class="form-group">
                             <label for="password"  v-translate>Password</label> <span v-show="errors.has('password')" class="help is-danger">*{{errors.first('password')}}</span>
                             <div class="input-group">
-                                <input :type="type_password" id="password" name="password" v-model="password" class="form-control input-alg" :class="{error: errors.has('password')}" v-validate="'required|min_value:5'">
+                                <input :type="type_password" id="password" name="password" v-model="password" class="form-control input-alg" :class="{error: errors.has('password')}" v-validate="'required|min:6'">
                                 <a href="#" class="input-group-addon" @click.prevent.stop="togglePassword"><span class="glyphicon" :class="{'glyphicon-eye-close': type_password == 'password', 'glyphicon-eye-open': type_password != 'password'}" aria-hidden="true"></span></a>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
 
                     <div class="reg-body">
                         <div class="captcha-wrapper"></div>
-                        <div class="alert-wrapper"></div>
+                        <error-inform :err="err" :state="state"></error-inform>
                     </div>
 
                     <div class="reg-left">
@@ -44,12 +44,16 @@
 
 <script>
     import ajaxform from '../mixins/ajax-form.vue';
+    import {User} from '../classes/User';
+    import ErrorInform  from '../mixins/error-inform.vue';
+    import { mapMutations } from 'vuex'
 
     export default {
+        components: {ErrorInform},
         name: 'login',
         data(){
             return {
-                url: "/login",
+                url: "/auth/login",
                 login: null,
                 password: null,
                 type_password: "password"
@@ -57,22 +61,22 @@
         },
         mixins: [ajaxform],
         methods: {
+            ...mapMutations({authLogin: 'login'}),
             togglePassword: function()
             {
                 this.type_password = (this.type_password == 'password')? 'text' : 'password';
             },
             validate: function()
             {
-                 this.$validator.validateAll().then(result => {
-                    if (result) {
-                        window.axios.post('/auth/login', {"login": this.login, "password": this.password})
-                            .then((response) => {
+                let data = {"login": this.login, "password": this.password};
+                let authLogin = this.authLogin;
 
-                            })
+                this.send(this.url, data,
+                    function(data) {
+                        authLogin(new User(data));
                     }
-                }).catch(() => {
-                    console.log("error");
-                });
+                );
+
 
             }
         },

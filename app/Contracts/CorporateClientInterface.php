@@ -26,5 +26,28 @@ interface  CorporateClientInterface
      */
     public function getByLogin($login);
 
+    /**
+     * @param $customerId
+     * @param $name
+     * @return boolean
+     */
+    public function changeCompanyName($customerId, $name);
+
+
+    /**
+     * @param $customerId
+     * @param  string $password
+     * @return boolean;
+     */
+    public function changePassword($customerId, $password);
+
+    /**
+     * @brief Change company details
+     *
+     * @param $customerId
+     * @param array $info
+     * @return boolean
+     */
+    public function changeCompanyDetails($customerId, array $info);
 
 }

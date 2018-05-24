@@ -1,0 +1,1 @@
+export const HTTP_CODES = {"UnprocessableEntity" : 422, 'Unauthenticated': 401}

@@ -1,18 +1,18 @@
 webpackJsonp([1],{
 
-/***/ 54:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(72)
+  __webpack_require__(85)
 }
-var normalizeComponent = __webpack_require__(10)
+var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(74)
+var __vue_script__ = __webpack_require__(87)
 /* template */
-var __vue_template__ = __webpack_require__(75)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,15 +52,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 59:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(10)
+var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(60)
+var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(61)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100,7 +100,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 60:
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -141,7 +141,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 61:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -241,13 +241,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 72:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(73);
+var content = __webpack_require__(86);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -268,7 +268,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 73:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -283,18 +283,12 @@ exports.push([module.i, "\n.group-attr .info-value span:last-child {\n    margin
 
 /***/ }),
 
-/***/ 74:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
 //
 //
 //
@@ -399,18 +393,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-var userMenu = __webpack_require__(59);
+var userMenu = __webpack_require__(63);
+var formChangePassword = function formChangePassword() {
+    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 88));
+};
+var formChangeCompanyName = function formChangeCompanyName() {
+    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 91));
+};
+var formChangeCompanyDetails = function formChangeCompanyDetails() {
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 110));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'login',
     data: function data() {
-        return {};
+        return {
+            showFormChangePassword: false,
+            showFormChangeCompanyName: false,
+            showFormChangeContact: false,
+            showFormChangeDetails: false
+        };
     },
 
     components: {
-        "user-menu": userMenu
+        "user-menu": userMenu,
+        "form-change-password": formChangePassword,
+        "form-change-company-name": formChangeCompanyName,
+        "form-change-details": formChangeCompanyDetails
     },
-    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({
         user: function user(state) {
             return state.user;
         }
@@ -441,7 +452,7 @@ var userMenu = __webpack_require__(59);
 
 /***/ }),
 
-/***/ 75:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -494,7 +505,25 @@ var render = function() {
               _c("div", { staticClass: "info-value" }, [
                 _c("span", [_vm._v(_vm._s(_vm.user.name))]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeCompanyName = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
@@ -508,7 +537,29 @@ var render = function() {
                 [_vm._v("Password")]
               ),
               _vm._v(" "),
-              _vm._m(1)
+              _c("div", { staticClass: "info-value" }, [
+                _c("span", [_vm._v("**************")]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangePassword = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ])
             ])
           ]),
           _vm._v(" "),
@@ -523,7 +574,7 @@ var render = function() {
                   [_vm._v("Primary contact")]
                 ),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(0)
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "group-attr" }, [
@@ -606,7 +657,26 @@ var render = function() {
                   [_vm._v("Billing details")]
                 ),
                 _vm._v(" "),
-                _vm._m(3)
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeDetails = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "group-attr" }, [
@@ -648,26 +718,6 @@ var render = function() {
                         { name: "translate", rawName: "v-translate" }
                       ]
                     },
-                    [_vm._v("Full name:")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(
-                      _vm._s(_vm.user.billing.lastName) +
-                        " " +
-                        _vm._s(_vm.user.billing.firstName)
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info-value top-10" }, [
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ]
-                    },
                     [_vm._v("Email:")]
                   ),
                   _vm._v(" "),
@@ -688,7 +738,7 @@ var render = function() {
                   [_vm._v("Technical contact")]
                 ),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(1)
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "group-attr" }, [
@@ -746,47 +796,45 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { attrs: { id: "modal-list" } })
+    _c(
+      "div",
+      { attrs: { id: "modal-list" } },
+      [
+        _vm.showFormChangePassword
+          ? _c("form-change-password", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangePassword = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeCompanyName
+          ? _c("form-change-company-name", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeCompanyName = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeDetails
+          ? _c("form-change-details", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeDetails = false
+                }
+              }
+            })
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("span", {
-        staticClass: "glyphicon glyphicon-pencil blue",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "info-value" }, [
-      _c("span", [_vm._v("**************")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [
-        _c("span", {
-          staticClass: "glyphicon glyphicon-pencil blue",
-          attrs: { "aria-hidden": "true" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "ml-10", attrs: { href: "#" } }, [
-      _c("span", {
-        staticClass: "glyphicon glyphicon-pencil blue",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

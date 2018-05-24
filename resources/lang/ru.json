@@ -1,0 +1,5 @@
+{
+  "Authentication failed!": "Неверное имя пользователя или пароль",
+  "Password not valid": "Неверный пароль",
+  "Must be equal New Password":  "Должно быть равно новому паролю"
+}

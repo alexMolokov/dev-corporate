@@ -1,3 +1,4 @@
+"use strict";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -10,6 +11,7 @@ import VueRouter from 'vue-router';
 import VeeValidate, { Validator } from 'vee-validate';
 import VueTranslate from 'vue-translate-plugin';
 import Vuex from 'vuex'
+import {User} from './classes/User';
 
 
 const dictionary = {
@@ -24,6 +26,7 @@ const dictionary = {
             min: () => 'Not valid',
             password:  () => 'Not valid',
             login: () => 'Not valid',
+            is: () => 'Not valid',
         }
     },
     ru: {
@@ -37,16 +40,16 @@ const dictionary = {
             url: () => 'Некорректное значение',
             password: () => 'Некорректное значение',
             login: () => 'Некорректное значение',
+            is: () => 'Некорректное значение'
         }
     }
 };
 
 
-
+Vue.use(Vuex)
 Vue.use(VueRouter);
 Vue.use(VeeValidate, {fieldsBagName: 'formFields'});
 Vue.use(VueTranslate);
-Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
@@ -55,7 +58,6 @@ const store = new Vuex.Store({
         user: {
             id: "123",
             login: "alex",
-            password: "123",
             name: "Ivanov и К",
             primary: {
                 email: "alex@yandex.ru",
@@ -64,11 +66,9 @@ const store = new Vuex.Store({
                 jobTitle: "Manager"
             },
             billing: {
-                    address: "",
-                    phone: "",
-                    firstName:"",
-                    lastName: "",
-                    email: ""
+                    address: "aaa",
+                    phone: "111",
+                    email: "ss@ya.ru"
             },
             tech: {
                 firstName:"",
@@ -97,6 +97,27 @@ const store = new Vuex.Store({
             state.lang = obj.lang;
             Validator.localize(obj.lang,dictionary[obj.lang]);
         },
+        setDetails(state, obj)
+        {
+            let billing = state.user.billing;
+            billing.address = obj.address;
+            billing.email = obj.email;
+            billing.phone = obj.phone;
+        },
+        setContact(state, obj)
+        {
+            let contact = (obj.type == 'tech')? state.user.tech : state.user.primary;
+
+            contact.email = obj.email;
+            contact.firstName = obj.firstName;
+            contact.lastName = obj.lastName;
+            contact.jobTitle = obj.jobTitle;
+
+        },
+        setCompanyName(state, obj)
+        {
+            state.user.name = obj.name;
+        },
         logout(state)
         {
             for (let prop in state.user)
@@ -114,27 +135,13 @@ const store = new Vuex.Store({
                 }
             }
             state.auth = false;
+            router.push({name: 'login'});
         },
         login(state, user)
         {
             state.user = user;
             state.auth = true;
-        }
-    },
-    actions: {
-        logoutAsync(){
-            window.axios.post('/auth/logout', {})
-                .then((response) => {
-                    store.commit('logout')
-                    router.push({name: 'login'})
-            })
-        },
-        loginAsync(commit){
-            window.axios.post('/auth/login', commit)
-                .then((response) => {
-                    store.commit('login')
-                    router.push({name: 'user'})
-             })
+            router.push({name: 'userpage'});
         }
     }
 });
@@ -145,19 +152,22 @@ import App from './components/app'
 const routes = [
     { path: '/',
         component: (resolve) => { require(['./pages/Login'], resolve) },
-        name: "login"
+        name: "login",
+        meta: {requiresNoAuth: true},
     },
     { path: '/registration',
         component: (resolve) => { require(['./pages/Registration'], resolve) },
-        name: "registration"
+        name: "registration",
+        meta: {requiresNoAuth: true},
     },
     { path: '/user',
         component: (resolve) => { require(['./pages/UserStart'], resolve)},
-        name: "user",
+        meta: {requiresAuth: true},
         children: [
             { path: '',
                 component: (resolve) => { require(['./pages/User'], resolve)},
-                name:"userpage"
+                name:"userpage",
+                meta: {requiresAuth: true}
             },
             { path: 'documents',
                 component: (resolve) => { require(['./pages/Documents'], resolve)},
@@ -184,6 +194,28 @@ export const router = new VueRouter({
     routes: routes
 })
 
+router.beforeEach((to, from, next) => {
+    const auth = router.app.$options.store.state.auth;
+
+    if (to.matched.some(record => record.meta.requiresAuth))
+    {
+        if(!auth)
+        {
+            next( {name: 'login'});
+        }
+    }
+
+    if (to.matched.some(record => record.meta.requiresNoAuth))
+    {
+        if(auth)
+        {
+            next( {name: 'userpage'});
+        }
+    }
+
+    next();
+})
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -192,18 +224,29 @@ export const router = new VueRouter({
 
 //Vue.component('example', require('./components/Example.vue'));
 
+
 const app = new Vue({
     el: '#app',
     router,
     store,
     components: { App },
+    beforeCreate(){
+        let store = this.$store;
+        window.axios.post("/auth/auto", {}).then(function({data: response})
+        {
+            if(response.status)
+            {
+                let user = new User(response.data);
+                store.commit("login", user);
+            }
+        })
+    },
     mounted(){
         let supportedLangs = ["en","ru"];
         let lang = navigator.language;
 
         if(supportedLangs.indexOf(lang) == -1) lang = "en";
         this.$store.commit("setLang", {"lang": lang, "translate": this.$translate});
-
     }
 
 });

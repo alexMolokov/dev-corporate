@@ -131,12 +131,11 @@ class BsHttpClient
 
         $response = $this->m_httpClient->result();
 
-
         try
         {
             return  json_decode($response);
         }
-        catch (Exception $e)
+        catch (\Exception $e)
         {
             return  (object) [
                 "status" => false,

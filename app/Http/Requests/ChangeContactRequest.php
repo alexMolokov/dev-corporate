@@ -26,9 +26,8 @@ class ChangeContactRequest extends FormRequest
         return [
             'firstName' => 'required|min:3|max:60',
             'lastName' => 'required|min:3|max:60',
-
-
-
+            'email' => 'required|email',
+            'jobTitle' => 'required|min:3'
         ];
     }
 }

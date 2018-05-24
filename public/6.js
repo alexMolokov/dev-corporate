@@ -1,14 +1,14 @@
 webpackJsonp([6],{
 
-/***/ 51:
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(10)
+var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(64)
+var __vue_script__ = __webpack_require__(79)
 /* template */
-var __vue_template__ = __webpack_require__(65)
+var __vue_template__ = __webpack_require__(80)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\pages\\Login.vue"
+Component.options.__file = "resources\\assets\\js\\pages\\Registration.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6d4a7902", Component.options)
+    hotAPI.createRecord("data-v-1a0fbfa0", Component.options)
   } else {
-    hotAPI.reload("data-v-6d4a7902", Component.options)
+    hotAPI.reload("data-v-1a0fbfa0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,107 +48,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 62:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(10)
-/* script */
-var __vue_script__ = __webpack_require__(63)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\mixins\\ajax-form.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5a6e2e06", Component.options)
-  } else {
-    hotAPI.reload("data-v-5a6e2e06", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 63:
+/***/ 79:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'ajaxform',
-    props: {
-        show: { type: Boolean, default: false },
-        lang: { type: String, default: 'en' }
-    },
-    data: function data() {
-        return {
-            id: '',
-            args: {},
-            err: { validation: [], common: [] },
-            redirect: false
-        };
-    },
-
-    locales: {
-        ru: {
-            'Internal Server Error': 'Ошибка сервера. Попробуйте позднее.'
-        }
-    },
-    methods: {
-        validate: function validate() {
-            var $result = this.$validator.validateAll();
-
-            console.log($result);
-            this.$validator.validateAll().then(function (result) {
-                if (result) {
-                    console.log("ok");
-                }
-            }).catch(function () {
-                console.log("error");
-            });
-        }
-
-    }
-
-});
-
-/***/ }),
-
-/***/ 64:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
+//
+//
 //
 //
 //
@@ -200,7 +108,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'login',
     data: function data() {
         return {
-            url: "/login",
+            url: "/registration",
+            email: null,
             login: null,
             password: null,
             type_password: "password"
@@ -211,35 +120,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         togglePassword: function togglePassword() {
             this.type_password = this.type_password == 'password' ? 'text' : 'password';
-        },
-        validate: function validate() {
-            var _this = this;
-
-            this.$validator.validateAll().then(function (result) {
-                if (result) {
-                    window.axios.post('/auth/login', { "login": _this.login, "password": _this.password }).then(function (response) {});
-                }
-            }).catch(function () {
-                console.log("error");
-            });
-        }
-    },
-    locales: {
-        ru: {
-            'Login to your account': 'Войдите в ваш Личный кабинет',
-            'Password': 'Пароль',
-            'Login': 'Логин',
-            'Log In': 'Войти',
-            'Forgot password?': 'Забыли пароль?',
-            "Don't have an account?": 'У вас нет аккаунта?',
-            'Sign In': ' Зарегистрируйтесь'
         }
     }
+
 });
 
 /***/ }),
 
-/***/ 65:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -249,16 +137,7 @@ var render = function() {
   return _c("div", { staticClass: "login-page" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "clearfix", attrs: { id: "sign_in" } }, [
-        _c("div", { staticClass: "reg-header" }, [
-          _c(
-            "h2",
-            {
-              directives: [{ name: "translate", rawName: "v-translate" }],
-              staticClass: "text-primary"
-            },
-            [_vm._v("Login to your account")]
-          )
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "form",
@@ -274,14 +153,61 @@ var render = function() {
           [
             _c("div", { staticClass: "reg-body" }, [
               _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "login" } }, [_vm._v("Email")]),
+                _vm._v(" "),
                 _c(
-                  "label",
+                  "span",
                   {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    attrs: { for: "login" }
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("email"),
+                        expression: "errors.has('email')"
+                      }
+                    ],
+                    staticClass: "help is-danger"
                   },
-                  [_vm._v("Login")]
+                  [_vm._v("*" + _vm._s(_vm.errors.first("email")))]
                 ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|email",
+                      expression: "'required|email'"
+                    }
+                  ],
+                  staticClass: "form-control input-alg readonly",
+                  class: { error: _vm.errors.has("email") },
+                  attrs: {
+                    type: "text",
+                    id: "email",
+                    name: "email",
+                    placeholder: ""
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "login" } }, [_vm._v("Login")]),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -335,14 +261,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    attrs: { for: "password" }
-                  },
-                  [_vm._v("Password")]
-                ),
+                _c("label", { attrs: { for: "password" } }, [
+                  _vm._v("Password")
+                ]),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -503,70 +424,23 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "reg-left" }, [
               _c(
                 "button",
                 {
-                  directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "btn btn-primary btn-lg",
                   attrs: { type: "submit" },
                   on: { click: _vm.validate }
                 },
-                [_vm._v("Log In")]
+                [_vm._v("Create account")]
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "reg-right" }, [
-              _c(
-                "p",
-                { staticClass: "reg-choice" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: { to: { name: "forgot" }, tabindex: "-1" }
-                    },
-                    [_vm._v("Forgot password?")]
-                  )
-                ],
-                1
-              )
-            ]),
+            _c("div", { staticClass: "reg-right" }),
             _vm._v(" "),
-            _c("div", { staticClass: "reg-footer" }, [
-              _c(
-                "p",
-                { staticClass: "h4 text-center" },
-                [
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ]
-                    },
-                    [_vm._v("Don't have an account?")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: { to: { name: "registration" }, tabindex: "-1" }
-                    },
-                    [_vm._v("Sign In")]
-                  )
-                ],
-                1
-              )
-            ])
+            _vm._m(2)
           ]
         )
       ])
@@ -578,10 +452,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "reg-header" }, [
+      _c("h2", { staticClass: "text-primary" }, [_vm._v("Registration")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "reg-body" }, [
       _c("div", { staticClass: "captcha-wrapper" }),
       _vm._v(" "),
       _c("div", { staticClass: "alert-wrapper" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "reg-footer" }, [
+      _c("p", { staticClass: "reg-agree" }, [
+        _vm._v("By clicking "),
+        _c("strong", [_vm._v(" Create account")]),
+        _vm._v(" you agree to the "),
+        _c(
+          "a",
+          {
+            staticClass: "text-nowrap",
+            attrs: { href: "/legal", target: "blank" }
+          },
+          [_vm._v("User Agreement")]
+        ),
+        _vm._v(", "),
+        _c(
+          "a",
+          {
+            staticClass: "text-nowrap",
+            attrs: { href: "/terms_of_use", target: "legal" }
+          },
+          [_vm._v("Terms of use")]
+        ),
+        _vm._v(" and "),
+        _c(
+          "a",
+          {
+            staticClass: "text-nowrap",
+            attrs: { href: "/confidentiality", target: "legal" }
+          },
+          [_vm._v("Privacy policy")]
+        )
+      ])
     ])
   }
 ]
@@ -590,7 +510,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6d4a7902", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1a0fbfa0", module.exports)
   }
 }
 

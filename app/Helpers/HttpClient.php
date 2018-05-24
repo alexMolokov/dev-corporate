@@ -192,6 +192,7 @@ class HttpClient
         if($this->_includeHeader)
         {
             curl_setopt($s,CURLOPT_HEADER,true);
+            curl_setopt($s,CURLINFO_HEADER_OUT, true);
         }
 
         if($this->_noBody)
@@ -220,6 +221,10 @@ class HttpClient
         curl_setopt($s, CURLOPT_STDERR, $verbose);
 
         $data = curl_exec($s);
+
+        var_dump($data);
+        var_dump(curl_getinfo($s));
+
 
         rewind($verbose);
 

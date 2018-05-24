@@ -14,12 +14,12 @@
                         </div>
                         <div>
                             <div class="info-head" v-translate>Company</div>
-                            <div class="info-value"><span>{{user.name}}</span> <a href="#"><span aria-hidden="true" class="glyphicon glyphicon-pencil blue"></span></a>
+                            <div class="info-value"><span>{{user.name}}</span> <a href="#" @click.prevent.stop="showFormChangeCompanyName = true"><span aria-hidden="true" class="glyphicon glyphicon-pencil blue"></span></a>
                             </div>
                         </div>
                         <div>
                             <div class="info-head" v-translate>Password</div>
-                            <div class="info-value"><span>**************</span> <a href="#"><span aria-hidden="true" class="glyphicon glyphicon-pencil blue"></span></a>
+                            <div class="info-value"><span>**************</span> <a href="#"  @click.prevent.stop="showFormChangePassword = true"><span aria-hidden="true" class="glyphicon glyphicon-pencil blue"></span></a>
                             </div>
                         </div>
 
@@ -53,16 +53,13 @@
                 <div class="info">
                     <div class="info_section">
                         <div>
-                            <div class="info-head"><span v-translate>Billing details</span>  <a href="#" class="ml-10"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
+                            <div class="info-head"><span v-translate>Billing details</span>  <a href="#" class="ml-10" @click.prevent.stop="showFormChangeDetails = true"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
                             <div class="group-attr">
                                 <div class="info-value">
                                     <span v-translate>Address:</span> <span style="margin-left: 5px">{{user.billing.address}}</span>
                                 </div>
                                 <div class="info-value top-10">
                                     <span v-translate>Phone:</span> <span>{{user.billing.phone}}</span>
-                                </div>
-                                <div class="info-value top-10">
-                                    <span v-translate>Full name:</span> <span>{{user.billing.lastName}} {{user.billing.firstName}}</span>
                                 </div>
                                 <div class="info-value top-10">
                                     <span v-translate>Email:</span> <span>{{user.billing.email}}</span>
@@ -90,16 +87,13 @@
 
                 </div>
             </div>
-
         </div>
 
 
-
-
-
         <div id="modal-list">
-
-
+            <form-change-password v-if="showFormChangePassword" @close="showFormChangePassword = false"></form-change-password>
+            <form-change-company-name  v-if="showFormChangeCompanyName" @close="showFormChangeCompanyName = false"></form-change-company-name>
+            <form-change-details  v-if="showFormChangeDetails" @close="showFormChangeDetails = false"></form-change-details>
         </div>
 
     </div>
@@ -109,16 +103,25 @@
 <script type="text/ecmascript-6">
     import { mapState } from 'vuex'
     const userMenu = require('../components/userMenu.vue');
+    const formChangePassword  = () => System.import('../components/formChangePassword.vue');
+    const formChangeCompanyName = () => System.import('../components/formChangeCompanyName.vue');
+    const formChangeCompanyDetails = () => System.import('../components/formChangeDetails.vue')
 
     export default {
         name: 'login',
-        data(){
+        data() {
             return {
-                
+                    showFormChangePassword:false,
+                    showFormChangeCompanyName:false,
+                    showFormChangeContact:false,
+                    showFormChangeDetails:false
             }
         },
         components: {
-            "user-menu": userMenu
+            "user-menu": userMenu,
+            "form-change-password": formChangePassword,
+            "form-change-company-name": formChangeCompanyName,
+            "form-change-details": formChangeCompanyDetails
         },
         computed: mapState({
             user: state => state.user

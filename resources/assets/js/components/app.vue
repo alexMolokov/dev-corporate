@@ -4,7 +4,7 @@
         <div class="container v-nav-main">
             <nav class="navbar navbar-default v-navbar" role="navigation">
                 <div class="navbar-header">
-                    <a href="/"><img id="logo-img-logo" :src="logo" width="113" height="37" border="0"></a>
+                    <router-link :to="{name: mainPageName}"><img id="logo-img-logo" :src="logo" width="113" height="37" border="0"></router-link>
                     <button type="button" class="navbar-toggle collapsed navbar-slider-button" data-toggle="offcanvas" data-target=".navmenu">
                         <span v-translate>MENU</span>
                     </button>
@@ -17,10 +17,10 @@
                         <li><a target="_blank" :href="rootReference + '/download'" id="a-download"><span id="v-download" v-translate>Download</span></a></li>
                         <li v-if="!isAuth"><router-link :to="{name:'registration'}" class="a-sign"><span id="v-sign" v-translate>Sign in</span></router-link></li>
                         <li  v-if="isAuth"class="sub-menu">
-                            <router-link :to="{name: 'user'}" class="username hidden-xs"><div>{{getLogin}}</div><img src="/images/icons/icon-userpic-white.png" alt></router-link>
+                            <router-link :to="{name: 'userpage'}" class="username hidden-xs"><div>{{getLogin}}</div><img src="/images/icons/icon-userpic-white.png" alt></router-link>
                             <ul>
-                                <li><router-link :to="{name: 'user'}">Profile</router-link></li>
-                                <li><a href="#" class="logout">Sign out</a></li>
+                                <li><router-link :to="{name: 'userpage'}">Profile</router-link></li>
+                                <li><a href="#" class="logout"  @click="userLogout">Sign out</a></li>
                             </ul>
                         </li>
 
@@ -46,10 +46,10 @@
                 </ul>
                 <ul  v-if="isAuth" class="nav navmenu-nav end-menu">
                     <li>
-                        <router-link :to="{name: 'user'}" id="sign_up_link"><img src="/images/icons/icon-userpic-white.png" alt >{{getLogin}}</router-link>
+                        <router-link :to="{name: 'userpage'}" id="sign_up_link"><img src="/images/icons/icon-userpic-white.png" alt >{{getLogin}}</router-link>
                     </li>
                     <li>
-                        <a href="#" class="logout"><img src="/images/icons/icon-sign-out.png" alt=""><span v-translate>Sign out</span></a>
+                        <a href="#" class="logout" @click="userLogout"><img src="/images/icons/icon-sign-out.png" alt=""><span v-translate>Sign out</span></a>
                     </li>
                 </ul>
             </div>
@@ -169,7 +169,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import ajaxform from '../mixins/ajax-form.vue';
+
+
 
 export default {
     name: 'app',
@@ -196,13 +199,30 @@ export default {
             'isAuth',
             'getLogin',
             'getLang'
-        ])
+        ]),
+        mainPageName(){
+            if(this.isAuth) return "userpage";
+            return "login";
+        }
     }
     ,
+    mixins: [ajaxform],
     methods: {
+        ...mapMutations(['setLang', 'logout']),
         changeLanguage(lang)
         {
-            this.$store.commit("setLang",{lang: lang, translate: this.$translate});
+            this.setLang({lang: lang, translate: this.$translate});
+        },
+
+        userLogout()
+        {
+            let authLogout = this.logout;
+            let url = "/auth/logout";
+            this.send(url, {},
+                function() {
+                    authLogout();
+                }
+            );
         }
     },
     locales: {

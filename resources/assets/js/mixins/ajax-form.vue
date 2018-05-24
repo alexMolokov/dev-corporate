@@ -1,4 +1,7 @@
 <script>
+import {STATES} from "./states";
+import {HTTP_CODES} from "./httpCodes";
+
 export default {
     name: 'ajaxform',
     props: {
@@ -9,8 +12,11 @@ export default {
     return {
         id: '',
         args: {},
+        state: STATES.START,
         err: {validation:[], common: []},
-        redirect: false
+        redirect: false,
+        url: '',
+        data: {}
         }
     },
     locales: {
@@ -19,23 +25,79 @@ export default {
         }
     },
     methods: {
-        validate: function()
+        send: function(url, data, success)
         {
-            let $result = this.$validator.validateAll();
+            Object.assign(data, {lang: this.$store.state.lang});
 
+            this.state = STATES.START;
+            this.$validator.errors.clear();
 
-            console.log($result);
-                this.$validator.validateAll().then(result => {
-                if (result) {
-                    console.log("ok");
+            this.$validator.validateAll().then(result => {
+                    if(result)
+                    {
+                        this.state = STATES.LOADING;
+                        return window.axios.post(url, data)
+                    }
+           }
+            ).then(({data: response}) => {
+                  if(!response.status)
+                  {
+                      this.state = STATES.ERROR;
+                      this.err.common = [];
+
+                      if(response.message !== undefined && response.message !== '')
+                      {
+                          this.err.common.push(response.message);
+                      }
+
+                      for (let key in response.data)
+                      {
+                          this.$validator.errors.add(key,response.data[key]);
+                      }
+
+                  }
+
+                if(response.status)
+                {
+                    this.state = STATES.ANSWER;
+                    if(typeof  success == 'function')
+                    {
+                        success(response.data);
+                    }
+                 }
+
+            }, ({response}) => {
+                if(response.status == HTTP_CODES.UnprocessableEntity)
+                {
+                    this.state = STATES.ERROR;
+                    let data = JSON.parse(response.request.response);
+                    for (let key in data)
+                    {
+                        this.$validator.errors.add(key,response.data[key][0]);
+                    }
                 }
-                }).catch(() => {
+
+            }).catch(() => {
+                    /*this.state = STATES.ERROR;
+                    this.err.common = [];
+                    this.err.common.push('Internal Server Error');*/
                     console.log("error");
-                });
+            });
 
-        }
-
-
+        },
+        close: function()
+        {
+            this.state = STATES.START;
+            this.err = {validation:[], common: []};
+            this.clean();
+            this.$emit('close');
+        },
+        clean: function()
+        {
+            $('#' + this.id).find("input[type='text']").val('');
+            $('#' + this.id).find("input[type='password']").val('');
+            $('#' + this.id).find("textarea").val('');
+        },
     }
 
 }
