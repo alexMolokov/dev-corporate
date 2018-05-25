@@ -1,18 +1,18 @@
 webpackJsonp([1],{
 
-/***/ 58:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(85)
+  __webpack_require__(86)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(87)
+var __vue_script__ = __webpack_require__(88)
 /* template */
-var __vue_template__ = __webpack_require__(94)
+var __vue_template__ = __webpack_require__(98)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,15 +52,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 63:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(64)
+var __vue_script__ = __webpack_require__(65)
 /* template */
-var __vue_template__ = __webpack_require__(65)
+var __vue_template__ = __webpack_require__(66)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100,7 +100,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 64:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -141,7 +141,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 65:
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -241,13 +241,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 85:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(86);
+var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -268,7 +268,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -283,7 +283,7 @@ exports.push([module.i, "\n.group-attr .info-value span:last-child {\n    margin
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -391,17 +391,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
-var userMenu = __webpack_require__(63);
+var userMenu = __webpack_require__(64);
 var formChangePassword = function formChangePassword() {
-    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 88));
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 89));
 };
 var formChangeCompanyName = function formChangeCompanyName() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 91));
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 92));
 };
 var formChangeCompanyDetails = function formChangeCompanyDetails() {
-    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 110));
+    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 95));
+};
+var formChangeTechContact = function formChangeTechContact() {
+    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 113));
+};
+var formChangeMainContact = function formChangeMainContact() {
+    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 116));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -411,7 +419,9 @@ var formChangeCompanyDetails = function formChangeCompanyDetails() {
             showFormChangePassword: false,
             showFormChangeCompanyName: false,
             showFormChangeContact: false,
-            showFormChangeDetails: false
+            showFormChangeDetails: false,
+            showFormChangeTechContact: false,
+            showFormChangeMainContact: false
         };
     },
 
@@ -419,7 +429,9 @@ var formChangeCompanyDetails = function formChangeCompanyDetails() {
         "user-menu": userMenu,
         "form-change-password": formChangePassword,
         "form-change-company-name": formChangeCompanyName,
-        "form-change-details": formChangeCompanyDetails
+        "form-change-details": formChangeCompanyDetails,
+        "form-change-tech-contact": formChangeTechContact,
+        "form-change-main-contact": formChangeMainContact
     },
     computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({
         user: function user(state) {
@@ -452,7 +464,7 @@ var formChangeCompanyDetails = function formChangeCompanyDetails() {
 
 /***/ }),
 
-/***/ 94:
+/***/ 98:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -574,7 +586,26 @@ var render = function() {
                   [_vm._v("Primary contact")]
                 ),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeMainContact = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "group-attr" }, [
@@ -738,7 +769,26 @@ var render = function() {
                   [_vm._v("Technical contact")]
                 ),
                 _vm._v(" "),
-                _vm._m(1)
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeTechContact = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "group-attr" }, [
@@ -828,36 +878,33 @@ var render = function() {
                 }
               }
             })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeMainContact
+          ? _c("form-change-main-contact", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeMainContact = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeTechContact
+          ? _c("form-change-tech-contact", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeTechContact = false
+                }
+              }
+            })
           : _vm._e()
       ],
       1
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "ml-10", attrs: { href: "#" } }, [
-      _c("span", {
-        staticClass: "glyphicon glyphicon-pencil blue",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "ml-10", attrs: { href: "#" } }, [
-      _c("span", {
-        staticClass: "glyphicon glyphicon-pencil blue",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

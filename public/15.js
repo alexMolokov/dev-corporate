@@ -1,4 +1,4 @@
-webpackJsonp([10],{
+webpackJsonp([15],{
 
 /***/ 67:
 /***/ (function(module, exports, __webpack_require__) {
@@ -601,15 +601,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 92:
+/***/ 95:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(93)
+var __vue_script__ = __webpack_require__(96)
 /* template */
-var __vue_template__ = __webpack_require__(94)
+var __vue_template__ = __webpack_require__(97)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -626,7 +626,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\formChangeCompanyName.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formChangeDetails.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -635,9 +635,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-268e34a6", Component.options)
+    hotAPI.createRecord("data-v-279214c7", Component.options)
   } else {
-    hotAPI.reload("data-v-268e34a6", Component.options)
+    hotAPI.reload("data-v-279214c7", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -649,17 +649,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 93:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__modalWindow_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(4);
@@ -706,7 +706,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -716,53 +728,57 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'form-change-company-name',
+    name: 'form-change-details',
+    components: {
+        "modal-window": __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default.a,
+        "error-inform": __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default.a,
+        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
+    },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])({
-        companyName: function companyName(state) {
-            return state.user.name;
+        'billing': function billing(state) {
+            return state.user.billing;
         }
     })),
     mounted: function mounted() {
-        this.name = this.companyName;
-    },
-
-    components: {
-        "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
-        "error-inform": __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default.a,
-        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
+        console.log(this.billing);
+        this.address = this.billing.address;
+        this.email = this.billing.email;
+        this.phone = this.billing.phone;
     },
     data: function data() {
         return {
-            id: "change-name",
-            url: "/user/company/change",
+            id: "change-details",
+            url: "/user/company-details/change",
             redirect: false,
+            address: '',
+            phone: '',
+            email: '',
             password: '',
-            name: '',
             type_input: "password"
         };
     },
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default.a],
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
     locales: {
         ru: {
+            'Change company info': 'Изменить данные о компании',
+            'Company info has been changed.': 'Информация о компании была изменена',
             'Password': 'Пароль',
-            'Company': 'Компания',
-            'Next': 'Далее',
-            'Company name has been changed.': 'Название компании было изменено.',
-            'Change company name': 'Изменить название компании'
+            'Address': 'Адрес',
+            'Next': 'Далее'
         }
     },
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setCompanyName']), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setDetails']), {
         togglePassword: function togglePassword(type) {
-            this.type_input = this.type_input_current == 'password' ? 'text' : 'password';
+            this.type_input = this.type_input == 'password' ? 'text' : 'password';
         },
 
         validate: function validate() {
             var _this = this;
 
-            var data = { "name": this.name, "password": this.password };
+            var data = { "address": this.address, "email": this.email, "phone": this.phone, "password": this.password };
             this.send(this.url, data, function () {
-                _this.setCompanyName({ "name": _this.name });
+                _this.setDetails(data);
             });
         }
 
@@ -771,7 +787,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /***/ }),
 
-/***/ 94:
+/***/ 97:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -783,7 +799,7 @@ var render = function() {
     {
       staticClass: "in",
       staticStyle: { display: "block" },
-      attrs: { id: "change-name", show: true },
+      attrs: { id: _vm.id, show: true },
       on: { close: _vm.close }
     },
     [
@@ -794,7 +810,7 @@ var render = function() {
           attrs: { slot: "title" },
           slot: "title"
         },
-        [_vm._v("Change company name")]
+        [_vm._v("Change company info")]
       ),
       _vm._v(" "),
       _c(
@@ -815,7 +831,7 @@ var render = function() {
                   directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "complete-body"
                 },
-                [_vm._v("Company name has been changed.")]
+                [_vm._v("Company info has been changed.")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "button-close-ok" }, [
@@ -859,9 +875,9 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "company" }
+                      attrs: { for: "address" }
                     },
-                    [_vm._v("Company")]
+                    [_vm._v("Address")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -871,13 +887,13 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("name"),
-                          expression: "errors.has('name')"
+                          value: _vm.errors.has("address"),
+                          expression: "errors.has('address')"
                         }
                       ],
                       staticClass: "help is-danger"
                     },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("name")))]
+                    [_vm._v("*" + _vm._s(_vm.errors.first("address")))]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group" }, [
@@ -886,26 +902,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.name,
-                          expression: "name"
+                          value: _vm.address,
+                          expression: "address"
                         },
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: "required|min:3",
-                          expression: "'required|min:3'"
+                          value: "required|min:5",
+                          expression: "'required|min:5'"
                         }
                       ],
                       staticClass: "form-control",
-                      class: { error: _vm.errors.has("name") },
-                      attrs: { id: "company", name: "name" },
-                      domProps: { value: _vm.name },
+                      class: { error: _vm.errors.has("address") },
+                      attrs: { id: "address", name: "address" },
+                      domProps: { value: _vm.address },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.name = $event.target.value
+                          _vm.address = $event.target.value
                         }
                       }
                     })
@@ -919,7 +935,127 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "password" }
+                      attrs: { for: "detail_phone" }
+                    },
+                    [_vm._v("Phone")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("phone"),
+                          expression: "errors.has('phone')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("phone")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.phone,
+                          expression: "phone"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, min: 10 } },
+                          expression: "{ rules: { required:true, min:10}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("phone") },
+                      attrs: { id: "detail_phone", name: "phone" },
+                      domProps: { value: _vm.phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.phone = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "detail_email" }
+                    },
+                    [_vm._v("Email")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("email")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, email: true } },
+                          expression: "{ rules: { required:true, email:true}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("email") },
+                      attrs: { id: "detail_email", name: "email" },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "detail-password" }
                     },
                     [_vm._v("Password")]
                   ),
@@ -959,7 +1095,11 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           class: { error: _vm.errors.has("password") },
-                          attrs: { name: "password", type: "checkbox" },
+                          attrs: {
+                            id: "detail-password",
+                            name: "password",
+                            type: "checkbox"
+                          },
                           domProps: {
                             checked: Array.isArray(_vm.password)
                               ? _vm._i(_vm.password, null) > -1
@@ -1005,7 +1145,11 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: { name: "password", type: "radio" },
+                            attrs: {
+                              id: "detail-password",
+                              name: "password",
+                              type: "radio"
+                            },
                             domProps: { checked: _vm._q(_vm.password, null) },
                             on: {
                               change: function($event) {
@@ -1030,7 +1174,11 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: { name: "password", type: _vm.type_input },
+                            attrs: {
+                              id: "detail-password",
+                              name: "password",
+                              type: _vm.type_input
+                            },
                             domProps: { value: _vm.password },
                             on: {
                               input: function($event) {
@@ -1086,7 +1234,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-268e34a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-279214c7", module.exports)
   }
 }
 

@@ -46,7 +46,10 @@ class UserController extends Controller
 
     public function changeContact(ChangeContactRequest $request)
     {
+        $result = $this->service->saveContact(Auth::user()->getCustomerId(), $request->all());
+        if($result) return response()->success([]);
 
+        return response()->error(__("Error"), []);
     }
 
 

@@ -76,20 +76,32 @@ export default {
      "error-inform": errorInform,
      "loading-inform": loadingInform,
   },
+    computed: {
+        ...mapState({
+            primary: state => state.user.primary
+        })
+    },
+    mounted(){
+        this.firstName = this.primary.firstName;
+        this.lastName = this.primary.lastName;
+        this.jobTitle = this.primary.jobTitle;
+        this.email= this.primary.email;
+        this.contact_id = this.primary.id;
+    },
 
   data () {
     return {
       id: "change-contact",
-      url: "/user/changeContact",
+      url: "/user/contact/change",
       redirect: false,
       type_input: "password",
       password: '',
-      type: "",
+      type: "main",
       firstName: '',
       lastName: '',
       jobTitle: '',
       email: '',
-      contact_id: ''
+      contact_id: '',
      }
   },
   mixins: [ajaxform],
@@ -99,7 +111,9 @@ export default {
                 'First Name': 'Имя',
                 'Last Name': 'Фамилия',
                 'Job title': 'Должность',
-                'Next': 'Далее'
+                'Next': 'Далее',
+                'Change Contact': "Изменить контакт",
+                'Contact has been changed.': 'Контакт был изменен.'
          }
     },    
   methods: {
@@ -115,10 +129,11 @@ export default {
              "jobTitle": this.jobTitle,
              "firstName": this.firstName,
              "lastName": this.lastName,
-             "password": this.password
+             "password": this.password,
+             "type": this.type
          };
 
-         this.send(this.url, data, (data) => {
+         this.send(this.url, data, () => {
                 this.setContact(data);
          });
      }

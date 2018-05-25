@@ -1,14 +1,14 @@
-webpackJsonp([12],{
+webpackJsonp([14],{
 
-/***/ 113:
+/***/ 116:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(114)
+var __vue_script__ = __webpack_require__(117)
 /* template */
-var __vue_template__ = __webpack_require__(115)
+var __vue_template__ = __webpack_require__(118)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\formChangeTechContact.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formChangeMainContact.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-00b0f4af", Component.options)
+    hotAPI.createRecord("data-v-6d1424a8", Component.options)
   } else {
-    hotAPI.reload("data-v-00b0f4af", Component.options)
+    hotAPI.reload("data-v-6d1424a8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 114:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -136,81 +136,80 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'form-change-contact',
-  components: {
-    "modal-window": __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default.a,
-    "error-inform": __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default.a,
-    "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
-  },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])({
-    tech: function tech(state) {
-      return state.user.tech;
-    }
-  })),
-  mounted: function mounted() {
-    this.type = "tech";
-    this.firstName = this.tech.firstName;
-    this.lastName = this.tech.lastName;
-    this.jobTitle = this.tech.jobTitle;
-    this.email = this.tech.email;
-    this.contact_id = this.tech.id;
-  },
-  data: function data() {
-    return {
-      id: "change-contact",
-      url: "/user/contact/change",
-      redirect: false,
-      type_input: "password",
-      password: '',
-      type: "tech",
-      firstName: '',
-      lastName: '',
-      jobTitle: '',
-      email: '',
-      contact_id: ''
-    };
-  },
-
-  mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
-  locales: {
-    ru: {
-      'Change Contact': "Изменить контакт",
-      'Password': 'Пароль',
-      'First Name': 'Имя',
-      'Last Name': 'Фамилия',
-      'Job title': 'Должность',
-      'Next': 'Далее',
-      'Contact has been changed.': 'Контакт был изменен.'
-    }
-  },
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setContact']), {
-    togglePassword: function togglePassword(type) {
-      this.type_input = this.type_input_current == 'password' ? 'text' : 'password';
+    name: 'form-change-contact',
+    components: {
+        "modal-window": __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default.a,
+        "error-inform": __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default.a,
+        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
     },
-    validate: function validate() {
-      var _this = this;
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])({
+        primary: function primary(state) {
+            return state.user.primary;
+        }
+    })),
+    mounted: function mounted() {
+        this.firstName = this.primary.firstName;
+        this.lastName = this.primary.lastName;
+        this.jobTitle = this.primary.jobTitle;
+        this.email = this.primary.email;
+        this.contact_id = this.primary.id;
+    },
+    data: function data() {
+        return {
+            id: "change-contact",
+            url: "/user/contact/change",
+            redirect: false,
+            type_input: "password",
+            password: '',
+            type: "main",
+            firstName: '',
+            lastName: '',
+            jobTitle: '',
+            email: '',
+            contact_id: ''
+        };
+    },
 
-      var data = {
-        "id": this.contact_id,
-        "email": this.email,
-        "jobTitle": this.jobTitle,
-        "firstName": this.firstName,
-        "lastName": this.lastName,
-        "password": this.password,
-        "type": this.type
-      };
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
+    locales: {
+        ru: {
+            'Password': 'Пароль',
+            'First Name': 'Имя',
+            'Last Name': 'Фамилия',
+            'Job title': 'Должность',
+            'Next': 'Далее',
+            'Change Contact': "Изменить контакт",
+            'Contact has been changed.': 'Контакт был изменен.'
+        }
+    },
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setContact']), {
+        togglePassword: function togglePassword(type) {
+            this.type_input = this.type_input_current == 'password' ? 'text' : 'password';
+        },
+        validate: function validate() {
+            var _this = this;
 
-      this.send(this.url, data, function () {
-        _this.setContact(data);
-      });
-    }
+            var data = {
+                "id": this.contact_id,
+                "email": this.email,
+                "jobTitle": this.jobTitle,
+                "firstName": this.firstName,
+                "lastName": this.lastName,
+                "password": this.password,
+                "type": this.type
+            };
 
-  })
+            this.send(this.url, data, function () {
+                _this.setContact(data);
+            });
+        }
+
+    })
 });
 
 /***/ }),
 
-/***/ 115:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -731,7 +730,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-00b0f4af", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6d1424a8", module.exports)
   }
 }
 

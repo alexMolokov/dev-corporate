@@ -50,6 +50,10 @@ class OtrsClientService implements  TicketsInterface
         $this->servicePassword = $config["servicePassword"];
 
         $this->client = new HttpClient($this->url,true,30,4,false,true);
+        $this->client->setHeaders([
+            "Accept: application/json",
+            "Content-Type: application/json"
+        ]);
 
         if(!is_null($this->httpUser))
         {
@@ -75,10 +79,12 @@ class OtrsClientService implements  TicketsInterface
 
         $this->client->setPost($body);
 
+        var_dump($body);
+
         $this->client->createCurl($this->url . $path);
         $response = $this->client->result();
 
-        var_dump($response);
+
         die();
 
 

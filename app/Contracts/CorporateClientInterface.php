@@ -50,4 +50,12 @@ interface  CorporateClientInterface
      */
     public function changeCompanyDetails($customerId, array $info);
 
+    /**
+     * @brief Save contact info (firstName,lastName,email,jobTitle)
+     * @param $customerId
+     * @param array $info
+     * @return boolean
+     */
+    public function saveContact($customerId, array $info);
+
 }

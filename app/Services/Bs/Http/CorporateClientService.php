@@ -21,7 +21,8 @@ class CorporateClientService extends Service implements CorporateClientInterface
         "add" => "add_client",
         "changeCompanyName" => "change_name",
         "changePassword" =>  "change_password",
-        "changeCompanyDetails" =>  "change_short_details"
+        "changeCompanyDetails" =>  "change_short_details",
+        "saveContact" =>  "save_short_contact",
     ];
 
     /**
@@ -87,6 +88,26 @@ class CorporateClientService extends Service implements CorporateClientInterface
         $result = $this->client->sendCommand(self::OPS["add"], self::PATH, $corporateClient->toArray());
 
 
+    }
+
+    /**
+     * @brief Save contact info (firstName,lastName,email,jobTitle)
+     * @param $customerId
+     * @param array $info
+     * @return boolean
+     */
+    public function saveContact($customerId, array $info)
+    {
+        $data = [
+            "contact_id" => (is_null($info["id"]))? "": $info["id"],
+            "contact_name" => trim($info["firstName"]) . " " . trim($info["lastName"]),
+            "contact_job_position" => trim($info["jobTitle"]),
+            "contact_email" => $info["email"],
+            "contact_type" =>  trim($info["type"])
+        ];
+
+        $result = $this->client->sendCommand(self::OPS["saveContact"], self::PATH, array_merge(["customer_id" => $customerId], $data));
+        return $result->status;
     }
 
     /**

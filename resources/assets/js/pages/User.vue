@@ -26,7 +26,7 @@
                     </div>
                     <div class="info_section">
                         <div>
-                            <div class="info-head"><span v-translate>Primary contact</span>  <a href="#" class="ml-10"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
+                            <div class="info-head"><span v-translate>Primary contact</span>  <a href="#" class="ml-10" @click.prevent.stop="showFormChangeMainContact=true"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
                             <div class="group-attr">
                                 <div class="info-value">
                                     <span v-translate>Full name:</span> <span style="margin-left: 5px">{{user.primary.lastName}} {{user.primary.firstName}}</span>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="info_section">
                         <div>
-                            <div class="info-head"><span v-translate>Technical contact</span>  <a href="#" class="ml-10"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
+                            <div class="info-head"><span v-translate>Technical contact</span>  <a href="#"  @click.prevent.stop="showFormChangeTechContact = true"class="ml-10"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
                             <div class="group-attr">
                                 <div class="info-value">
                                     <span v-translate>Full name:</span> <span style="margin-left: 5px">{{user.tech.lastName}} {{user.tech.firstName}}</span>
@@ -94,6 +94,8 @@
             <form-change-password v-if="showFormChangePassword" @close="showFormChangePassword = false"></form-change-password>
             <form-change-company-name  v-if="showFormChangeCompanyName" @close="showFormChangeCompanyName = false"></form-change-company-name>
             <form-change-details  v-if="showFormChangeDetails" @close="showFormChangeDetails = false"></form-change-details>
+            <form-change-main-contact  v-if="showFormChangeMainContact" @close="showFormChangeMainContact = false"></form-change-main-contact>
+            <form-change-tech-contact  v-if="showFormChangeTechContact" @close="showFormChangeTechContact = false"></form-change-tech-contact>
         </div>
 
     </div>
@@ -106,6 +108,8 @@
     const formChangePassword  = () => System.import('../components/formChangePassword.vue');
     const formChangeCompanyName = () => System.import('../components/formChangeCompanyName.vue');
     const formChangeCompanyDetails = () => System.import('../components/formChangeDetails.vue')
+    const formChangeTechContact = () => System.import('../components/formChangeTechContact.vue');
+    const formChangeMainContact = () => System.import('../components/formChangeMainContact.vue');
 
     export default {
         name: 'login',
@@ -114,14 +118,18 @@
                     showFormChangePassword:false,
                     showFormChangeCompanyName:false,
                     showFormChangeContact:false,
-                    showFormChangeDetails:false
+                    showFormChangeDetails:false,
+                    showFormChangeTechContact:false,
+                    showFormChangeMainContact:false
             }
         },
         components: {
             "user-menu": userMenu,
             "form-change-password": formChangePassword,
             "form-change-company-name": formChangeCompanyName,
-            "form-change-details": formChangeCompanyDetails
+            "form-change-details": formChangeCompanyDetails,
+            "form-change-tech-contact":formChangeTechContact,
+            "form-change-main-contact":formChangeMainContact
         },
         computed: mapState({
             user: state => state.user

@@ -44,6 +44,8 @@ class HttpClient
     protected $_sslSelfCert=null;
     protected $_sslSelfCertPass=null;
 
+    protected $additionalHeaders = [];
+
     public function useAuth($use){
         $this->authentication = 0;
         if($use == true) $this->authentication = 1;
@@ -155,8 +157,14 @@ class HttpClient
             curl_setopt($s, CURLOPT_SSLCERTPASSWD, $this->_sslSelfCertPass);
         }
 
+        if(count($this->additionalHeaders) > 0)
+        {
+            curl_setopt($s, CURLOPT_HTTPHEADER, $this->additionalHeaders);
+
+        }
+
         curl_setopt($s,CURLOPT_URL,$this->_url);
-        curl_setopt($s,CURLOPT_HTTPHEADER,array('Expect:'));
+        //curl_setopt($s,CURLOPT_HTTPHEADER,array('Expect:'));
         curl_setopt($s,CURLOPT_TIMEOUT,$this->_timeout);
         curl_setopt($s,CURLOPT_MAXREDIRS,$this->_maxRedirects);
         curl_setopt($s,CURLOPT_RETURNTRANSFER,true);
@@ -222,8 +230,8 @@ class HttpClient
 
         $data = curl_exec($s);
 
-        var_dump($data);
-        var_dump(curl_getinfo($s));
+        //var_dump($data);
+        //var_dump(curl_getinfo($s));
 
 
         rewind($verbose);
@@ -261,6 +269,11 @@ class HttpClient
 
     public function result(){
         return $this->_webpage;
+    }
+
+    public function setHeaders(array $ar)
+    {
+        $this->additionalHeaders = $ar;
     }
 }
 
