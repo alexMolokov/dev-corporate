@@ -39,17 +39,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton("App\Contracts\TicketsInterface", function($app){
-            $config = [
-                'url' =>  config('otrs.url'),
-                "httpUser" => config('otrs.httpUser'),
-                "httpPassword" => config('otrs.httpPassword'),
-                "serviceUser" => config("otrs.serviceUser"),
-                "servicePassword" => config("otrs.servicePassword",null),
-                "queueTech" => config("otrs.queueTech"),
-                "queueCommon" => config("otrs.queueCommon")
-            ];
-
-            return new OtrsClientService($config);
+                return new OtrsClientService(config("otrs"));
         });
 
 

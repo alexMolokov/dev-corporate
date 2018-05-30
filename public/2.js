@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55,22 +55,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 var userMenu = __webpack_require__(64);
+var ticketList = function ticketList() {
+    return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 125));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'tickets',
     components: {
-        "user-menu": userMenu
+        "user-menu": userMenu,
+        "ticket-list": ticketList
     },
     data: function data() {
-        return {};
+        return {
+            showFormAddTicket: false
+        };
     },
 
 
@@ -89,18 +89,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { attrs: { id: "user-tickets-page" } },
+    [_c("ticket-list")],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "user-tickets-page" } }, [
-      _c("div", { attrs: { id: "modal-list" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

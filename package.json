@@ -11,18 +11,21 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
+    "babel-preset-stage-2": "^6.24.1",
     "bootstrap-sass": "^3.3.7",
-    "cross-env": "^5.1.4",
+    "cross-env": "^5.1.6",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.10",
-    "vee-validate": "^2.0.0-rc.14",
+    "vee-validate": "^2.0.9",
     "vue": "^2.1.10",
+    "vue-tables-2": "^0.6.99",
     "vue-translate-plugin": "^1.2.0",
+    "vuetable-2": "^1.7.5",
     "vuex": "^2.5.0"
   },
   "dependencies": {
-    "vue-i18n": "^7.6.0",
+    "vue-i18n": "^7.7.0",
     "vue-router": "^2.8.1"
   }
 }

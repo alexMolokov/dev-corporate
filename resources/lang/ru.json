@@ -1,5 +1,12 @@
 {
   "Authentication failed!": "Неверное имя пользователя или пароль",
   "Password not valid": "Неверный пароль",
-  "Must be equal New Password":  "Должно быть равно новому паролю"
+  "Must be equal New Password":  "Должно быть равно новому паролю",
+  "High": "Высокий",
+  "Low": "Низкий",
+  "Normal": "Средний",
+  "Technical": "Технический",
+  "Common": "Общий",
+  "Sales": "Отдел продаж",
+  "Technical Support": "Техническая поддержка"
 }

@@ -2475,7 +2475,7 @@ module.exports = Component.exports
 /* unused harmony export ErrorComponent */
 /* unused harmony export version */
 /**
-  * vee-validate v2.0.8
+  * vee-validate v2.0.9
   * (c) 2018 Abdelrahman Awad
   * @license MIT
   */
@@ -2501,9 +2501,9 @@ var addEventListener = function (el, eventName, cb) {
 };
 var isTextInput = function (el) { return ['text','number','password','search','email','tel',
     'url','textarea'].indexOf(el.type) !== -1; };
+var isCheckboxOrRadioInput = function (el) { return ['radio','checkbox'].indexOf(el.type) !== -1; };
 var getDataAttribute = function (el, name) { return el.getAttribute(("data-vv-" + name)); };
 var isNullOrUndefined = function (value) { return value === null || value === undefined; };
-var setDataAttribute = function (el, name, value) { return el.setAttribute(("data-vv-" + name), value); };
 var createFlags = function () { return ({
     untouched: true,
     touched: false,
@@ -2537,10 +2537,22 @@ var isEqual = function (lhs, rhs) {
 };
 var getScope = function (el) {
     var scope = getDataAttribute(el, 'scope');
-    if (isNullOrUndefined(scope) && el.form) {
-        scope = getDataAttribute(el.form, 'scope');
+    if (isNullOrUndefined(scope)) {
+        var form = getForm(el);
+        if (form) {
+            scope = getDataAttribute(form, 'scope');
+        }
     }
     return !isNullOrUndefined(scope) ? scope : null;
+};
+var getForm = function (el) {
+    if (isNullOrUndefined(el)) 
+        { return null; }
+    if (el.tagName === "FORM") 
+        { return el; }
+    if (!isNullOrUndefined(el.form)) 
+        { return el.form; }
+    return !isNullOrUndefined(el.parentNode) ? getForm(el.parentNode) : null;
 };
 var getPath = function (path, target, def) {
     if ( def === void 0 ) def = undefined;
@@ -2579,9 +2591,12 @@ var parseRule = function (rule) {
         params: params
     };
 };
-var debounce = function (fn, wait, immediate) {
+var debounce = function (fn, wait, immediate, token) {
     if ( wait === void 0 ) wait = 0;
     if ( immediate === void 0 ) immediate = false;
+    if ( token === void 0 ) token = {
+    cancelled: false
+};
 
     if (wait === 0) {
         return fn;
@@ -2593,7 +2608,7 @@ var debounce = function (fn, wait, immediate) {
 
         var later = function () {
             timeout = null;
-            if (!immediate) 
+            if (!immediate && !token.cancelled) 
                 { fn.apply(void 0, args); }
         };
         var callNow = immediate && !timeout;
@@ -3252,7 +3267,7 @@ Generator.generate = function generate (el, binding, vnode) {
         scope: Generator.resolveScope(el, binding, vnode),
         vm: Generator.makeVM(vnode.context),
         expression: binding.value,
-        component: vnode.child,
+        component: vnode.componentInstance,
         classes: options.classes,
         classNames: options.classNames,
         getter: Generator.resolveGetter(el, vnode, model),
@@ -3267,9 +3282,9 @@ Generator.generate = function generate (el, binding, vnode) {
     };
 };
 Generator.getCtorConfig = function getCtorConfig (vnode) {
-    if (!vnode.child) 
+    if (!vnode.componentInstance) 
         { return null; }
-    var config = getPath('child.$options.$_veeValidate', vnode);
+    var config = getPath('componentInstance.$options.$_veeValidate', vnode);
     return config;
 };
 Generator.resolveRules = function resolveRules (el, binding) {
@@ -3304,21 +3319,23 @@ Generator.makeVM = function makeVM (vm) {
 Generator.resolveDelay = function resolveDelay (el, vnode, options) {
     var delay = getDataAttribute(el, 'delay');
     var globalDelay = options && 'delay' in options ? options.delay : 0;
-    if (!delay && vnode.child && vnode.child.$attrs) {
-        delay = vnode.child.$attrs['data-vv-delay'];
+    if (!delay && vnode.componentInstance && vnode.componentInstance.$attrs) {
+        delay = vnode.componentInstance.$attrs['data-vv-delay'];
     }
     if (!isObject(globalDelay)) {
         return deepParseInt(delay || globalDelay);
     }
-    globalDelay.input = delay || 0;
+    if (!isNullOrUndefined(delay)) {
+        globalDelay.input = delay;
+    }
     return deepParseInt(globalDelay);
 };
 Generator.resolveEvents = function resolveEvents (el, vnode) {
     var events = getDataAttribute(el, 'validate-on');
-    if (!events && vnode.child && vnode.child.$attrs) {
-        events = vnode.child.$attrs['data-vv-validate-on'];
+    if (!events && vnode.componentInstance && vnode.componentInstance.$attrs) {
+        events = vnode.componentInstance.$attrs['data-vv-validate-on'];
     }
-    if (!events && vnode.child) {
+    if (!events && vnode.componentInstance) {
         var config = Generator.getCtorConfig(vnode);
         events = config && config.events;
     }
@@ -3328,8 +3345,8 @@ Generator.resolveScope = function resolveScope (el, binding, vnode) {
         if ( vnode === void 0 ) vnode = {};
 
     var scope = null;
-    if (vnode.child && isNullOrUndefined(scope)) {
-        scope = vnode.child.$attrs && vnode.child.$attrs['data-vv-scope'];
+    if (vnode.componentInstance && isNullOrUndefined(scope)) {
+        scope = vnode.componentInstance.$attrs && vnode.componentInstance.$attrs['data-vv-scope'];
     }
     return !isNullOrUndefined(scope) ? scope : getScope(el);
 };
@@ -3358,19 +3375,19 @@ Generator.resolveModel = function resolveModel (binding, vnode) {
 };
 Generator.resolveName = function resolveName (el, vnode) {
     var name = getDataAttribute(el, 'name');
-    if (!name && !vnode.child) {
+    if (!name && !vnode.componentInstance) {
         return el.name;
     }
-    if (!name && vnode.child && vnode.child.$attrs) {
-        name = vnode.child.$attrs['data-vv-name'] || vnode.child.$attrs['name'];
+    if (!name && vnode.componentInstance && vnode.componentInstance.$attrs) {
+        name = vnode.componentInstance.$attrs['data-vv-name'] || vnode.componentInstance.$attrs['name'];
     }
-    if (!name && vnode.child) {
+    if (!name && vnode.componentInstance) {
         var config = Generator.getCtorConfig(vnode);
         if (config && isCallable(config.name)) {
-            var boundGetter = config.name.bind(vnode.child);
+            var boundGetter = config.name.bind(vnode.componentInstance);
             return boundGetter();
         }
-        return vnode.child.name;
+        return vnode.componentInstance.name;
     }
     return name;
 };
@@ -3378,17 +3395,17 @@ Generator.resolveGetter = function resolveGetter (el, vnode, model) {
     if (model && model.expression) {
         return function () { return getPath(model.expression, vnode.context); };
     }
-    if (vnode.child) {
-        var path = getDataAttribute(el, 'value-path') || vnode.child.$attrs && vnode.child.$attrs['data-vv-value-path'];
+    if (vnode.componentInstance) {
+        var path = getDataAttribute(el, 'value-path') || vnode.componentInstance.$attrs && vnode.componentInstance.$attrs['data-vv-value-path'];
         if (path) {
-            return function () { return getPath(path, vnode.child); };
+            return function () { return getPath(path, vnode.componentInstance); };
         }
         var config = Generator.getCtorConfig(vnode);
         if (config && isCallable(config.value)) {
-            var boundGetter = config.value.bind(vnode.child);
+            var boundGetter = config.value.bind(vnode.componentInstance);
             return function () { return boundGetter(); };
         }
-        return function () { return vnode.child.value; };
+        return function () { return vnode.componentInstance.value; };
     }
     switch (el.type) {
         case 'checkbox':
@@ -3526,7 +3543,7 @@ Field.prototype.matches = function matches (options) {
 };
 Field.prototype._cacheId = function _cacheId (options) {
     if (this.el && !options.targetOf) {
-        setDataAttribute(this.el, 'id', this.id);
+        this.el._veeValidateId = this.id;
     }
 };
 Field.prototype.update = function update (options) {
@@ -3547,10 +3564,10 @@ Field.prototype.update = function update (options) {
     this.getter = isCallable(options.getter) ? options.getter : this.getter;
     this._alias = options.alias || this._alias;
     this.events = options.events ? makeEventsArray(options.events) : this.events;
-    this.delay = options.delay ? makeDelayObject(this.events, options.delay, this._delay) : makeDelayObject(this.events, this.delay, this._delay);
+    this.delay = makeDelayObject(this.events, options.delay || this.delay, this._delay);
     this.updateDependencies();
     this.addActionListeners();
-    if (!this.name) {
+    if (!this.name && !this.targetOf) {
         warn('A field is missing a "name" or "data-vv-name" attribute');
     }
     if (options.rules !== undefined) {
@@ -3570,6 +3587,10 @@ Field.prototype.update = function update (options) {
 Field.prototype.reset = function reset () {
         var this$1 = this;
 
+    if (this._cancellationToken) {
+        this._cancellationToken.cancelled = true;
+        delete this._cancellationToken;
+    }
     var defaults = createFlags();
     Object.keys(this.flags).filter(function (flag) { return flag !== 'required'; }).forEach(function (flag) {
         this$1.flags[flag] = defaults[flag];
@@ -3686,18 +3707,28 @@ Field.prototype.unwatch = function unwatch (tag) {
     this.watchers = this.watchers.filter(function (w) { return !tag.test(w.tag); });
 };
 Field.prototype.updateClasses = function updateClasses () {
+        var this$1 = this;
+
     if (!this.classes || this.isDisabled) 
         { return; }
-    toggleClass(this.el, this.classNames.dirty, this.flags.dirty);
-    toggleClass(this.el, this.classNames.pristine, this.flags.pristine);
-    toggleClass(this.el, this.classNames.touched, this.flags.touched);
-    toggleClass(this.el, this.classNames.untouched, this.flags.untouched);
-    if (!isNullOrUndefined(this.flags.valid) && this.flags.validated) {
-        toggleClass(this.el, this.classNames.valid, this.flags.valid);
+    var applyClasses = function (el) {
+        toggleClass(el, this$1.classNames.dirty, this$1.flags.dirty);
+        toggleClass(el, this$1.classNames.pristine, this$1.flags.pristine);
+        toggleClass(el, this$1.classNames.touched, this$1.flags.touched);
+        toggleClass(el, this$1.classNames.untouched, this$1.flags.untouched);
+        if (!isNullOrUndefined(this$1.flags.valid) && this$1.flags.validated) {
+            toggleClass(el, this$1.classNames.valid, this$1.flags.valid);
+        }
+        if (!isNullOrUndefined(this$1.flags.invalid) && this$1.flags.validated) {
+            toggleClass(el, this$1.classNames.invalid, this$1.flags.invalid);
+        }
+    };
+    if (!isCheckboxOrRadioInput(this.el)) {
+        applyClasses(this.el);
+        return;
     }
-    if (!isNullOrUndefined(this.flags.invalid) && this.flags.validated) {
-        toggleClass(this.el, this.classNames.invalid, this.flags.invalid);
-    }
+    var els = document.querySelectorAll(("input[name=\"" + (this.el.name) + "\"]"));
+    toArray(els).forEach(applyClasses);
 };
 Field.prototype.addActionListeners = function addActionListeners () {
         var this$1 = this;
@@ -3744,7 +3775,7 @@ Field.prototype.addActionListeners = function addActionListeners () {
     if (!this.el) 
         { return; }
     addEventListener(this.el, inputEvent, onInput);
-    var blurEvent = ['radio','checkbox'].indexOf(this.el.type) === -1 ? 'blur' : 'click';
+    var blurEvent = isCheckboxOrRadioInput(this.el) ? 'change' : 'blur';
     addEventListener(this.el, blurEvent, onBlur);
     this.watchers.push({
         tag: 'class_input',
@@ -3771,6 +3802,9 @@ Field.prototype.addValueListeners = function addValueListeners () {
     this.unwatch(/^input_.+/);
     if (!this.listen || !this.el) 
         { return; }
+    var token = {
+        cancelled: false
+    };
     var fn = this.targetOf ? function () {
         this$1.flags.changed = this$1.checkValueChanged();
         this$1.validator.validate(("#" + (this$1.targetOf)));
@@ -3784,16 +3818,17 @@ Field.prototype.addValueListeners = function addValueListeners () {
         this$1.flags.changed = this$1.checkValueChanged();
         this$1.validator.validate(("#" + (this$1.id)), args[0]);
     };
-    var inputEvent = isTextInput(this.el) ? 'input' : 'change';
+    var inputEvent = this.component || isTextInput(this.el) ? 'input' : 'change';
     inputEvent = this.model && this.model.lazy ? 'change' : inputEvent;
-    var events = !this.events.length || isTextInput(this.el) ? this.events : ['change'];
+    var events = !this.events.length || this.component || isTextInput(this.el) ? this.events : ['change'];
     if (this.model && this.model.expression && events.indexOf(inputEvent) !== -1) {
-        var debouncedFn = debounce(fn, this.delay[inputEvent]);
+        var debouncedFn = debounce(fn, this.delay[inputEvent], false, token);
         var unwatch = this.vm.$watch(this.model.expression, function () {
                 var args = [], len = arguments.length;
                 while ( len-- ) args[ len ] = arguments[ len ];
 
             this$1.flags.pending = true;
+            this$1._cancellationToken = token;
             debouncedFn.apply(void 0, args);
         });
         this.watchers.push({
@@ -3803,12 +3838,13 @@ Field.prototype.addValueListeners = function addValueListeners () {
         events = events.filter(function (e) { return e !== inputEvent; });
     }
     events.forEach(function (e) {
-        var debouncedFn = debounce(fn, this$1.delay[e]);
+        var debouncedFn = debounce(fn, this$1.delay[e], false, token);
         var validate = function () {
                 var args = [], len = arguments.length;
                 while ( len-- ) args[ len ] = arguments[ len ];
 
             this$1.flags.pending = true;
+            this$1._cancellationToken = token;
             debouncedFn.apply(void 0, args);
         };
         this$1._addComponentEventListener(e, validate);
@@ -3833,37 +3869,45 @@ Field.prototype._addHTMLEventListener = function _addHTMLEventListener (evt, val
 
     if (!this.el || this.component) 
         { return; }
-    addEventListener(this.el, evt, validate);
-    this.watchers.push({
-        tag: 'input_native',
-        unwatch: function () {
-            this$1.el.removeEventListener(evt, validate);
-        }
-    });
-    if (~['radio','checkbox'].indexOf(this.el.type)) {
-        var els = document.querySelectorAll(("input[name=\"" + (this.el.name) + "\"]"));
-        toArray(els).forEach(function (el) {
-            if (getDataAttribute(el, 'id') && el !== this$1.el) {
-                return;
+    var addListener = function (el) {
+        addEventListener(el, evt, validate);
+        this$1.watchers.push({
+            tag: 'input_native',
+            unwatch: function () {
+                el.removeEventListener(evt, validate);
             }
-            addEventListener(el, evt, validate);
-            this$1.watchers.push({
-                tag: 'input_native',
-                unwatch: function () {
-                    el.removeEventListener(evt, validate);
-                }
-            });
         });
+    };
+    addListener(this.el);
+    if (!isCheckboxOrRadioInput(this.el)) {
+        return;
     }
+    var els = document.querySelectorAll(("input[name=\"" + (this.el.name) + "\"]"));
+    toArray(els).forEach(function (el) {
+        if (el._veeValidateId && el !== this$1.el) {
+            return;
+        }
+        addListener(el);
+    });
 };
 Field.prototype.updateAriaAttrs = function updateAriaAttrs () {
+        var this$1 = this;
+
     if (!this.aria || !this.el || !isCallable(this.el.setAttribute)) 
         { return; }
-    this.el.setAttribute('aria-required', this.isRequired ? 'true' : 'false');
-    this.el.setAttribute('aria-invalid', this.flags.invalid ? 'true' : 'false');
+    var applyAriaAttrs = function (el) {
+        el.setAttribute('aria-required', this$1.isRequired ? 'true' : 'false');
+        el.setAttribute('aria-invalid', this$1.flags.invalid ? 'true' : 'false');
+    };
+    if (!isCheckboxOrRadioInput(this.el)) {
+        applyAriaAttrs(this.el);
+        return;
+    }
+    var els = document.querySelectorAll(("input[name=\"" + (this.el.name) + "\"]"));
+    toArray(els).forEach(applyAriaAttrs);
 };
 Field.prototype.updateCustomValidity = function updateCustomValidity () {
-    if (!this.validity || !this.el || !isCallable(this.el.setCustomValidity)) 
+    if (!this.validity || !this.el || !isCallable(this.el.setCustomValidity) || !this.validator.errors) 
         { return; }
     this.el.setCustomValidity(this.flags.valid ? '' : this.validator.errors.firstById(this.id) || '');
 };
@@ -4165,9 +4209,6 @@ Validator.prototype.validate = function validate (name, value, scope, silent) {
         if ($args.length === 1) {
             value = field.value;
         }
-        if (field.isDisabled) {
-            return $return(true);
-        }
         return this._validate(field, value).then((function ($await_3) {
             try {
                 result = $await_3;
@@ -4457,7 +4498,7 @@ Validator.prototype._validate = function _validate (field, value) {
 
         var promises, errors;
         var isExitEarly;
-        if (!field.isRequired && (isNullOrUndefined(value) || value === '')) {
+        if (field.isDisabled || !field.isRequired && (isNullOrUndefined(value) || value === '')) {
             return $return({
                 valid: true,
                 id: field.id,
@@ -4580,14 +4621,14 @@ var mixin = {
     }
 }
 
-var findField = function (el, context) {
+function findField(el, context) {
     if (!context || !context.$validator) {
         return null;
     }
     return context.$validator.fields.find({
-        id: getDataAttribute(el, 'id')
+        id: el._veeValidateId
     });
-};
+}
 var directive = {
     bind: function bind(el, binding, vnode) {
         var validator = vnode.context.$validator;
@@ -4598,7 +4639,7 @@ var directive = {
         var fieldOptions = Generator.generate(el, binding, vnode);
         validator.attach(fieldOptions);
     },
-    inserted: function (el, binding, vnode) {
+    inserted: function inserted(el, binding, vnode) {
         var field = findField(el, vnode.context);
         var scope = Generator.resolveScope(el, binding, vnode);
         if (!field || scope === field.scope) 
@@ -4608,7 +4649,7 @@ var directive = {
         });
         field.updated = false;
     },
-    update: function (el, binding, vnode) {
+    update: function update(el, binding, vnode) {
         var field = findField(el, vnode.context);
         if (!field || field.updated && isEqual(binding.value, binding.oldValue)) 
             { return; }
@@ -4641,7 +4682,8 @@ function install(_Vue, options) {
     }
     detectPassiveSupport();
     Vue = _Vue;
-    Config.register('vm', new Vue());
+    var localVue = new Vue();
+    Config.register('vm', localVue);
     Config.merge(options);
     var ref = Config.current;
     var dictionary = ref.dictionary;
@@ -4651,7 +4693,7 @@ function install(_Vue, options) {
     }
     if (i18n && i18n._vm && isCallable(i18n._vm.$watch)) {
         i18n._vm.$watch('locale', function () {
-            Validator.regenerate();
+            localVue.$emit('localeChanged');
         });
     }
     if (!i18n && options.locale) {
@@ -7063,11 +7105,6 @@ var isIP_1 = createCommonjsModule(function (module, exports) {
 });
 var isIP = unwrapExports(isIP_1)
 
-var isIP$1 = /*#__PURE__*/Object.freeze({
-  default: isIP,
-  __moduleExports: isIP_1
-});
-
 function ip (value, ref) {
     if ( ref === void 0 ) ref = [];
     var version = ref[0]; if ( version === void 0 ) version = 4;
@@ -7222,8 +7259,6 @@ function size (files, ref) {
     return true;
 }
 
-var _isIP = ( isIP$1 && isIP ) || isIP$1;
-
 var isURL_1 = createCommonjsModule(function (module, exports) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -7231,7 +7266,7 @@ var isURL_1 = createCommonjsModule(function (module, exports) {
     exports.default = isURL;
     var _assertString2 = _interopRequireDefault(_assertString);
     var _isFQDN2 = _interopRequireDefault(_isFQDN);
-    var _isIP2 = _interopRequireDefault(_isIP);
+    var _isIP2 = _interopRequireDefault(isIP_1);
     var _merge2 = _interopRequireDefault(_merge);
     function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : {
@@ -7504,7 +7539,7 @@ var ErrorComponent = {
     }
 };
 
-var version = '2.0.8';
+var version = '2.0.9';
 var rulesPlugin = function (ref) {
     var Validator$$1 = ref.Validator;
 
@@ -53115,6 +53150,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        uploadInfo: function uploadInfo(url, data, success) {
+            var headers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+            Object.assign(data, { lang: this.$store.state.lang });
+            window.axios.post(url, data, headers).then(function (_ref) {
+                var data = _ref.data;
+
+                if (data.status) {
+                    success(data.data);
+                }
+            });
+        },
         send: function send(url, data, success) {
             var _this = this;
 
@@ -53128,8 +53175,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.state = __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].LOADING;
                     return window.axios.post(url, data);
                 }
-            }).then(function (_ref) {
-                var response = _ref.data;
+            }).then(function (_ref2) {
+                var response = _ref2.data;
 
                 if (!response.status) {
                     _this.state = __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;
@@ -53150,8 +53197,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         success(response.data);
                     }
                 }
-            }, function (_ref2) {
-                var response = _ref2.response;
+            }, function (_ref3) {
+                var response = _ref3.response;
 
                 if (response.status == __WEBPACK_IMPORTED_MODULE_1__httpCodes__["a" /* HTTP_CODES */].UnprocessableEntity) {
                     _this.state = __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;

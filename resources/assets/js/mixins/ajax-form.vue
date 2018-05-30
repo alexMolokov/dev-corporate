@@ -25,6 +25,17 @@ export default {
         }
     },
     methods: {
+        uploadInfo:  function(url, data, success, headers = {})
+        {
+            Object.assign(data, {lang: this.$store.state.lang});
+            window.axios.post(url, data, headers).then(({data}) =>
+            {
+                if(data.status)
+                {
+                    success(data.data);
+                }
+            });
+        },
         send: function(url, data, success)
         {
             Object.assign(data, {lang: this.$store.state.lang});
