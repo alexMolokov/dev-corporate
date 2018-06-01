@@ -40,6 +40,8 @@ Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth']], function (
     Route::post('/queues-priorities', 'Client\TicketController@getQueuesPriorities')->name("queues_priorities");
     Route::post('/add', 'Client\TicketController@add')->name("ticket_add");
     Route::post('/list', 'Client\TicketController@getList')->name("ticket_list");
+    Route::post('/get/{ticketNumber}', 'Client\TicketController@get')->name("ticket_get");
+    Route::get('/attachment/{ticketNumber}/{articleId}/{filename}', 'Client\TicketController@getAttachment')->name("ticket_attachment");
 
 });
 

@@ -21,7 +21,7 @@
                        <div class="form-group top-10">
                            <label for="theme" v-translate>Department</label> <span v-show="errors.has('department')" class="help is-danger">*{{errors.first('department')}}</span>
                            <div class="input-group">
-                               <select name="department">
+                               <select name="department" v-model="department">
                                    <option v-for="obj in departments" :value="obj.key">
                                        {{ obj.value }}
                                    </option>
@@ -127,8 +127,8 @@ export default {
         this.uploadInfo("/ticket/queues-priorities", {}, (data) => {
             this.priorities = data.priorities;
             this.departments = data.queues;
-            this.priority =  data.defaultQueue;
-            this.department =  data.defaultPriority;
+            this.priority =  data.defaultPriority;
+            this.department = data.defaultQueue;
         });
     },
   methods: {
@@ -136,6 +136,7 @@ export default {
      {
          let formData = new FormData();
          let data = {"priority": this.priority, "department": this.department, "theme": this.theme, "message": this.message};
+
          for(let key in data) formData.append(key,data[key]);
 
          let headers = {

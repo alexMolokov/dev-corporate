@@ -191,8 +191,8 @@ var loadingInform = __webpack_require__(75);
         this.uploadInfo("/ticket/queues-priorities", {}, function (data) {
             _this.priorities = data.priorities;
             _this.departments = data.queues;
-            _this.priority = data.defaultQueue;
-            _this.department = data.defaultPriority;
+            _this.priority = data.defaultPriority;
+            _this.department = data.defaultQueue;
         });
     },
 
@@ -200,6 +200,7 @@ var loadingInform = __webpack_require__(75);
         validate: function validate() {
             var formData = new FormData();
             var data = { "priority": this.priority, "department": this.department, "theme": this.theme, "message": this.message };
+
             for (var key in data) {
                 formData.append(key, data[key]);
             }var headers = {
@@ -443,7 +444,32 @@ var render = function() {
                   _c("div", { staticClass: "input-group" }, [
                     _c(
                       "select",
-                      { attrs: { name: "department" } },
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.department,
+                            expression: "department"
+                          }
+                        ],
+                        attrs: { name: "department" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.department = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
                       _vm._l(_vm.departments, function(obj) {
                         return _c("option", { domProps: { value: obj.key } }, [
                           _vm._v(

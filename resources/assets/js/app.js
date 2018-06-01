@@ -56,19 +56,19 @@ const store = new Vuex.Store({
         auth: false,
         lang: "en",
         user: {
-            id: "123",
-            login: "alex",
-            name: "Ivanov и К",
+            id: "",
+            login: "",
+            name: "",
             primary: {
-                email: "alex@yandex.ru",
-                firstName: "Олег",
-                lastName: "Болдырев",
-                jobTitle: "Manager"
+                email: "",
+                firstName: "",
+                lastName: "",
+                jobTitle: ""
             },
             billing: {
-                    address: "aaa",
-                    phone: "111",
-                    email: "ss@ya.ru"
+                    address: "",
+                    phone: "",
+                    email: ""
             },
             tech: {
                 firstName:"",
@@ -177,6 +177,12 @@ const routes = [
                 component: (resolve) => { require(['./pages/Tickets'], resolve)},
                 name: "tickets"
             },
+            { path: 'ticket/:ticketNumber',
+                component: (resolve) => { require(['./pages/Ticket'], resolve)},
+                props: true,
+                name: "ticket",
+            },
+
             { path: 'download',
                 component: (resolve) => { require(['./pages/Download'], resolve)},
                 name: "download"

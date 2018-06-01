@@ -65,6 +65,10 @@ class CorporateClient implements AuthenticatableContract
         return $this->customerId;
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
 
 
 }

@@ -198,7 +198,7 @@ class TicketSearch
     /**
      * @var OTRS_TicketSearch_DynamicField_BsystemUserId DynamicFieldBsystemUserId
      */
-    protected $DynamicFieldBsystemUserId = null;
+    protected $DynamicField_BsystemUserId = null;
 
 
     /**
@@ -406,87 +406,7 @@ class TicketSearch
      */
     protected $CustomerUserID = null;
 
-    /**
-     * @param string $UserLogin
-     * @param string $CustomerUserLogin
-     * @param string $SessionID
-     * @param string $Password
-     * @param int $Limit
-     * @param string $TicketNumber
-     * @param string $Title
-     * @param string $Queues
-     * @param int $QueueIDs
-     * @param int $UseSubQueues
-     * @param string $Types
-     * @param int $TypeIDs
-     * @param string $States
-     * @param int $StateIDs
-     * @param string $StateType
-     * @param int $StateTypeIDs
-     * @param string $Priorities
-     * @param int $PriorityIDs
-     * @param string $Services
-     * @param int $ServiceIDs
-     * @param string $SLAs
-     * @param int $SLAIDs
-     * @param string $Locks
-     * @param int $LockIDs
-     * @param int $OwnerIDs
-     * @param int $ResponsibleIDs
-     * @param int $WatchUserIDs
-     * @param string $CustomerID
-     * @param int $CreatedUserIDs
-     * @param string $CreatedTypes
-     * @param int $CreatedTypeIDs
-     * @param string $CreatedPriorities
-     * @param int $CreatedPriorityIDs
-     * @param string $CreatedStates
-     * @param int $CreatedStateIDs
-     * @param int $CreatedQueues
-     * @param int $CreatedQueueIDs
-     * @param OTRS_TicketSearch_DynamicField $DynamicField
-     * @param OTRS_TicketSearch_TicketFlag $Ticketflag
-     * @param string $MIMEBase_From
-     * @param string $MIMEBase_To
-     * @param string $MIMEBase_Cc
-     * @param string $MIMEBase_Subject
-     * @param string $MIMEBase_Body
-     * @param int $FullTextIndex
-     * @param string $ContentSearch
-     * @param int $ConditionInline
-     * @param int $ArticleCreateTimeOlderMinutes
-     * @param int $ArticleCreateTimeNewerMinutes
-     * @param string $ArticleCreateTimeNewerDate
-     * @param string $ArticleCreateTimeOlderDate
-     * @param int $TicketCreateTimeOlderMinutes
-     * @param int $TicketCreateTimeNewerMinutes
-     * @param string $TicketCreateTimeNewerDate
-     * @param string $TicketCreateTimeOlderDate
-     * @param int $TicketChangeTimeOlderMinutes
-     * @param int $TicketChangeTimeNewerMinutes
-     * @param string $TicketChangeTimeNewerDate
-     * @param string $TicketChangeTimeOlderDate
-     * @param int $TicketLastChangeTimeOlderMinutes
-     * @param int $TicketLastChangeTimeNewerMinutes
-     * @param string $TicketLastChangeTimeNewerDate
-     * @param string $TicketLastChangeTimeOlderDate
-     * @param int $TicketCloseTimeOlderMinutes
-     * @param int $TicketCloseTimeNewerMinutes
-     * @param string $TicketCloseTimeNewerDate
-     * @param string $TicketCloseTimeOlderDate
-     * @param int $TicketPendingTimeOlderMinutes
-     * @param int $TicketPendingTimeNewerMinutes
-     * @param string $TicketPendingTimeNewerDate
-     * @param string $TicketPendingTimeOlderDate
-     * @param int $TicketEscalationTimeOlderMinutes
-     * @param int $TicketEscalationTimeNewerMinutes
-     * @param string $TicketEscalationTimeNewerDate
-     * @param string $TicketEscalationTimeOlderDate
-     * @param string $ArchiveFlags
-     * @param string $OrderBy
-     * @param int $SortBy
-     * @param string $CustomerUserID
-     */
+
     public function __construct(array $data)
     {
        foreach($data as $key => $value)
@@ -1169,6 +1089,19 @@ class TicketSearch
       return $this->DynamicField;
     }
 
+     function getDynamicField_BsystemUserId()
+    {
+        return $this->DynamicField_BsystemUserId;
+    }
+
+    function setDynamicFieldBsystemUserId($DynamicField_BsystemUserId)
+    {
+        $this->DynamicField_BsystemUserId = $DynamicField_BsystemUserId;
+        return $this;
+    }
+
+
+
     /**
      * @param OTRS_TicketSearch_DynamicField $DynamicField
      * @return \App\OTRS\TicketSearch
@@ -1178,6 +1111,8 @@ class TicketSearch
       $this->DynamicField = $DynamicField;
       return $this;
     }
+
+
 
     /**
      * @return OTRS_TicketSearch_TicketFlag

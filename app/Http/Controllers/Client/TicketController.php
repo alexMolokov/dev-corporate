@@ -5,10 +5,29 @@ use App\Http\Controllers\Controller;
 
 
 use App\Http\Requests\Tickets\AddTicketRequest;
+use App\Http\Requests\Tickets\GetAttachmentRequest;
+use App\Http\Requests\Tickets\GetTicketRequest;
+
+use App\Contracts\TicketsInterface;
 use Illuminate\Http\Request;
+use Auth;
+use File;
 
 class TicketController extends Controller
 {
+    /**
+     * @var TicketsInterface
+     */
+    private $service;
+
+    private $customerField;
+
+    public function __construct(Request $request)
+    {
+        $this->service = resolve("App\Contracts\TicketsInterface");
+        $this->customerField = config("otrs.customerField");
+    }
+
     public function getQueuesPriorities()
     {
         $queuesInfo = config("otrs.queues");
@@ -23,43 +42,88 @@ class TicketController extends Controller
             "queues" =>  $queues,
             "priorities" => $priorities,
             "defaultPriority" => config("otrs.defaultPriority"),
-            "defaultQueue" => config("otrs.defaultPriority")
+            "defaultQueue" => config("otrs.defaultQueue")
         ];
         return response()->success($result);
     }
 
 
-    public function add(AddTicketRequest $request) {
+    public function add(AddTicketRequest $request)
+    {
 
+        $data = [
+            "title" => $request->input("theme"),
+            "name" => Auth::user()->getName(),
+            "queueId" => $request->input("department"),
+            "priorityId" => $request->input("priority"),
+            "body" => $request->input("message"),
+            $this->customerField => Auth::user()->getCustomerId()
+        ];
+
+        $attachments = [];
+        $files = $request->files->get("files");
+        if(is_array($files))
+        {
+            foreach($files as $file)
+            {
+                $attachments[] = [
+                    "Content"     => base64_encode(File::get($file->getRealPath())),
+                    "ContentType" => $file->getClientMimeType(),
+                    "Filename"    => $file->getClientOriginalName()
+                ];
+            }
+        }
+
+        $data["attachment"] = $attachments;
+
+        try {
+
+            $result = $this->service->create($data);
+            return response()->success($result);
+        }
+        catch(\Exception $e)
+        {
+            return response()->error(__("Can't add Ticket.") . " " . __("Please try later!"));
+        }
     }
 
     public function getList(Request $request)
     {
-            $data = [];
-            $data[] = [
-                "date" => '25.01.1988',
-                "department" => "Tech",
-                "theme" => "ntvf",
-                "status" => "new",
-                "lastupdate" => '25.01.1989',
-                "lastupdate_int" => "19890125",
-                "date_int" => '19880125'
-            ];
+         $result = $this->service->search([
+             $this->customerField => Auth::user()->getCustomerId()
+        ]);
 
-        $data[] = [
-            "date" => '25.01.2000',
-            "department" => "Tech1",
-            "theme" => "ntvf1",
-            "status" => "new1",
-            "lastupdate" => '25.01.2002',
-            "lastupdate_int" => "20020125",
-            "date_int" => '20000125'
-        ];
+       if($result)
+       {
+           foreach($result as $recordKey => $record)
+           {
+               $record["date_int"] = date("YmdHi",strtotime($record["date"]));
+               $record["lastUpdate_int"] = date("YmdHi",strtotime($record["lastUpdate"]));
+               $record["department"] = __($record["department"]);
+               $record["status"] = __($record["status"]);
+               $result[$recordKey] = $record;
+           }
+       }
 
-        return response()->success($data);
+        return response()->success($result);
+
     }
 
+    public function get($ticketNumber)
+    {
+        $result = $this->service->get([
+            $this->customerField => Auth::user()->getCustomerId(),
+            "ticketNumber" => $ticketNumber
+        ]);
 
+        return response()->success($result);
+    }
+
+    public function getAttachment(Request $request)
+    {
+        echo "1";
+        die();
+    }
 
 
 }

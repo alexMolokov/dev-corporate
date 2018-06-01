@@ -2,7 +2,7 @@
 
 namespace App\OTRS;
 
-class OTRS_DynamicFieldBsystemUserId
+class OTRS_DynamicField_BsystemUserId
 {
 
     /**

@@ -91,22 +91,12 @@ class TicketGet
      * @param int $GetAttachmentContents
      * @param int $HTMLBodyAsAttachment
      */
-    public function __construct($UserLogin, $CustomerUserLogin, $SessionID, $Password, $TicketID, $DynamicFields, $Extended, $AllArticles, $ArticleSenderType, $ArticleOrder, $ArticleLimit, $Attachments, $GetAttachmentContents, $HTMLBodyAsAttachment)
+    public function __construct(array $data)
     {
-      $this->UserLogin = $UserLogin;
-      $this->CustomerUserLogin = $CustomerUserLogin;
-      $this->SessionID = $SessionID;
-      $this->Password = $Password;
-      $this->TicketID = $TicketID;
-      $this->DynamicFields = $DynamicFields;
-      $this->Extended = $Extended;
-      $this->AllArticles = $AllArticles;
-      $this->ArticleSenderType = $ArticleSenderType;
-      $this->ArticleOrder = $ArticleOrder;
-      $this->ArticleLimit = $ArticleLimit;
-      $this->Attachments = $Attachments;
-      $this->GetAttachmentContents = $GetAttachmentContents;
-      $this->HTMLBodyAsAttachment = $HTMLBodyAsAttachment;
+        foreach($data as $key => $value)
+        {
+            if(property_exists($this, $key)) $this->{$key} = $data[$key];
+        }
     }
 
     /**

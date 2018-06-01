@@ -68,8 +68,6 @@ class GenericTicketConnector extends \SoapClient
      */
     public function TicketCreate(TicketCreate $parameters)
     {
-        var_dump($this->__setParams($parameters));
-
         return  $this->__soapCall('TicketCreate', [$this->__setParams($parameters)]);
     }
 
@@ -88,11 +86,7 @@ class GenericTicketConnector extends \SoapClient
      */
     public function TicketGet(TicketGet $parameters)
     {
-        var_dump($this->__setParams($parameters));
-       $result =  $this->__soapCall('TicketGet',  [$this->__setParams($parameters)]);
-        echo $this->__getLastRequest();
-       echo $this->__getLastResponse();
-       return $result;
+        return $this->__soapCall('TicketGet',  [$this->__setParams($parameters)]);
     }
 
     /**
@@ -101,40 +95,12 @@ class GenericTicketConnector extends \SoapClient
      */
     public function TicketSearch(TicketSearch $parameters)
     {
-
-
-
-
         return $this->__soapCall('TicketSearch', array($parameters));
     }
 
-    public function TicketSearchBsystem()
+    public function TicketSearchBsystem(TicketSearch $ticketSearch)
     {
-
-        $ticketSearch = new TicketSearch([
-            "Limit" => 10,
-            "QueueIDs" => 37,
-            "UserLogin" => "amolokov",
-            "Password" => "123456789",
-            "DynamicFieldBsystemUserId" => new OTRS_DynamicFieldBsystemUserId(5)
-        ]);
-
-
-
-
-        $this->__soapCall('TicketSearch',[$this->__setParams($ticketSearch)]);
-
-        echo $this->__getLastRequest();
-        echo $this->__getLastResponse();
-
-       /* $result = $this->__soapCall("TicketSearch",
-
-            array(["UserLogin" => "amolokov", "Password" => "123456789", "Limit" => 10, "QueueIDs" => 37, "DynamicField_bsystemUserId" => ["Equals" => "5"]]
-            ));
-        echo $this->__getLastRequest();
-        $this->__getLastResponse();*/
-
-
+        return $this->__soapCall('TicketSearch',[$this->__setParams($ticketSearch)]);
     }
 
     /**

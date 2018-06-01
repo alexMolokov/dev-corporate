@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\OTRS\OtrsClientService;
 use Illuminate\Support\ServiceProvider;
 use Response;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
                 'data' => $data
             ]);
         });
+
+
+
     }
 
     /**
@@ -38,10 +42,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton("App\Contracts\TicketsInterface", function($app){
-                return new OtrsClientService(config("otrs"));
+        $this->app->singleton("App\Contracts\TicketsInterface", function($app)
+        {
+            return new OtrsClientService(config("otrs"));
         });
-
 
     }
 }

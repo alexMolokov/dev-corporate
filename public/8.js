@@ -100,6 +100,10 @@ var FormAddTicket = function FormAddTicket() {
             showFormAddTicket: false,
             url: "/ticket/list",
             fields: [{
+                name: "ticketNumber",
+                title: "#",
+                sortField: 'ticketNumber'
+            }, {
                 name: "date",
                 title: this.t("Date"),
                 sortField: 'date_int'
@@ -116,11 +120,11 @@ var FormAddTicket = function FormAddTicket() {
                 title: this.t("Status"),
                 sortField: 'status'
             }, {
-                name: "lastupdate",
+                name: "lastUpdate",
                 title: this.t("Last Updated"),
-                sortField: 'lastupdate_int'
+                sortField: 'lastUpdate_int'
             }, {
-                name: "lastupdate_int",
+                name: "lastUpdate_int",
                 visible: false
             }, {
                 name: "date_int",

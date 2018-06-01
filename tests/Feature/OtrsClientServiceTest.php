@@ -32,7 +32,7 @@ class OtrsClientServiceTest extends TestCase
     }*/
 
 
-     public function testCreate()
+     /*public function testCreate()
     {
         $data = [
             "title" => "Test добавлен",
@@ -45,20 +45,22 @@ class OtrsClientServiceTest extends TestCase
         ];
         $this->client->create($data);
         $this->assertTrue(true);
-    }
-
-    /**public function testGet()
-    {
-        $data = [];
-        $this->client->get($data);
-        $this->assertTrue(true);
     }*/
 
-    public function testSearch()
+    public function testGet()
     {
-        $data = [];
-        $this->client->search($data);
+        $data = ["ticketNumber" => 562530394816, "ArticleLimit" => 20, "BsystemUserId" => "1000010"];
+        $result = $this->client->get($data);
+        var_dump($result);
+
         $this->assertTrue(true);
     }
+
+    /**public function testSearch()
+    {
+        $data = ["limit" => 10, "queueIds" => [36,37], "BsystemUserId" => 5];
+        $this->client->search($data);
+        $this->assertTrue(true);
+    }**/
 
 }

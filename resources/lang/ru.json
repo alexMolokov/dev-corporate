@@ -8,5 +8,10 @@
   "Technical": "Технический",
   "Common": "Общий",
   "Sales": "Отдел продаж",
-  "Technical Support": "Техническая поддержка"
+  "Technical Support": "Техническая поддержка",
+  "Can't add Ticket.": "Тикет не добавлен",
+  "Please try later!": "Повторите пожалуйста операцию позднее",
+  "Unknown": "Неизвестен",
+  "Not valid priority": "Неверный приоритет",
+  "Not valid department": "Неверный отдел"
 }

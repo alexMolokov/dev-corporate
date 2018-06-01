@@ -4,7 +4,7 @@ namespace App\Http\Requests\Tickets;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddTicketRequest extends FormRequest
+class GetAttachmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,15 @@ class AddTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            'theme' => 'required|min:5',
-            'message' => 'required|min:10',
-            'department' => 'required|in:' . implode(array_keys(config("otrs.queues"))),
-            'priority' => 'required'
-            //'priority' => 'required|in:' . implode(array_keys(config("otrs.priorities")))
+            'name' => 'required',
+            'ticketId' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            "department.in" => __("Not valid department"),
-            "priority.in" => __("Not valid priority")
+            "name" => __("File name is required")
         ];
     }
 }

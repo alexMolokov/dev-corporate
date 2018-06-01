@@ -18,7 +18,7 @@
         },
         data(){
             return {
-                showFormAddTicket:false,
+
             }
         },
 
