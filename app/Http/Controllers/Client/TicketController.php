@@ -48,6 +48,24 @@ class TicketController extends Controller
     }
 
 
+    private function _getAttachment(Request $request) {
+        $attachments = [];
+        $files = $request->files->get("files");
+
+        if(is_array($files))
+        {
+            foreach($files as $file)
+            {
+                $attachments[] = [
+                    "Content"     => File::get($file->getRealPath()),
+                    "ContentType" => $file->getClientMimeType(),
+                    "Filename"    => $file->getClientOriginalName()
+                ];
+            }
+        }
+        return $attachments;
+    }
+
     public function add(AddTicketRequest $request)
     {
 
@@ -60,21 +78,8 @@ class TicketController extends Controller
             $this->customerField => Auth::user()->getCustomerId()
         ];
 
-        $attachments = [];
-        $files = $request->files->get("files");
-        if(is_array($files))
-        {
-            foreach($files as $file)
-            {
-                $attachments[] = [
-                    "Content"     => base64_encode(File::get($file->getRealPath())),
-                    "ContentType" => $file->getClientMimeType(),
-                    "Filename"    => $file->getClientOriginalName()
-                ];
-            }
-        }
 
-        $data["attachment"] = $attachments;
+        $data["attachments"] = $this->_getAttachment($request);
 
         try {
 
@@ -83,7 +88,7 @@ class TicketController extends Controller
         }
         catch(\Exception $e)
         {
-            return response()->error(__("Can't add Ticket.") . " " . __("Please try later!"));
+            return response()->error(__($e->getMessage() . " Can't add Ticket.") . " " . __("Please try later!"));
         }
     }
 
@@ -119,10 +124,47 @@ class TicketController extends Controller
         return response()->success($result);
     }
 
-    public function getAttachment(Request $request)
+    public function getAttachment(Request $request, $ticketNumber, $articleId, $fileName)
     {
-        echo "1";
-        die();
+        $result = $this->service->getAttachment([
+            $this->customerField => Auth::user()->getCustomerId(),
+            "ticketNumber" => $ticketNumber,
+            "fileName" => $fileName,
+            "articleId" => $articleId
+        ]);
+
+        if(is_array($result))
+        {
+            return response($result["content"], 200)
+                ->header('Content-Type', $result["contentType"])
+                ->header('Content-Length', $result["contentLength"])
+                ->header('Content-Disposition', "attachment;  filename=\"{$result['fileName']}\"");
+        }
+
+        return response()->error(__("File Not found"));
+
+    }
+
+    public function addArticle(Request $request)
+    {
+        $data = [
+            $this->customerField => Auth::user()->getCustomerId(),
+            "ticketNumber" => $request->input("ticketNumber"),
+            "body" => $request->input("message"),
+            "attachments" => $this->_getAttachment($request)
+        ];
+
+        $result = $this->service->addArticle($data);
+
+        try {
+
+            $result = $this->service->addArticle($data);
+            return response()->success($result);
+        }
+        catch(\Exception $e)
+        {
+            return response()->error(__("Can't add Answer.") . " " . __("Please try later!"));
+        }
     }
 
 

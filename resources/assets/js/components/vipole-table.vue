@@ -1,6 +1,11 @@
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue'
+    import TicketLine from './tickets/ticketLine.vue';
+
     export default {
+        components: {
+            TicketLine
+        },
         mixins:[Vuetable],
         locales: {
             ru: {

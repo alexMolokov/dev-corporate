@@ -1,8 +1,15 @@
 <?php
     return [
         "currency" => "USD",
-        "trial" => 14, //days
-
+        "os" => [
+            "windows" => ["name" => "Windows Server"],
+            "linux" => ["name" => "Linux Debian"],
+        ],
+        "periods" => [
+            "trial" => ["name" => "14 days trial", "period" => 14],
+            "annual" => ["name" => "12 months", "period" => 365],
+            "lifetime" => ["name" => "lifetime", "period" => "Infinity"]
+        ],
         "products" => [
             "1" => [
                 "name" => "VIPole Enterprise, Standalone edition",
@@ -50,31 +57,37 @@
             ],
             "7" => [
                 "name" => "Installing Enterprise Standalone edition",
+                "baseAnnualPrice" => 200,
                 "baseLifetimePrice" => 200,
                 "section" => "services"
             ],
             "8" => [
                 "name" => "Installing Enterprise Cluster edition",
+                "baseAnnualPrice" => 500,
                 "baseLifetimePrice" => 500,
                 "section" => "services"
             ],
             "9" => [
                 "name" => "Applying server software updates",
+                "baseAnnualPrice" => 300,
                 "baseLifetimePrice" => 300,
                 "section" => "services"
             ],
             "10" => [
                 "name" => "Recovering server data base from backup for Standalone edition",
+                "baseAnnualPrice" => 100,
                 "baseLifetimePrice" => 100,
                 "section" => "services"
             ],
             "11" => [
                 "name" => "Recovering server data base from backup for Cluster edition",
+                "baseAnnualPrice" => 300,
                 "baseLifetimePrice" => 300,
                 "section" => "services"
             ],
             "12" => [
                 "name" => "Installing and configuring optional addons",
+                "baseAnnualPrice" => 200,
                 "baseLifetimePrice" => 200,
                 "section" => "services"
             ]

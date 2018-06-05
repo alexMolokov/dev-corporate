@@ -6,9 +6,9 @@
 
 </template>
 
-<script type="text/ecmascript-6">
+<script>
     let userMenu = require('../components/userMenu.vue');
-     const ticketList = () => System.import('../components/tickets/ticketList.vue');
+     const ticketList = require('../components/tickets/ticketList.vue');
 
     export default {
         name: 'tickets',

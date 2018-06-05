@@ -31,8 +31,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth','valid.password
     Route::post('/company/change', 'Client\UserController@changeCompanyName')->name("company_change");
     Route::post('/contact/change', 'Client\UserController@changeContact')->name("contact_update");
     Route::post('/company-details/change', 'Client\UserController@changeCompanyDetails')->name('detail_company_change');
+});
 
-
+Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
+{
+    Route::post('/get-product-list', 'Client\ShopController@getProductList')->name('shop_product_list');
 });
 
 Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth']], function ()
@@ -42,6 +45,6 @@ Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth']], function (
     Route::post('/list', 'Client\TicketController@getList')->name("ticket_list");
     Route::post('/get/{ticketNumber}', 'Client\TicketController@get')->name("ticket_get");
     Route::get('/attachment/{ticketNumber}/{articleId}/{filename}', 'Client\TicketController@getAttachment')->name("ticket_attachment");
-
+    Route::post('/article/add', 'Client\TicketController@addArticle')->name("ticket_add_article");
 });
 

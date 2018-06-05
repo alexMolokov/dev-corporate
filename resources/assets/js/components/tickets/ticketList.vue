@@ -1,6 +1,7 @@
 <template>
     <div>
-        <form-add-ticket  v-show="showFormAddTicket" @close="showFormAddTicket = false"></form-add-ticket>
+        <form-add-ticket  v-if="showFormAddTicket" @close="showFormAddTicket = false"></form-add-ticket>
+
         <section id="header-tickets">
             <h2 v-translate>My Tickets</h2>
         </section>
@@ -40,7 +41,7 @@
                 url: "/ticket/list",
                 fields: [
                     {
-                        name: "ticketNumber",
+                        name: '__component:TicketLine',
                         title: "#",
                         sortField: 'ticketNumber'
                     },
@@ -75,6 +76,10 @@
                     },
                     {
                         name: "date_int",
+                        visible: false
+                    },
+                    {
+                        name: "ticketNumber",
                         visible: false
                     },
 

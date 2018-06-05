@@ -68,7 +68,7 @@ class GenericTicketConnector extends \SoapClient
      */
     public function TicketCreate(TicketCreate $parameters)
     {
-        return  $this->__soapCall('TicketCreate', [$this->__setParams($parameters)]);
+         return $this->__soapCall('TicketCreate', [$this->__setParams($parameters)]);
     }
 
     /**
@@ -77,7 +77,10 @@ class GenericTicketConnector extends \SoapClient
      */
     public function TicketUpdate(TicketUpdate $parameters)
     {
-      return $this->__soapCall('TicketUpdate', array($parameters));
+      $result =  $this->__soapCall('TicketUpdate', [$this->__setParams($parameters)]);
+      echo $this->__getLastResponse();
+      echo $this->__getLastRequest();
+      return $result;
     }
 
     /**
@@ -100,7 +103,9 @@ class GenericTicketConnector extends \SoapClient
 
     public function TicketSearchBsystem(TicketSearch $ticketSearch)
     {
-        return $this->__soapCall('TicketSearch',[$this->__setParams($ticketSearch)]);
+
+        $result =  $this->__soapCall('TicketSearch',[$this->__setParams($ticketSearch)]);
+        return $result;
     }
 
     /**

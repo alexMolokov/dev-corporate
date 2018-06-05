@@ -35,7 +35,7 @@
 
                   <div class="header-ticket-buttons top-20 mbb-10">
                       <router-link :to="{name:'tickets'}" class="btn btn-blue"><span v-translate>Back</span></router-link>
-                      <a href="#" @click.prevent.stop="showFormAnswer = true" class="btn btn-blue btn-primary"  v-translate>Reply</a>
+                      <a href="#" @click.prevent.stop="showFormAddArticle = true" class="btn btn-blue btn-primary"  v-translate>Reply</a>
                   </div>
 
                     <div class="articles" v-for="article in ticket.articles">
@@ -58,13 +58,15 @@
 
                     <div class="header-ticket-buttons top-10">
                         <router-link :to="{name:'tickets'}" class="btn btn-blue"><span v-translate>Back</span></router-link>
-                        <a href="#" class="btn btn-blue btn-primary" @click.prevent.stop="showFormAnswer = true" v-translate>Reply</a>
+                        <a href="#" class="btn btn-blue btn-primary" @click.prevent.stop="showFormAddArticle = true" v-translate>Reply</a>
                     </div>
              </div>
 
 
 
         </div>
+
+        <form-add-article v-if="showFormAddArticle"  @close="showFormAddArticle = false" :ticketNumber="ticketNumber"></form-add-article>
     </div>
 
 
@@ -73,6 +75,7 @@
 <script type="text/ecmascript-6">
     let userMenu = require('../components/userMenu.vue');
     import ajaxform from '../mixins/ajax-form.vue';
+    const formAddArticle = () => System.import('../components/tickets/formAddArticle.vue');
 
 
     export default {
@@ -90,10 +93,11 @@
         },
         components: {
             "user-menu": userMenu,
+            "form-add-article" : formAddArticle
         },
         data(){
             return {
-                showFormAnswer: false,
+                showFormAddArticle: false,
                 loading: true,
                 currentArticle: "",
                 ticket: {

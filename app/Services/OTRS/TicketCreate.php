@@ -43,7 +43,7 @@ class TicketCreate
     /**
      * @var OTRS_Attachment $Attachment
      */
-    protected $Attachment = null;
+    protected $Attachment = [];
 
     /**
      * @param string $UserLogin
@@ -64,7 +64,7 @@ class TicketCreate
       $this->Ticket = $Ticket;
       $this->Article = $Article;
       $this->DynamicField = $DynamicField;
-      $this->Attachment = $Attachment;
+      if(isset($Attachment)) $this->Attachment[] = $Attachment;
     }
 
     /**
@@ -207,8 +207,15 @@ class TicketCreate
      */
     public function setAttachment($Attachment)
     {
-      $this->Attachment = $Attachment;
+      $this->Attachment = [];
+      $this->Attachment[] = $Attachment;
       return $this;
+    }
+
+    public function addAttachment($Attachment)
+    {
+        $this->Attachment[] = $Attachment;
+        return $this;
     }
 
 }

@@ -98,6 +98,8 @@
             <form-change-tech-contact  v-if="showFormChangeTechContact" @close="showFormChangeTechContact = false"></form-change-tech-contact>
         </div>
 
+        <router-link :to="{name: 'shop'}">Shop</router-link>
+
     </div>
 
 </template>

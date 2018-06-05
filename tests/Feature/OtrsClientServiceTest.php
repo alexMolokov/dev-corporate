@@ -47,14 +47,24 @@ class OtrsClientServiceTest extends TestCase
         $this->assertTrue(true);
     }*/
 
-    public function testGet()
+   /* public function testGet()
     {
         $data = ["ticketNumber" => 562530394816, "ArticleLimit" => 20, "BsystemUserId" => "1000010"];
         $result = $this->client->get($data);
         var_dump($result);
 
         $this->assertTrue(true);
+    }*/
+
+    public function testUpdate()
+    {
+        $data = ["ticketNumber" => "561504941003", "body" => "message"];
+        $result = $this->client->addArticle($data);
+
+
+        $this->assertTrue(true);
     }
+
 
     /**public function testSearch()
     {

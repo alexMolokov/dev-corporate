@@ -1,22 +1,22 @@
 webpackJsonp([18],{
 
-/***/ 103:
+/***/ 128:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(104);
+var content = __webpack_require__(129);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("75c7726e", content, false, {});
+var update = __webpack_require__(12)("383d8740", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bbeb540\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tickets.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4bbeb540\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tickets.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8e1a6d20\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserStart.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8e1a6d20\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserStart.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 104:
+/***/ 129:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -35,14 +35,14 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item {\n    flex-grow: 1;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item:last-child {\n    flex-grow: 5;\n}\n.flex-row .user-card:last-child {\n    flex-grow: 1.5;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 105:
+/***/ 130:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56,31 +56,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var userMenu = __webpack_require__(64);
-var ticketList = function ticketList() {
-    return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 125));
-};
+var userMenu = __webpack_require__(79);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'tickets',
-    components: {
-        "user-menu": userMenu,
-        "ticket-list": ticketList
-    },
+    name: 'UserStart',
     data: function data() {
         return {};
     },
 
-
-    locales: {
-        ru: {}
+    components: {
+        "user-menu": userMenu
     }
 
 });
 
 /***/ }),
 
-/***/ 106:
+/***/ 131:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -89,8 +81,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "user-tickets-page" } },
-    [_c("ticket-list")],
+    { staticClass: "v-user-cabinet-ver1", attrs: { id: "main-user-page" } },
+    [_c("user-menu"), _vm._v(" "), _c("router-view")],
     1
   )
 }
@@ -100,25 +92,25 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4bbeb540", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-8e1a6d20", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 61:
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(103)
+  __webpack_require__(128)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(105)
+var __vue_script__ = __webpack_require__(130)
 /* template */
-var __vue_template__ = __webpack_require__(106)
+var __vue_template__ = __webpack_require__(131)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -135,7 +127,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\pages\\Tickets.vue"
+Component.options.__file = "resources\\assets\\js\\pages\\UserStart.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -144,9 +136,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4bbeb540", Component.options)
+    hotAPI.createRecord("data-v-8e1a6d20", Component.options)
   } else {
-    hotAPI.reload("data-v-4bbeb540", Component.options)
+    hotAPI.reload("data-v-8e1a6d20", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -158,15 +150,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 64:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(65)
+var __vue_script__ = __webpack_require__(80)
 /* template */
-var __vue_template__ = __webpack_require__(66)
+var __vue_template__ = __webpack_require__(81)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -206,7 +198,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 65:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -247,7 +239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 66:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

@@ -13,6 +13,8 @@ import VueTranslate from 'vue-translate-plugin';
 import Vuex from 'vuex'
 import {User} from './classes/User';
 
+import TicketModule from './modules/tickets';
+import ShopModule from './modules/shop';
 
 const dictionary = {
     en: {
@@ -143,6 +145,9 @@ const store = new Vuex.Store({
             state.auth = true;
             router.push({name: 'userpage'});
         }
+    },
+    modules: {
+        shop: ShopModule
     }
 });
 
@@ -181,6 +186,12 @@ const routes = [
                 component: (resolve) => { require(['./pages/Ticket'], resolve)},
                 props: true,
                 name: "ticket",
+            },
+
+            { path: 'shop',
+                component: (resolve) => { require(['./pages/Shop'], resolve)},
+                props: true,
+                name: "shop",
             },
 
             { path: 'download',
