@@ -15,6 +15,7 @@ import {User} from './classes/User';
 
 import TicketModule from './modules/tickets';
 import ShopModule from './modules/shop';
+import ServersModule from './modules/servers';
 
 const dictionary = {
     en: {
@@ -147,7 +148,8 @@ const store = new Vuex.Store({
         }
     },
     modules: {
-        shop: ShopModule
+        shop: ShopModule,
+        servers: ServersModule
     }
 });
 
@@ -187,11 +189,10 @@ const routes = [
                 props: true,
                 name: "ticket",
             },
-
-            { path: 'shop',
+            { path: 'shop/:makeDeal/:server?/:license?',
                 component: (resolve) => { require(['./pages/Shop'], resolve)},
                 props: true,
-                name: "shop",
+                name: "shop"
             },
 
             { path: 'download',

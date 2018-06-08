@@ -87,6 +87,10 @@ export default {
                         this.$validator.errors.add(key,response.data[key][0]);
                     }
                 }
+                else if(response.status == HTTP_CODES.Unauthenticated)
+                {
+                    this.$store.commit("logout");
+                }
 
             }).catch(() => {
                     /*this.state = STATES.ERROR;

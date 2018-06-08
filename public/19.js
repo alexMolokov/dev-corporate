@@ -1,22 +1,22 @@
 webpackJsonp([19],{
 
-/***/ 132:
+/***/ 134:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(133);
+var content = __webpack_require__(135);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("7edf03e4", content, false, {});
+var update = __webpack_require__(12)("42531d60", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-123bcd7c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-123bcd7c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-123bcd7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-123bcd7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 133:
+/***/ 135:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -35,19 +35,83 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n.group-attr .info-value span:last-child {\n    margin-left: 10px;\n}\n.group-attr .info-value span:first-child {\n    color: #666;\n}\n.info-head .glyphicon-pencil {\n    font-size: 12px;\n    display: inline-block;\n    margin-left: 10px;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item {\n    flex-grow: 1;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item:last-child {\n    flex-grow: 5;\n}\n.flex-row .user-card:last-child {\n    flex-grow: 1.5;\n}\n", ""]);
+exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-child {\n  margin-left: 10px;\n}\n.group-attr .info-value span[data-v-123bcd7c]:first-child {\n  color: #666;\n}\n.info-head .glyphicon-pencil[data-v-123bcd7c] {\n  font-size: 12px;\n  display: inline-block;\n  margin-left: 10px;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c] {\n  flex-grow: 1;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c]:last-child {\n  flex-grow: 5;\n}\n.flex-row .user-card[data-v-123bcd7c]:last-child {\n  flex-grow: 1.5;\n}\n.server-info[data-v-123bcd7c] {\n  padding: 10px 20px 10px 40px;\n}\n@media (max-width: 767px) {\n.server-info[data-v-123bcd7c] {\n      display: block;\n}\n}\n.server-info > div[data-v-123bcd7c] {\n    margin-bottom: 0px;\n}\n.server-info > div > div[data-v-123bcd7c] {\n    padding: 2px 10px;\n    color: #999;\n}\n.server-info > div > div span[data-v-123bcd7c] {\n      display: inline-block;\n      margin-right: 5px;\n}\n.server-info > div > div span[data-v-123bcd7c]:first-child:after {\n      content: \":\";\n      margin-right: 5px;\n}\n.server-info .server-info-name[data-v-123bcd7c] {\n    color: #000;\n    font-size: 18px;\n    padding: 2px 0px;\n}\n.server-info .server-info-add-license[data-v-123bcd7c] {\n    text-align: right;\n}\n@media (max-width: 767px) {\n.server-info .server-info-add-license[data-v-123bcd7c] {\n        text-align: left;\n        margin-left: 10px;\n        padding: 2px 0px;\n}\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n  margin: -3px 0 0 20px;\n}\n.server-license-info .head.flex-row > *[data-v-123bcd7c] {\n  margin-bottom: 0px;\n}\n@media (max-width: 600px) {\n.server-license-info .head.flex-row a.btn[data-v-123bcd7c] {\n    min-width: 100px;\n}\n}\n@media (max-width: 400px) {\n.server-license-info .head.flex-row[data-v-123bcd7c] {\n    height: auto;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c], .server-license-info .head.flex-row a[data-v-123bcd7c] {\n      display: block;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c] {\n      margin-bottom: 10px;\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n      width: 150px;\n      margin-left: 0px;\n}\n}\n.server-license-info .product-license[data-v-123bcd7c] {\n  width: 100%;\n  font-size: 18px;\n  border-bottom: 1px solid #eee;\n  color: #000;\n}\n.server-license-info .product-license > div[data-v-123bcd7c] {\n    padding: 10px 20px 10px 40px;\n}\n.server-license-info .table th[data-v-123bcd7c] {\n  font-size: 18px;\n  font-weight: normal;\n  color: #000;\n  text-align: center;\n}\n.server-license-info .table th[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table th.blue[data-v-123bcd7c] {\n    color: #00a0c8;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c] {\n  text-align: center;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table tbody .license-key span[data-v-123bcd7c] {\n  color: #000;\n  font-weight: 700;\n  font-size: 14px;\n  padding-bottom: 5px;\n}\n.server-license-info .table tbody .license-key a[data-v-123bcd7c] {\n  font-size: 14px;\n}\n.server-license-info .table tbody .license-number[data-v-123bcd7c], .server-license-info .table tbody .license-date[data-v-123bcd7c] {\n  color: #999;\n  font-weight: 500;\n  font-size: 14px;\n  padding: 2px 15px;\n}\n.server-license-info .table-responsive[data-v-123bcd7c] {\n  padding: 20px 0px 10px 40px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 134:
+/***/ 136:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(138);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -156,21 +220,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-var userMenu = __webpack_require__(79);
+
+
+var ajaxform = __webpack_require__(14);
+var userMenu = __webpack_require__(72);
 var formChangePassword = function formChangePassword() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 135));
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 139));
 };
 var formChangeCompanyName = function formChangeCompanyName() {
-    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 138));
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 142));
 };
 var formChangeCompanyDetails = function formChangeCompanyDetails() {
-    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 141));
+    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 145));
 };
 var formChangeTechContact = function formChangeTechContact() {
-    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 144));
+    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 148));
 };
 var formChangeMainContact = function formChangeMainContact() {
-    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 147));
+    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 151));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -194,12 +261,31 @@ var formChangeMainContact = function formChangeMainContact() {
         "form-change-tech-contact": formChangeTechContact,
         "form-change-main-contact": formChangeMainContact
     },
-    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({
-        user: function user(state) {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({ user: function user(state) {
             return state.user;
+        } }), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("servers", ["getServers", "isLoaded"])),
+    mixins: [ajaxform],
+    created: function created() {
+        var _this = this;
+
+        if (!this.isLoaded) {
+            this.uploadInfo("/servers/get-servers", {}, function (data) {
+                for (var serverId in data) {
+                    console.log(data[serverId]);
+                    var server = new __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__["a" /* LocalServer */](data[serverId]);
+
+                    for (var licenseId in data[serverId]["licenses"]) {
+                        server.addLicense(new __WEBPACK_IMPORTED_MODULE_2__classes_License__["a" /* License */](data[serverId]["licenses"][licenseId]));
+                    }
+                    _this.addServer(server);
+                }
+
+                _this.setLoaded();
+            });
         }
-    }),
-    methods: {},
+    },
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("servers", ["setLoaded", "addServer"])),
     locales: {
         ru: {
             'Profile': 'Профиль',
@@ -225,309 +311,209 @@ var formChangeMainContact = function formChangeMainContact() {
 
 /***/ }),
 
-/***/ 150:
+/***/ 137:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = LocalServer;
+function LocalServer(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.release = data.release;
+    this.os = data.os;
+
+    this.serverModules = data.serverModules;
+    this.added = new Date(data.added);
+    this.licenses = [];
+
+    this.addLicense = function (license) {
+        this.licenses.push(license);
+    };
+
+    this.getAdded = function () {
+        return this.added.toISOString().substring(0, 10);
+    };
+}
+
+/***/ }),
+
+/***/ 138:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = License;
+function License(data) {
+    this.id = data.id;
+    this.status = data.status;
+    this.users = data.users;
+    this.validTill;
+    this.valid = data.valid;
+
+    if (data.validTill != "") {
+        this.validTill = new Date(data.validTill);
+    }
+
+    this.added = new Date(data.added);
+
+    this.getAdded = function () {
+        return this.added.toISOString().substring(0, 10);
+    };
+
+    this.getValidTill = function () {
+        if (typeof this.validTill == "undefined") return "";
+
+        return this.validTill.toISOString().substring(0, 10);
+    };
+}
+
+/***/ }),
+
+/***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "flex-row flex_user_card" }, [
-        _c("div", { staticClass: "user-card" }, [
-          _c("div", { staticClass: "head flex-row" }, [
-            _c("div", [
-              _c(
-                "div",
-                {
-                  directives: [{ name: "translate", rawName: "v-translate" }],
-                  staticClass: "user-card_icon user-card_profile"
-                },
-                [_vm._v("Profile")]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info" }, [
-            _c("div", { staticClass: "info_section" }, [
-              _c("div", [
-                _c(
-                  "div",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    staticClass: "info-head"
-                  },
-                  [_vm._v("Customer ID")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "info-value" }, [
-                  _vm._v(_vm._s(_vm.user.id))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "div",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    staticClass: "info-head"
-                  },
-                  [_vm._v("Company")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "info-value" }, [
-                  _c("span", [_vm._v(_vm._s(_vm.user.name))]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.showFormChangeCompanyName = true
-                        }
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "glyphicon glyphicon-pencil blue",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "div",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    staticClass: "info-head"
-                  },
-                  [_vm._v("Password")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "info-value" }, [
-                  _c("span", [_vm._v("**************")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.showFormChangePassword = true
-                        }
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "glyphicon glyphicon-pencil blue",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "info_section" }, [
-              _c("div", [
-                _c("div", { staticClass: "info-head" }, [
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ]
-                    },
-                    [_vm._v("Primary contact")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "ml-10",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.showFormChangeMainContact = true
-                        }
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "glyphicon glyphicon-pencil blue",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group-attr" }, [
-                  _c("div", { staticClass: "info-value" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Full name:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticStyle: { "margin-left": "5px" } }, [
-                      _vm._v(
-                        _vm._s(_vm.user.primary.lastName) +
-                          " " +
-                          _vm._s(_vm.user.primary.firstName)
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "info-value top-10" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Job title:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.user.primary.jobTitle))])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "info-value top-10" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Email:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.user.primary.email))])
-                  ])
-                ])
-              ])
-            ])
+  return _c("div", [
+    _c("div", { staticClass: "flex-row flex_user_card" }, [
+      _c("div", { staticClass: "user-card" }, [
+        _c("div", { staticClass: "head flex-row" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "user-card_icon user-card_profile"
+              },
+              [_vm._v("Profile")]
+            )
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "user-card" }, [
-          _c("div", { staticClass: "head flex-row" }, [
+        _c("div", { staticClass: "info" }, [
+          _c("div", { staticClass: "info_section" }, [
             _c("div", [
               _c(
                 "div",
                 {
                   directives: [{ name: "translate", rawName: "v-translate" }],
-                  staticClass: "user-card_icon user-card_balance"
+                  staticClass: "info-head"
                 },
-                [_vm._v("Contacts")]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info" }, [
-            _c("div", { staticClass: "info_section" }, [
-              _c("div", [
-                _c("div", { staticClass: "info-head" }, [
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ]
-                    },
-                    [_vm._v("Billing details")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "ml-10",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.showFormChangeDetails = true
-                        }
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "glyphicon glyphicon-pencil blue",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "group-attr" }, [
-                  _c("div", { staticClass: "info-value" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Address:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticStyle: { "margin-left": "5px" } }, [
-                      _vm._v(_vm._s(_vm.user.billing.address))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "info-value top-10" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Phone:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.user.billing.phone))])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "info-value top-10" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Email:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.user.billing.email))])
-                  ])
-                ])
+                [_vm._v("Customer ID")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-value" }, [
+                _vm._v(_vm._s(_vm.user.id))
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "info_section" }, [
-              _c("div", [
-                _c("div", { staticClass: "info-head" }, [
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info-head"
+                },
+                [_vm._v("Company")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-value" }, [
+                _c("span", [_vm._v(_vm._s(_vm.user.name))]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeCompanyName = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info-head"
+                },
+                [_vm._v("Password")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-value" }, [
+                _c("span", [_vm._v("**************")]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangePassword = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c("div", { staticClass: "info-head" }, [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Primary contact")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeMainContact = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group-attr" }, [
+                _c("div", { staticClass: "info-value" }, [
                   _c(
                     "span",
                     {
@@ -535,79 +521,44 @@ var render = function() {
                         { name: "translate", rawName: "v-translate" }
                       ]
                     },
-                    [_vm._v("Technical contact")]
+                    [_vm._v("Full name:")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "ml-10",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.showFormChangeTechContact = true
-                        }
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "glyphicon glyphicon-pencil blue",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
+                  _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                    _vm._v(
+                      _vm._s(_vm.user.primary.lastName) +
+                        " " +
+                        _vm._s(_vm.user.primary.firstName)
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "group-attr" }, [
-                  _c("div", { staticClass: "info-value" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Full name:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticStyle: { "margin-left": "5px" } }, [
-                      _vm._v(
-                        _vm._s(_vm.user.tech.lastName) +
-                          " " +
-                          _vm._s(_vm.user.tech.firstName)
-                      )
-                    ])
-                  ]),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Job title:")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "info-value top-10" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Job title:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.user.tech.jobTitle))])
-                  ]),
+                  _c("span", [_vm._v(_vm._s(_vm.user.primary.jobTitle))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Email:")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "info-value top-10" }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          { name: "translate", rawName: "v-translate" }
-                        ]
-                      },
-                      [_vm._v("Email:")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(_vm.user.tech.email))])
-                  ])
+                  _c("span", [_vm._v(_vm._s(_vm.user.primary.email))])
                 ])
               ])
             ])
@@ -615,69 +566,543 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { attrs: { id: "modal-list" } },
-        [
-          _vm.showFormChangePassword
-            ? _c("form-change-password", {
-                on: {
-                  close: function($event) {
-                    _vm.showFormChangePassword = false
-                  }
-                }
-              })
-            : _vm._e(),
+      _c("div", { staticClass: "user-card" }, [
+        _c("div", { staticClass: "head flex-row" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "user-card_icon user-card_balance"
+              },
+              [_vm._v("Contacts")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info" }, [
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c("div", { staticClass: "info-head" }, [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Billing details")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeDetails = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group-attr" }, [
+                _c("div", { staticClass: "info-value" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Address:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                    _vm._v(_vm._s(_vm.user.billing.address))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Phone:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.billing.phone))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Email:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.billing.email))])
+                ])
+              ])
+            ])
+          ]),
           _vm._v(" "),
-          _vm.showFormChangeCompanyName
-            ? _c("form-change-company-name", {
-                on: {
-                  close: function($event) {
-                    _vm.showFormChangeCompanyName = false
-                  }
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c("div", { staticClass: "info-head" }, [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Technical contact")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeTechContact = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group-attr" }, [
+                _c("div", { staticClass: "info-value" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Full name:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                    _vm._v(
+                      _vm._s(_vm.user.tech.lastName) +
+                        " " +
+                        _vm._s(_vm.user.tech.firstName)
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Job title:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.tech.jobTitle))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Email:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.tech.email))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.isLoaded
+      ? _c(
+          "div",
+          { staticClass: "flex-row flex_user_card server-license-info" },
+          [
+            _c(
+              "div",
+              { staticClass: "user-card" },
+              [
+                _c("div", { staticClass: "head flex-row" }, [
+                  _c("div", [
+                    _c(
+                      "div",
+                      { staticClass: "user-card_profile" },
+                      [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Software and services")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-blue btn-middle",
+                            attrs: { to: { name: "shop" } }
+                          },
+                          [_vm._v("New Order")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "product-license" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Product/License")]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.getServers, function(server) {
+                  return _c("div", [
+                    _c("div", { staticClass: "flex-row server-info" }, [
+                      _c("div", [
+                        _c("div", { staticClass: "server-info-name" }, [
+                          _vm._v(_vm._s(server.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "server-info-id" }, [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Server ID")]
+                          ),
+                          _c("span", [_vm._v(_vm._s(server.id))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Certificate")]
+                          ),
+                          _vm._v(" "),
+                          _c("a", { attrs: { href: "" } }, [
+                            _vm._v("Upload request")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("License")]
+                          ),
+                          _vm._v(" "),
+                          _c("a", { attrs: { href: "" } }, [
+                            _vm._v("Upload request")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Release")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(server.release))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("OS")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(server.os))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Server modules")]
+                          ),
+                          _vm._v(" "),
+                          server.serverModules.length == 0
+                            ? _c("span", [_vm._v("no")])
+                            : _c("span", [
+                                _vm._v(_vm._s(server.serverModules.join(",")))
+                              ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Added")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(server.getAdded()))])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "server-info-add-license" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              attrs: { to: { name: "shop" } }
+                            },
+                            [_vm._v("Add new licence")]
+                          )
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "table-responsive" }, [
+                      _c("table", { staticClass: "table" }, [
+                        _vm._m(0, true),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(server.licenses, function(license, i) {
+                            return _c("tr", [
+                              _c("td", [
+                                _c("div", { staticClass: "license-key" }, [
+                                  _c("span", [
+                                    _vm._v(_vm._s(i + 1) + " License key:")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("a", { attrs: { href: "" } }, [
+                                    _vm._v("download")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "license-number" }, [
+                                  _c("span", [_vm._v("ID:")]),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v(_vm._s(license.id))])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "license-date" }, [
+                                  _c("span", [_vm._v("Added:")]),
+                                  _vm._v(" "),
+                                  _c("span", [
+                                    _vm._v(_vm._s(license.getAdded()))
+                                  ])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(license.users))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(license.getValidTill()))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                license.valid
+                                  ? _c("span", [_vm._v("active")])
+                                  : _c("span", [_vm._v("payment required")])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "translate",
+                                          rawName: "v-translate"
+                                        }
+                                      ],
+                                      attrs: { to: { name: "shop" } }
+                                    },
+                                    [_vm._v("Renew license")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "router-link",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "translate",
+                                          rawName: "v-translate"
+                                        }
+                                      ],
+                                      attrs: { to: { name: "shop" } }
+                                    },
+                                    [_vm._v("Upgrade")]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          })
+                        )
+                      ])
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { id: "modal-list" } },
+      [
+        _vm.showFormChangePassword
+          ? _c("form-change-password", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangePassword = false
                 }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showFormChangeDetails
-            ? _c("form-change-details", {
-                on: {
-                  close: function($event) {
-                    _vm.showFormChangeDetails = false
-                  }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeCompanyName
+          ? _c("form-change-company-name", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeCompanyName = false
                 }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showFormChangeMainContact
-            ? _c("form-change-main-contact", {
-                on: {
-                  close: function($event) {
-                    _vm.showFormChangeMainContact = false
-                  }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeDetails
+          ? _c("form-change-details", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeDetails = false
                 }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showFormChangeTechContact
-            ? _c("form-change-tech-contact", {
-                on: {
-                  close: function($event) {
-                    _vm.showFormChangeTechContact = false
-                  }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeMainContact
+          ? _c("form-change-main-contact", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeMainContact = false
                 }
-              })
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "shop" } } }, [_vm._v("Shop")])
-    ],
-    1
-  )
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeTechContact
+          ? _c("form-change-tech-contact", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeTechContact = false
+                }
+              }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", { staticClass: "blue" }, [_vm._v("User Licenses")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Users")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Valid till")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("th", [_vm._v(" ")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -689,25 +1114,25 @@ if (false) {
 
 /***/ }),
 
-/***/ 61:
+/***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(132)
+  __webpack_require__(134)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(134)
+var __vue_script__ = __webpack_require__(136)
 /* template */
-var __vue_template__ = __webpack_require__(150)
+var __vue_template__ = __webpack_require__(154)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-123bcd7c"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -741,15 +1166,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 79:
+/***/ 72:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(73)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -789,7 +1214,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 80:
+/***/ 73:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -830,7 +1255,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 81:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

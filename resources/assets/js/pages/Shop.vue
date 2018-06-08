@@ -1,6 +1,6 @@
 <template>
     <div id="user-order-page">
-        <h3>1. <span v-translate>Maintenance period</span></h3>
+        <h3>1. <span v-translate>Maintenance period</span> {{makeDeal}} {{server}} {{license}}</h3>
         <section id="periods">
             <div v-for="item in getPeriods">
                 <input type="radio" name="period" :value="item.id"  :id="'period_' + item.id" :checked="choice.period == item.id" @click="setMaintenance(item.id)">
@@ -40,7 +40,7 @@
                     <span>
                     <input type="checkbox" name="addons" :id="'addons_' + item.id" @click="addCheckbox($event)" :value="item.id"> <label :for="'addons_' + item.id">{{item.name}}</label>
                     </span>
-                    <span class="price"><sup>$</sup>{{item[choice.price]}}</span>
+                    <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
                 </div>
             </div>
         </section>
@@ -52,7 +52,7 @@
                     <span>
                     <input type="checkbox" name="addons" :id="'service_' + item.id" @click="addCheckbox($event)" :value="item.id"> <label :for="'service_' + item.id">{{item.name}}</label>
                     </span>
-                    <span class="price"><sup>$</sup>{{item[choice.price]}}</span>
+                    <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
 
                 </div>
             </div>
@@ -79,6 +79,11 @@
 
     export default {
         name: 'order',
+        props: {
+            makeDeal: {type: String},
+            server: {type: String, default: ""},
+            license: {type: String, default: ""}
+        },
         components: {
             "user-menu": userMenu
         },
