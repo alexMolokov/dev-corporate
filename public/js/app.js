@@ -7841,12 +7841,12 @@ var routes = [{ path: '/',
     meta: { requiresNoAuth: true }
 }, { path: '/user',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(61)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(61)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     },
     meta: { requiresAuth: true },
     children: [{ path: '',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(62)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(62)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         },
         name: "userpage",
         meta: { requiresAuth: true }
@@ -7862,13 +7862,13 @@ var routes = [{ path: '/',
         name: "tickets"
     }, { path: 'ticket/:ticketNumber',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(65)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(65)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         },
         props: true,
         name: "ticket"
     }, { path: 'shop/:makeDeal/:server?/:license?',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(66)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(66)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         },
         props: true,
         name: "shop"
@@ -52806,16 +52806,7 @@ var state = {
     periods: [],
     os: [],
     products: [],
-    productsMap: new Map(),
-    choice: {
-        "period": "annual",
-        "price": "baseAnnualPrice",
-        "os": "windows",
-        "server": 1,
-        "addons": [3],
-        "services": []
-    },
-    basket: new Map()
+    productsMap: new Map()
 };
 var getters = {
     getServers: function getServers(state) {
@@ -52843,21 +52834,6 @@ var getters = {
 };
 var actions = {};
 var mutations = {
-    addToBasket: function addToBasket(state, key) {
-        state.basket.set(key, state.productsMap.get(key));
-    },
-    removeFromBasket: function removeFromBasket(state, key) {
-        state.basket.delete(key);
-    },
-    setPriceType: function setPriceType(state, period) {
-        function ucFirst(s) {
-            return s.charAt(0).toUpperCase() + s.substr(1);
-        }
-        state.choice.price = "base" + ucFirst(period) + "Price";
-    },
-    setRadio: function setRadio(state, choice) {
-        state.choice[choice.id] = choice.value;
-    },
     addProduct: function addProduct(state, product) {
         state.products.push(product);
         state.productsMap.set(product.id, product);
@@ -52871,7 +52847,6 @@ var mutations = {
     setCurrency: function setCurrency(state, currency) {
         state.currency = currency;
     }
-
 };
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -52889,7 +52864,8 @@ var mutations = {
 "use strict";
 var state = {
     "loaded": false,
-    "servers": []
+    "servers": [],
+    "serversMap": new Map()
 };
 var getters = {
     getServers: function getServers(state) {
@@ -52898,12 +52874,14 @@ var getters = {
     isLoaded: function isLoaded(state) {
         return state.loaded;
     }
+
 };
 
 var actions = {};
 var mutations = {
     addServer: function addServer(state, server) {
         state.servers.push(server);
+        state.serversMap.set(server.id, server);
     },
     setLoaded: function setLoaded(state) {
         state.loaded = true;

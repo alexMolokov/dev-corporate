@@ -5,6 +5,7 @@ export function License(data)
     this.users = data.users;
     this.validTill;
     this.valid = data.valid;
+    this.serverModules = data.serverModules
 
     if(data.validTill != "")
     {

@@ -13,22 +13,24 @@
         "products" => [
             "1" => [
                 "name" => "VIPole Enterprise, Standalone edition",
-                "baseAnnualPrice" => 950,
-                "baseLifetimePrice" => 1700,
+                "baseAnnualPrice" => 250,
+                "baseLifetimePrice" => 200,
                 "startUsers" => 10,
-                "userLicensePrice" => ["50" => 70, "100" => 66, "200" => 63, "300" => 52],
+                "postfixForLicense" => "UserLicense",
+                "baseAnnualPriceUserLicense" => ["50" => 70, "100" => 66, "200" => 63, "300" => 52],
+                "baseLifetimePriceUserLicense" => ["50" => 150, "100" => 142, "200" => 135, "300" => 128],
                 "userLicenseRenewalPrice" => ["50" => 56, "100" => 52.8, "200" => 50.4, "300" => 41.6],
-                "userLicenseLifetimePrice" => ["50" => 150, "100" => 142, "200" => 135, "300" => 128],
                 "section" => "servers"
             ],
             "2" => [
                 "name" => "VIPole Enterprise, Cluster edition",
-                "baseAnnualPrice" => 2900,
-                "baseLifetimePrice" => 6000,
+                "baseAnnualPrice" => 200,
+                "baseLifetimePrice" => 0,
                 "startUsers" => 30,
-                "userLicensePrice" => ["50" => 90, "100" => 85.5, "200" => 81, "300" => 76.5],
+                "postfixForLicense" => "UserLicense",
+                "baseAnnualPriceUserLicense" => ["50" => 90, "100" => 85.5, "200" => 81, "300" => 76.5],
+                "baseLifetimePriceUserLicense" => ["50" => 200, "100" => 190, "200" => 180, "300" => 128],
                 "userLicenseRenewalPrice" => ["50" => 72, "100" => 68.4, "200" => 64.8, "300" => 61.2],
-                "userLicenseLifetimePrice" => ["50" => 200, "100" => 190, "200" => 180, "300" => 128],
                 "section" => "servers"
             ],
             "3" => [

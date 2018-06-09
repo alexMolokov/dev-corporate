@@ -1,22 +1,22 @@
 webpackJsonp([4],{
 
-/***/ 243:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(244);
+var content = __webpack_require__(235);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("33998ff7", content, false, {});
+var update = __webpack_require__(12)("3c6cd043", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1ba10a26\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Shop.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1ba10a26\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Shop.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-235b7443\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Ticket.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-235b7443\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Ticket.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 244:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -35,21 +35,20 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-size: 21px;\n  margin-top: 30px;\n}\n#user-order-page hr[data-v-1ba10a26] {\n  margin: 40px 0;\n}\n#user-order-page > h3[data-v-1ba10a26]:first-child {\n  margin-top: 10px;\n}\n#user-order-page .shop-footer[data-v-1ba10a26] {\n  text-align: right;\n}\n#user-order-page .shop-footer .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 30px;\n    font-weight: bold;\n    display: inline-block;\n}\n#user-order-page .shop-footer .price sup[data-v-1ba10a26] {\n      font-size: .5em;\n      vertical-align: baseline;\n      position: relative;\n      top: -.6666667em;\n}\n#users .field-number[data-v-1ba10a26] {\n  width: 182px;\n  margin-top: 20px;\n  display: block;\n}\n#users .field-number > *[data-v-1ba10a26] {\n    display: inline;\n    float: left;\n}\n#users .field-number .minus[data-v-1ba10a26] {\n    padding: 0px 9px 1px;\n    border-right: 0;\n    border-radius: 3px 0 0 3px;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .minus[data-v-1ba10a26]:after {\n      content: \"\\2014\";\n}\n#users .field-number .add[data-v-1ba10a26] {\n    padding: 0px 12px 1px 11px;\n    border-left: 0;\n    border-radius: 0 3px 3px 0;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .add[data-v-1ba10a26]:after {\n      content: \"+\";\n}\n#users .field-number input[data-v-1ba10a26] {\n    width: 100px;\n    height: 40px;\n    color: #000;\n    text-align: center;\n    border: 1px solid #e8e8e8;\n    font-size: 18px;\n    font-weight: 700;\n}\n#users .number .min[data-v-1ba10a26] {\n  clear: both;\n  font-size: 14px;\n  color: #888;\n  padding-top: 7px;\n  margin-bottom: 4px;\n}\n#os > div[data-v-1ba10a26], #servers > div[data-v-1ba10a26], #periods > div[data-v-1ba10a26], #services > div[data-v-1ba10a26] {\n  padding: 4px;\n}\n#os input[type=\"radio\"][data-v-1ba10a26], #servers input[type=\"radio\"][data-v-1ba10a26], #periods input[type=\"radio\"][data-v-1ba10a26], #services input[type=\"radio\"][data-v-1ba10a26] {\n  margin-right: 3px;\n}\n#addons label[data-v-1ba10a26], #os label[data-v-1ba10a26], #servers label[data-v-1ba10a26], #periods label[data-v-1ba10a26], #services label[data-v-1ba10a26] {\n  font-size: 18px;\n  color: #666;\n  font-weight: 400;\n}\n#addons .table[data-v-1ba10a26], #os .table[data-v-1ba10a26], #servers .table[data-v-1ba10a26], #periods .table[data-v-1ba10a26], #services .table[data-v-1ba10a26] {\n  display: table;\n}\n#addons .table > div[data-v-1ba10a26]:not(:first-child), #os .table > div[data-v-1ba10a26]:not(:first-child), #servers .table > div[data-v-1ba10a26]:not(:first-child), #periods .table > div[data-v-1ba10a26]:not(:first-child), #services .table > div[data-v-1ba10a26]:not(:first-child) {\n    border-top: none;\n}\n#addons .table > div[data-v-1ba10a26], #os .table > div[data-v-1ba10a26], #servers .table > div[data-v-1ba10a26], #periods .table > div[data-v-1ba10a26], #services .table > div[data-v-1ba10a26] {\n    /*display: table-row;*/\n    border: 1px solid #ccc;\n    padding: 10px;\n}\n#addons .table > div[data-v-1ba10a26]:hover, #os .table > div[data-v-1ba10a26]:hover, #servers .table > div[data-v-1ba10a26]:hover, #periods .table > div[data-v-1ba10a26]:hover, #services .table > div[data-v-1ba10a26]:hover {\n      background-color: #f5f5f5;\n}\n#addons .table > div input[type=\"checkbox\"][data-v-1ba10a26], #os .table > div input[type=\"checkbox\"][data-v-1ba10a26], #servers .table > div input[type=\"checkbox\"][data-v-1ba10a26], #periods .table > div input[type=\"checkbox\"][data-v-1ba10a26], #services .table > div input[type=\"checkbox\"][data-v-1ba10a26] {\n      margin-right: 3px;\n}\n#addons .table > div span[data-v-1ba10a26]:first-child, #os .table > div span[data-v-1ba10a26]:first-child, #servers .table > div span[data-v-1ba10a26]:first-child, #periods .table > div span[data-v-1ba10a26]:first-child, #services .table > div span[data-v-1ba10a26]:first-child {\n      width: 78%;\n      display: inline-block;\n}\n#addons .table > div span[data-v-1ba10a26]:last-child, #os .table > div span[data-v-1ba10a26]:last-child, #servers .table > div span[data-v-1ba10a26]:last-child, #periods .table > div span[data-v-1ba10a26]:last-child, #services .table > div span[data-v-1ba10a26]:last-child {\n      width: 20%;\n      display: inline-block;\n      text-align: right;\n      padding-right: 10px;\n}\n#addons .table .price[data-v-1ba10a26], #os .table .price[data-v-1ba10a26], #servers .table .price[data-v-1ba10a26], #periods .table .price[data-v-1ba10a26], #services .table .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 22px;\n    font-weight: bold;\n    display: inline-block;\n}\n", ""]);
+exports.push([module.i, "\n.header-ticket-info[data-v-235b7443] {\n  padding: 10px;\n  border: 1px solid #eee;\n  border-radius: 5px;\n  background-color: #f5f5f5;\n  text-align: center;\n}\n.header-ticket-info > div[data-v-235b7443] {\n    padding: 0 10px;\n}\n.header-ticket-info > div > div[data-v-235b7443]:first-child {\n    font-size: 18px;\n    padding: 10px 0;\n}\n.header-ticket-info > div > div[data-v-235b7443]:last-child {\n    background-color: #fff;\n    border-radius: 5px;\n    border: 1px solid #eee;\n    font-size: 14px;\n    padding: 6px 0;\n}\n.header-ticket-buttons[data-v-235b7443] {\n  padding: 10px 0;\n}\n.header-ticket-buttons a[data-v-235b7443] {\n    min-width: 120px;\n    margin-right: 10px;\n}\n.warning[data-v-235b7443] {\n  background-color: #f0ad4e;\n}\n.articles pre[data-v-235b7443] {\n  background-color: #fff;\n  border: none;\n  padding-left: 0px;\n}\n.articles > div > div[data-v-235b7443]:first-child {\n  background-color: #f5f5f5;\n  border-left: 1px solid #eee;\n  border-right: 1px solid #eee;\n  border-top: 1px solid #eee;\n  font-size: 15px;\n  padding: 6px;\n  text-align: right;\n}\n.articles .attacments a[data-v-235b7443] {\n  display: inline-block;\n  padding: 0 10px 10px 0;\n}\n.articles > div > div[data-v-235b7443]:last-child {\n  background-color: #fff;\n  border: 1px solid #eee;\n  font-size: 15px;\n  padding: 15px;\n  text-align: left;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 245:
+/***/ 236:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
 //
 //
 //
@@ -126,416 +125,379 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 var userMenu = __webpack_require__(72);
-var ajaxform = __webpack_require__(14);
 
+var formAddArticle = function formAddArticle() {
+    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 237));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'order',
+    name: 'ticket',
     props: {
-        makeDeal: { type: String },
-        server: { type: String, default: "" },
-        license: { type: String, default: "" }
+        ticketNumber: { type: String }
     },
-    components: {
-        "user-menu": userMenu
-    },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("shop", ["products", "choice"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("shop", ["getServers", "getServices", "getAddons", "getOs", "getPeriods"])),
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
     created: function created() {
         var _this = this;
 
-        if (this.products.length == 0) {
-            this.uploadInfo("/shop/get-product-list", {}, function (data) {
-                for (var productId in data.products) {
-                    _this.addProduct(_extends({ "id": productId }, data.products[productId]));
-                }
-
-                for (var period in data.periods) {
-                    _this.addPeriod(_extends({ "id": period }, data.periods[period]));
-                }
-
-                for (var os in data.os) {
-                    _this.addOs(_extends({ "id": os }, data.os[os]));
-                }
-
-                _this.setCurrency(data.currency);
-            });
-        }
+        this.uploadInfo("/ticket/get/" + this.ticketNumber, {}, function (data) {
+            _this.ticket = data;
+            _this.loading = false;
+            _this.currentArticle = _this.ticket.articles[0].id;
+        });
     },
 
-    mixins: [ajaxform],
+    components: {
+        "user-menu": userMenu,
+        "form-add-article": formAddArticle
+    },
     data: function data() {
-        return {};
+        return {
+            showFormAddArticle: false,
+            loading: true,
+            currentArticle: "",
+            ticket: {}
+        };
     },
 
-
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setRadio", "setPriceType", "addToBasket", "removeFromBasket"]), {
-        addCheckbox: function addCheckbox(e) {
-            if (e.target.checked) {
-                this.addToBasket(e.target.value);
-            } else {
-                this.removeFromBasket(e.target.value);
-            }
-        },
-        checkout: function checkout() {
-            alert("checkout");
-        },
-        trial: function trial() {
-            alert("trial");
-        },
-        setMaintenance: function setMaintenance(period) {
-            this.setRadio({ 'id': 'period', 'value': period });
-            this.setPriceType(period);
+    methods: {
+        changeArticle: function changeArticle(id) {
+            this.currentArticle = id;
         }
-    }),
+    },
 
     locales: {
-        ru: {}
+        ru: {
+            "Ticket": "Тикет",
+            "Loading info...": "Загрузка информации",
+            "Back": "Назад",
+            "Reply": "Ответить"
+        }
     }
 
 });
 
 /***/ }),
 
-/***/ 246:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "user-order-page" } }, [
-    _c("h3", [
-      _vm._v("1. "),
-      _c(
-        "span",
-        { directives: [{ name: "translate", rawName: "v-translate" }] },
-        [_vm._v("Maintenance period")]
-      ),
-      _vm._v(
-        " " +
-          _vm._s(_vm.makeDeal) +
-          " " +
-          _vm._s(_vm.server) +
-          " " +
-          _vm._s(_vm.license)
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "section",
-      { attrs: { id: "periods" } },
-      _vm._l(_vm.getPeriods, function(item) {
-        return _c("div", [
-          _c("input", {
-            attrs: { type: "radio", name: "period", id: "period_" + item.id },
-            domProps: { value: item.id, checked: _vm.choice.period == item.id },
-            on: {
-              click: function($event) {
-                _vm.setMaintenance(item.id)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "period_" + item.id } }, [
-            _vm._v(_vm._s(item.name))
-          ])
-        ])
-      })
-    ),
-    _vm._v(" "),
-    _c("h3", [
-      _vm._v("2. "),
-      _c(
-        "span",
-        { directives: [{ name: "translate", rawName: "v-translate" }] },
-        [_vm._v("Choose your deployment")]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "section",
-      { attrs: { id: "servers" } },
-      _vm._l(_vm.getServers, function(item) {
-        return _c("div", [
-          _c("input", {
-            attrs: {
-              type: "radio",
-              name: "deployment",
-              id: "deployment_" + item.id
-            },
-            domProps: { value: item.id, checked: _vm.choice.server == item.id },
-            on: {
-              click: function($event) {
-                _vm.setRadio({ id: "server", value: item.id })
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "deployment_" + item.id } }, [
-            _vm._v(_vm._s(item.name))
-          ])
-        ])
-      })
-    ),
-    _vm._v(" "),
-    _c("h3", [
-      _vm._v("3. "),
-      _c(
-        "span",
-        { directives: [{ name: "translate", rawName: "v-translate" }] },
-        [_vm._v("Choose Operational system")]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "section",
-      { attrs: { id: "os" } },
-      _vm._l(_vm.getOs, function(item) {
-        return _c("div", [
-          _c("input", {
-            attrs: { type: "radio", name: "os", id: "os_" + item.id },
-            domProps: { value: item.id, checked: _vm.choice.os == item.id },
-            on: {
-              click: function($event) {
-                _vm.setRadio({ id: "os", value: item.id })
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "os_" + item.id } }, [
-            _vm._v(_vm._s(item.name))
-          ])
-        ])
-      })
-    ),
-    _vm._v(" "),
-    _c("h3", [
-      _vm._v("4. "),
-      _c(
-        "span",
-        { directives: [{ name: "translate", rawName: "v-translate" }] },
-        [_vm._v("User tier")]
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("h3", [
-      _vm._v("5. "),
-      _c(
-        "span",
-        { directives: [{ name: "translate", rawName: "v-translate" }] },
-        [_vm._v("Choose optional addons")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("section", { attrs: { id: "addons" } }, [
-      _c(
-        "div",
-        { staticClass: "table" },
-        _vm._l(_vm.getAddons, function(item) {
-          return _c("div", [
-            _c("span", [
-              _c("input", {
-                attrs: {
-                  type: "checkbox",
-                  name: "addons",
-                  id: "addons_" + item.id
-                },
-                domProps: { value: item.id },
-                on: {
-                  click: function($event) {
-                    _vm.addCheckbox($event)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "addons_" + item.id } }, [
-                _vm._v(_vm._s(item.name))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "price" }, [
-              item[_vm.choice.price] > 0
-                ? _c("span", [
-                    _c("sup", [_vm._v("$")]),
-                    _vm._v(_vm._s(item[_vm.choice.price]))
-                  ])
-                : _vm._e()
-            ])
-          ])
-        })
-      )
-    ]),
-    _vm._v(" "),
-    _c("h3", [
-      _vm._v("6. "),
-      _c(
-        "span",
-        { directives: [{ name: "translate", rawName: "v-translate" }] },
-        [_vm._v("Choose optional services")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("section", { attrs: { id: "services" } }, [
-      _c(
-        "div",
-        { staticClass: "table" },
-        _vm._l(_vm.getServices, function(item) {
-          return _c("div", [
-            _c("span", [
-              _c("input", {
-                attrs: {
-                  type: "checkbox",
-                  name: "addons",
-                  id: "service_" + item.id
-                },
-                domProps: { value: item.id },
-                on: {
-                  click: function($event) {
-                    _vm.addCheckbox($event)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "service_" + item.id } }, [
-                _vm._v(_vm._s(item.name))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "price" }, [
-              item[_vm.choice.price] > 0
-                ? _c("span", [
-                    _c("sup", [_vm._v("$")]),
-                    _vm._v(_vm._s(item[_vm.choice.price]))
-                  ])
-                : _vm._e()
-            ])
-          ])
-        })
-      )
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c("div", { staticClass: "shop-footer" }, [
-      _c(
-        "a",
-        {
-          directives: [{ name: "translate", rawName: "v-translate" }],
-          staticClass: "btn btn-middle btn-blue",
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              $event.stopPropagation()
-              return _vm.checkout($event)
-            }
-          }
-        },
-        [_vm._v("Check out")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          directives: [{ name: "translate", rawName: "v-translate" }],
-          staticClass: "btn btn-middle btn-blue",
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              $event.stopPropagation()
-              return _vm.trial($event)
-            }
-          }
-        },
-        [_vm._v("Next")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "subtotal" }, [
-        _c(
-          "h3",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("Subtotal (USD)")]
-        ),
-        _vm._v(" "),
-        _vm._m(1)
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "users" } }, [
-      _c("div", { staticClass: "number" }, [
-        _c("div", { staticClass: "field-number" }, [
-          _c("div", { staticClass: "minus" }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: {
-              name: "user_number",
-              type: "text",
-              value: "5",
-              "aria-required": "true",
-              "aria-invalid": "false"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "add" })
+  return _c(
+    "div",
+    { attrs: { id: "ticket-page" } },
+    [
+      _c("div", [
+        _c("h2", [
+          _c(
+            "span",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [_vm._v("Ticket")]
+          ),
+          _vm._v("# " + _vm._s(_vm.ticketNumber))
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "min" }, [
-          _c("span", { attrs: { "data-v-53491cc2": "" } }, [_vm._v("minimum")]),
-          _vm._v(" 5 "),
-          _c("span", [_vm._v("users")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "price" }, [
-      _c("sup", [_vm._v("$")]),
-      _vm._v("100")
-    ])
-  }
-]
+        _vm.loading
+          ? _c(
+              "div",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "alert alert-warning fade in"
+              },
+              [_vm._v("Loading info...")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.loading
+          ? _c(
+              "div",
+              [
+                _c("section", { attrs: { id: "header-ticket" } }, [
+                  _c("div", [
+                    _c("div", { staticClass: "mbb-20" }, [
+                      _c("h3", [_vm._v(_vm._s(_vm.ticket.theme))])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex-row header-ticket-info" }, [
+                      _c("div", [
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Date")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [_vm._v(_vm._s(_vm.ticket.date))])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Department")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [_vm._v(_vm._s(_vm.ticket.department))])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Priority")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [_vm._v("Normal")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Status")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [_vm._v(_vm._s(_vm.ticket.status))])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "header-ticket-buttons top-20 mbb-10" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-blue",
+                        attrs: { to: { name: "tickets" } }
+                      },
+                      [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Back")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        staticClass: "btn btn-blue btn-primary",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            $event.stopPropagation()
+                            _vm.showFormAddArticle = true
+                          }
+                        }
+                      },
+                      [_vm._v("Reply")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.ticket.articles, function(article) {
+                  return _c("div", { staticClass: "articles" }, [
+                    _c("div", { staticClass: "article" }, [
+                      _c(
+                        "div",
+                        {
+                          staticStyle: { cursor: "pointer" },
+                          on: {
+                            click: function($event) {
+                              _vm.changeArticle(article.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(article.date) +
+                              "  "
+                          ),
+                          _vm.currentArticle != article.id
+                            ? _c("span", { staticClass: "caret" })
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.currentArticle == article.id,
+                              expression: "currentArticle == article.id"
+                            }
+                          ]
+                        },
+                        [
+                          _vm._l(article.attachments, function(attachment) {
+                            return article.attachments.length > 0
+                              ? _c("div", { staticClass: "attachments" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href:
+                                          "/ticket/attachment/" +
+                                          _vm.ticketNumber +
+                                          "/" +
+                                          article.id +
+                                          "/" +
+                                          attachment.filename,
+                                        target: "_blank"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(attachment.filename) +
+                                          " (" +
+                                          _vm._s(attachment.size) +
+                                          ")"
+                                      )
+                                    ]
+                                  )
+                                ])
+                              : _vm._e()
+                          }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "body" }, [
+                            _c("pre", [_vm._v(_vm._s(article.body) + " ")])
+                          ])
+                        ],
+                        2
+                      )
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "header-ticket-buttons top-10" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-blue",
+                        attrs: { to: { name: "tickets" } }
+                      },
+                      [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Back")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        staticClass: "btn btn-blue btn-primary",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            $event.stopPropagation()
+                            _vm.showFormAddArticle = true
+                          }
+                        }
+                      },
+                      [_vm._v("Reply")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              2
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.showFormAddArticle
+        ? _c("form-add-article", {
+            attrs: { ticketNumber: _vm.ticketNumber },
+            on: {
+              close: function($event) {
+                _vm.showFormAddArticle = false
+              }
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1ba10a26", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-235b7443", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 66:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(243)
+  __webpack_require__(234)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(245)
+var __vue_script__ = __webpack_require__(236)
 /* template */
-var __vue_template__ = __webpack_require__(246)
+var __vue_template__ = __webpack_require__(242)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-1ba10a26"
+var __vue_scopeId__ = "data-v-235b7443"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -546,7 +508,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\pages\\Shop.vue"
+Component.options.__file = "resources\\assets\\js\\pages\\Ticket.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -555,9 +517,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1ba10a26", Component.options)
+    hotAPI.createRecord("data-v-235b7443", Component.options)
   } else {
-    hotAPI.reload("data-v-1ba10a26", Component.options)
+    hotAPI.reload("data-v-235b7443", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

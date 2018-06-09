@@ -1,23 +1,23 @@
 <template>
     <div id="user-order-page">
-        <h3>1. <span v-translate>Maintenance period</span> {{makeDeal}} {{server}} {{license}}</h3>
+        <h3>1. <span v-translate>Maintenance period</span></h3>
         <section id="periods">
-            <div v-for="item in getPeriods">
-                <input type="radio" name="period" :value="item.id"  :id="'period_' + item.id" :checked="choice.period == item.id" @click="setMaintenance(item.id)">
+            <div v-for="item in getPeriods" :class="{ disabled: isDisabledPeriod(item.id) }">
+                <input type="radio" name="period" :value="item.id" :disabled="isDisabledPeriod(item.id)" :id="'period_' + item.id" :checked="choice.period == item.id" @click="setPeriod(item.id)">
                 <label :for="'period_' + item.id">{{item.name}}</label>
             </div>
         </section>
         <h3>2. <span v-translate>Choose your deployment</span></h3>
         <section id="servers">
-            <div v-for="item in getServers">
-                <input type="radio" name="deployment" :value="item.id"  :id="'deployment_' + item.id" :checked="choice.server == item.id" @click="setRadio({'id':'server','value': item.id})">
+            <div v-for="item in getServers" :class="{ disabled: isDisabledProduct(item.id) }">
+                <input type="radio" name="deployment" :value="item.id" :disabled="isDisabledProduct(item.id)" :id="'deployment_' + item.id" :checked="choice.server == item.id" @click="setServer(item.id)">
                 <label :for="'deployment_' + item.id">{{item.name}}</label>
             </div>
         </section>
         <h3>3. <span v-translate>Choose Operational system</span></h3>
         <section id="os">
-            <div v-for="item in getOs">
-                <input type="radio" name="os" :value="item.id"  :id="'os_' + item.id" :checked="choice.os == item.id" @click="setRadio({'id':'os','value': item.id})">
+            <div v-for="item in getOs" :class="{ disabled: isDisabledOs(item.id) }">
+                <input type="radio" name="os" :value="item.id"  :id="'os_' + item.id" :disabled="isDisabledOs(item.id)" :checked="choice.os == item.id" @click="setRadio({'id':'os','value': item.id})">
                 <label :for="'os_' + item.id">{{item.name}}</label>
             </div>
         </section>
@@ -25,20 +25,20 @@
         <section id="users">
             <div class="number">
                 <div class="field-number">
-                    <div class="minus"></div>
-                    <input  name="user_number" type="text" value="5"  aria-required="true" aria-invalid="false">
-                    <div class="add"></div>
+                    <div class="minus" @click="addUser(-1)" :class="{ disabled: this.choice.users == this.choice.minUsers }"></div>
+                    <input  name="users" type="text"   v-model="choice.users"  @keyup="checkCountUsers" v-validate="'required|numeric'" :class="{error: errors.has('users')}">
+                    <div class="add" @click="addUser(1)"  :class="{ disabled: this.choice.users == this.choice.maxUsers }"></div>
                 </div>
-                <p  class="min"><span data-v-53491cc2="">minimum</span> 5 <span>users</span></p>
+                <p  class="min"><span >minimum</span> {{choice.minUsers}} <span>users</span></p>
             </div>
         </section>
 
         <h3>5. <span v-translate>Choose optional addons</span></h3>
         <section id="addons">
             <div class="table">
-                <div v-for="item in getAddons">
+                <div v-for="item in getAddons" :class="{ disabled: isDisabledProduct(item.id) }">
                     <span>
-                    <input type="checkbox" name="addons" :id="'addons_' + item.id" @click="addCheckbox($event)" :value="item.id"> <label :for="'addons_' + item.id">{{item.name}}</label>
+                    <input type="checkbox" :disabled="isDisabledProduct(item.id)" name="addons" :id="'addons_' + item.id" @click="addCheckbox($event)" :value="item.id" :checked="inBasket(item.id)"> <label :for="'addons_' + item.id">{{item.name}}</label>
                     </span>
                     <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
                 </div>
@@ -48,9 +48,9 @@
         <h3>6. <span v-translate>Choose optional services</span></h3>
         <section id="services">
             <div class="table">
-                <div v-for="item in getServices">
+                <div v-for="item in getServices" :class="{ disabled: isDisabledProduct(item.id) }">
                     <span>
-                    <input type="checkbox" name="addons" :id="'service_' + item.id" @click="addCheckbox($event)" :value="item.id"> <label :for="'service_' + item.id">{{item.name}}</label>
+                    <input type="checkbox"  :disabled="isDisabledProduct(item.id)" name="addons" :id="'service_' + item.id" @click="addCheckbox($event)" :value="item.id"> <label :for="'service_' + item.id">{{item.name}}</label>
                     </span>
                     <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
 
@@ -60,12 +60,16 @@
 
         <hr>
         <div  class="shop-footer">
-            <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="checkout" v-translate>Check out</a>
-            <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="trial" v-translate>Next</a>
 
-            <div class="subtotal">
-                <h3 v-translate>Subtotal (USD)</h3>
-                <div class="price"><sup>$</sup>100</div>
+            <div v-if="choice.price == PRICES.TRIAL">
+              <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="trial" v-translate>Next</a>
+            </div>
+            <div v-else>
+                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="checkout" v-translate>Check out</a>
+                <div class="subtotal">
+                    <h3 v-translate>Subtotal (USD)</h3>
+                    <div class="price"><sup>$</sup>{{sum}}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -77,6 +81,14 @@
     const ajaxform = require('../mixins/ajax-form.vue');
     import { mapState, mapMutations, mapGetters  } from 'vuex';
 
+    const ORDER_STATES = {"NEW_ORDER": "new", "NEW_LICENSE": "new-license"};
+
+    import {newOrder} from "../classes/shop/action/newOrder";
+    import {newLicense} from "../classes/shop/action/newLicense";
+    import {renewLicense} from "../classes/shop/action/renewLicense";
+    import {upgradeLicense} from "../classes/shop/action/upgradeLicense";
+    import {OS,PERIOD,PRODUCTS,PRICES, COUNT_USERS} from "../classes/shop/action/const";
+
     export default {
         name: 'order',
         props: {
@@ -84,15 +96,40 @@
             server: {type: String, default: ""},
             license: {type: String, default: ""}
         },
+        data(){
+            return {
+                choice: {
+                    "period": PERIOD.ANNUAL,
+                    "os": OS.WINDOWS,
+                    "price": PRICES.ANNUAL,
+                    "server": PRODUCTS.STANDALONE,
+                    "users": COUNT_USERS.MIN_USERS_STANDALONE,
+                    "minUsers": COUNT_USERS.MIN_USERS_STANDALONE,
+                    "maxUsers": COUNT_USERS.MAX_USERS_STANDALONE
+                },
+                forbidden: {
+                    "period": [],
+                    "os": [],
+                    "products": [],
+                },
+                basket: new Map(),
+                state: null,
+                PRICES: PRICES,
+                sum: ""
+            }
+        },
         components: {
             "user-menu": userMenu
         },
         computed: {
-            ...mapState("shop",["products", "choice"]),
-            ... mapGetters("shop",["getServers", "getServices", "getAddons", "getOs", "getPeriods"])
+            ...mapState("shop",["products","productsMap"]),
+            ...mapState("servers",["serversMap"]),
+            ...mapGetters("shop",["getServers", "getServices", "getAddons", "getOs", "getPeriods"])
         },
         created()
         {
+            this.state = this.factoryState();
+
             if(this.products.length == 0)
             {
                 this.uploadInfo("/shop/get-product-list", {}, (data) => {
@@ -112,19 +149,74 @@
                     }
 
                     this.setCurrency(data.currency);
-
+                    this.state.setDefaultChoice(this);
+                    this.state.setForbidden(this);
                 });
+            } else {
+                this.state.setDefaultChoice(this);
+                this.state.setForbidden(this);
             }
+
+
+
         },
         mixins: [ajaxform],
-        data(){
-            return {
-
-            }
-        },
 
         methods: {
-            ...mapMutations("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setRadio", "setPriceType", "addToBasket", "removeFromBasket"]),
+            ...mapMutations("shop", ["addProduct", "addPeriod", "addOs", "setCurrency"]),
+            factoryState: function()
+            {
+                if(this.makeDeal == ORDER_STATES.NEW_ORDER)
+                {
+                    return new newOrder();
+                } else
+                if(this.makeDeal == ORDER_STATES.NEW_LICENSE)
+                {
+                    return new newLicense(this.serversMap.get(this.server));
+                }
+            },
+            setServer: function(server)
+            {
+                this.choice.server = server;
+
+                let deleteServer = (server == PRODUCTS.CLUSTER)? PRODUCTS.STANDALONE : PRODUCTS.CLUSTER;
+                this.removeFromBasket(deleteServer);
+                this.addToBasket(server);
+                this.state.setForLicense(this);
+                this.state.sumOrder(this);
+
+            },
+            setRadio: function (choice)
+            {
+                this.choice[choice.id] = choice.value;
+            },
+            addToBasket: function(key)
+            {
+                this.basket.set(key, this.productsMap.get(key));
+                this.state.sumOrder(this);
+            },
+            removeFromBasket: function(key)
+            {
+                this.basket.delete(key);
+                this.state.sumOrder(this);
+            },
+            inBasket: function(key)
+            {
+                return typeof this.basket.get(key) != "undefined";
+            },
+            isDisabledProduct: function(key)
+            {
+                return  this.forbidden.products.indexOf(key) != -1;
+            },
+            isDisabledOs: function(key)
+            {
+                return  this.forbidden.os.indexOf(key) != -1;
+            },
+            isDisabledPeriod: function(key)
+            {
+                return  this.forbidden.period.indexOf(key) != -1;
+            },
+
             addCheckbox(e)
             {
                 if (e.target.checked)
@@ -134,6 +226,10 @@
                     this.removeFromBasket(e.target.value);
                 }
             },
+            addUser(count){
+              if(this.choice.users + count >= this.choice.minUsers && this.choice.users + count < this.choice.maxUsers)  this.choice.users = this.choice.users + count;
+                this.state.sumOrder(this);
+            },
             checkout()
             {
                 alert("checkout");
@@ -142,12 +238,28 @@
             {
                 alert("trial");
             },
-            setMaintenance(period)
-            {
-                this.setRadio({'id':'period','value': period});
-                this.setPriceType(period);
 
-            }
+            setPeriod(period)
+            {
+              this.choice.period = period;
+              this.choice.price = PRICES[period.toUpperCase()];
+              this.state.setForLicense(this);
+              this.state.sumOrder(this);
+            },
+            checkCountUsers: function()
+            {
+                let users =  Math.abs(this.choice.users);
+                if(users < this.choice.minUsers || isNaN(users) || this.choice.users < 0)
+                {
+                    this.choice.users = this.choice.minUsers;
+                }
+                else
+                {
+                    if(users > this.choice.maxUsers) this.choice.users = this.choice.maxUsers;
+                    this.choice.users = Math.abs(this.choice.users);
+                }
+                this.state.sumOrder(this);
+             }
         },
 
         locales: {
@@ -169,6 +281,10 @@
 
     #user-order-page {
 
+        .disabled {
+            background-color: #f5f5f5;
+            opacity: 0.5;
+        }
         hr {margin: 40px 0;}
 
         > h3:first-child {

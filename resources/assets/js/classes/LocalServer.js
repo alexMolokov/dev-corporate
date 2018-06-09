@@ -4,6 +4,7 @@ export function LocalServer(data)
     this.name = data.name;
     this.release = data.release;
     this.os = data.os;
+    this.edition = data.edition;
 
     this.serverModules = data.serverModules;
     this.added = new Date(data.added);
@@ -12,6 +13,14 @@ export function LocalServer(data)
     this.addLicense = function(license)
     {
         this.licenses.push(license);
+    }
+
+    this.getLicense = function(licenseID)
+    {
+        for(let i=0; i < this.licenses.length; i++)
+        {
+            if(this.licenses[i].id == licenseID) return this.licenses[i];
+        }
     }
 
     this.getAdded = function()

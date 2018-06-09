@@ -3,16 +3,7 @@ const state = {
     periods: [],
     os: [],
     products: [],
-    productsMap: new Map(),
-    choice: {
-      "period": "annual",
-      "price": "baseAnnualPrice",
-      "os": "windows",
-      "server": 1,
-      "addons": [3],
-      "services": []
-    },
-    basket: new Map()
+    productsMap: new Map()
 };
 const getters =  {
     getServers: (state) =>  {
@@ -36,25 +27,6 @@ const getters =  {
 };
 const actions =  {};
 const mutations = {
-    addToBasket: function(state, key)
-    {
-        state.basket.set(key, state.productsMap.get(key));
-    },
-    removeFromBasket: function(state, key)
-    {
-        state.basket.delete(key);
-    },
-    setPriceType: function(state, period)
-    {
-      function ucFirst(s)
-      {
-          return s.charAt(0).toUpperCase() + s.substr(1);
-      }
-      state.choice.price = "base" + ucFirst(period) + "Price";
-    },
-    setRadio: function (state, choice){
-        state.choice[choice.id] = choice.value;
-    },
     addProduct: function(state, product)
     {
         state.products.push(product);
@@ -71,8 +43,7 @@ const mutations = {
     setCurrency: function(state, currency)
     {
         state.currency = currency;
-    },
-
+    }
 }
 
 export default {
