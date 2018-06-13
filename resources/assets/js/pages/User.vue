@@ -104,8 +104,11 @@
                         <div>
                             <div class="server-info-name">{{server.name}}</div>
                             <div class="server-info-id"><span v-translate>Server ID</span><span>{{server.id}}</span> </div>
-                            <div><span v-translate>Certificate</span>  <a href="">Upload request</a></div>
-                            <div><span v-translate>License</span>  <a href="">Upload request</a></div>
+                            <div><span v-translate>Certificate</span>
+                                <span  v-if="!server.hasCertificateRequest"><a href="#" @click.prevent.stop="showFormCertificateRequest = true; currentServer = server.id">Upload request</a></span>
+                                <span v-if="server.hasCertificate"><a href="/user/certificate/download" target="_blank">Download</a></span>
+                            </div>
+                            <div v-if="!server.hasLicenseRequest"><span v-translate>License</span>  <a href="#" @click.prevent.stop="showFormLicenseRequest = true; currentServer = server.id">Upload request</a></div>
                             <div><span v-translate>Release</span>  <span>{{server.release}}</span></div>
                             <div><span v-translate>OS</span>  <span>{{server.os}}</span></div>
                             <div><span v-translate>Server modules</span> <span v-if="server.serverModules.length == 0">no</span><span v-else>{{server.serverModules.join(",")}}</span></div>
@@ -128,7 +131,7 @@
                             <tbody>
                             <tr v-for="(license, i)  in server.licenses">
                                 <td>
-                                    <div class="license-key"><span>{{i+1}} License key:</span> <a href="">download</a></div>
+                                    <div class="license-key"><span>{{i+1}} License key:</span> <a target="_blank" :href="'/servers/licence/download/' + license.id"  v-if="server.hasLicenseRequest">download</a></div>
                                     <div class="license-number"><span>ID:</span> <span>{{license.id}}</span></div>
                                     <div class="license-date"><span>Added:</span> <span>{{license.getAdded()}}</span></div>
                                 </td>
@@ -156,6 +159,8 @@
             <form-change-details  v-if="showFormChangeDetails" @close="showFormChangeDetails = false"></form-change-details>
             <form-change-main-contact  v-if="showFormChangeMainContact" @close="showFormChangeMainContact = false"></form-change-main-contact>
             <form-change-tech-contact  v-if="showFormChangeTechContact" @close="showFormChangeTechContact = false"></form-change-tech-contact>
+            <form-license-request  v-if="showFormLicenseRequest" @close="showFormLicenseRequest = false" :server="currentServer"></form-license-request>
+            <form-certificate-request v-if="showFormCertificateRequest" @close="showFormCertificateRequest = false" :server="currentServer"></form-certificate-request>
         </div>
 
 
@@ -175,17 +180,23 @@
     const formChangeCompanyDetails = () => System.import('../components/formChangeDetails.vue')
     const formChangeTechContact = () => System.import('../components/formChangeTechContact.vue');
     const formChangeMainContact = () => System.import('../components/formChangeMainContact.vue');
+    const formLicenseRequest = () => System.import('../components/formLicenseRequest.vue');
+    const formCertificateRequest = () => System.import('../components/formCertificateRequest.vue');
 
     export default {
         name: 'login',
         data() {
             return {
+                    currentServer: "",
                     showFormChangePassword:false,
                     showFormChangeCompanyName:false,
                     showFormChangeContact:false,
                     showFormChangeDetails:false,
                     showFormChangeTechContact:false,
-                    showFormChangeMainContact:false
+                    showFormChangeMainContact:false,
+                    showFormLicenseRequest:false,
+                    showFormCertificateRequest: false
+
             }
         },
         components: {
@@ -194,7 +205,9 @@
             "form-change-company-name": formChangeCompanyName,
             "form-change-details": formChangeCompanyDetails,
             "form-change-tech-contact":formChangeTechContact,
-            "form-change-main-contact":formChangeMainContact
+            "form-change-main-contact":formChangeMainContact,
+            "form-license-request": formLicenseRequest,
+            "form-certificate-request": formCertificateRequest,
         },
         computed: {
             ...mapState({user: state => state.user}),
@@ -208,7 +221,6 @@
                 this.uploadInfo("/servers/get-servers", {}, (data) => {
                     for(let serverId in data)
                     {
-                        console.log(data[serverId]);
                         let server = new LocalServer(data[serverId]);
 
                         for(let licenseId in data[serverId]["licenses"])
@@ -223,7 +235,7 @@
             }
         },
         methods: {
-            ...mapMutations("servers",["setLoaded", "addServer"])
+            ...mapMutations("servers",["setLoaded", "addServer"]),
         },
         locales: {
             ru: {

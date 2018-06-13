@@ -18,9 +18,39 @@ class CorporateServerService extends Service implements CorporateServerInterface
     const PATH = "/admin/corporates/servers";
     const OPS = [
         "getServers" => "get_servers",
-        "getServersLicenses" => "get_servers_licenses"
+        "getServersLicenses" => "get_servers_licenses",
+        "licenseRequest" => "upload_license_request",
+        "certificateRequest" => "upload_certificate_request"
     ];
 
+    /**
+     * @brief Upload license request
+     *
+     * @param array $data
+     * @return boolean
+     *
+     */
+    public function licenseRequest(array $data)
+    {
+
+        $result = $this->client->sendCommand(self::OPS["licenseRequest"], self::PATH,$data);
+        return $result->status;
+    }
+
+
+    /**
+     * @brief Upload certificate request
+     *
+     * @param array $data
+     * @return boolean
+     *
+     */
+    public function certificateRequest(array $data)
+    {
+
+        $result = $this->client->sendCommand(self::OPS["certificateRequest"], self::PATH,$data);
+        return $result->status;
+    }
 
     /**
      * @brief Get Client Servers  by customerID
@@ -50,6 +80,9 @@ class CorporateServerService extends Service implements CorporateServerInterface
         }
         return $ar;
     }
+
+
+
 
     /**
      * @param array $serverIds

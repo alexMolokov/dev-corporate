@@ -10,6 +10,10 @@ export function LocalServer(data)
     this.added = new Date(data.added);
     this.licenses = [];
 
+    this.hasLicenseRequest = data.hasLicenseRequest || false;
+    this.hasCertificateRequest = data.hasCertificateRequest || false;
+    this.hasCertificate = data.hasCertificate || false;
+
     this.addLicense = function(license)
     {
         this.licenses.push(license);

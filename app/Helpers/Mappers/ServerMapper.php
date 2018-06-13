@@ -31,7 +31,10 @@ class ServerMapper
             "added" => date("Y-m-d",$object->timestamp),
             "os" => self::$OS[$object->os],
             "name" => self::getServerName($object->edition),
-            "edition" => $object->edition
+            "edition" => $object->edition,
+            "hasLicenseRequest" => strlen($object->license_request) > 0,
+            "hasCertificateRequest" => strlen($object->certificate_request) > 0,
+            "hasCertificate" => strlen($object->certificate) > 0
         ]);
     }
 
@@ -51,6 +54,8 @@ class ServerMapper
             "users" => $object->users,
             "validTill" => (is_numeric($object->date_to))? date("Y-m-d", $object->date_to) : "",
             "added" => date("Y-m-d",$object->timestamp),
+            "dateFrom" => (is_numeric($object->date_from))? date("Y-m-d", $object->date_from) : date("Y-m-d"),
+
         ]);
 
         $serverModules = (array) $object->server_modules;

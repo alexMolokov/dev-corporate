@@ -4,6 +4,7 @@ export function License(data)
     this.status = data.status;
     this.users = data.users;
     this.validTill;
+    this.validFrom = new Date(data.validFrom);
     this.valid = data.valid;
     this.serverModules = data.serverModules
 

@@ -20,6 +20,7 @@ export function newOrder()
         }
         context.addToBasket(PRODUCTS.STANDALONE)
         context.addToBasket(PRODUCTS.SIP)
+        context.discount = 0;
     }
 
     /**

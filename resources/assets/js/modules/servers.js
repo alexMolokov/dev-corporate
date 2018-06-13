@@ -15,6 +15,17 @@ const getters =  {
 
 const actions =  {};
 const mutations =  {
+    updateServer: (state, server) => {
+        state.serversMap.set(server.id, server);
+        for(let i = 0; i< state.servers.length; i++)
+        {
+            if(state.servers[i].id = server.id)
+            {
+                state.servers[i] = server;
+                return;
+            }
+        }
+    },
     addServer: (state, server) => {
            state.servers.push(server);
            state.serversMap.set(server.id, server);

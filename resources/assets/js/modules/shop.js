@@ -1,5 +1,6 @@
 const state = {
     currency: undefined,
+    discount: 0,
     periods: [],
     os: [],
     products: [],
@@ -21,8 +22,8 @@ const getters =  {
     getPeriods: (state) =>  {
         return state.periods;
     },
-    getSubtotal: (state) => {
-
+    getRenewDiscount: (state) => {
+        return state.discount;
     }
 };
 const actions =  {};
@@ -43,7 +44,12 @@ const mutations = {
     setCurrency: function(state, currency)
     {
         state.currency = currency;
+    },
+    setDiscount: function(state, discount)
+    {
+        state.discount = discount;
     }
+
 }
 
 export default {

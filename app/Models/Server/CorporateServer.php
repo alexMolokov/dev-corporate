@@ -13,7 +13,11 @@ class CorporateServer
     protected $edition;
     protected $licenses = [];
 
-    protected $fillable = ['id','release', 'name','added', "os", "edition"];
+    protected $hasLicenseRequest = false;
+    protected $hasCertificateRequest = false;
+    protected $hasCertificate = false;
+
+    protected $fillable = ['id','release', 'name','added', "os", "edition", "hasLicenseRequest", "hasCertificateRequest", "hasCertificate" ];
 
     public function __construct(array $data)
     {
@@ -127,4 +131,29 @@ class CorporateServer
     {
         return $this->edition;
     }
+
+    /**
+     * @return bool
+     */
+    public function isHasLicenseRequest()
+    {
+        return $this->hasLicenseRequest;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasCertificateRequest()
+    {
+        return $this->hasCertificateRequest;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasCertificate()
+    {
+        return $this->hasCertificate;
+    }
+
 }

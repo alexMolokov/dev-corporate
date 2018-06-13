@@ -65,9 +65,10 @@
               <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="trial" v-translate>Next</a>
             </div>
             <div v-else>
-                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="checkout" v-translate>Check out</a>
+                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="checkout" v-translate v-if="sum > 0">Check out</a>
                 <div class="subtotal">
                     <h3 v-translate>Subtotal (USD)</h3>
+                    <h3 v-if="discount > 0"><span v-translate>Discount: {{discount*100}}%</span></h3>
                     <div class="price"><sup>$</sup>{{sum}}</div>
                 </div>
             </div>
@@ -81,7 +82,7 @@
     const ajaxform = require('../mixins/ajax-form.vue');
     import { mapState, mapMutations, mapGetters  } from 'vuex';
 
-    const ORDER_STATES = {"NEW_ORDER": "new", "NEW_LICENSE": "new-license"};
+    const ORDER_STATES = {"NEW_ORDER": "new", "NEW_LICENSE": "new-license",  "RENEW_LICENSE": "renew", "UPGRADE_LICENSE": "upgrade"};
 
     import {newOrder} from "../classes/shop/action/newOrder";
     import {newLicense} from "../classes/shop/action/newLicense";
@@ -115,7 +116,8 @@
                 basket: new Map(),
                 state: null,
                 PRICES: PRICES,
-                sum: ""
+                sum: "",
+                discount: 0
             }
         },
         components: {
@@ -124,7 +126,7 @@
         computed: {
             ...mapState("shop",["products","productsMap"]),
             ...mapState("servers",["serversMap"]),
-            ...mapGetters("shop",["getServers", "getServices", "getAddons", "getOs", "getPeriods"])
+            ...mapGetters("shop",["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount"]),
         },
         created()
         {
@@ -149,10 +151,14 @@
                     }
 
                     this.setCurrency(data.currency);
+                    this.setDiscount(data.renewDiscount);
                     this.state.setDefaultChoice(this);
                     this.state.setForbidden(this);
+                    this.state.sumOrder(this);
                 });
-            } else {
+            }
+            else
+            {
                 this.state.setDefaultChoice(this);
                 this.state.setForbidden(this);
             }
@@ -163,16 +169,26 @@
         mixins: [ajaxform],
 
         methods: {
-            ...mapMutations("shop", ["addProduct", "addPeriod", "addOs", "setCurrency"]),
+            ...mapMutations("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount"]),
             factoryState: function()
             {
                 if(this.makeDeal == ORDER_STATES.NEW_ORDER)
                 {
                     return new newOrder();
-                } else
+                }
+                else
                 if(this.makeDeal == ORDER_STATES.NEW_LICENSE)
                 {
                     return new newLicense(this.serversMap.get(this.server));
+                }
+                else
+                if(this.makeDeal == ORDER_STATES.RENEW_LICENSE)
+                {
+                    return new renewLicense(this.serversMap.get(this.server), this.license);
+                }
+                if(this.makeDeal == ORDER_STATES.UPGRADE_LICENSE)
+                {
+                    return new upgradeLicense(this.serversMap.get(this.server), this.license);
                 }
             },
             setServer: function(server)

@@ -1,12 +1,12 @@
 webpackJsonp([1],{
 
-/***/ 243:
+/***/ 244:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(244);
+var content = __webpack_require__(245);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 244:
+/***/ 245:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -42,19 +42,20 @@ exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-si
 
 /***/ }),
 
-/***/ 245:
+/***/ 246:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__ = __webpack_require__(92);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -138,7 +139,7 @@ var userMenu = __webpack_require__(72);
 var ajaxform = __webpack_require__(14);
 
 
-var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license" };
+var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license", "RENEW_LICENSE": "renew", "UPGRADE_LICENSE": "upgrade" };
 
 
 
@@ -172,14 +173,15 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license" };
             basket: new Map(),
             state: null,
             PRICES: __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["e" /* PRICES */],
-            sum: ""
+            sum: "",
+            discount: 0
         };
     },
 
     components: {
         "user-menu": userMenu
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("shop", ["products", "productsMap"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("servers", ["serversMap"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("shop", ["getServers", "getServices", "getAddons", "getOs", "getPeriods"])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("shop", ["products", "productsMap"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("servers", ["serversMap"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("shop", ["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount"])),
     created: function created() {
         var _this = this;
 
@@ -200,8 +202,10 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license" };
                 }
 
                 _this.setCurrency(data.currency);
+                _this.setDiscount(data.renewDiscount);
                 _this.state.setDefaultChoice(_this);
                 _this.state.setForbidden(_this);
+                _this.state.sumOrder(_this);
             });
         } else {
             this.state.setDefaultChoice(this);
@@ -211,12 +215,17 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license" };
 
     mixins: [ajaxform],
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("shop", ["addProduct", "addPeriod", "addOs", "setCurrency"]), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount"]), {
         factoryState: function factoryState() {
             if (this.makeDeal == ORDER_STATES.NEW_ORDER) {
                 return new __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__["a" /* newOrder */]();
             } else if (this.makeDeal == ORDER_STATES.NEW_LICENSE) {
                 return new __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__["a" /* newLicense */](this.serversMap.get(this.server));
+            } else if (this.makeDeal == ORDER_STATES.RENEW_LICENSE) {
+                return new __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__["a" /* renewLicense */](this.serversMap.get(this.server), this.license);
+            }
+            if (this.makeDeal == ORDER_STATES.UPGRADE_LICENSE) {
+                return new __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__["a" /* upgradeLicense */](this.serversMap.get(this.server), this.license);
             }
         },
         setServer: function setServer(server) {
@@ -296,12 +305,12 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license" };
 
 /***/ }),
 
-/***/ 246:
+/***/ 247:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = newOrder;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(92);
 
 
 function newOrder() {
@@ -322,6 +331,7 @@ function newOrder() {
         };
         context.addToBasket(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE);
         context.addToBasket(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].SIP);
+        context.discount = 0;
     };
 
     /**
@@ -411,62 +421,315 @@ function newOrder() {
 
 /***/ }),
 
-/***/ 247:
+/***/ 248:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return OS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PERIOD; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EDITIONS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return PRODUCTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return PRICES; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return COUNT_USERS; });
-var OS = {
-    "WINDOWS": "windows",
-    "LINUX": "linux"
-};
-var PERIOD = {
-    "TRIAL": "trial",
-    "ANNUAL": "annual",
-    "LIFETIME": "lifetime"
-};
-var EDITIONS = {
-    "STANDALONE": "standalone",
-    "CLUSTER": "cluster"
-};
-var PRODUCTS = {
-    "STANDALONE": "1",
-    "CLUSTER": "2",
-    "SIP": "3",
-    "HTTP": "4",
-    "MEDIA_WORKER": "5",
-    "CLASTER_WORKER": "6",
-    "INSTALL_STANDALONE": "7",
-    "INSTALL_CLASTER": "8",
-    "SOFTWARE_UPDATES": "9",
-    "RECOVER_STANDALONE": "10",
-    "RECOVER_CLASTER": "11",
-    "INSTALL_ADDONS": "12"
-};
+/* harmony export (immutable) */ __webpack_exports__["a"] = newLicense;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(92);
 
-var PRICES = {
-    "ANNUAL": "baseAnnualPrice",
-    "LIFETIME": "baseLifetimePrice",
-    "TRIAL": "baseTrialPrice"
-};
 
-var COUNT_USERS = {
-    "MIN_USERS_STANDALONE": 10,
-    "MAX_USERS_STANDALONE": 5000,
-    "MAX_USERS_CLUSTER": 5000,
-    "MIN_USERS_CLUSTER": 30,
-    "MAX_USERS_TRIAL": 10,
-    "MIN_USERS_TRIAL": 10
-};
+function newLicense(localServer) {
+    var addSumServer = true;
+    for (var i = 0; i < localServer.licenses.length; i++) {
+        var license = localServer.licenses[i];
+        var date = new Date(license.validTill);
+        var dateFrom = new Date(license.validFrom);
+
+        console.log(license);
+
+        console.log("date =  " + date);
+        console.log("dateFrom =  " + dateFrom);
+
+        var days = Math.ceil((date.getTime() - dateFrom.getTime()) / (1000 * 3600 * 24));
+
+        if (days > 364) addSumServer = false;
+    }
+
+    this.setDefaultChoice = function (context) {
+        var product = localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER;
+        context.choice = {
+            "period": __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL,
+            "os": localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX,
+            "server": product,
+            "price": __WEBPACK_IMPORTED_MODULE_0__const__["e" /* PRICES */].ANNUAL,
+            "users": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER,
+            "minUsers": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER,
+            "maxUsers": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER
+        };
+        context.addToBasket(product);
+        context.discount = 0;
+    };
+
+    /**
+     *
+     * @param page/Shop context
+     */
+    this.setForbidden = function (context) {
+        context.forbidden = {
+            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
+            "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
+            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
+        };
+    };
+
+    this.setForLicense = function (context) {
+        if (context.choice.server == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE) {
+            context.choice.minUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE;
+            context.choice.maxUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE;
+            if (context.choice.users < __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE) context.choice.users = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE;
+        } else {
+            context.choice.minUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER;
+            context.choice.maxUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER;
+            if (context.choice.users < __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER) context.choice.users = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER;
+        }
+    };
+
+    this.sumOrder = function (context) {
+        var sum = 0;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = context.basket.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var product = _step.value;
+
+                if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER && addSumServer) {
+                    var values = product[context.choice.price + product.postfixForLicense];
+                    var price = 1;
+                    for (var _i in values) {
+                        if (context.choice.users <= Math.abs(_i)) {
+                            price = Math.abs(values[_i]);
+                            break;
+                        }
+                    }
+                    sum += Math.abs(context.choice.users) * price;
+                } else {
+                    sum += product[context.choice.price];
+                }
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        context.sum = sum;
+    };
+}
 
 /***/ }),
 
-/***/ 248:
+/***/ 249:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = renewLicense;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(92);
+
+
+function renewLicense(localServer, licenseID) {
+    var license = localServer.getLicense(licenseID);
+
+    this.setDefaultChoice = function (context) {
+        var product = localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER;
+        var minUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE < license.users ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE : license.users;
+        if (product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER) {
+            minUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER < license.users ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE : license.users;
+        }
+
+        context.choice = {
+            "period": __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL,
+            "os": localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX,
+            "server": product,
+            "price": __WEBPACK_IMPORTED_MODULE_0__const__["e" /* PRICES */].ANNUAL,
+            "users": license.users,
+            "minUsers": minUsers,
+            "maxUsers": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER
+        };
+        context.addToBasket(product);
+
+        for (var i = 0; i < license.serverModules.length; i++) {
+            context.addToBasket(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */][license.serverModules[i]]);
+        }
+
+        if (license.valid) context.discount = context.getRenewDiscount;
+    };
+
+    this.setForbidden = function (context) {
+        context.forbidden = {
+            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
+            "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
+            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
+        };
+    };
+
+    this.setForLicense = function (context) {};
+
+    this.sumOrder = function (context) {
+        var sum = 0;
+        console.log(context);
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = context.basket.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var product = _step.value;
+
+                if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER) {
+                    var values = product[context.choice.price + product.postfixForLicense];
+                    var price = 1;
+                    for (var i in values) {
+                        if (context.choice.users <= Math.abs(i)) {
+                            price = Math.abs(values[i]);
+                            break;
+                        }
+                    }
+
+                    sum += Math.abs(context.choice.users) * price;
+                } else {
+                    sum += product[context.choice.price];
+                }
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        context.sum = sum * (1 - context.discount);
+    };
+}
+
+/***/ }),
+
+/***/ 250:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = upgradeLicense;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(92);
+
+
+function upgradeLicense(localServer, licenseID) {
+    var license = localServer.getLicense(licenseID);
+
+    var period = __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL;
+    var price = __WEBPACK_IMPORTED_MODULE_0__const__["e" /* PRICES */].ANNUAL;
+    var days = 1;
+
+    if (typeof license.validTill == 'undefined') {
+        period = __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].LIFETIME;
+        price = __WEBPACK_IMPORTED_MODULE_0__const__["e" /* PRICES */].LIFETIME;
+    } else {
+        var date = new Date(license.validTill);
+        var dateNow = new Date();
+        days = Math.ceil((date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24));
+        if (days < 0) days = 1;
+    }
+
+    this.setDefaultChoice = function (context) {
+        var product = localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER;
+
+        context.choice = {
+            "period": period,
+            "os": localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX,
+            "server": product,
+            "price": price,
+            "users": license.users,
+            "minUsers": license.users,
+            "maxUsers": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER
+        };
+
+        context.addToBasket(product);
+        context.discount = 0;
+    };
+
+    this.setForbidden = function (context) {
+        var forbidden = {
+            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL, period == __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].LIFETIME ? __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL : __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].LIFETIME],
+            "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
+            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
+        };
+
+        for (var i = 0; i < license.serverModules.length; i++) {
+            forbidden.products.push(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */][license.serverModules[i]]);
+        }
+
+        context.forbidden = forbidden;
+    };
+
+    this.setForLicense = function (context) {};
+
+    this.sumOrder = function (context) {
+        var sum = 0;
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = context.basket.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var product = _step.value;
+
+                if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER) {
+                    var values = product[context.choice.price + product.postfixForLicense];
+                    var _price = 1;
+                    for (var i in values) {
+                        if (context.choice.users <= Math.abs(i)) {
+                            _price = Math.abs(values[i]);
+                            break;
+                        }
+                    }
+
+                    sum += Math.round(Math.abs(context.choice.users - license.users) * _price / days, 0);
+                } else {
+                    sum += product[context.choice.price];
+                }
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        context.sum = sum;
+    };
+}
+
+/***/ }),
+
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -795,22 +1058,24 @@ var render = function() {
             )
           ])
         : _c("div", [
-            _c(
-              "a",
-              {
-                directives: [{ name: "translate", rawName: "v-translate" }],
-                staticClass: "btn btn-middle btn-blue",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    $event.stopPropagation()
-                    return _vm.checkout($event)
-                  }
-                }
-              },
-              [_vm._v("Check out")]
-            ),
+            _vm.sum > 0
+              ? _c(
+                  "a",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    staticClass: "btn btn-middle btn-blue",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        return _vm.checkout($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Check out")]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c("div", { staticClass: "subtotal" }, [
               _c(
@@ -818,6 +1083,20 @@ var render = function() {
                 { directives: [{ name: "translate", rawName: "v-translate" }] },
                 [_vm._v("Subtotal (USD)")]
               ),
+              _vm._v(" "),
+              _vm.discount > 0
+                ? _c("h3", [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ]
+                      },
+                      [_vm._v("Discount: " + _vm._s(_vm.discount * 100) + "%")]
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "price" }, [
                 _c("sup", [_vm._v("$")]),
@@ -840,184 +1119,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 255:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = newLicense;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(247);
-
-
-function newLicense(localServer) {
-
-    this.setDefaultChoice = function (context) {
-        var product = localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER;
-        context.choice = {
-            "period": __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL,
-            "os": localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX,
-            "server": product,
-            "price": __WEBPACK_IMPORTED_MODULE_0__const__["e" /* PRICES */].ANNUAL,
-            "users": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER,
-            "minUsers": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER,
-            "maxUsers": product == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER
-        };
-        context.addToBasket(product);
-    };
-
-    /**
-     *
-     * @param page/Shop context
-     */
-    this.setForbidden = function (context) {
-        context.forbidden = {
-            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
-            "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
-            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
-        };
-    };
-
-    this.setForLicense = function (context) {
-        if (context.choice.server == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE) {
-            context.choice.minUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE;
-            context.choice.maxUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE;
-            if (context.choice.users < __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE) context.choice.users = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE;
-        } else {
-            context.choice.minUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER;
-            context.choice.maxUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER;
-            if (context.choice.users < __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER) context.choice.users = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER;
-        }
-    };
-
-    this.sumOrder = function (context) {
-        var sum = 0;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-            for (var _iterator = context.basket.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var product = _step.value;
-
-                if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER) {
-                    var values = product[context.choice.price + product.postfixForLicense];
-                    var price = 1;
-                    for (var i in values) {
-                        if (context.choice.users <= Math.abs(i)) {
-                            price = Math.abs(values[i]);
-                            break;
-                        }
-                    }
-                    sum += Math.abs(context.choice.users) * price;
-                } else {
-                    sum += product[context.choice.price];
-                }
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-
-        context.sum = sum;
-    };
-}
-
-/***/ }),
-
-/***/ 256:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export renewLicense */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(247);
-
-
-function renewLicense(localServer, licenseID) {
-    var license = localServer.getLicense(licenseID);
-
-    this.getDefaultChoice = function () {
-        return {
-            "period": __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL,
-            "services": [],
-            "server": localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER,
-            "os": localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS,
-            "minUsers": 5,
-            "users": license.users,
-            "addons": [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].SIP]
-        };
-    };
-
-    this.getForbidden = function () {
-        return {
-            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
-            "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX],
-            "server": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE],
-            "addons": [],
-            "services": []
-        };
-    };
-}
-
-/***/ }),
-
-/***/ 257:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export upgradeLicense */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(247);
-
-
-function upgradeLicense(localServer, licenseID) {
-    var license = localServer.getLicense(licenseID);
-
-    this.getDefaultChoice = function () {
-        return {
-            "period": __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL,
-            "services": [],
-            "server": localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER,
-            "os": localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS,
-            "minUsers": license.users,
-            "users": license.users,
-            "addons": [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].SIP]
-        };
-    };
-
-    this.getForbidden = function () {
-        return {
-            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
-            "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX],
-            "server": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE],
-            "addons": [],
-            "services": []
-        };
-    };
-}
-
-/***/ }),
-
 /***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(243)
+  __webpack_require__(244)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(245)
+var __vue_script__ = __webpack_require__(246)
 /* template */
-var __vue_template__ = __webpack_require__(248)
+var __vue_template__ = __webpack_require__(251)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1243,6 +1357,61 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-cdcb15be", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return OS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PERIOD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EDITIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return PRICES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return COUNT_USERS; });
+var OS = {
+    "WINDOWS": "windows",
+    "LINUX": "linux"
+};
+var PERIOD = {
+    "TRIAL": "trial",
+    "ANNUAL": "annual",
+    "LIFETIME": "lifetime"
+};
+var EDITIONS = {
+    "STANDALONE": "standalone",
+    "CLUSTER": "cluster"
+};
+var PRODUCTS = {
+    "STANDALONE": "1",
+    "CLUSTER": "2",
+    "SIP": "3",
+    "HTTP": "4",
+    "MEDIA_WORKER": "5",
+    "CLASTER_WORKER": "6",
+    "INSTALL_STANDALONE": "7",
+    "INSTALL_CLASTER": "8",
+    "SOFTWARE_UPDATES": "9",
+    "RECOVER_STANDALONE": "10",
+    "RECOVER_CLASTER": "11",
+    "INSTALL_ADDONS": "12"
+};
+
+var PRICES = {
+    "ANNUAL": "baseAnnualPrice",
+    "LIFETIME": "baseLifetimePrice",
+    "TRIAL": "baseTrialPrice"
+};
+
+var COUNT_USERS = {
+    "MIN_USERS_STANDALONE": 10,
+    "MAX_USERS_STANDALONE": 5000,
+    "MAX_USERS_CLUSTER": 5000,
+    "MIN_USERS_CLUSTER": 30,
+    "MAX_USERS_TRIAL": 10,
+    "MIN_USERS_TRIAL": 10
+};
 
 /***/ })
 

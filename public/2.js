@@ -1,12 +1,12 @@
 webpackJsonp([2],{
 
-/***/ 134:
+/***/ 135:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(135);
+var content = __webpack_require__(136);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 135:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -42,16 +42,21 @@ exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-ch
 
 /***/ }),
 
-/***/ 136:
+/***/ 137:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(139);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -225,31 +230,41 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var ajaxform = __webpack_require__(14);
 var userMenu = __webpack_require__(72);
 var formChangePassword = function formChangePassword() {
-    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 139));
+    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 140));
 };
 var formChangeCompanyName = function formChangeCompanyName() {
-    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 142));
+    return __webpack_require__.e/* import() */(25).then(__webpack_require__.bind(null, 143));
 };
 var formChangeCompanyDetails = function formChangeCompanyDetails() {
-    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 145));
+    return __webpack_require__.e/* import() */(24).then(__webpack_require__.bind(null, 146));
 };
 var formChangeTechContact = function formChangeTechContact() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 148));
+    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 149));
 };
 var formChangeMainContact = function formChangeMainContact() {
-    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 151));
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 152));
+};
+var formLicenseRequest = function formLicenseRequest() {
+    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 258));
+};
+var formCertificateRequest = function formCertificateRequest() {
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 264));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'login',
     data: function data() {
         return {
+            currentServer: "",
             showFormChangePassword: false,
             showFormChangeCompanyName: false,
             showFormChangeContact: false,
             showFormChangeDetails: false,
             showFormChangeTechContact: false,
-            showFormChangeMainContact: false
+            showFormChangeMainContact: false,
+            showFormLicenseRequest: false,
+            showFormCertificateRequest: false
+
         };
     },
 
@@ -259,7 +274,9 @@ var formChangeMainContact = function formChangeMainContact() {
         "form-change-company-name": formChangeCompanyName,
         "form-change-details": formChangeCompanyDetails,
         "form-change-tech-contact": formChangeTechContact,
-        "form-change-main-contact": formChangeMainContact
+        "form-change-main-contact": formChangeMainContact,
+        "form-license-request": formLicenseRequest,
+        "form-certificate-request": formCertificateRequest
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({ user: function user(state) {
             return state.user;
@@ -271,7 +288,6 @@ var formChangeMainContact = function formChangeMainContact() {
         if (!this.isLoaded) {
             this.uploadInfo("/servers/get-servers", {}, function (data) {
                 for (var serverId in data) {
-                    console.log(data[serverId]);
                     var server = new __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__["a" /* LocalServer */](data[serverId]);
 
                     for (var licenseId in data[serverId]["licenses"]) {
@@ -311,7 +327,7 @@ var formChangeMainContact = function formChangeMainContact() {
 
 /***/ }),
 
-/***/ 137:
+/***/ 138:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -326,6 +342,10 @@ function LocalServer(data) {
     this.serverModules = data.serverModules;
     this.added = new Date(data.added);
     this.licenses = [];
+
+    this.hasLicenseRequest = data.hasLicenseRequest || false;
+    this.hasCertificateRequest = data.hasCertificateRequest || false;
+    this.hasCertificate = data.hasCertificate || false;
 
     this.addLicense = function (license) {
         this.licenses.push(license);
@@ -344,7 +364,7 @@ function LocalServer(data) {
 
 /***/ }),
 
-/***/ 138:
+/***/ 139:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -354,6 +374,7 @@ function License(data) {
     this.status = data.status;
     this.users = data.users;
     this.validTill;
+    this.validFrom = new Date(data.validFrom);
     this.valid = data.valid;
     this.serverModules = data.serverModules;
 
@@ -376,7 +397,7 @@ function License(data) {
 
 /***/ }),
 
-/***/ 154:
+/***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -843,26 +864,74 @@ var render = function() {
                             [_vm._v("Certificate")]
                           ),
                           _vm._v(" "),
-                          _c("a", { attrs: { href: "" } }, [
-                            _vm._v("Upload request")
-                          ])
+                          !server.hasCertificateRequest
+                            ? _c("span", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        $event.stopPropagation()
+                                        _vm.showFormCertificateRequest = true
+                                        _vm.currentServer = server.id
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Upload request")]
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          server.hasCertificate
+                            ? _c("span", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href: "/user/certificate/download",
+                                      target: "_blank"
+                                    }
+                                  },
+                                  [_vm._v("Download")]
+                                )
+                              ])
+                            : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                { name: "translate", rawName: "v-translate" }
-                              ]
-                            },
-                            [_vm._v("License")]
-                          ),
-                          _vm._v(" "),
-                          _c("a", { attrs: { href: "" } }, [
-                            _vm._v("Upload request")
-                          ])
-                        ]),
+                        !server.hasLicenseRequest
+                          ? _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  directives: [
+                                    {
+                                      name: "translate",
+                                      rawName: "v-translate"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("License")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      $event.stopPropagation()
+                                      _vm.showFormLicenseRequest = true
+                                      _vm.currentServer = server.id
+                                    }
+                                  }
+                                },
+                                [_vm._v("Upload request")]
+                              )
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
                         _c("div", [
                           _c(
@@ -966,9 +1035,20 @@ var render = function() {
                                     _vm._v(_vm._s(i + 1) + " License key:")
                                   ]),
                                   _vm._v(" "),
-                                  _c("a", { attrs: { href: "" } }, [
-                                    _vm._v("download")
-                                  ])
+                                  server.hasLicenseRequest
+                                    ? _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            target: "_blank",
+                                            href:
+                                              "/servers/licence/download/" +
+                                              license.id
+                                          }
+                                        },
+                                        [_vm._v("download")]
+                                      )
+                                    : _vm._e()
                                 ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "license-number" }, [
@@ -1115,6 +1195,28 @@ var render = function() {
                 }
               }
             })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormLicenseRequest
+          ? _c("form-license-request", {
+              attrs: { server: _vm.currentServer },
+              on: {
+                close: function($event) {
+                  _vm.showFormLicenseRequest = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormCertificateRequest
+          ? _c("form-certificate-request", {
+              attrs: { server: _vm.currentServer },
+              on: {
+                close: function($event) {
+                  _vm.showFormCertificateRequest = false
+                }
+              }
+            })
           : _vm._e()
       ],
       1
@@ -1156,13 +1258,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(134)
+  __webpack_require__(135)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(136)
+var __vue_script__ = __webpack_require__(137)
 /* template */
-var __vue_template__ = __webpack_require__(154)
+var __vue_template__ = __webpack_require__(155)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

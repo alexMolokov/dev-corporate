@@ -2,6 +2,24 @@ import {OS,PERIOD,PRODUCTS, PRICES, COUNT_USERS, EDITIONS} from "./const";
 
 export function newLicense(localServer)
 {
+    let addSumServer = true;
+    for(let i = 0; i< localServer.licenses.length; i++)
+    {
+        let license = localServer.licenses[i];
+        let date = new Date(license.validTill);
+        let dateFrom = new Date(license.validFrom);
+
+        console.log(license)
+
+        console.log("date =  " + date);
+        console.log("dateFrom =  " + dateFrom);
+
+
+        let days = Math.ceil((date.getTime() - dateFrom.getTime()) / (1000 * 3600 * 24));
+
+        if(days > 364)  addSumServer = false;
+    }
+
 
     this.setDefaultChoice = function(context)
     {
@@ -15,7 +33,8 @@ export function newLicense(localServer)
             "minUsers": (product == PRODUCTS.STANDALONE)? COUNT_USERS.MIN_USERS_STANDALONE : COUNT_USERS.MIN_USERS_CLUSTER,
             "maxUsers": (product == PRODUCTS.STANDALONE)? COUNT_USERS.MAX_USERS_STANDALONE : COUNT_USERS.MAX_USERS_CLUSTER
         }
-        context.addToBasket(product)
+        context.addToBasket(product);
+        context.discount = 0;
     }
 
     /**
@@ -53,7 +72,7 @@ export function newLicense(localServer)
         let sum = 0;
         for(let product of context.basket.values())
         {
-            if(product.id == PRODUCTS.STANDALONE || product.id == PRODUCTS.CLUSTER)
+            if(product.id == PRODUCTS.STANDALONE || product.id == PRODUCTS.CLUSTER && addSumServer)
             {
                 let values =  product[context.choice.price + product.postfixForLicense];
                 let price = 1;

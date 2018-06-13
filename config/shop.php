@@ -1,6 +1,7 @@
 <?php
     return [
         "currency" => "USD",
+        "renewDiscount" => 0.2, // %
         "os" => [
             "windows" => ["name" => "Windows Server"],
             "linux" => ["name" => "Linux Debian"],

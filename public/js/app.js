@@ -52803,6 +52803,7 @@ var mutations = {
 "use strict";
 var state = {
     currency: undefined,
+    discount: 0,
     periods: [],
     os: [],
     products: [],
@@ -52830,7 +52831,9 @@ var getters = {
     getPeriods: function getPeriods(state) {
         return state.periods;
     },
-    getSubtotal: function getSubtotal(state) {}
+    getRenewDiscount: function getRenewDiscount(state) {
+        return state.discount;
+    }
 };
 var actions = {};
 var mutations = {
@@ -52846,7 +52849,11 @@ var mutations = {
     },
     setCurrency: function setCurrency(state, currency) {
         state.currency = currency;
+    },
+    setDiscount: function setDiscount(state, discount) {
+        state.discount = discount;
     }
+
 };
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -52879,6 +52886,15 @@ var getters = {
 
 var actions = {};
 var mutations = {
+    updateServer: function updateServer(state, server) {
+        state.serversMap.set(server.id, server);
+        for (var i = 0; i < state.servers.length; i++) {
+            if (state.servers[i].id = server.id) {
+                state.servers[i] = server;
+                return;
+            }
+        }
+    },
     addServer: function addServer(state, server) {
         state.servers.push(server);
         state.serversMap.set(server.id, server);

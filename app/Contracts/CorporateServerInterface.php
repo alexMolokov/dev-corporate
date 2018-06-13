@@ -18,4 +18,13 @@ interface  CorporateServerInterface
      */
     public function getServers($customerId);
 
+    /**
+     * @brief Upload license request
+     *
+     * @param array $data
+     * @return boolean
+     *
+     */
+    public function licenseRequest(array $data);
+
 }

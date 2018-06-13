@@ -16,6 +16,7 @@ class CorporateLicense
     protected $status;
     protected $users;
     protected $validTill;
+    protected $dateFrom;
     protected $added;
 
 
@@ -23,7 +24,7 @@ class CorporateLicense
     protected $serverModules = [];
 
 
-    protected $fillable = ['id','status', 'users','added', "validTill", "serverId"];
+    protected $fillable = ['id','status', 'users','added', "validTill", "serverId", "dateFrom"];
 
     public function isValid()
     {
@@ -143,6 +144,14 @@ class CorporateLicense
     public function getAdded()
     {
         return $this->added;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateFrom()
+    {
+        return $this->dateFrom;
     }
 
 
