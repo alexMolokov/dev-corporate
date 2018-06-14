@@ -1042,7 +1042,7 @@ var render = function() {
                                           attrs: {
                                             target: "_blank",
                                             href:
-                                              "/servers/licence/download/" +
+                                              "/servers/license/download/" +
                                               license.id
                                           }
                                         },

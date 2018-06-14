@@ -131,7 +131,7 @@
                             <tbody>
                             <tr v-for="(license, i)  in server.licenses">
                                 <td>
-                                    <div class="license-key"><span>{{i+1}} License key:</span> <a target="_blank" :href="'/servers/licence/download/' + license.id"  v-if="server.hasLicenseRequest">download</a></div>
+                                    <div class="license-key"><span>{{i+1}} License key:</span> <a target="_blank" :href="'/servers/license/download/' + license.id"  v-if="server.hasLicenseRequest">download</a></div>
                                     <div class="license-number"><span>ID:</span> <span>{{license.id}}</span></div>
                                     <div class="license-date"><span>Added:</span> <span>{{license.getAdded()}}</span></div>
                                 </td>
