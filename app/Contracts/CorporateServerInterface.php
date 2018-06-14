@@ -27,4 +27,16 @@ interface  CorporateServerInterface
      */
     public function licenseRequest(array $data);
 
+    /**
+     * @param string $licenseId
+     * @return boolean
+     */
+    public function licenseSign($licenseId);
+
+    /**
+     * @param $customerId
+     * @param $licenseId
+     * @return mixed
+     */
+    public function getLicenseSign($customerId, $licenseId);
 }

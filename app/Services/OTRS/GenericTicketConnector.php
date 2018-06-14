@@ -78,8 +78,6 @@ class GenericTicketConnector extends \SoapClient
     public function TicketUpdate(TicketUpdate $parameters)
     {
       $result =  $this->__soapCall('TicketUpdate', [$this->__setParams($parameters)]);
-      echo $this->__getLastResponse();
-      echo $this->__getLastRequest();
       return $result;
     }
 

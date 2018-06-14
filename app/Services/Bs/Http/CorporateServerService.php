@@ -16,11 +16,15 @@ use App\Helpers\Mappers\ServerMapper;
 class CorporateServerService extends Service implements CorporateServerInterface
 {
     const PATH = "/admin/corporates/servers";
+    const PATH_LICENSE = "/admin/corporates/license";
+
     const OPS = [
         "getServers" => "get_servers",
         "getServersLicenses" => "get_servers_licenses",
         "licenseRequest" => "upload_license_request",
-        "certificateRequest" => "upload_certificate_request"
+        "certificateRequest" => "upload_certificate_request",
+        "signLicense" => "sign_license",
+        "getSignLicense" => "get_sign_license"
     ];
 
     /**
@@ -32,7 +36,6 @@ class CorporateServerService extends Service implements CorporateServerInterface
      */
     public function licenseRequest(array $data)
     {
-
         $result = $this->client->sendCommand(self::OPS["licenseRequest"], self::PATH,$data);
         return $result->status;
     }
@@ -81,8 +84,26 @@ class CorporateServerService extends Service implements CorporateServerInterface
         return $ar;
     }
 
+    /**
+     * @param string $licenseId
+     * @return mixed
+     */
+    public function licenseSign($licenseId)
+    {
+        $result = $this->client->sendCommand(self::OPS["signLicense"], self::PATH_LICENSE,["id" => $licenseId]);
+        return $result;
+    }
 
-
+    /**
+     * @param $customerId
+     * @param $licenseId
+     * @return mixed|object
+     */
+    public function getLicenseSign($customerId, $licenseId)
+    {
+        $result = $this->client->sendCommand(self::OPS["getSignLicense"], self::PATH_LICENSE,["id" => $licenseId, "customer_id" => $customerId]);
+        return $result;
+    }
 
     /**
      * @param array $serverIds
@@ -106,93 +127,4 @@ class CorporateServerService extends Service implements CorporateServerInterface
         return $ar;
     }
 
-    public function getByLogin($login)
-    {
-        $result = $this->client->sendCommand(self::OPS["getByLogin"], self::PATH,["login" => $login]);
-        if($result->status)
-        {
-           return $this->__getCorporateClient($result->response);
-        }
-    }
-
-
-    /**
-     * @brief Add Corporate Client
-     *
-     * @param CorporateClient $corporateClient
-     * @return integer | null
-     */
-    public function add(CorporateClient $corporateClient)
-    {
-        $data = $corporateClient->toArray();
-        $result = $this->client->sendCommand(self::OPS["add"], self::PATH, $corporateClient->toArray());
-
-
-    }
-
-    /**
-     * @brief Save contact info (firstName,lastName,email,jobTitle)
-     * @param $customerId
-     * @param array $info
-     * @return boolean
-     */
-    public function saveContact($customerId, array $info)
-    {
-        $data = [
-            "contact_id" => (is_null($info["id"]))? "": $info["id"],
-            "contact_name" => trim($info["firstName"]) . " " . trim($info["lastName"]),
-            "contact_job_position" => trim($info["jobTitle"]),
-            "contact_email" => $info["email"],
-            "contact_type" =>  trim($info["type"])
-        ];
-
-        $result = $this->client->sendCommand(self::OPS["saveContact"], self::PATH, array_merge(["customer_id" => $customerId], $data));
-        return $result->status;
-    }
-
-    /**
-     * @brief Change company details (address, email, phone)
-     *
-     * @param $customerId
-     * @param array $info
-     * @return boolean
-     */
-    public function changeCompanyDetails($customerId, array $info)
-    {
-        $result = $this->client->sendCommand(self::OPS["changeCompanyDetails"], self::PATH, array_merge(["customer_id" => $customerId], $info));
-        return $result->status;
-    }
-
-    private function __getCorporateClient($response)
-    {
-        $client =  new CorporateClient([
-            "customerId" => $response->customer_id,
-            "name" => $response->name,
-            "title" => $response->title,
-            "login" => $response->login,
-            "password" => $response->password,
-            "phone" => $response->phone,
-            "email" => $response->email,
-            "address" => $response->address
-        ]);
-
-        foreach($response->contacts as $contact)
-        {
-            $arNames = explode(" ", $contact->name);
-            $firstName = (isset($arNames[0]))? $arNames[0] : '';
-            $lastName = (isset($arNames[1]))? $arNames[1] : '';
-
-            $client->addContact(new Contact([
-                'id' => $contact->id,
-                'email' => $contact->email,
-                'jobTitle' => $contact->job_position,
-                'firstName' => $firstName,
-                'lastName' => $lastName,
-                'type' => $contact->type
-
-            ]));
-        }
-
-        return $client;
-    }
 }

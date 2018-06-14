@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\OTRS\OtrsClientService;
+use App\OTRS\Decorators\CacheDecorator;
 use Illuminate\Support\ServiceProvider;
 use Response;
 use Auth;
@@ -44,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton("App\Contracts\TicketsInterface", function($app)
         {
-            return new OtrsClientService(config("otrs"));
+            return new CacheDecorator(new OtrsClientService(config("otrs")));
         });
 
     }

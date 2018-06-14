@@ -19,7 +19,6 @@ class TicketController extends Controller
      * @var TicketsInterface
      */
     private $service;
-
     private $customerField;
 
     public function __construct(Request $request)
@@ -94,9 +93,9 @@ class TicketController extends Controller
 
     public function getList(Request $request)
     {
-         $result = $this->service->search([
+         $result = $this->service->getList([
              $this->customerField => Auth::user()->getCustomerId()
-        ]);
+        ], Auth::user()->getCustomerId());
 
        if($result)
        {
@@ -119,7 +118,7 @@ class TicketController extends Controller
         $result = $this->service->get([
             $this->customerField => Auth::user()->getCustomerId(),
             "ticketNumber" => $ticketNumber
-        ]);
+        ], Auth::user()->getCustomerId());
 
         return response()->success($result);
     }
