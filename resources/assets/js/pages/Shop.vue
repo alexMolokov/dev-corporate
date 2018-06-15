@@ -60,12 +60,11 @@
 
         <hr>
         <div  class="shop-footer">
-
             <div v-if="choice.price == PRICES.TRIAL">
-              <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="trial" v-translate>Next</a>
+              <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="showFormGetTrial = true" v-translate>Next</a>
             </div>
-            <div v-else>
-                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="checkout" v-translate v-if="sum > 0">Check out</a>
+            <div v-if="choice.price != PRICES.TRIAL">
+                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="showFormPayment = true" v-translate v-if="sum > 0">Check out</a>
                 <div class="subtotal">
                     <h3 v-translate>Subtotal (USD)</h3>
                     <h3 v-if="discount > 0"><span v-translate>Discount: {{discount*100}}%</span></h3>
@@ -73,6 +72,8 @@
                 </div>
             </div>
         </div>
+        <form-payment v-if="showFormPayment"  @close="showFormPayment = false"></form-payment>
+        <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false"></form-get-trial>
     </div>
 
 </template>
@@ -90,6 +91,9 @@
     import {upgradeLicense} from "../classes/shop/action/upgradeLicense";
     import {OS,PERIOD,PRODUCTS,PRICES, COUNT_USERS} from "../classes/shop/action/const";
 
+    const formPayment = () => System.import('../components/formPayment.vue');
+    const formGetTrial = () => System.import('../components/formGetTrial.vue');
+
     export default {
         name: 'order',
         props: {
@@ -99,6 +103,8 @@
         },
         data(){
             return {
+                showFormPayment: false,
+                showFormGetTrial: false,
                 choice: {
                     "period": PERIOD.ANNUAL,
                     "os": OS.WINDOWS,
@@ -121,7 +127,9 @@
             }
         },
         components: {
-            "user-menu": userMenu
+            "user-menu": userMenu,
+            "form-payment": formPayment,
+            "form-get-trial": formGetTrial
         },
         computed: {
             ...mapState("shop",["products","productsMap"]),

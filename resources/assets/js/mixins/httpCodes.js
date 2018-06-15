@@ -1,1 +1,1 @@
-export const HTTP_CODES = {"UnprocessableEntity" : 422, 'Unauthenticated': 401}
+export const HTTP_CODES = {"UnprocessableEntity" : 422, 'Unauthenticated': 401, 'FileNotFound': 404}

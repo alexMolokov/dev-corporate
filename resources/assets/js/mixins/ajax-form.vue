@@ -91,6 +91,12 @@ export default {
                 {
                     this.$store.commit("logout");
                 }
+                else if(response.status == HTTP_CODES.FileNotFound)
+                {
+                    this.state = STATES.ERROR;
+                    this.err.common = [];
+                    this.err.common.push('Url not found')
+                }
 
             }).catch(() => {
                     /*this.state = STATES.ERROR;
