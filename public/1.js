@@ -1,12 +1,12 @@
 webpackJsonp([1],{
 
-/***/ 244:
+/***/ 254:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(245);
+var content = __webpack_require__(255);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 245:
+/***/ 255:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)(false);
@@ -42,16 +42,16 @@ exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-si
 
 /***/ }),
 
-/***/ 246:
+/***/ 256:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__ = __webpack_require__(92);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -135,7 +135,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var userMenu = __webpack_require__(72);
+var userMenu = __webpack_require__(80);
 var ajaxform = __webpack_require__(14);
 
 
@@ -305,7 +305,7 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license", "RENEW_LI
 
 /***/ }),
 
-/***/ 247:
+/***/ 257:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -421,7 +421,7 @@ function newOrder() {
 
 /***/ }),
 
-/***/ 248:
+/***/ 258:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -530,7 +530,7 @@ function newLicense(localServer) {
 
 /***/ }),
 
-/***/ 249:
+/***/ 259:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -624,7 +624,7 @@ function renewLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 250:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -729,7 +729,7 @@ function upgradeLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 251:
+/***/ 261:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1125,13 +1125,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(244)
+  __webpack_require__(254)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(246)
+var __vue_script__ = __webpack_require__(256)
 /* template */
-var __vue_template__ = __webpack_require__(251)
+var __vue_template__ = __webpack_require__(261)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1171,15 +1171,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 72:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(73)
+var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = __webpack_require__(74)
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1219,7 +1219,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 73:
+/***/ 81:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1243,6 +1243,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'userMenu',
     props: {},
+    data: function data() {
+        return {
+            checked: false
+        };
+    },
+
     computed: {
         'currentRoute': function currentRoute() {
             return this.$route.name;
@@ -1260,7 +1266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 74:
+/***/ 82:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1268,7 +1274,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "partner-menu" }, [
-    _c("input", { attrs: { id: "partner-menu__checkbox", type: "checkbox" } }),
+    _c("input", {
+      attrs: { id: "partner-menu__checkbox", type: "checkbox" },
+      domProps: { checked: _vm.checked }
+    }),
     _vm._v(" "),
     _c("div", [
       _c("div", { staticClass: "wrapper" }, [

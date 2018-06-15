@@ -34,28 +34,29 @@
                     </div>
                 </a>
                 <ul class="nav navmenu-nav start-menu">
-                    <li><a target="_blank" :href="rootReference + '/features'" v-translate>Features</a></li>
-                    <li><a target="_blank" :href="rootReference + '/pricing'" v-translate>Pricing</a></li>
-                    <li><a target="_blank" :href="rootReference + '/support'" v-translate>Support</a></li>
+                    <li><a @click="closeMenu" target="_blank" :href="rootReference + '/features'" v-translate>Features</a></li>
+                    <li><a @click="closeMenu" target="_blank" :href="rootReference + '/pricing'" v-translate>Pricing</a></li>
+                    <li><a @click="closeMenu" target="_blank" :href="rootReference + '/support'" v-translate>Support</a></li>
                 </ul>
                 <ul class="nav load-button">
                     <li><a target="_blank" :href="rootReference + '/download'" id="a-download"><span id="v-download" v-translate>Download VIPole</span></a></li>
                 </ul>
+                <!--
                 <ul v-if="!isAuth" class="nav navmenu-nav">
                     <li><router-link :to="{name:'registration'}" class="a-sign"><span id="v-sign" v-translate>Sign in</span></router-link></li>
-                </ul>
+                </ul> -->
                 <ul  v-if="isAuth" class="nav navmenu-nav end-menu">
                     <li>
-                        <router-link :to="{name: 'userpage'}" id="sign_up_link"><img src="/images/icons/icon-userpic-white.png" alt >{{getLogin}}</router-link>
+                        <router-link :to="{name: 'userpage'}" @click.native="closeMenu" id="sign_up_link"><img src="/images/icons/icon-userpic-white.png" alt >{{getLogin}}</router-link>
                     </li>
                     <li>
-                        <a href="#" class="logout" @click="userLogout"><img src="/images/icons/icon-sign-out.png" alt=""><span v-translate>Sign out</span></a>
+                        <a href="#"  class="logout" @click="userLogout"><img src="/images/icons/icon-sign-out.png" alt=""><span v-translate>Sign out</span></a>
                     </li>
                 </ul>
             </div>
         </div>
     </header>
-        <div class="close-menu hidden-sm hidden-md hidden-lg"></div>
+        <div id="close-menu" class="close-menu hidden-sm hidden-md hidden-lg"></div>
         <div id="content">
             <div class="container v-page">
                 <div class="internal">
@@ -145,7 +146,7 @@
                         <div class="dropdown v-choose-language">
                             <span v-translate>Language:</span>
                             <a href="#" id="drop-down-lang" class="dropdown-toggle" data-toggle="dropdown"><span class="lang">{{currentLanguageName}}</span></a>
-                            <ul class="dropdown-menu dropdown-menu-left lang-dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-left lang-dropdown-menu" style="bottom:100%; top: auto;">
                                 <li><a href="#" @click="changeLanguage('en')" @click.prevent.stop>English (English)</a></li>
                                 <li><a href="#" @click="changeLanguage('ru')" @click.prevent.stop>Russian (Русский)</a></li>
                             </ul>
@@ -213,14 +214,19 @@ export default {
         {
             this.setLang({lang: lang, translate: this.$translate});
         },
-
+        closeMenu()
+        {
+            document.getElementById('close-menu').click();
+        },
         userLogout()
         {
-            let authLogout = this.logout;
+            //let authLogout = this.logout;
             let url = "/auth/logout";
             this.send(url, {},
-                function() {
-                    authLogout();
+                () => {
+
+                    this.logout(),
+                    this.closeMenu();
                 }
             );
         }

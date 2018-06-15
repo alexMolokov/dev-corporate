@@ -1,6 +1,6 @@
 <template>
     <section class="partner-menu">
-        <input id="partner-menu__checkbox" type="checkbox">
+        <input id="partner-menu__checkbox" type="checkbox" :checked="checked">
         <div>
             <div class="wrapper">
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'userpage' }"><router-link :to="{name: 'userpage'}" v-translate>My Account</router-link></div>
@@ -17,6 +17,12 @@
 export default {
     name: 'userMenu',
     props: {},
+    data(){
+        return {
+            checked: false
+        }
+
+    },
     computed: {
         'currentRoute': function()
         {

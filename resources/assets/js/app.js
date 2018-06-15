@@ -6,6 +6,8 @@
  */
 
 require('./bootstrap');
+require('./vlib.site.min');
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VeeValidate, { Validator } from 'vee-validate';
