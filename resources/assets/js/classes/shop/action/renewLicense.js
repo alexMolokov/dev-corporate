@@ -35,11 +35,30 @@ export function renewLicense(localServer, licenseID)
 
     this.setForbidden = function(context)
     {
-        context.forbidden = {
+        let data = {
             "period": [PERIOD.TRIAL],
             "os": [(localServer.os == OS.WINDOWS)? OS.LINUX : OS.WINDOWS],
-            "products": [(localServer.edition == EDITIONS.STANDALONE)? PRODUCTS.CLUSTER: PRODUCTS.STANDALONE],
+            "products": [],
         }
+        if(localServer.edition == EDITIONS.STANDALONE)
+        {
+            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER];
+            for(let i = 0; i< ar.length; i++)
+            {
+                data.products.push(ar[i]);
+                context.removeFromBasket(ar[i]);
+            }
+        }
+        else if(localServer.edition == EDITIONS.CLUSTER)
+        {
+            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE];
+            for(let i = 0; i< ar.length; i++)
+            {
+                data.products.push(ar[i]);
+                context.removeFromBasket(ar[i]);
+            }
+        }
+        context.forbidden = data;
     }
 
     this.setForLicense = function(context)

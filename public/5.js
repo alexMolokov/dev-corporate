@@ -1,12 +1,12 @@
 webpackJsonp([5],{
 
-/***/ 270:
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(271);
+var content = __webpack_require__(274);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 271:
+/***/ 274:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(false);
@@ -35,18 +35,31 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 272:
+/***/ 275:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_const__ = __webpack_require__(16);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -63,13 +76,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var userMenu = __webpack_require__(82);
+var userMenu = __webpack_require__(83);
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'download',
     components: {
         "user-menu": userMenu
     },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("servers", ["serverTypes"]), {
+        hasCluster: function hasCluster() {
+            return this.serverTypes[__WEBPACK_IMPORTED_MODULE_1__classes_shop_action_const__["b" /* EDITIONS */].CLUSTER];
+        },
+        hasStandalone: function hasStandalone() {
+            return this.serverTypes[__WEBPACK_IMPORTED_MODULE_1__classes_shop_action_const__["b" /* EDITIONS */].STANDALONE];
+        }
+    }),
     data: function data() {
         return {};
     },
@@ -83,22 +106,86 @@ var userMenu = __webpack_require__(82);
 
 /***/ }),
 
-/***/ 273:
+/***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "user-download-page" } }, [
+    _vm.hasStandalone
+      ? _c("div", [
+          _c("h2", [_vm._v("Windows")]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("h2", [_vm._v("Linux")]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.hasCluster
+      ? _c("div", [
+          _c("h2", [_vm._v("Windows")]),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("h2", [_vm._v("Linux")]),
+          _vm._v(" "),
+          _vm._m(3)
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "user-download-page" } }, [
-      _c("div", { attrs: { id: "modal-list" } })
+    return _c("div", [
+      _c(
+        "a",
+        { attrs: { href: "/download/windows/standalone", target: "_blank" } },
+        [_vm._v("VIPole Enterprise, Standalone edition")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "a",
+        { attrs: { href: "/download/linux/standalone", target: "_blank" } },
+        [_vm._v("VIPole Enterprise, Standalone edition")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "a",
+        { attrs: { href: "/download/windows/cluster", target: "_blank" } },
+        [_vm._v("VIPole Enterprise, Cluster edition")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "a",
+        { attrs: { href: "/download/linux/cluster", target: "_blank" } },
+        [_vm._v("VIPole Enterprise, Cluster edition")]
+      )
     ])
   }
 ]
@@ -113,19 +200,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 69:
+/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(270)
+  __webpack_require__(273)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(272)
+var __vue_script__ = __webpack_require__(275)
 /* template */
-var __vue_template__ = __webpack_require__(273)
+var __vue_template__ = __webpack_require__(276)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -165,15 +252,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 82:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -213,7 +300,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 83:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -260,7 +347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 84:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

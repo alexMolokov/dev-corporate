@@ -45,10 +45,21 @@ class HttpClient
     protected $_sslSelfCertPass=null;
 
     protected $additionalHeaders = [];
+    protected $responseHeaders = [];
+
+    public function getResponseHeaders(){
+        return $this->responseHeaders;
+    }
 
     public function useAuth($use){
         $this->authentication = 0;
         if($use == true) $this->authentication = 1;
+    }
+
+    public function setBinaryTransfer($use)
+    {
+        $this->_binaryTransfer = false;
+        if($use) $this->_binaryTransfer = true;
     }
 
     public function setName($name){
@@ -71,6 +82,7 @@ class HttpClient
         $this->_maxRedirects = $maxRedirecs;
         $this->_noBody = $noBody;
         $this->_includeHeader = $includeHeader;
+        $this->_includeHeader = true;
         $this->_binaryTransfer = $binaryTransfer;
 
         $this->_verbose=false;
@@ -125,6 +137,8 @@ class HttpClient
 
     public function createCurl($url = 'nul')
     {
+        $headers = [];
+
         if($url != 'nul'){
             $this->_url = $url;
         }
@@ -201,6 +215,23 @@ class HttpClient
         {
             curl_setopt($s,CURLOPT_HEADER,true);
             curl_setopt($s,CURLINFO_HEADER_OUT, true);
+            curl_setopt($s, CURLOPT_HEADERFUNCTION,
+                function($curl, $header) use (&$headers)
+                {
+                    $len = strlen($header);
+                    $header = explode(':', $header, 2);
+                    if (count($header) < 2) // ignore invalid headers
+                        return $len;
+
+                    $name = trim($header[0]);
+                    if (!array_key_exists($name, $headers))
+                        $headers[$name] = [trim($header[1])];
+                    else
+                        $headers[$name][] = trim($header[1]);
+
+                    return $len;
+                }
+            );
         }
 
         if($this->_noBody)
@@ -230,13 +261,9 @@ class HttpClient
 
         $data = curl_exec($s);
 
-        //var_dump($data);
-        //var_dump(curl_getinfo($s));
-
-
         rewind($verbose);
 
-
+        $this->responseHeaders = $headers;
         $header=substr($data,0,curl_getinfo($s,CURLINFO_HEADER_SIZE));
         $body=substr($data,curl_getinfo($s,CURLINFO_HEADER_SIZE));
         preg_match_all("/Set-Cookie: (.*?)=(.*?);/i",$header,$res);

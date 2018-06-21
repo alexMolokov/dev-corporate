@@ -52,7 +52,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__ = __webpack_require__(16);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -136,7 +136,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var userMenu = __webpack_require__(82);
+var userMenu = __webpack_require__(83);
 var ajaxform = __webpack_require__(15);
 
 
@@ -149,10 +149,10 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license", "RENEW_LI
 
 
 var formPayment = function formPayment() {
-    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, 263));
+    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, 263));
 };
 var formGetTrial = function formGetTrial() {
-    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 276));
+    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 269));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -284,12 +284,6 @@ var formGetTrial = function formGetTrial() {
             if (this.choice.users + count >= this.choice.minUsers && this.choice.users + count < this.choice.maxUsers) this.choice.users = this.choice.users + count;
             this.state.sumOrder(this);
         },
-        checkout: function checkout() {
-            alert("checkout");
-        },
-        trial: function trial() {
-            alert("trial");
-        },
         setPeriod: function setPeriod(period) {
             this.choice.period = period;
             this.choice.price = __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["e" /* PRICES */][period.toUpperCase()];
@@ -322,7 +316,7 @@ var formGetTrial = function formGetTrial() {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = newOrder;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(16);
 
 
 function newOrder() {
@@ -356,6 +350,23 @@ function newOrder() {
             "os": [],
             "products": []
         };
+        setForbiddenForServer(context);
+    };
+
+    var setForbiddenForServer = function setForbiddenForServer(context) {
+        if (context.choice.server == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE) {
+            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER];
+            for (var i = 0; i < ar.length; i++) {
+                context.removeFromBasket(ar[i]);
+                context.forbidden.products.push(ar[i]);
+            }
+        } else {
+            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE];
+            for (var _i = 0; _i < _ar.length; _i++) {
+                context.removeFromBasket(_ar[_i]);
+                context.forbidden.products.push(_ar[_i]);
+            }
+        }
     };
 
     this.setForLicense = function (context) {
@@ -373,6 +384,7 @@ function newOrder() {
             context.choice.maxUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_TRIAL;
             context.choice.users = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_TRIAL;
         } else {
+
             context.forbidden.products = [];
 
             if (context.choice.server == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE) {
@@ -384,6 +396,7 @@ function newOrder() {
                 context.choice.maxUsers = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MAX_USERS_CLUSTER;
                 if (context.choice.users < __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER) context.choice.users = __WEBPACK_IMPORTED_MODULE_0__const__["a" /* COUNT_USERS */].MIN_USERS_CLUSTER;
             }
+            setForbiddenForServer(context);
         }
     };
 
@@ -438,7 +451,7 @@ function newOrder() {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = newLicense;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(16);
 
 
 function newLicense(localServer) {
@@ -478,11 +491,25 @@ function newLicense(localServer) {
      * @param page/Shop context
      */
     this.setForbidden = function (context) {
-        context.forbidden = {
+        var data = {
             "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
             "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
-            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
+            "products": []
         };
+        if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE) {
+            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER];
+            for (var _i = 0; _i < ar.length; _i++) {
+                data.products.push(ar[_i]);
+                context.removeFromBasket(ar[_i]);
+            }
+        } else if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].CLUSTER) {
+            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE];
+            for (var _i2 = 0; _i2 < _ar.length; _i2++) {
+                data.products.push(_ar[_i2]);
+                context.removeFromBasket(_ar[_i2]);
+            }
+        }
+        context.forbidden = data;
     };
 
     this.setForLicense = function (context) {
@@ -510,9 +537,9 @@ function newLicense(localServer) {
                 if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER && addSumServer) {
                     var values = product[context.choice.price + product.postfixForLicense];
                     var price = 1;
-                    for (var _i in values) {
-                        if (context.choice.users <= Math.abs(_i)) {
-                            price = Math.abs(values[_i]);
+                    for (var _i3 in values) {
+                        if (context.choice.users <= Math.abs(_i3)) {
+                            price = Math.abs(values[_i3]);
                             break;
                         }
                     }
@@ -547,7 +574,7 @@ function newLicense(localServer) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = renewLicense;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(16);
 
 
 function renewLicense(localServer, licenseID) {
@@ -579,11 +606,25 @@ function renewLicense(localServer, licenseID) {
     };
 
     this.setForbidden = function (context) {
-        context.forbidden = {
+        var data = {
             "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
             "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
-            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
+            "products": []
         };
+        if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE) {
+            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER];
+            for (var i = 0; i < ar.length; i++) {
+                data.products.push(ar[i]);
+                context.removeFromBasket(ar[i]);
+            }
+        } else if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].CLUSTER) {
+            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE];
+            for (var _i = 0; _i < _ar.length; _i++) {
+                data.products.push(_ar[_i]);
+                context.removeFromBasket(_ar[_i]);
+            }
+        }
+        context.forbidden = data;
     };
 
     this.setForLicense = function (context) {};
@@ -641,7 +682,7 @@ function renewLicense(localServer, licenseID) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = upgradeLicense;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(16);
 
 
 function upgradeLicense(localServer, licenseID) {
@@ -682,11 +723,25 @@ function upgradeLicense(localServer, licenseID) {
         var forbidden = {
             "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL, period == __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].LIFETIME ? __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].ANNUAL : __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].LIFETIME],
             "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
-            "products": [localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE]
+            "products": []
         };
 
         for (var i = 0; i < license.serverModules.length; i++) {
             forbidden.products.push(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */][license.serverModules[i]]);
+        }
+
+        if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE) {
+            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER];
+            for (var _i = 0; _i < ar.length; _i++) {
+                forbidden.products.push(ar[_i]);
+                context.removeFromBasket(ar[_i]);
+            }
+        } else if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].CLUSTER) {
+            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE];
+            for (var _i2 = 0; _i2 < _ar.length; _i2++) {
+                forbidden.products.push(_ar[_i2]);
+                context.removeFromBasket(_ar[_i2]);
+            }
         }
 
         context.forbidden = forbidden;
@@ -741,7 +796,7 @@ function upgradeLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 269:
+/***/ 272:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1026,7 +1081,10 @@ var render = function() {
                       name: "addons",
                       id: "service_" + item.id
                     },
-                    domProps: { value: item.id },
+                    domProps: {
+                      value: item.id,
+                      checked: _vm.inBasket(item.id)
+                    },
                     on: {
                       click: function($event) {
                         _vm.addCheckbox($event)
@@ -1171,7 +1229,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 68:
+/***/ 69:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -1183,7 +1241,7 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(258)
 /* template */
-var __vue_template__ = __webpack_require__(269)
+var __vue_template__ = __webpack_require__(272)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1223,15 +1281,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 82:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1271,7 +1329,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 83:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1318,7 +1376,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 84:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1418,61 +1476,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-cdcb15be", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 94:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return OS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PERIOD; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EDITIONS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return PRODUCTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return PRICES; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return COUNT_USERS; });
-var OS = {
-    "WINDOWS": "windows",
-    "LINUX": "linux"
-};
-var PERIOD = {
-    "TRIAL": "trial",
-    "ANNUAL": "annual",
-    "LIFETIME": "lifetime"
-};
-var EDITIONS = {
-    "STANDALONE": "standalone",
-    "CLUSTER": "cluster"
-};
-var PRODUCTS = {
-    "STANDALONE": "1",
-    "CLUSTER": "2",
-    "SIP": "3",
-    "HTTP": "4",
-    "MEDIA_WORKER": "5",
-    "CLASTER_WORKER": "6",
-    "INSTALL_STANDALONE": "7",
-    "INSTALL_CLASTER": "8",
-    "SOFTWARE_UPDATES": "9",
-    "RECOVER_STANDALONE": "10",
-    "RECOVER_CLASTER": "11",
-    "INSTALL_ADDONS": "12"
-};
-
-var PRICES = {
-    "ANNUAL": "baseAnnualPrice",
-    "LIFETIME": "baseLifetimePrice",
-    "TRIAL": "baseTrialPrice"
-};
-
-var COUNT_USERS = {
-    "MIN_USERS_STANDALONE": 10,
-    "MAX_USERS_STANDALONE": 5000,
-    "MAX_USERS_CLUSTER": 5000,
-    "MIN_USERS_CLUSTER": 30,
-    "MAX_USERS_TRIAL": 10,
-    "MIN_USERS_TRIAL": 10
-};
 
 /***/ })
 

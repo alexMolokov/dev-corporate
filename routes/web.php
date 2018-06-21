@@ -48,6 +48,12 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
     Route::post('/get-product-list', 'Client\ShopController@getProductList')->name('shop_product_list');
 });
 
+
+Route::group(['prefix' => 'download','middleware' => ['web', 'auth']],function ()
+{
+    Route::get('/{os}/{edition}', 'Client\DownloadServerController@download')->name('download_server');
+});
+
 Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth']], function ()
 {
     Route::post('/queues-priorities', 'Client\TicketController@getQueuesPriorities')->name("queues_priorities");

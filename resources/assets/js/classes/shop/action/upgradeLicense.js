@@ -44,12 +44,31 @@ export function upgradeLicense(localServer, licenseID)
         let  forbidden = {
             "period": [PERIOD.TRIAL, (period == PERIOD.LIFETIME)? PERIOD.ANNUAL:  PERIOD.LIFETIME],
             "os": [(localServer.os == OS.WINDOWS)? OS.LINUX : OS.WINDOWS],
-            "products": [(localServer.edition == EDITIONS.STANDALONE)? PRODUCTS.CLUSTER: PRODUCTS.STANDALONE],
+            "products": [],
         }
 
         for(let i = 0; i< license.serverModules.length; i++)
         {
             forbidden.products.push(PRODUCTS[license.serverModules[i]]);
+        }
+
+        if(localServer.edition == EDITIONS.STANDALONE)
+        {
+            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER];
+            for(let i = 0; i< ar.length; i++)
+            {
+                forbidden.products.push(ar[i]);
+                context.removeFromBasket(ar[i]);
+            }
+        }
+        else if(localServer.edition == EDITIONS.CLUSTER)
+        {
+            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE];
+            for(let i = 0; i< ar.length; i++)
+            {
+                forbidden.products.push(ar[i]);
+                context.removeFromBasket(ar[i]);
+            }
         }
 
         context.forbidden = forbidden;

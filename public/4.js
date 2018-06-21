@@ -124,10 +124,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var userMenu = __webpack_require__(82);
+var userMenu = __webpack_require__(83);
 
 var formAddArticle = function formAddArticle() {
-    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 250));
+    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 250));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -479,7 +479,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 67:
+/***/ 68:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -531,15 +531,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 82:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -579,7 +579,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 83:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -626,7 +626,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 84:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

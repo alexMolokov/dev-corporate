@@ -27,11 +27,11 @@ class UserProvider implements Auth\UserProvider
         return $this->service->getByLogin($identifier);
     }
 
-
     public function retrieveByToken($identifier, $token){}
     public function updateRememberToken(Authenticatable $user, $token){}
 
-    public function retrieveByCredentials(array $credentials){
+    public function retrieveByCredentials(array $credentials)
+    {
         return $this->service->getByLogin($credentials['login']);
     }
 

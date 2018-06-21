@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\DownloadServer\DownloadServerService;
 use App\OTRS\OtrsClientService;
 use App\OTRS\Decorators\CacheDecorator;
+use App\Services\DownloadServer\Decorators\CacheDecorator as DownloadServerCacheDecorator;
 use Illuminate\Support\ServiceProvider;
 use Response;
 use Auth;
@@ -46,6 +48,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton("App\Contracts\TicketsInterface", function($app)
         {
             return new CacheDecorator(new OtrsClientService(config("otrs")));
+        });
+
+        $this->app->singleton("App\Contracts\DownloadServerInterface", function($app)
+        {
+            return new DownloadServerCacheDecorator(new DownloadServerService(config("downloadServer")));
         });
 
     }

@@ -34,6 +34,30 @@ export function newOrder()
             "os": [],
             "products": [],
         }
+        setForbiddenForServer(context);
+    }
+
+    var setForbiddenForServer = function(context){
+        if(context.choice.server == PRODUCTS.STANDALONE)
+        {
+            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER];
+            for(let i = 0; i< ar.length; i++){
+                context.removeFromBasket(ar[i])
+                context.forbidden.products.push(ar[i]);
+
+            }
+        }
+        else
+        {
+            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE];
+            for(let i = 0; i< ar.length; i++){
+                context.removeFromBasket(ar[i])
+                context.forbidden.products.push(ar[i]);
+
+            }
+        }
+
+        
     }
 
     this.setForLicense = function(context)
@@ -56,6 +80,7 @@ export function newOrder()
                 context.choice.users = COUNT_USERS.MIN_USERS_TRIAL;
 
             } else {
+
                 context.forbidden.products = [];
 
                 if(context.choice.server == PRODUCTS.STANDALONE)
@@ -63,13 +88,14 @@ export function newOrder()
                     context.choice.minUsers = COUNT_USERS.MIN_USERS_STANDALONE;
                     context.choice.maxUsers = COUNT_USERS.MAX_USERS_STANDALONE;
                     if(context.choice.users < COUNT_USERS.MIN_USERS_STANDALONE) context.choice.users = COUNT_USERS.MIN_USERS_STANDALONE ;
-                }
+               }
                 else
                 {
                     context.choice.minUsers = COUNT_USERS.MIN_USERS_CLUSTER;
                     context.choice.maxUsers = COUNT_USERS.MAX_USERS_CLUSTER;
                     if(context.choice.users < COUNT_USERS.MIN_USERS_CLUSTER) context.choice.users = COUNT_USERS.MIN_USERS_CLUSTER;
-                }
+                 }
+                setForbiddenForServer(context);
             }
 
     }

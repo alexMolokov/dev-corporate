@@ -228,27 +228,27 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 var ajaxform = __webpack_require__(15);
-var userMenu = __webpack_require__(82);
+var userMenu = __webpack_require__(83);
 var formChangePassword = function formChangePassword() {
-    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 142));
+    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 142));
 };
 var formChangeCompanyName = function formChangeCompanyName() {
-    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 145));
+    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 145));
 };
 var formChangeCompanyDetails = function formChangeCompanyDetails() {
-    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 148));
+    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 148));
 };
 var formChangeTechContact = function formChangeTechContact() {
-    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 151));
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 151));
 };
 var formChangeMainContact = function formChangeMainContact() {
-    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 154));
+    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 154));
 };
 var formLicenseRequest = function formLicenseRequest() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 157));
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 157));
 };
 var formCertificateRequest = function formCertificateRequest() {
-    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 162));
+    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 162));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1252,7 +1252,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 64:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -1304,15 +1304,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 82:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1352,7 +1352,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 83:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1399,7 +1399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 84:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

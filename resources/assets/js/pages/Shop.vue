@@ -50,7 +50,7 @@
             <div class="table">
                 <div v-for="item in getServices" :class="{ disabled: isDisabledProduct(item.id) }">
                     <span>
-                    <input type="checkbox"  :disabled="isDisabledProduct(item.id)" name="addons" :id="'service_' + item.id" @click="addCheckbox($event)" :value="item.id"> <label :for="'service_' + item.id">{{item.name}}</label>
+                    <input type="checkbox"  :disabled="isDisabledProduct(item.id)" name="addons" :id="'service_' + item.id" @click="addCheckbox($event)" :value="item.id" :checked="inBasket(item.id)"> <label :for="'service_' + item.id">{{item.name}}</label>
                     </span>
                     <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
 
@@ -253,14 +253,6 @@
             addUser(count){
               if(this.choice.users + count >= this.choice.minUsers && this.choice.users + count < this.choice.maxUsers)  this.choice.users = this.choice.users + count;
                 this.state.sumOrder(this);
-            },
-            checkout()
-            {
-                alert("checkout");
-            },
-            trial()
-            {
-                alert("trial");
             },
 
             setPeriod(period)
