@@ -1,26 +1,45 @@
 <template>
-    <modal-window :id="id"  @close="close" class="in"  style="display: block" :show="true">
+    <modal-window :id="id"  @close="close" class="in"  style="display: block" :show="true" :wide="true">
         <div slot="title" v-translate>Get trial</div>
-        <loading-inform v-bind:state="state" @close="close">
-            <div slot="ok-message-redirect" v-translate>Redirecting to payment details...</div>
-            <div slot="buttons"></div>
-        </loading-inform>        
+        <div class="loading-info" v-if="visible == 'hidden'">
+            <div class="window-center">
+                <div><div class="processing_text" v-translate>Loading...</div></div>
+            </div>
+        </div>
+        <div :style="{ visibility: visible}">
+            <h3 v-translate>What's next?</h3>
+            <ol>
+                <li>
+                    <router-link :to="{name:'download'}">Download the VIPole Enterprise installation files</router-link>
+                    <span>and additional components for the selected server platform</span>.
+                </li>
+                <li><router-link :to="{name:'documents'}">Review the installation instructions</router-link>
+                    <span>and complete the necessary installation steps</span>.
+                </li>
+                <li v-translate>During the installation, generate a license request file and upload it to your profile page to get the license file.</li>
+                <li v-translate>Apply the license file and complete the installation process on your server.</li>
+            </ol>
+            <p>
+                <span>If you have any questions while installing or using VIPole Enterprise or client applications</span>,
+                <router-link :to="{name:'tickets'}">create a support ticket</router-link>
+                <span>so we can help you promptly</span>.
+            </p>
+            <div class="modal-footer">
+                <button class="btn btn-primary" @click="redirectTo">Ok</button>
+            </div>
+        </div>
         <form :url="url" @submit.prevent.stop>
-            <div class="row">
-                  <div class="col-md-12">
-                          <div class="info" v-translate>Click NEXT to get trial</div>
-                  </div>
-             </div>
             <error-inform v-bind:err="err" v-bind:state="state"></error-inform>
             
-            <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" @click="validate" v-translate >Next</button>
+            <div class="modal-footer" v-if="visible == 'hidden'">
+                    <button type="submit" class="btn btn-primary" @click="validate" v-translate id="next_get_trial" style="visibility: hidden">Next</button>
             </div>
-        </form>  
+        </form>
     </modal-window>
 </template>
 <script>
 import modalWindow from './modalWindow.vue';
+import {STATES} from "../mixins/states";
 var ajaxform = require('../mixins/ajax-form.vue');
 var errorInform = require('../mixins/error-inform.vue');
 var loadingInform = require('../mixins/loading-inform.vue');
@@ -38,21 +57,41 @@ export default {
   data () {
     return {
       id: "corporateGetTrial",
-      url: "user/get-trial",
-      redirect: false
+      url: "servers/get-trial",
+      redirect: false,
+      visible: "hidden"
      }
+  },
+  mounted(){
+      document.getElementById('next_get_trial').click();
   },
   mixins: [ajaxform],
    locales: {
     	ru: {
-
+           "What's next?": "Что дальше?",
+            "Download the VIPole Enterprise installation files": "Скачайте установочные файлы VIPole Enterprise",
+            "and additional components for the selected server platform":" и дополнительные компоненты для выбранной серверной платформы",
+            "Review the installation instructions":"Изучите инструкцию по установке",
+            "and complete the necessary installation steps":"и выполните необходимые этапы установки",
+            "During the installation, generate a license request file and upload it to your profile page to get the license file.": "В ходе установки сгенерируйте файл запроса лицензии и загрузите его в личный кабинет для получения файл лицензии.",
+            "Apply the license file and complete the installation process on your server.":"Активируйте файл лицензии и завершите процесс установки на вашем сервере.",
+            "If you have any questions while install ing or using VIPole Enterprise or client applications":"Если при установке или использовании VIPole Enterprise у вас возникают вопросы, мы сможем оперативно вам помочь, если вы сообщите нам о проблеме",
+            "create a support ticket":"создав обращение в службу поддержки",
+            "so we can help you promptly":"",
+            "Loading...": "Загрузка..."
          }
     },    
   methods: {
+      redirectTo: function(){
+          this.$router.push({name: "userpage"})
+      },
       validate: function()
       {
           let data = {};
-          this.send(this.url, data);
+          this.send(this.url, data, (data) => {
+              this.visible = "visible";
+
+          });
       }
   }          
 }

@@ -73,12 +73,15 @@ class HttpClient
         $this->_port = $port;
     }
 
+    public function setTimeout($timeOut){
+        $this->_timeout = $timeOut;
+    }
+
     public function __construct($url,$followlocation = true,$timeOut = 30,$maxRedirecs = 4,$binaryTransfer = false,$includeHeader = false,$noBody = false)
     {
         $this->_url = $url;
         $this->_followlocation = $followlocation;
         $this->_timeout = $timeOut;
-        //$this->_timeout = 120;
         $this->_maxRedirects = $maxRedirecs;
         $this->_noBody = $noBody;
         $this->_includeHeader = $includeHeader;
@@ -266,13 +269,13 @@ class HttpClient
         $this->responseHeaders = $headers;
         $header=substr($data,0,curl_getinfo($s,CURLINFO_HEADER_SIZE));
         $body=substr($data,curl_getinfo($s,CURLINFO_HEADER_SIZE));
+
+
         preg_match_all("/Set-Cookie: (.*?)=(.*?);/i",$header,$res);
         foreach ($res[1] as $key => $value)
         {
             $this->_cookie[$value]=$res[2][$key];
         };
-
-
 
         $this->_webpage = $body;
         $this->_status = curl_getinfo($s,CURLINFO_HTTP_CODE);
@@ -290,9 +293,6 @@ class HttpClient
         $this->_verbose=$val;
     }
 
-    public function __tostring(){
-        return $this->_webpage;
-    }
 
     public function result(){
         return $this->_webpage;

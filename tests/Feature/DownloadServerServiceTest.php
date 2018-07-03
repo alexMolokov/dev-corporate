@@ -28,6 +28,7 @@ class DownloadServerServiceTest extends TestCase
         $result = $this->client->download("standalone", "windows");
 
         var_dump($result["headers"]);
+        var_dump($result["body"]);
         $this->assertTrue(true);
     }
 }

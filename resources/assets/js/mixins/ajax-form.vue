@@ -6,7 +6,7 @@ export default {
     name: 'ajaxform',
     props: {
         show: {type: Boolean, default: false},
-        lang: {type: String, default: 'en'}
+        //заlang: {type: String, default: 'en'}
     },
     data() {
     return {

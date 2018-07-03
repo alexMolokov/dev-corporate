@@ -36,6 +36,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth','valid.password
 
 Route::group(['prefix' => 'servers', 'middleware' => ['web', 'auth']], function ()
 {
+    Route::match(["get", "post"],'/get-trial', 'Client\ServersController@getTrial')->name('get_trial');
     Route::match(["get", "post"],'/get-servers', 'Client\ServersController@getServers')->name('get_servers');
     Route::match(["get", "post"],'/license/request', 'Client\ServersController@licenseRequest')->name('licence_request');
     Route::match(["get", "post"],'/license/download/:license', 'Client\ServersController@licenseDownload')->name('licence_download');
@@ -51,7 +52,35 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
 
 Route::group(['prefix' => 'download','middleware' => ['web', 'auth']],function ()
 {
-    Route::get('/{os}/{edition}', 'Client\DownloadServerController@download')->name('download_server');
+    Route::get('/{os}/{edition}', 'Client\DownloadServerController@download')->
+    name('download_server')->
+    where('os', 'windows|linux')->
+    where('edition', 'standalone|cluster');
+});
+
+Route::group(['prefix' => 'support','middleware' => ['web', 'auth']],function ()
+{
+    Route::post('/config', 'Client\SupportController@getConfig')->
+    name('support_config');
+
+    Route::post('/{lang}/{edition}/{os}/file', 'Client\SupportController@getFile')->
+    where('os', 'windows|linux')->
+    where('lang', 'ru|en')->
+    where('edition', 'standalone|cluster')->
+    name('get_support_catalog');
+
+    Route::post('/{lang}/{edition}/{os}/catalog', 'Client\SupportController@getCatalog')->
+    where('os', 'windows|linux')->
+    where('lang', 'ru|en')->
+    where('edition', 'standalone|cluster')->
+    name('get_support_catalog');
+
+    Route::post('/{lang}/{edition}/{os}/body/{id}', 'Client\SupportController@getDocument')->
+    where('id', '[0-9]+')->
+    where('lang', 'ru|en')->
+    where('os', 'windows|linux')->
+    where('edition', 'standalone|cluster')->
+    name('get_support_document');
 });
 
 Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth']], function ()

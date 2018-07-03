@@ -26,10 +26,14 @@ class CacheDecorator implements DownloadServerInterface
     public function download($edition, $os)
     {
         $key = "{$this->prefix}:{$edition}:{$os}";
-        if (Cache::has($key))  return Cache::get($key);
+        if (Cache::has($key))
+        {
+            $result = Cache::get($key);
+            if(strlen($result["body"]) > 0) return $result;
+        }
 
         $result = $this->service->download($edition, $os);
-        if($result)
+        if($result && strlen($result["body"]) > 0)
         {
             Cache::put($key, $result, $this->ttl);
             return $result;

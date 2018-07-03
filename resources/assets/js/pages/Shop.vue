@@ -1,5 +1,6 @@
 <template>
     <div id="user-order-page">
+        <div v-if="products.length > 0">
         <h3>1. <span v-translate>Maintenance period</span></h3>
         <section id="periods">
             <div v-for="item in getPeriods" :class="{ disabled: isDisabledPeriod(item.id) }">
@@ -75,10 +76,13 @@
         <form-payment v-if="showFormPayment"  @close="showFormPayment = false"></form-payment>
         <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false"></form-get-trial>
     </div>
+    <div v-if="products.length == 0"><loading-page></loading-page></div>
+    </div>
 
 </template>
 
 <script>
+    import LoadingPage from "../components/loadingPage";
     let userMenu = require('../components/userMenu.vue');
     const ajaxform = require('../mixins/ajax-form.vue');
     import { mapState, mapMutations, mapGetters  } from 'vuex';
@@ -90,6 +94,7 @@
     import {renewLicense} from "../classes/shop/action/renewLicense";
     import {upgradeLicense} from "../classes/shop/action/upgradeLicense";
     import {OS,PERIOD,PRODUCTS,PRICES, COUNT_USERS} from "../classes/shop/action/const";
+    const loadingPage = require('../components/loadingPage.vue');
 
     const formPayment = () => System.import('../components/formPayment.vue');
     const formGetTrial = () => System.import('../components/formGetTrial.vue');
@@ -127,6 +132,7 @@
             }
         },
         components: {
+            LoadingPage,
             "user-menu": userMenu,
             "form-payment": formPayment,
             "form-get-trial": formGetTrial

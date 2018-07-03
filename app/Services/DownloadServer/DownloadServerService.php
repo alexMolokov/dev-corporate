@@ -30,12 +30,14 @@ class DownloadServerService implements  DownloadServerInterface
         $this->client->setName($config["httpUser"]);
         $this->client->setPass($config["httpPassword"]);
         $this->client->setBinaryTransfer(true);
+        $this->client->setTimeout(150);
     }
 
 
     public function download($edition, $os)
     {
         $this->client->createCurl($this->urls[$edition][$os]);
+
         return [
             "headers" => $this->client->getResponseHeaders(),
             "body" => $this->client->result()

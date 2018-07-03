@@ -18,6 +18,7 @@ import {User} from './classes/User';
 import TicketModule from './modules/tickets';
 import ShopModule from './modules/shop';
 import ServersModule from './modules/servers';
+import SupportModule from './modules/support';
 
 const dictionary = {
     en: {
@@ -151,7 +152,9 @@ const store = new Vuex.Store({
     },
     modules: {
         shop: ShopModule,
-        servers: ServersModule
+        servers: ServersModule,
+        support: SupportModule,
+        ticket: TicketModule
     }
 });
 
@@ -181,6 +184,10 @@ const routes = [
             { path: 'documents',
                 component: (resolve) => { require(['./pages/Documents'], resolve)},
                 name: "documents"
+            },
+            { path: 'support/:edition/:os',
+                component: (resolve) => { require(['./pages/Support'], resolve)},
+                name: "supportHtml"
             },
             { path: 'tickets',
                 component: (resolve) => { require(['./pages/Tickets'], resolve)},

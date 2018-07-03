@@ -1,0 +1,12 @@
+
+<div   class="support article"><p>Во время инсталляции Сервера потребуется установка дополнительных компонентов:</p><ul><li>MongoDB , версия 3.4 (рекомендуется)</li><li>Redis, версия 2.8</li><li>Win64 OpenSSL v1.0.x </li></ul><h3>Требования к системе</h3><ul><li>64бит версии Windows Server 2008 R2 , Windows Server 2012 r2 или Windows Server 2016</li><li>Многоядерный процессор (рекомендуется 4 ядра)</li><li>8+ Gb RAM</li><li>200Gb HDD (RAID1 or RAID10)</li></ul><h3>Настройки брандмауэра Windows</h3><p>Проверьте настройки брандмауэра Windows. Настройте его так, чтобы не блокировались порты, используемые службами Сибрус. Номера портов можно посмотреть в файлах конфигурации Сервера.</p><div class="code panel"><div class="codeHeader panelHeader">server.config</div><div class="codeContent panelContent"><pre># Server port
+listen-port = 37210
+# UDP port of SIP server
+sip-server-port=5060</pre></div></div><p><br/></p><div class="code panel"><div class="codeHeader panelHeader">server-auto.config</div><div class="codeContent panelContent"><pre># Server port
+listen-port = 37212</pre></div></div><p>В файле конфигурации Медиаретранслятора relay.config указывается диапазон портов !</p><div class="code panel"><div class="codeHeader panelHeader">relay.config</div><div class="codeContent panelContent"><pre># UDP ports range
+# Minimum UDP port
+min-port=3000
+# Maximum UDP port 
+max-port=9000</pre></div></div><p>При настройке брандмауэра Windows обратите внимание на порты, используемые службами Redis и Mongo. Они должны быть закрыты для доступа из сети Интернет.</p><p>Пример команд для настройки брандмауэра Windows:</p><div class="code panel"><div class="codeContent panelContent"><pre>netsh advfirewall firewall add rule name="VIPole server" protocol=TCP localport=37210 action=allow dir=IN
+netsh advfirewall firewall add rule name="VIPole config" protocol=TCP localport=37212 action=allow dir=IN
+netsh advfirewall firewall add rule name="VIPole relay" protocol=UDP localport=3000-9000 action=allow dir=IN</pre></div></div><p class="auto-cursor-target"><br/></p></div>

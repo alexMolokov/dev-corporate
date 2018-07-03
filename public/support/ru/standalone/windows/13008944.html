@@ -1,0 +1,71 @@
+
+<div   class="support article"><p>На мобильных платформах iOS и Android 8 , операционная система для экономии заряда батареи и памяти может останавливать приложения, полностью отключая их от сети. Чтоб приложение могло реагировать на звонки и сообщения, используется т.н. пуш-технология. Сервер Сибрус, отправляя сообщение клиентскому приложению, запущенному на мобильной платформе, через свой сервис pushd передает специальное пуш-сообщение соответственно через серверы Apple или Google мобильному клиенту. Сообщение не содержит никакой секретной информации и используется только для активации мобильного приложения. Запустившись, мобильное приложение обычным образом принимает сообщение или входящий звонок.</p><p>Для использования push-нотификаций необходимо:</p><ol><li>Получить у поставщика сервера СИБРУС сертификат шлюза, а так же сертификат и ключ клиента.</li><li>Включить поддержку push-нотификаций на сервере СИБРУС. </li><li>Сконфигурировать и запустить сервис пушей</li></ol><h3>Включение поддержки push-нотификаций на сервере СИБРУС. </h3><p>Для этого в файле конфигурации сервера СИБРУС /etc/cybrus/server.config необходимо указать опцию</p><div class="code panel"><div class="codeContent panelContent"><pre>push-notifications-enabled = true
+</pre></div></div><h3>Конфигурирование сервиса пушей</h3><p>Распакуйте в папку c:\cybrus\server\config\ полученный в архиве файлы ca.crt, clientXX.key и clientXX.crt. Они одинаковые и для iOS и Android шлюза. Отредактируйте файл c:\cybrus\server\config\pushd.config , указав правильные имена файлов сертификатов и ключей в параметрах</p><pre>Для шлюза iOS:</pre><pre>apple-ca = 
+apple-client-cert =<br/>apple-client-key = </pre><p>для шлюза Android:</p><pre>fcm-ca = <br/>fcm-client-cert = <br/>fcm-client-key = </pre><p>остальные параметры без необходимости изменять не надо</p><div class="code panel"><div class="codeContent panelContent"><pre>##############################################
+# Sample configuration file of cybrus pushd #
+##############################################
+
+# Name of database in MongoDB
+database = cybrus_server
+# IP address of MongoDB server
+mongo-address = 127.0.0.1
+# TCP port of MongoDB server
+mongo-port = 27017
+
+# IP address of Redis server
+redis-address = 127.0.0.1
+# TCP port of Redis server
+redis-port = 6379
+
+# Apple push notifications via cybrus-gateway-apple
+#
+# Enable Apple's push notifications
+apple-enabled = true
+fcm-enabled = true
+# HTTP or HTTPS?
+apple-https = true
+fcm-https = true
+# IP address of the gateway server
+apple-server-addr = push-gateway.cybrus.ru
+fcm-server-addr = push-gateway.cybrus.ru
+# TCP port of the gateway server
+apple-server-port = 2443
+fcm-server-port = 3443
+# Verify peer's SSL certificate
+apple-verify-peer = true
+fcm-verify-peer = true
+# The gateway's CA
+apple-ca = c:\cybrus\server\config\ca.crt
+fcm-ca = c:\cybrus\server\config\ca.crt
+# SSL certificate which is passed to the gateway
+apple-client-cert = c:\cybrus\server\config\client01.crt
+fcm-client-cert = c:\cybrus\server\config\client01.crt
+# The key for apple-client-cert
+apple-client-key = c:\cybrus\server\config\client01.key
+fcm-client-key = c:\cybrus\server\config\client01.key
+# The apple-client-key's passphrase
+apple-client-key-passphrase =
+fcm-client-key-passphrase =
+# How long to wait for the gateway's response
+apple-timeout-ms = 20000
+fcm-timeout-ms = 20000
+
+# Should we throttle notifications with the same token?
+apple-delay-enabled = true
+#fcm-delay-enabled = true
+apple-delay-ms = 1500
+#fcm-delay-ms = 1500
+
+# Enable logging for every notification
+# Do not enable for production
+log-enabled = true
+verbose_level = 9
+
+fatal_log_file=c:\cybrus\pushd-fatal.log
+log_file=c:\cybrus\pushd.log</pre></div></div><p>Настройте запуск службы пушей как сервиса Windows</p><div class="code panel"><div class="codeContent panelContent"><pre>c:\cybrus\server\bin\nssm install CybrusPushD c:\cybrus\server\bin\cybrus-pushd.exe "--config c:\cybrus\server\config\pushd.config"
+c:\cybrus\server\bin\nssm set CybrusPushD DependOnService MongoDB redis
+ 
+c:\cybrus\server\bin\nssm set CybrusPushD AppStdout "c:\cybrus\pushd-stdout.log"
+c:\cybrus\server\bin\nssm set CybrusPushD AppStderr "c:\cybrus\pushd-stderr.log"
+c:\cybrus\server\bin\nssm set CybrusPushD Description "Cybrus PushD"</pre></div></div><p>Запустите службу пушей как сервис Windows</p><div class="code panel"><div class="codeContent panelContent"><pre>net start CybrusPushD 
+</pre></div></div><p class="auto-cursor-target"><br/></p></div>

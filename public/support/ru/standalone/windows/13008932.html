@@ -1,0 +1,19 @@
+
+<div   class="support article"><p>Исполняемые файлы сервера Сибрус являются win32 консольными приложениями. Для запуска их как сервисы Windows используется программа <a href="http://nssm.cc/">nssm</a></p><p>Для проверки файлов конфигурации вы можете просто запускать приложения с консоли или в отдельном окне консоли командой start</p><p>Запуск как сервис рекомендуется из-за возможности устанавливать очередность и зависимость запуска сервисов и автоматического старта сервисов при загрузке Windows</p><p>Для автоматической настройки запуска сервера Сибрус как сервисов Windows вы  можете использовать командный файл install-services.cmd, для удаления сервисов предназначен командный файл remove-services.cmd . запуск и остановку сервисов можно выполнять с помощью командных файлов start-services.cmd  и stop-services.cmd соответственно или с помощью стандартной команды WIndows net start | stop или с помощью стандартной оснастки Windows <span style="color: rgb(103,106,123);">services.msc</span></p><div class="code panel"><div class="codeHeader panelHeader">install-services.cmd</div><div class="codeContent panelContent"><pre>nssm install CybrusConfig c:\cybrus\server\bin\cybrus-server.exe "--autoconf --config c:\cybrus\server\config\server-auto.config --logfile c:\cybrus\autoconf.log --logfile-fatal c:\cybrus\autoconf-fatal.log" 
+nssm install CybrusServer c:\cybrus\server\bin\cybrus-server.exe "--config c:\cybrus\server\config\server.config --logfile c:\cybrus\server.log --logfile-fatal c:\cybrus\server-fatal.log" 
+nssm install CybrusRelay c:\cybrus\server\bin\cybrus-relay.exe "--config c:\cybrus\server\config\relay.config --logfile c:\cybrus\relay.log" 
+
+nssm set CybrusRelay DependOnService CybrusServer 
+nssm set CybrusRelay AppStdout "c:\cybrus\Relay-stdout.log"
+nssm set CybrusRelay AppStderr "c:\cybrus\Relay-stderr.log"
+nssm set CybrusRelay Description "Cybrus Relay Server" 
+
+nssm set CybrusServer DependOnService MongoDB redis 
+nssm set CybrusServer AppStdout "c:\cybrus\Server-stdout.log"
+nssm set CybrusServer AppStderr "c:\cybrus\Server-stderr.log"
+nssm set CybrusServer Description "Cybrus Server" 
+
+nssm set CybrusConfig DependOnService MongoDB redis 
+nssm set CybrusConfig AppStdout "c:\cybrus\Config-stdout.log"
+nssm set CybrusConfig AppStderr "c:\cybrus\Config-stderr.log"
+nssm set CybrusConfig Description "Cybrus Autoconfig Server" </pre></div></div><p class="auto-cursor-target"><br/></p></div>

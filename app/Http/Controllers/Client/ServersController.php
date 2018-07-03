@@ -122,4 +122,9 @@ class ServersController extends Controller
 
     }
 
+    public function getTrial(Request $request)
+    {
+        return response()->success([]);
+    }
+
 }
