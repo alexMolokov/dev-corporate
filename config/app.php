@@ -122,7 +122,9 @@ return [
 
     'log' => env('APP_LOG', 'single'),
 
-    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+    'registration_allowed' => env('APP_REGISTRATION_ALLOWED', false),
+
+    'registration_keep_temp' => env('APP_REGISTRATION_KEEP_TEMP', 1440),
 
     /*
     |--------------------------------------------------------------------------

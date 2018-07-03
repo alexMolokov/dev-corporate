@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Services\Bs\Http\UserProvider as BsUserProvider;
+use App\Services\Bs\Http\Decorators\CacheDecorator;
 use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
@@ -29,7 +30,11 @@ class AuthServiceProvider extends ServiceProvider
 
 
         Auth::provider('bsystem', function ($app) {
-            return new  BsUserProvider($app->make("App\Contracts\CorporateClientInterface"));
+            return new  BsUserProvider(
+                new CacheDecorator(
+                $app->make("App\Contracts\CorporateClientInterface")
+                )
+            );
         });
     }
 }

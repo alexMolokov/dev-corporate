@@ -30,10 +30,10 @@
                         <button type="submit" class="btn btn-primary btn-lg" @click="validate"  v-translate>Log In</button>
                     </div>
                     <div class="reg-right">
-                        <p class="reg-choice"><router-link :to="{name:'forgot'}" tabindex="-1"  v-translate>Forgot password?</router-link></p>
+                        <p v-if="isRegisterAllowed"class="reg-choice"><router-link :to="{name:'forgot'}" tabindex="-1"  v-translate>Forgot password?</router-link></p>
                     </div>
                     <div class="reg-footer">
-                        <p class="h4 text-center"><span v-translate>Don't have an account?</span> <router-link :to="{name:'registration'}" tabindex="-1"  v-translate>Sign In</router-link></p>
+                        <p v-if="isRegisterAllowed" class="h4 text-center"><span v-translate>Don't have an account?</span> <router-link :to="{name:'registration'}" tabindex="-1"  v-translate>Sign In</router-link></p>
                     </div>
 
                 </form>
@@ -46,7 +46,7 @@
     import ajaxform from '../mixins/ajax-form.vue';
     import {User} from '../classes/User';
     import ErrorInform  from '../mixins/error-inform.vue';
-    import { mapMutations } from 'vuex'
+    import { mapMutations, mapGetters } from 'vuex'
 
     export default {
         components: {ErrorInform},
@@ -58,6 +58,9 @@
                 password: null,
                 type_password: "password"
             }
+        },
+        computed: {
+            ...mapGetters(["isRegisterAllowed"])
         },
         mixins: [ajaxform],
         methods: {

@@ -61,6 +61,7 @@ const store = new Vuex.Store({
     state: {
         auth: false,
         lang: "en",
+        registrationAllowed: false,
         user: {
             id: "",
             login: "",
@@ -94,9 +95,17 @@ const store = new Vuex.Store({
         getLang: state => {
             return state.lang;
         },
+        isRegisterAllowed: state => {
+            return state.registrationAllowed;
+        },
 
     },
     mutations: {
+        setRegistrationAllowed(state, value)
+        {
+            state.registrationAllowed = value;
+        },
+
         setLang(state, obj)
         {
             obj.translate.setLang(obj.lang);
@@ -259,6 +268,14 @@ const app = new Vue({
     components: { App },
     beforeCreate(){
         let store = this.$store;
+
+        window.axios.post("/registration/allowed", {}).then(function({data: response})
+        {
+            if(response.status)
+            {
+               store.commit("setRegistrationAllowed", response.data == true);
+            }
+        })
         window.axios.post("/auth/auto", {}).then(function({data: response})
         {
             if(response.status)

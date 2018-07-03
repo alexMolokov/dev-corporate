@@ -9,6 +9,7 @@ use App\Http\Requests\ChangeCompanyDetailsRequest;
 use App\Http\Controllers\Controller;
 use App\Contracts\CorporateClientInterface;
 use Illuminate\Support\Facades\Auth;
+use App\Events\UserDataChanged;
 
 class UserController extends Controller
 {
@@ -22,7 +23,10 @@ class UserController extends Controller
     public function changePassword(ChangePasswordRequest $request)
     {
         $result = $this->service->changePassword(Auth::user()->getCustomerId(), $request->input("new_password"));
-        if($result) return response()->success([]);
+        if($result) {
+            $this->__generateEvent();
+            return response()->success([]);
+        }
 
         return response()->error(__("Error"), []);
 
@@ -31,7 +35,10 @@ class UserController extends Controller
     public function changeCompanyName(ChangeCompanyNameRequest $request)
     {
         $result = $this->service->changeCompanyName(Auth::user()->getCustomerId(), $request->input("name"));
-        if($result) return response()->success([]);
+        if($result) {
+            $this->__generateEvent();
+            return response()->success([]);
+        }
 
         return response()->error(__("Error"), []);
      }
@@ -39,7 +46,10 @@ class UserController extends Controller
     public function changeCompanyDetails(ChangeCompanyDetailsRequest $request)
     {
         $result = $this->service->changeCompanyDetails(Auth::user()->getCustomerId(), $request->all());
-        if($result) return response()->success([]);
+        if($result) {
+            $this->__generateEvent();
+            return response()->success([]);
+        }
 
         return response()->error(__("Error"), []);
     }
@@ -47,11 +57,19 @@ class UserController extends Controller
     public function changeContact(ChangeContactRequest $request)
     {
         $result = $this->service->saveContact(Auth::user()->getCustomerId(), $request->all());
-        if($result) return response()->success([]);
+        if($result)
+        {
+            $this->__generateEvent();
+            return response()->success([]);
+        }
 
         return response()->error(__("Error"), []);
     }
 
+    private function __generateEvent() {
+        $client = Auth::user();
+        event(new UserDataChanged($client->getLogin()));
+    }
 
 
 }

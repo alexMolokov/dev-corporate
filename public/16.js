@@ -1,1 +1,938 @@
-webpackJsonp([16],{252:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=a(60),i=a.n(s),n=(a(14),a(15)),o=a(57),l=a(65);e.default={name:"form-get-trial",props:{},components:{"modal-window":i.a,"error-inform":o,"loading-inform":l},data:function(){return{id:"corporateGetTrial",url:"servers/get-trial",redirect:!1,visible:"hidden"}},mounted:function(){document.getElementById("next_get_trial").click()},mixins:[n],locales:{ru:{"What's next?":"Что дальше?","Download the VIPole Enterprise installation files":"Скачайте установочные файлы VIPole Enterprise","and additional components for the selected server platform":" и дополнительные компоненты для выбранной серверной платформы","Review the installation instructions":"Изучите инструкцию по установке","and complete the necessary installation steps":"и выполните необходимые этапы установки","During the installation, generate a license request file and upload it to your profile page to get the license file.":"В ходе установки сгенерируйте файл запроса лицензии и загрузите его в личный кабинет для получения файл лицензии.","Apply the license file and complete the installation process on your server.":"Активируйте файл лицензии и завершите процесс установки на вашем сервере.","If you have any questions while install ing or using VIPole Enterprise or client applications":"Если при установке или использовании VIPole Enterprise у вас возникают вопросы, мы сможем оперативно вам помочь, если вы сообщите нам о проблеме","create a support ticket":"создав обращение в службу поддержки","so we can help you promptly":"","Loading...":"Загрузка..."}},methods:{redirectTo:function(){this.$router.push({name:"userpage"})},validate:function(){var t=this;this.send(this.url,{},function(e){t.visible="visible"})}}}},253:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("modal-window",{staticClass:"in",staticStyle:{display:"block"},attrs:{id:t.id,show:!0,wide:!0},on:{close:t.close}},[a("div",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{slot:"title"},slot:"title"},[t._v("Get trial")]),t._v(" "),"hidden"==t.visible?a("div",{staticClass:"loading-info"},[a("div",{staticClass:"window-center"},[a("div",[a("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"processing_text"},[t._v("Loading...")])])])]):t._e(),t._v(" "),a("div",{style:{visibility:t.visible}},[a("h3",{directives:[{name:"translate",rawName:"v-translate"}]},[t._v("What's next?")]),t._v(" "),a("ol",[a("li",[a("router-link",{attrs:{to:{name:"download"}}},[t._v("Download the VIPole Enterprise installation files")]),t._v(" "),a("span",[t._v("and additional components for the selected server platform")]),t._v(".\n            ")],1),t._v(" "),a("li",[a("router-link",{attrs:{to:{name:"documents"}}},[t._v("Review the installation instructions")]),t._v(" "),a("span",[t._v("and complete the necessary installation steps")]),t._v(".\n            ")],1),t._v(" "),a("li",{directives:[{name:"translate",rawName:"v-translate"}]},[t._v("During the installation, generate a license request file and upload it to your profile page to get the license file.")]),t._v(" "),a("li",{directives:[{name:"translate",rawName:"v-translate"}]},[t._v("Apply the license file and complete the installation process on your server.")])]),t._v(" "),a("p",[a("span",[t._v("If you have any questions while installing or using VIPole Enterprise or client applications")]),t._v(",\n            "),a("router-link",{attrs:{to:{name:"tickets"}}},[t._v("create a support ticket")]),t._v(" "),a("span",[t._v("so we can help you promptly")]),t._v(".\n        ")],1),t._v(" "),a("div",{staticClass:"modal-footer"},[a("button",{staticClass:"btn btn-primary",on:{click:t.redirectTo}},[t._v("Ok")])])]),t._v(" "),a("form",{attrs:{url:t.url},on:{submit:function(t){t.preventDefault(),t.stopPropagation()}}},[a("error-inform",{attrs:{err:t.err,state:t.state}}),t._v(" "),"hidden"==t.visible?a("div",{staticClass:"modal-footer"},[a("button",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"btn btn-primary",staticStyle:{visibility:"hidden"},attrs:{type:"submit",id:"next_get_trial"},on:{click:t.validate}},[t._v("Next")])]):t._e()],1)])},staticRenderFns:[]}},278:function(t,e,a){var s=a(3)(a(252),a(253),!1,null,null,null);t.exports=s.exports},57:function(t,e,a){var s=a(3)(a(58),a(59),!1,null,null,null);t.exports=s.exports},58:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=a(14);e.default={name:"error-inform",props:{state:{type:Number,default:s.a.START},err:{type:Object,default:function(){return{validation:[],common:[]}}}},data:function(){return{}},computed:{showError:function(){return(this.err.validation.length>0||this.err.common.length>0)&&this.state==s.a.ERROR}}}},59:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return t.showError?a("div",{staticClass:"error-block"},[a("div",{staticClass:"alert alert-danger fade in"},[t._l(t.err.validation,function(e){return a("div",{staticClass:"top-10"},[t._v("\n             "+t._s(e.name)+" - "+t._s(e.description)+"\n         ")])}),t._v(" "),t._l(t.err.common,function(e){return a("div",{staticClass:"top-10"},[a("div",{staticClass:"top-10"},[t._v(t._s(e))])])})],2)]):t._e()},staticRenderFns:[]}},60:function(t,e,a){var s=a(3)(a(63),a(64),!1,function(t){a(61)},"data-v-790be6b8",null);t.exports=s.exports},61:function(t,e,a){var s=a(62);"string"==typeof s&&(s=[[t.i,s,""]]),s.locals&&(t.exports=s.locals);a(13)("50f81d3c",s,!0,{})},62:function(t,e,a){(t.exports=a(12)(!1)).push([t.i,".modal[data-v-790be6b8]{overflow:auto;overflow-y:scroll}",""])},63:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"modal-window",props:{id:{type:String,required:!0},show:{type:Boolean,required:!1},wide:{type:Boolean,default:!1}},watch:{show:function(){this.show?($("body").addClass("dialog-open"),$("body").addClass("modal-open")):($("body").removeClass("dialog-open"),$("body").removeClass("modal-open"))}},methods:{close:function(t){var e=void 0!==t.srcElement?t.srcElement:t.target;"input"==e&&"radio"==e.type||(t.stopPropagation(),this.$emit("close"))},clickInside:function(t){var e=void 0!==t.srcElement?t.srcElement:t.target;"input"==e&&"radio"==e.type||t.stopPropagation()},bclose:function(){$("#"+this.id).trigger("click")}}}},64:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"modal fade modal-user",attrs:{tabindex:"-1",role:"dialog",id:t.id},on:{click:t.close}},[a("div",{staticClass:"modal-dialog",class:{"modal-dialog-wide":t.wide},attrs:{role:"document"},on:{click:t.clickInside}},[a("div",{staticClass:"modal-content"},[a("div",{staticClass:"modal-header"},[a("button",{staticClass:"close",attrs:{type:"button","data-dismiss":"modal","aria-label":"Close"},on:{click:t.bclose}},[a("span",{attrs:{"aria-hidden":"true"}},[t._v("×")])]),t._v(" "),a("h4",{staticClass:"modal-title"},[t._t("title",[t._v("Modal Title")])],2)]),t._v(" "),a("div",{staticClass:"modal-body"},[t._t("default")],2)])])])},staticRenderFns:[]}},65:function(t,e,a){var s=a(3)(a(66),a(67),!1,null,null,null);t.exports=s.exports},66:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=a(14);e.default={name:"loading-inform",props:{state:{type:Number,default:s.a.START}},data:function(){return{STATES:s.a}},locales:{ru:{"Loading...":"Отправляем запрос..."}},methods:{close:function(){this.$emit("close")}}}},67:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",[t.state==t.STATES.LOADING?a("div",{staticClass:"loading-info"},[a("div",{staticClass:"window-center"},[a("div",[a("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"processing_text"},[t._v("Loading...")])])])]):t._e(),t._v(" "),t.state==t.STATES.ANSWER?a("div",{staticClass:"ok-message"},[a("div",{staticClass:"window-center"},[a("div",{staticClass:"complete-body"},[a("div",{staticClass:"complete-body_text"},[t._t("ok-message")],2)])]),t._v(" "),t._t("buttons",[a("div",{staticClass:"button-close"},[a("button",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"btn btn-green",attrs:{type:"button"},on:{click:t.close}},[t._v("Ok")])])])],2):t._e(),t._v(" "),t.state==t.STATES.REDIRECT?a("div",{staticClass:"ok-message"},[a("div",{staticClass:"window-center"},[a("div",{staticClass:"complete-body"},[a("div",{staticClass:"complete-body_text"},[t._t("ok-message-redirect")],2)])])]):t._e(),t._v(" "),t.state==t.STATES.RELOAD?a("div",{staticClass:"ok-message"},[a("div",{staticClass:"window-center"},[a("div",{staticClass:"complete-body"},[a("div",{staticClass:"complete-body_text"},[t._t("ok-message-reload")],2)])]),t._v(" "),t._t("buttons-reload")],2):t._e()])},staticRenderFns:[]}}});
+webpackJsonp([16],{
+
+/***/ 283:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(284)
+/* template */
+var __vue_template__ = __webpack_require__(285)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\formGetTrial.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-54973b1b", Component.options)
+  } else {
+    hotAPI.reload("data-v-54973b1b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 284:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_states__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+var ajaxform = __webpack_require__(15);
+var errorInform = __webpack_require__(74);
+var loadingInform = __webpack_require__(82);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'form-get-trial',
+    props: {},
+    components: {
+        "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
+        "error-inform": errorInform,
+        "loading-inform": loadingInform
+    },
+    data: function data() {
+        return {
+            id: "corporateGetTrial",
+            url: "servers/get-trial",
+            redirect: false,
+            visible: "hidden"
+        };
+    },
+    mounted: function mounted() {
+        document.getElementById('next_get_trial').click();
+    },
+
+    mixins: [ajaxform],
+    locales: {
+        ru: {
+            "What's next?": "Что дальше?",
+            "Download the VIPole Enterprise installation files": "Скачайте установочные файлы VIPole Enterprise",
+            "and additional components for the selected server platform": " и дополнительные компоненты для выбранной серверной платформы",
+            "Review the installation instructions": "Изучите инструкцию по установке",
+            "and complete the necessary installation steps": "и выполните необходимые этапы установки",
+            "During the installation, generate a license request file and upload it to your profile page to get the license file.": "В ходе установки сгенерируйте файл запроса лицензии и загрузите его в личный кабинет для получения файл лицензии.",
+            "Apply the license file and complete the installation process on your server.": "Активируйте файл лицензии и завершите процесс установки на вашем сервере.",
+            "If you have any questions while install ing or using VIPole Enterprise or client applications": "Если при установке или использовании VIPole Enterprise у вас возникают вопросы, мы сможем оперативно вам помочь, если вы сообщите нам о проблеме",
+            "create a support ticket": "создав обращение в службу поддержки",
+            "so we can help you promptly": "",
+            "Loading...": "Загрузка..."
+        }
+    },
+    methods: {
+        redirectTo: function redirectTo() {
+            this.$router.push({ name: "userpage" });
+        },
+        validate: function validate() {
+            var _this = this;
+
+            var data = {};
+            this.send(this.url, data, function (data) {
+                _this.visible = "visible";
+            });
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 285:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "modal-window",
+    {
+      staticClass: "in",
+      staticStyle: { display: "block" },
+      attrs: { id: _vm.id, show: true, wide: true },
+      on: { close: _vm.close }
+    },
+    [
+      _c(
+        "div",
+        {
+          directives: [{ name: "translate", rawName: "v-translate" }],
+          attrs: { slot: "title" },
+          slot: "title"
+        },
+        [_vm._v("Get trial")]
+      ),
+      _vm._v(" "),
+      _vm.visible == "hidden"
+        ? _c("div", { staticClass: "loading-info" }, [
+            _c("div", { staticClass: "window-center" }, [
+              _c("div", [
+                _c(
+                  "div",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    staticClass: "processing_text"
+                  },
+                  [_vm._v("Loading...")]
+                )
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { style: { visibility: _vm.visible } }, [
+        _c(
+          "h3",
+          { directives: [{ name: "translate", rawName: "v-translate" }] },
+          [_vm._v("What's next?")]
+        ),
+        _vm._v(" "),
+        _c("ol", [
+          _c(
+            "li",
+            [
+              _c("router-link", { attrs: { to: { name: "download" } } }, [
+                _vm._v("Download the VIPole Enterprise installation files")
+              ]),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "and additional components for the selected server platform"
+                )
+              ]),
+              _vm._v(".\n            ")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            [
+              _c("router-link", { attrs: { to: { name: "documents" } } }, [
+                _vm._v("Review the installation instructions")
+              ]),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v("and complete the necessary installation steps")
+              ]),
+              _vm._v(".\n            ")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [
+              _vm._v(
+                "During the installation, generate a license request file and upload it to your profile page to get the license file."
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [
+              _vm._v(
+                "Apply the license file and complete the installation process on your server."
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          [
+            _c("span", [
+              _vm._v(
+                "If you have any questions while installing or using VIPole Enterprise or client applications"
+              )
+            ]),
+            _vm._v(",\n            "),
+            _c("router-link", { attrs: { to: { name: "tickets" } } }, [
+              _vm._v("create a support ticket")
+            ]),
+            _vm._v(" "),
+            _c("span", [_vm._v("so we can help you promptly")]),
+            _vm._v(".\n        ")
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-footer" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", on: { click: _vm.redirectTo } },
+            [_vm._v("Ok")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { url: _vm.url },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              $event.stopPropagation()
+            }
+          }
+        },
+        [
+          _c("error-inform", { attrs: { err: _vm.err, state: _vm.state } }),
+          _vm._v(" "),
+          _vm.visible == "hidden"
+            ? _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    staticClass: "btn btn-primary",
+                    staticStyle: { visibility: "hidden" },
+                    attrs: { type: "submit", id: "next_get_trial" },
+                    on: { click: _vm.validate }
+                  },
+                  [_vm._v("Next")]
+                )
+              ])
+            : _vm._e()
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-54973b1b", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(75)
+/* template */
+var __vue_template__ = __webpack_require__(76)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\mixins\\error-inform.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41c6c4ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-41c6c4ae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 75:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'error-inform',
+  props: {
+    state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START },
+    err: { type: Object, default: function _default() {
+        return { validation: [], common: [] };
+      } }
+  },
+  data: function data() {
+    return {};
+  },
+
+  computed: {
+    showError: function showError() {
+      return (this.err.validation.length > 0 || this.err.common.length > 0) && this.state == __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showError
+    ? _c("div", { staticClass: "error-block" }, [
+        _c(
+          "div",
+          { staticClass: "alert alert-danger fade in" },
+          [
+            _vm._l(_vm.err.validation, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _vm._v(
+                  "\n             " +
+                    _vm._s(er.name) +
+                    " - " +
+                    _vm._s(er.description) +
+                    "\n         "
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.err.common, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _c("div", { staticClass: "top-10" }, [_vm._v(_vm._s(er))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-41c6c4ae", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(78)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = __webpack_require__(81)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-12158cf6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\modalWindow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12158cf6", Component.options)
+  } else {
+    hotAPI.reload("data-v-12158cf6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(79);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(13)("81548b54", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12158cf6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modalWindow.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12158cf6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modalWindow.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal[data-v-12158cf6] {\n    overflow: auto;\n    overflow-y: scroll;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'modal-window',
+    props: {
+        id: { type: String, required: true },
+        show: { type: Boolean, required: false },
+        wide: { type: Boolean, default: false }
+    },
+    watch: {
+        show: function show() {
+            if (this.show) {
+                $('body').addClass('dialog-open');
+                $('body').addClass('modal-open');
+            } else {
+                $('body').removeClass('dialog-open');
+                $('body').removeClass('modal-open');
+            }
+        }
+    },
+    methods: {
+        close: function close(e) {
+            var el = typeof e.srcElement != "undefined" ? e.srcElement : e.target;
+            if (el == "input" && el.type == "radio") return;
+            e.stopPropagation();
+
+            this.$emit('close');
+        },
+        clickInside: function clickInside(e) {
+
+            var el = typeof e.srcElement != "undefined" ? e.srcElement : e.target;
+            if (el != "input" || el.type != "radio") e.stopPropagation();
+        },
+
+        bclose: function bclose() {
+            $("#" + this.id).trigger('click');
+        }
+
+    }
+});
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade modal-user",
+      attrs: { tabindex: "-1", role: "dialog", id: _vm.id },
+      on: { click: _vm.close }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal-dialog",
+          class: { "modal-dialog-wide": _vm.wide },
+          attrs: { role: "document" },
+          on: { click: _vm.clickInside }
+        },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: {
+                    type: "button",
+                    "data-dismiss": "modal",
+                    "aria-label": "Close"
+                  },
+                  on: { click: _vm.bclose }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "h4",
+                { staticClass: "modal-title" },
+                [_vm._t("title", [_vm._v("Modal Title")])],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2)
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-12158cf6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\mixins\\loading-inform.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-29930135", Component.options)
+  } else {
+    hotAPI.reload("data-v-29930135", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'loading-inform',
+    props: {
+        state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START }
+    },
+    data: function data() {
+        return {
+            STATES: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */]
+        };
+    },
+
+    locales: {
+        ru: {
+            'Loading...': 'Отправляем запрос...'
+        }
+    },
+    methods: {
+        close: function close() {
+            this.$emit('close');
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.state == _vm.STATES.LOADING
+      ? _c("div", { staticClass: "loading-info" }, [
+          _c("div", { staticClass: "window-center" }, [
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "processing_text"
+                },
+                [_vm._v("Loading...")]
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.state == _vm.STATES.ANSWER
+      ? _c(
+          "div",
+          { staticClass: "ok-message" },
+          [
+            _c("div", { staticClass: "window-center" }, [
+              _c("div", { staticClass: "complete-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "complete-body_text" },
+                  [_vm._t("ok-message")],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._t("buttons", [
+              _c("div", { staticClass: "button-close" }, [
+                _c(
+                  "button",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    staticClass: "btn btn-green",
+                    attrs: { type: "button" },
+                    on: { click: _vm.close }
+                  },
+                  [_vm._v("Ok")]
+                )
+              ])
+            ])
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.state == _vm.STATES.REDIRECT
+      ? _c("div", { staticClass: "ok-message" }, [
+          _c("div", { staticClass: "window-center" }, [
+            _c("div", { staticClass: "complete-body" }, [
+              _c(
+                "div",
+                { staticClass: "complete-body_text" },
+                [_vm._t("ok-message-redirect")],
+                2
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.state == _vm.STATES.RELOAD
+      ? _c(
+          "div",
+          { staticClass: "ok-message" },
+          [
+            _c("div", { staticClass: "window-center" }, [
+              _c("div", { staticClass: "complete-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "complete-body_text" },
+                  [_vm._t("ok-message-reload")],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._t("buttons-reload")
+          ],
+          2
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-29930135", module.exports)
+  }
+}
+
+/***/ })
+
+});

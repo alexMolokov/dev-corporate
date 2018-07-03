@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\BsHttpClient;
+use App\Helpers\Decorators\BsHttpCacheDecorator;
 use App\Services\Bs\Http\CorporateClientService;
 use App\Services\Bs\Http\CorporateServerService;
 use Illuminate\Support\ServiceProvider;

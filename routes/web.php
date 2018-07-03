@@ -23,6 +23,10 @@ Route::group(['prefix' => 'auth', 'middleware' => ['web']], function ()
     Route::post('/auto', 'Auth\AuthController@auto')->name("auto");
 });
 
+Route::group(['prefix' => 'registration', 'middleware' => ['web']], function ()
+{
+    Route::post('/allowed', 'Auth\RegisterController@isAllowed')->name("registration_allowed");
+ });
 
 
 Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth','valid.password']], function ()

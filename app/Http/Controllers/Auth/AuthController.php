@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Events\UserDataChanged;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -30,7 +31,9 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
+            $client = Auth::user();
             Auth::logout();
+            event(new UserDataChanged($client->getLogin()));
             $request->session()->invalidate();
         }
 

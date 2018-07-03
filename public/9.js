@@ -1,1 +1,519 @@
-webpackJsonp([9],{119:function(a,s,e){"use strict";Object.defineProperty(s,"__esModule",{value:!0});var r=e(15),t=e.n(r);s.default={name:"login",data:function(){return{url:"/registration",email:null,login:null,password:null,type_password:"password"}},mixins:[t.a],methods:{togglePassword:function(){this.type_password="password"==this.type_password?"text":"password"}}}},120:function(a,s){a.exports={render:function(){var a=this,s=a.$createElement,e=a._self._c||s;return e("div",{staticClass:"login-page"},[e("div",{staticClass:"container"},[e("div",{staticClass:"clearfix",attrs:{id:"sign_in"}},[a._m(0),a._v(" "),e("form",{attrs:{autocomplete:"off",url:a.url},on:{submit:function(a){a.preventDefault(),a.stopPropagation()}}},[e("div",{staticClass:"reg-body"},[e("div",{staticClass:"form-group"},[e("label",{attrs:{for:"login"}},[a._v("Email")]),a._v(" "),e("span",{directives:[{name:"show",rawName:"v-show",value:a.errors.has("email"),expression:"errors.has('email')"}],staticClass:"help is-danger"},[a._v("*"+a._s(a.errors.first("email")))]),a._v(" "),e("input",{directives:[{name:"model",rawName:"v-model",value:a.email,expression:"email"},{name:"validate",rawName:"v-validate",value:"required|email",expression:"'required|email'"}],staticClass:"form-control input-alg readonly",class:{error:a.errors.has("email")},attrs:{type:"text",id:"email",name:"email",placeholder:""},domProps:{value:a.email},on:{input:function(s){s.target.composing||(a.email=s.target.value)}}})]),a._v(" "),e("div",{staticClass:"form-group"},[e("label",{attrs:{for:"login"}},[a._v("Login")]),a._v(" "),e("span",{directives:[{name:"show",rawName:"v-show",value:a.errors.has("login"),expression:"errors.has('login')"}],staticClass:"help is-danger"},[a._v("*"+a._s(a.errors.first("login")))]),a._v(" "),e("input",{directives:[{name:"model",rawName:"v-model",value:a.login,expression:"login"},{name:"validate",rawName:"v-validate",value:"required|min_value:5",expression:"'required|min_value:5'"}],staticClass:"form-control input-alg readonly",class:{error:a.errors.has("login")},attrs:{type:"text",id:"login",name:"login",placeholder:""},domProps:{value:a.login},on:{input:function(s){s.target.composing||(a.login=s.target.value)}}})]),a._v(" "),e("div",{staticClass:"form-group"},[e("label",{attrs:{for:"password"}},[a._v("Password")]),a._v(" "),e("span",{directives:[{name:"show",rawName:"v-show",value:a.errors.has("password"),expression:"errors.has('password')"}],staticClass:"help is-danger"},[a._v("*"+a._s(a.errors.first("password")))]),a._v(" "),e("div",{staticClass:"input-group"},["checkbox"===a.type_password?e("input",{directives:[{name:"model",rawName:"v-model",value:a.password,expression:"password"},{name:"validate",rawName:"v-validate",value:"required|min_value:5",expression:"'required|min_value:5'"}],staticClass:"form-control input-alg",class:{error:a.errors.has("password")},attrs:{id:"password",name:"password",type:"checkbox"},domProps:{checked:Array.isArray(a.password)?a._i(a.password,null)>-1:a.password},on:{change:function(s){var e=a.password,r=s.target,t=!!r.checked;if(Array.isArray(e)){var i=a._i(e,null);r.checked?i<0&&(a.password=e.concat([null])):i>-1&&(a.password=e.slice(0,i).concat(e.slice(i+1)))}else a.password=t}}}):"radio"===a.type_password?e("input",{directives:[{name:"model",rawName:"v-model",value:a.password,expression:"password"},{name:"validate",rawName:"v-validate",value:"required|min_value:5",expression:"'required|min_value:5'"}],staticClass:"form-control input-alg",class:{error:a.errors.has("password")},attrs:{id:"password",name:"password",type:"radio"},domProps:{checked:a._q(a.password,null)},on:{change:function(s){a.password=null}}}):e("input",{directives:[{name:"model",rawName:"v-model",value:a.password,expression:"password"},{name:"validate",rawName:"v-validate",value:"required|min_value:5",expression:"'required|min_value:5'"}],staticClass:"form-control input-alg",class:{error:a.errors.has("password")},attrs:{id:"password",name:"password",type:a.type_password},domProps:{value:a.password},on:{input:function(s){s.target.composing||(a.password=s.target.value)}}}),a._v(" "),e("a",{staticClass:"input-group-addon",attrs:{href:"#"},on:{click:function(s){return s.preventDefault(),s.stopPropagation(),a.togglePassword(s)}}},[e("span",{staticClass:"glyphicon",class:{"glyphicon-eye-close":"password"==a.type_password,"glyphicon-eye-open":"password"!=a.type_password},attrs:{"aria-hidden":"true"}})])])])]),a._v(" "),a._m(1),a._v(" "),e("div",{staticClass:"reg-left"},[e("button",{staticClass:"btn btn-primary btn-lg",attrs:{type:"submit"},on:{click:a.validate}},[a._v("Create account")])]),a._v(" "),e("div",{staticClass:"reg-right"}),a._v(" "),a._m(2)])])])])},staticRenderFns:[function(){var a=this.$createElement,s=this._self._c||a;return s("div",{staticClass:"reg-header"},[s("h2",{staticClass:"text-primary"},[this._v("Registration")])])},function(){var a=this.$createElement,s=this._self._c||a;return s("div",{staticClass:"reg-body"},[s("div",{staticClass:"captcha-wrapper"}),this._v(" "),s("div",{staticClass:"alert-wrapper"})])},function(){var a=this,s=a.$createElement,e=a._self._c||s;return e("div",{staticClass:"reg-footer"},[e("p",{staticClass:"reg-agree"},[a._v("By clicking "),e("strong",[a._v(" Create account")]),a._v(" you agree to the "),e("a",{staticClass:"text-nowrap",attrs:{href:"/legal",target:"blank"}},[a._v("User Agreement")]),a._v(", "),e("a",{staticClass:"text-nowrap",attrs:{href:"/terms_of_use",target:"legal"}},[a._v("Terms of use")]),a._v(" and "),e("a",{staticClass:"text-nowrap",attrs:{href:"/confidentiality",target:"legal"}},[a._v("Privacy policy")])])])}]}},262:function(a,s,e){var r=e(3)(e(119),e(120),!1,null,null,null);a.exports=r.exports}});
+webpackJsonp([9],{
+
+/***/ 136:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'login',
+    data: function data() {
+        return {
+            url: "/registration",
+            email: null,
+            login: null,
+            password: null,
+            type_password: "password"
+        };
+    },
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
+    methods: {
+        togglePassword: function togglePassword() {
+            this.type_password = this.type_password == 'password' ? 'text' : 'password';
+        }
+    }
+
+});
+
+/***/ }),
+
+/***/ 137:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "login-page" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "clearfix", attrs: { id: "sign_in" } }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            attrs: { autocomplete: "off", url: _vm.url },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                $event.stopPropagation()
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "reg-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "login" } }, [_vm._v("Email")]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("email"),
+                        expression: "errors.has('email')"
+                      }
+                    ],
+                    staticClass: "help is-danger"
+                  },
+                  [_vm._v("*" + _vm._s(_vm.errors.first("email")))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|email",
+                      expression: "'required|email'"
+                    }
+                  ],
+                  staticClass: "form-control input-alg readonly",
+                  class: { error: _vm.errors.has("email") },
+                  attrs: {
+                    type: "text",
+                    id: "email",
+                    name: "email",
+                    placeholder: ""
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "login" } }, [_vm._v("Login")]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("login"),
+                        expression: "errors.has('login')"
+                      }
+                    ],
+                    staticClass: "help is-danger"
+                  },
+                  [_vm._v("*" + _vm._s(_vm.errors.first("login")))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.login,
+                      expression: "login"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min_value:5",
+                      expression: "'required|min_value:5'"
+                    }
+                  ],
+                  staticClass: "form-control input-alg readonly",
+                  class: { error: _vm.errors.has("login") },
+                  attrs: {
+                    type: "text",
+                    id: "login",
+                    name: "login",
+                    placeholder: ""
+                  },
+                  domProps: { value: _vm.login },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.login = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "password" } }, [
+                  _vm._v("Password")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("password"),
+                        expression: "errors.has('password')"
+                      }
+                    ],
+                    staticClass: "help is-danger"
+                  },
+                  [_vm._v("*" + _vm._s(_vm.errors.first("password")))]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group" }, [
+                  _vm.type_password === "checkbox"
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.password,
+                            expression: "password"
+                          },
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required|min_value:5",
+                            expression: "'required|min_value:5'"
+                          }
+                        ],
+                        staticClass: "form-control input-alg",
+                        class: { error: _vm.errors.has("password") },
+                        attrs: {
+                          id: "password",
+                          name: "password",
+                          type: "checkbox"
+                        },
+                        domProps: {
+                          checked: Array.isArray(_vm.password)
+                            ? _vm._i(_vm.password, null) > -1
+                            : _vm.password
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.password,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.password = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.password = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.password = $$c
+                            }
+                          }
+                        }
+                      })
+                    : _vm.type_password === "radio"
+                      ? _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min_value:5",
+                              expression: "'required|min_value:5'"
+                            }
+                          ],
+                          staticClass: "form-control input-alg",
+                          class: { error: _vm.errors.has("password") },
+                          attrs: {
+                            id: "password",
+                            name: "password",
+                            type: "radio"
+                          },
+                          domProps: { checked: _vm._q(_vm.password, null) },
+                          on: {
+                            change: function($event) {
+                              _vm.password = null
+                            }
+                          }
+                        })
+                      : _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min_value:5",
+                              expression: "'required|min_value:5'"
+                            }
+                          ],
+                          staticClass: "form-control input-alg",
+                          class: { error: _vm.errors.has("password") },
+                          attrs: {
+                            id: "password",
+                            name: "password",
+                            type: _vm.type_password
+                          },
+                          domProps: { value: _vm.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password = $event.target.value
+                            }
+                          }
+                        }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "input-group-addon",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          $event.stopPropagation()
+                          return _vm.togglePassword($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon",
+                        class: {
+                          "glyphicon-eye-close":
+                            _vm.type_password == "password",
+                          "glyphicon-eye-open": _vm.type_password != "password"
+                        },
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "reg-left" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.validate }
+                },
+                [_vm._v("Create account")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "reg-right" }),
+            _vm._v(" "),
+            _vm._m(2)
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "reg-header" }, [
+      _c("h2", { staticClass: "text-primary" }, [_vm._v("Registration")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "reg-body" }, [
+      _c("div", { staticClass: "captcha-wrapper" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "alert-wrapper" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "reg-footer" }, [
+      _c("p", { staticClass: "reg-agree" }, [
+        _vm._v("By clicking "),
+        _c("strong", [_vm._v(" Create account")]),
+        _vm._v(" you agree to the "),
+        _c(
+          "a",
+          {
+            staticClass: "text-nowrap",
+            attrs: { href: "/legal", target: "blank" }
+          },
+          [_vm._v("User Agreement")]
+        ),
+        _vm._v(", "),
+        _c(
+          "a",
+          {
+            staticClass: "text-nowrap",
+            attrs: { href: "/terms_of_use", target: "legal" }
+          },
+          [_vm._v("Terms of use")]
+        ),
+        _vm._v(" and "),
+        _c(
+          "a",
+          {
+            staticClass: "text-nowrap",
+            attrs: { href: "/confidentiality", target: "legal" }
+          },
+          [_vm._v("Privacy policy")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1a0fbfa0", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(136)
+/* template */
+var __vue_template__ = __webpack_require__(137)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\pages\\Registration.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1a0fbfa0", Component.options)
+  } else {
+    hotAPI.reload("data-v-1a0fbfa0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ })
+
+});

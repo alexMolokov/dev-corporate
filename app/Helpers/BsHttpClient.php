@@ -57,6 +57,26 @@ class BsHttpClient
         return $this->m_connected&&$this->ping();
     }
 
+    public function getToken()
+    {
+        return $this->m_token;
+    }
+
+    public function setToken($token)
+    {
+        $this->m_token = $token;
+    }
+
+    public function setConnected($isConnected = true)
+    {
+        $this->m_connected = $isConnected;
+    }
+
+    public function getConnected()
+    {
+        return $this->m_connected;
+    }
+
 
     private function generateClientSeed($length = 10)
     {
@@ -80,7 +100,7 @@ class BsHttpClient
      * Connect to remote service
      * @return boolean
      */
-    protected  function doConnect()
+    public  function doConnect()
     {
             $result = $this->send("request_auth","/login");
             if ($result->status)
@@ -111,7 +131,7 @@ class BsHttpClient
     }
 
 
-    protected function send($op,$path="/",$args = [])
+    public function send($op,$path="/",$args = [])
     {
         $args['token'] = $this->m_token;
 

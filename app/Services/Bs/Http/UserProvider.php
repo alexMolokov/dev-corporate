@@ -16,8 +16,11 @@ use App\Contracts\CorporateClientInterface;
 class UserProvider implements Auth\UserProvider
 {
     private $service;
-
-    public function __construct(CorporateClientInterface $service)
+    /**
+     * UserProvider constructor.
+     * @param CorporateClientInterface $service
+     */
+    public function __construct( $service)
     {
         $this->service = $service;
     }
