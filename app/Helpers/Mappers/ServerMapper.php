@@ -55,6 +55,7 @@ class ServerMapper
             "validTill" => (is_numeric($object->date_to))? date("Y-m-d", $object->date_to) : "",
             "added" => date("Y-m-d",$object->timestamp),
             "dateFrom" => (is_numeric($object->date_from))? date("Y-m-d", $object->date_from) : date("Y-m-d"),
+            "signed" => $object->signed
 
         ]);
 

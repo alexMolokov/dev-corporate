@@ -15,7 +15,13 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\UserDataChanged' => [
             'App\Listeners\CacheCleanListener'
-        ]
+        ],
+        'App\Events\ServerRequestUploaded' => [
+            'App\Listeners\ServerRequestUploadedListener'
+        ],
+        'App\Events\CertificateRequestUploaded' => [
+            'App\Listeners\CertificateRequestUploadedListener'
+        ],
     ];
 
     /**

@@ -10,5 +10,7 @@ return [
 
     "port" => env("BSYSTEM_PORT",null),
 
-    "cookie" => env("BSYSTEM_COOKIE")
+    "cookie" => env("BSYSTEM_COOKIE"),
+
+    "mail_admin" => env("BSYSTEM_MAIL_ADMIN")
 ];

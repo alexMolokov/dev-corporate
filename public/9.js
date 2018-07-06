@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 136:
+/***/ 138:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64,12 +64,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             email: null,
             login: null,
             password: null,
-            type_password: "password"
+            type_password: "password",
+            emailExists: false,
+            loginExists: false
         };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.$validator.extend('try_login', {
+            getMessage: function getMessage(field) {
+                return _this.t('Login already exists');
+            },
+            validate: function validate(value) {
+                if (value) {
+                    console.log(_this.send);
+                    return _this.send("/registration/try_login", { "value": value }, function (response) {
+                        // success
+                        if (response.body.status) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }, function (response) {
+                        // error
+                        return false;
+                    }).catch(function (error) {
+                        console.log('error');
+                        return false;
+                    });
+                } else {
+                    return false;
+                }
+            }
+        });
+
+        this.$validator.attach({
+            name: 'try_login',
+            getter: function getter() {
+                return _this.login;
+            },
+            _delay: 1
+        });
     },
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
     methods: {
+        validate: function validate() {},
         togglePassword: function togglePassword() {
             this.type_password = this.type_password == 'password' ? 'text' : 'password';
         }
@@ -79,7 +120,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 137:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -188,8 +229,8 @@ var render = function() {
                     {
                       name: "validate",
                       rawName: "v-validate",
-                      value: "required|min_value:5",
-                      expression: "'required|min_value:5'"
+                      value: "required|min:6|try_login",
+                      expression: "'required|min:6|try_login'"
                     }
                   ],
                   staticClass: "form-control input-alg readonly",
@@ -246,8 +287,8 @@ var render = function() {
                           {
                             name: "validate",
                             rawName: "v-validate",
-                            value: "required|min_value:5",
-                            expression: "'required|min_value:5'"
+                            value: "required|min:6",
+                            expression: "'required|min:6'"
                           }
                         ],
                         staticClass: "form-control input-alg",
@@ -296,8 +337,8 @@ var render = function() {
                             {
                               name: "validate",
                               rawName: "v-validate",
-                              value: "required|min_value:5",
-                              expression: "'required|min_value:5'"
+                              value: "required|min:6",
+                              expression: "'required|min:6'"
                             }
                           ],
                           staticClass: "form-control input-alg",
@@ -325,8 +366,8 @@ var render = function() {
                             {
                               name: "validate",
                               rawName: "v-validate",
-                              value: "required|min_value:5",
-                              expression: "'required|min_value:5'"
+                              value: "required|min:6",
+                              expression: "'required|min:6'"
                             }
                           ],
                           staticClass: "form-control input-alg",
@@ -383,7 +424,10 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary btn-lg",
-                  attrs: { type: "submit" },
+                  attrs: {
+                    type: "submit",
+                    disabled: _vm.emailExists || _vm.loginExists
+                  },
                   on: { click: _vm.validate }
                 },
                 [_vm._v("Create account")]
@@ -474,9 +518,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(136)
+var __vue_script__ = __webpack_require__(138)
 /* template */
-var __vue_template__ = __webpack_require__(137)
+var __vue_template__ = __webpack_require__(139)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

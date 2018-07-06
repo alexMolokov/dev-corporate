@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-size: 21px;\n  margin-top: 30px;\n}\n#user-order-page .disabled[data-v-1ba10a26] {\n  background-color: #f5f5f5;\n  opacity: 0.5;\n}\n#user-order-page hr[data-v-1ba10a26] {\n  margin: 40px 0;\n}\n#user-order-page > h3[data-v-1ba10a26]:first-child {\n  margin-top: 10px;\n}\n#user-order-page .shop-footer[data-v-1ba10a26] {\n  text-align: right;\n}\n#user-order-page .shop-footer .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 30px;\n    font-weight: bold;\n    display: inline-block;\n}\n#user-order-page .shop-footer .price sup[data-v-1ba10a26] {\n      font-size: .5em;\n      vertical-align: baseline;\n      position: relative;\n      top: -.6666667em;\n}\n#users .field-number[data-v-1ba10a26] {\n  width: 182px;\n  margin-top: 20px;\n  display: block;\n}\n#users .field-number > *[data-v-1ba10a26] {\n    display: inline;\n    float: left;\n}\n#users .field-number .minus[data-v-1ba10a26] {\n    padding: 0px 9px 1px;\n    border-right: 0;\n    border-radius: 3px 0 0 3px;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .minus[data-v-1ba10a26]:after {\n      content: \"\\2014\";\n}\n#users .field-number .add[data-v-1ba10a26] {\n    padding: 0px 12px 1px 11px;\n    border-left: 0;\n    border-radius: 0 3px 3px 0;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .add[data-v-1ba10a26]:after {\n      content: \"+\";\n}\n#users .field-number input[data-v-1ba10a26] {\n    width: 100px;\n    height: 40px;\n    color: #000;\n    text-align: center;\n    border: 1px solid #e8e8e8;\n    font-size: 18px;\n    font-weight: 700;\n}\n#users .number .min[data-v-1ba10a26] {\n  clear: both;\n  font-size: 14px;\n  color: #888;\n  padding-top: 7px;\n  margin-bottom: 4px;\n}\n#os > div[data-v-1ba10a26], #servers > div[data-v-1ba10a26], #periods > div[data-v-1ba10a26], #services > div[data-v-1ba10a26] {\n  padding: 4px;\n}\n#os input[type=\"radio\"][data-v-1ba10a26], #servers input[type=\"radio\"][data-v-1ba10a26], #periods input[type=\"radio\"][data-v-1ba10a26], #services input[type=\"radio\"][data-v-1ba10a26] {\n  margin-right: 3px;\n}\n#addons label[data-v-1ba10a26], #os label[data-v-1ba10a26], #servers label[data-v-1ba10a26], #periods label[data-v-1ba10a26], #services label[data-v-1ba10a26] {\n  font-size: 18px;\n  color: #666;\n  font-weight: 400;\n}\n#addons .table[data-v-1ba10a26], #os .table[data-v-1ba10a26], #servers .table[data-v-1ba10a26], #periods .table[data-v-1ba10a26], #services .table[data-v-1ba10a26] {\n  display: table;\n}\n#addons .table > div[data-v-1ba10a26]:not(:first-child), #os .table > div[data-v-1ba10a26]:not(:first-child), #servers .table > div[data-v-1ba10a26]:not(:first-child), #periods .table > div[data-v-1ba10a26]:not(:first-child), #services .table > div[data-v-1ba10a26]:not(:first-child) {\n    border-top: none;\n}\n#addons .table > div[data-v-1ba10a26], #os .table > div[data-v-1ba10a26], #servers .table > div[data-v-1ba10a26], #periods .table > div[data-v-1ba10a26], #services .table > div[data-v-1ba10a26] {\n    /*display: table-row;*/\n    border: 1px solid #ccc;\n    padding: 10px;\n}\n#addons .table > div[data-v-1ba10a26]:hover, #os .table > div[data-v-1ba10a26]:hover, #servers .table > div[data-v-1ba10a26]:hover, #periods .table > div[data-v-1ba10a26]:hover, #services .table > div[data-v-1ba10a26]:hover {\n      background-color: #f5f5f5;\n}\n#addons .table > div input[type=\"checkbox\"][data-v-1ba10a26], #os .table > div input[type=\"checkbox\"][data-v-1ba10a26], #servers .table > div input[type=\"checkbox\"][data-v-1ba10a26], #periods .table > div input[type=\"checkbox\"][data-v-1ba10a26], #services .table > div input[type=\"checkbox\"][data-v-1ba10a26] {\n      margin-right: 3px;\n}\n#addons .table > div span[data-v-1ba10a26]:first-child, #os .table > div span[data-v-1ba10a26]:first-child, #servers .table > div span[data-v-1ba10a26]:first-child, #periods .table > div span[data-v-1ba10a26]:first-child, #services .table > div span[data-v-1ba10a26]:first-child {\n      width: 78%;\n      display: inline-block;\n}\n#addons .table > div span[data-v-1ba10a26]:last-child, #os .table > div span[data-v-1ba10a26]:last-child, #servers .table > div span[data-v-1ba10a26]:last-child, #periods .table > div span[data-v-1ba10a26]:last-child, #services .table > div span[data-v-1ba10a26]:last-child {\n      width: 20%;\n      display: inline-block;\n      text-align: right;\n      padding-right: 10px;\n}\n#addons .table .price[data-v-1ba10a26], #os .table .price[data-v-1ba10a26], #servers .table .price[data-v-1ba10a26], #periods .table .price[data-v-1ba10a26], #services .table .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 22px;\n    font-weight: bold;\n    display: inline-block;\n}\n", ""]);
+exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-size: 21px;\n  margin-top: 30px;\n}\n#user-order-page .disabled[data-v-1ba10a26] {\n  background-color: #f5f5f5;\n  opacity: 0.5;\n}\n#user-order-page hr[data-v-1ba10a26] {\n  margin: 40px 0;\n}\n#user-order-page > h3[data-v-1ba10a26]:first-child {\n  margin-top: 10px;\n}\n#user-order-page .shop-footer[data-v-1ba10a26] {\n  text-align: right;\n}\n#user-order-page .shop-footer .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 30px;\n    font-weight: bold;\n    display: inline-block;\n}\n#user-order-page .shop-footer .price sup[data-v-1ba10a26] {\n      font-size: .5em;\n      vertical-align: baseline;\n      position: relative;\n      top: -.6666667em;\n}\n#users .field-number[data-v-1ba10a26] {\n  width: 182px;\n  margin-top: 20px;\n  display: block;\n}\n#users .field-number > *[data-v-1ba10a26] {\n    display: inline;\n    float: left;\n}\n#users .field-number .minus[data-v-1ba10a26] {\n    padding: 0px 9px 1px;\n    border-right: 0;\n    border-radius: 3px 0 0 3px;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .minus[data-v-1ba10a26]:after {\n      content: \"\\2014\";\n}\n#users .field-number .add[data-v-1ba10a26] {\n    padding: 0px 12px 1px 11px;\n    border-left: 0;\n    border-radius: 0 3px 3px 0;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .add[data-v-1ba10a26]:after {\n      content: \"+\";\n}\n#users .field-number input[data-v-1ba10a26] {\n    width: 100px;\n    height: 40px;\n    color: #000;\n    text-align: center;\n    border: 1px solid #e8e8e8;\n    font-size: 18px;\n    font-weight: 700;\n}\n#users .number .min[data-v-1ba10a26] {\n  clear: both;\n  font-size: 14px;\n  color: #888;\n  padding-top: 7px;\n  margin-bottom: 4px;\n}\n#os > div[data-v-1ba10a26], #servers > div[data-v-1ba10a26], #periods > div[data-v-1ba10a26], #services > div[data-v-1ba10a26] {\n  padding: 4px;\n}\n#os input[type=\"radio\"][data-v-1ba10a26], #servers input[type=\"radio\"][data-v-1ba10a26], #periods input[type=\"radio\"][data-v-1ba10a26], #services input[type=\"radio\"][data-v-1ba10a26] {\n  margin-right: 3px;\n}\n#addons label[data-v-1ba10a26], #os label[data-v-1ba10a26], #servers label[data-v-1ba10a26], #periods label[data-v-1ba10a26], #services label[data-v-1ba10a26] {\n  font-size: 18px;\n  color: #666;\n  font-weight: 400;\n}\n#addons .table[data-v-1ba10a26], #os .table[data-v-1ba10a26], #servers .table[data-v-1ba10a26], #periods .table[data-v-1ba10a26], #services .table[data-v-1ba10a26] {\n  display: table;\n}\n#addons .table > div[data-v-1ba10a26]:not(:first-child), #os .table > div[data-v-1ba10a26]:not(:first-child), #servers .table > div[data-v-1ba10a26]:not(:first-child), #periods .table > div[data-v-1ba10a26]:not(:first-child), #services .table > div[data-v-1ba10a26]:not(:first-child) {\n    border-top: none;\n}\n#addons .table > div[data-v-1ba10a26], #os .table > div[data-v-1ba10a26], #servers .table > div[data-v-1ba10a26], #periods .table > div[data-v-1ba10a26], #services .table > div[data-v-1ba10a26] {\n    /*display: table-row;*/\n    border: 1px solid #ccc;\n    padding: 10px;\n}\n#addons .table > div[data-v-1ba10a26]:hover, #os .table > div[data-v-1ba10a26]:hover, #servers .table > div[data-v-1ba10a26]:hover, #periods .table > div[data-v-1ba10a26]:hover, #services .table > div[data-v-1ba10a26]:hover {\n      background-color: #f5f5f5;\n}\n#addons .table > div input[type=\"checkbox\"][data-v-1ba10a26], #os .table > div input[type=\"checkbox\"][data-v-1ba10a26], #servers .table > div input[type=\"checkbox\"][data-v-1ba10a26], #periods .table > div input[type=\"checkbox\"][data-v-1ba10a26], #services .table > div input[type=\"checkbox\"][data-v-1ba10a26] {\n      margin-right: 3px;\n}\n#addons .table > div > span[data-v-1ba10a26]:first-child, #os .table > div > span[data-v-1ba10a26]:first-child, #servers .table > div > span[data-v-1ba10a26]:first-child, #periods .table > div > span[data-v-1ba10a26]:first-child, #services .table > div > span[data-v-1ba10a26]:first-child {\n      width: 85%;\n      display: inline-block;\n}\n@media (max-width: 767px) {\n#addons .table > div > span[data-v-1ba10a26]:first-child, #os .table > div > span[data-v-1ba10a26]:first-child, #servers .table > div > span[data-v-1ba10a26]:first-child, #periods .table > div > span[data-v-1ba10a26]:first-child, #services .table > div > span[data-v-1ba10a26]:first-child {\n          width: 78%;\n}\n}\n#addons .table > div > span[data-v-1ba10a26]:last-child, #os .table > div > span[data-v-1ba10a26]:last-child, #servers .table > div > span[data-v-1ba10a26]:last-child, #periods .table > div > span[data-v-1ba10a26]:last-child, #services .table > div > span[data-v-1ba10a26]:last-child {\n      width: 13%;\n      display: inline-block;\n      text-align: right;\n      padding-right: 10px;\n}\n@media (max-width: 767px) {\n#addons .table > div > span[data-v-1ba10a26]:last-child, #os .table > div > span[data-v-1ba10a26]:last-child, #servers .table > div > span[data-v-1ba10a26]:last-child, #periods .table > div > span[data-v-1ba10a26]:last-child, #services .table > div > span[data-v-1ba10a26]:last-child {\n          width: 20%;\n}\n}\n#addons .table .price[data-v-1ba10a26], #os .table .price[data-v-1ba10a26], #servers .table .price[data-v-1ba10a26], #periods .table .price[data-v-1ba10a26], #services .table .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 22px;\n    font-weight: bold;\n    display: inline-block;\n}\n", ""]);
 
 // exports
 
@@ -238,7 +238,7 @@ var formGetTrial = function formGetTrial() {
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapMutations */])("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount"]), {
         factoryState: function factoryState() {
             if (this.makeDeal == ORDER_STATES.NEW_ORDER) {
-                return new __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newOrder__["a" /* newOrder */]();
+                return new __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newOrder__["a" /* newOrder */](this.serversMap);
             } else if (this.makeDeal == ORDER_STATES.NEW_LICENSE) {
                 return new __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_newLicense__["a" /* newLicense */](this.serversMap.get(this.server));
             } else if (this.makeDeal == ORDER_STATES.RENEW_LICENSE) {
@@ -327,7 +327,7 @@ var formGetTrial = function formGetTrial() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(16);
 
 
-function newOrder() {
+function newOrder(serversMap) {
     /**
      *
      * @param page/Shop context
@@ -348,6 +348,38 @@ function newOrder() {
         context.discount = 0;
     };
 
+    function hasTestLicense() {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = serversMap.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var key = _step.value;
+
+                var licenses = serversMap.get(key).licenses;
+                for (var i = 0; i < licenses.length; i++) {
+                    if (licenses[i].test) return true;
+                }
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        return false;
+    }
+
     /**
      *
      * @param page/Shop context
@@ -359,6 +391,10 @@ function newOrder() {
             "products": []
         };
         setForbiddenForServer(context);
+        if (hasTestLicense()) {
+
+            context.forbidden.period.push(__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL);
+        }
     };
 
     var setForbiddenForServer = function setForbiddenForServer(context) {
@@ -410,13 +446,13 @@ function newOrder() {
 
     this.sumOrder = function (context) {
         var sum = 0;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
         try {
-            for (var _iterator = context.basket.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var product = _step.value;
+            for (var _iterator2 = context.basket.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var product = _step2.value;
 
                 if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER) {
                     var values = product[context.choice.price + product.postfixForLicense];
@@ -434,16 +470,16 @@ function newOrder() {
                 }
             }
         } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
         } finally {
             try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                    _iterator2.return();
                 }
             } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
+                if (_didIteratorError2) {
+                    throw _iteratorError2;
                 }
             }
         }
@@ -1232,6 +1268,7 @@ var render = function() {
             _vm._v(" "),
             _vm.showFormGetTrial
               ? _c("form-get-trial", {
+                  attrs: { choice: _vm.choice, basket: _vm.basket },
                   on: {
                     close: function($event) {
                       _vm.showFormGetTrial = false

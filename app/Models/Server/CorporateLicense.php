@@ -18,13 +18,24 @@ class CorporateLicense
     protected $validTill;
     protected $dateFrom;
     protected $added;
+    protected $signed = false;
 
 
     protected $processModules = [];
     protected $serverModules = [];
 
 
-    protected $fillable = ['id','status', 'users','added', "validTill", "serverId", "dateFrom"];
+    protected $fillable = ['id','status', 'users','added', "validTill", "serverId", "dateFrom", "signed"];
+
+    public function setSigned($sign)
+    {
+        if(strlen($sign) > 0) $this->signed = true;
+    }
+
+    public function getSigned()
+    {
+        return $this->signed;
+    }
 
     public function isValid()
     {

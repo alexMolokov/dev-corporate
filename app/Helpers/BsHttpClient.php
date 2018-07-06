@@ -39,6 +39,11 @@ class BsHttpClient
         $this->m_httpClient->setVerbose(false);
     }
 
+    public function __call($methodName, $args)
+    {
+        return call_user_func_array(array($this->m_httpClient, $methodName), $args);
+    }
+
     /**
      * Ping remote service. Ping works only after authorization was complete
      * @return boolean

@@ -7,6 +7,8 @@ export function License(data)
     this.validFrom = new Date(data.validFrom);
     this.valid = data.valid;
     this.serverModules = data.serverModules
+    this.signed = data.signed;
+    this.test = data.test;
 
     if(data.validTill != "")
     {

@@ -34,6 +34,11 @@ const mutations =  {
             }
         }
     },
+    cleanServers: (state) => {
+        state.servers = [];
+        state.serversMap = new Map();
+        state.serverTypes = [];
+    },
     addServer: (state, server) => {
            state.servers.push(server);
            state.serversMap.set(server.id, server);

@@ -42,9 +42,9 @@ Route::group(['prefix' => 'servers', 'middleware' => ['web', 'auth']], function 
 {
     Route::match(["get", "post"],'/get-trial', 'Client\ServersController@getTrial')->name('get_trial');
     Route::match(["get", "post"],'/get-servers', 'Client\ServersController@getServers')->name('get_servers');
-    Route::match(["get", "post"],'/license/request', 'Client\ServersController@licenseRequest')->name('licence_request');
-    Route::match(["get", "post"],'/license/download/:license', 'Client\ServersController@licenseDownload')->name('licence_download');
-    Route::match(["get", "post"],'/certificate/download', 'Client\ServersController@certificateDownload')->name('certificate_download');
+    Route::match(["get", "post"],'/license/request', 'Client\ServersController@licenseRequest')->name('license_request');
+    Route::match(["get", "post"],'/license/download/{licenseId}', 'Client\ServersController@licenseDownload')->name('license_download');
+    Route::match(["get", "post"],'/certificate/download/{serverId}', 'Client\ServersController@certificateDownload')->name('certificate_download');
     Route::match(["get", "post"],'/certificate/request', 'Client\ServersController@certificateRequest')->name('certificate_request');
 });
 

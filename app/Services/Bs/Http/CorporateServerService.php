@@ -16,7 +16,7 @@ use App\Helpers\Mappers\ServerMapper;
 class CorporateServerService extends Service implements CorporateServerInterface
 {
     const PATH = "/admin/corporates/servers";
-    const PATH_LICENSE = "/admin/corporates/license";
+    const PATH_LICENSE = "/admin/corporates/licenses";
 
     const OPS = [
         "getServers" => "get_servers",
@@ -24,7 +24,11 @@ class CorporateServerService extends Service implements CorporateServerInterface
         "licenseRequest" => "upload_license_request",
         "certificateRequest" => "upload_certificate_request",
         "signLicense" => "sign_license",
-        "getSignLicense" => "get_sign_license"
+        "getSignLicense" => "get_sign_license",
+        "addServer" => "add_server",
+        "addLicense" => "add_license",
+        "downloadCertificate" => "download_certificate",
+        "downloadLicense" => "download_license"
     ];
 
     /**
@@ -38,6 +42,28 @@ class CorporateServerService extends Service implements CorporateServerInterface
     {
         $result = $this->client->sendCommand(self::OPS["licenseRequest"], self::PATH,$data);
         return $result->status;
+    }
+
+    public function downloadCertificate($serverId)
+    {
+        $this->client->sendCommand(self::OPS["downloadCertificate"], self::PATH,["id" => $serverId]);
+
+        return [
+                "headers" => $this->client->getResponseHeaders(),
+                "body" => $this->client->result()
+            ];
+
+    }
+
+    public function downloadLicense($licenseId)
+    {
+       $this->client->sendCommand(self::OPS["downloadLicense"], self::PATH_LICENSE,["id" => $licenseId]);
+
+        return [
+            "headers" => $this->client->getResponseHeaders(),
+            "body" => $this->client->result()
+        ];
+
     }
 
 
@@ -66,6 +92,7 @@ class CorporateServerService extends Service implements CorporateServerInterface
     {
         $ar  = [];
         $result = $this->client->sendCommand(self::OPS["getServers"], self::PATH,["customer_id" => $customerId]);
+
         if($result->status)
         {
             foreach($result->response as $object)
@@ -127,4 +154,17 @@ class CorporateServerService extends Service implements CorporateServerInterface
         return $ar;
     }
 
+    public function addServer($customerId, array $data)
+    {
+        $data["customer_id"] = $customerId;
+        $result = $this->client->sendCommand(self::OPS["addServer"], self::PATH,$data);
+        if($result->status) return $result->response;
+    }
+
+    public function addLicense($serverId, array $data)
+    {
+        $data["server_id"] = $serverId;
+        $result = $this->client->sendCommand(self::OPS["addLicense"], self::PATH_LICENSE,$data);
+        if($result->status) return $result->response;
+    }
 }

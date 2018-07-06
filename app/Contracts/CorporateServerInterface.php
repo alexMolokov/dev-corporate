@@ -39,4 +39,9 @@ interface  CorporateServerInterface
      * @return mixed
      */
     public function getLicenseSign($customerId, $licenseId);
+
+    public function addServer($customerId, array $data);
+    public function addLicense($serverId, array $data);
+    public function downloadCertificate($serverId);
+    public function downloadLicense($licenseId);
 }

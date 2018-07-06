@@ -1,12 +1,84 @@
 webpackJsonp([3],{
 
-/***/ 142:
+/***/ 104:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = LocalServer;
+function LocalServer(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.release = data.release;
+    this.os = data.os;
+    this.edition = data.edition;
+
+    this.serverModules = data.serverModules;
+    this.added = new Date(data.added);
+    this.licenses = [];
+
+    this.hasLicenseRequest = data.hasLicenseRequest || false;
+    this.hasCertificateRequest = data.hasCertificateRequest || false;
+    this.hasCertificate = data.hasCertificate || false;
+
+    this.addLicense = function (license) {
+        this.licenses.push(license);
+    };
+
+    this.getLicense = function (licenseID) {
+        for (var i = 0; i < this.licenses.length; i++) {
+            if (this.licenses[i].id == licenseID) return this.licenses[i];
+        }
+    };
+
+    this.getAdded = function () {
+        return this.added.toISOString().substring(0, 10);
+    };
+}
+
+/***/ }),
+
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = License;
+function License(data) {
+    this.id = data.id;
+    this.status = data.status;
+    this.users = data.users;
+    this.validTill;
+    this.validFrom = new Date(data.validFrom);
+    this.valid = data.valid;
+    this.serverModules = data.serverModules;
+    this.signed = data.signed;
+    this.test = data.test;
+
+    if (data.validTill != "") {
+        this.validTill = new Date(data.validTill);
+    }
+
+    this.added = new Date(data.added);
+
+    this.getAdded = function () {
+        return this.added.toISOString().substring(0, 10);
+    };
+
+    this.getValidTill = function () {
+        if (typeof this.validTill == "undefined") return "";
+
+        return this.validTill.toISOString().substring(0, 10);
+    };
+}
+
+/***/ }),
+
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(143);
+var content = __webpack_require__(145);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27,7 +99,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 143:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(false);
@@ -42,14 +114,14 @@ exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-ch
 
 /***/ }),
 
-/***/ 144:
+/***/ 146:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(105);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -324,76 +396,6 @@ var formCertificateRequest = function formCertificateRequest() {
     }
 
 });
-
-/***/ }),
-
-/***/ 145:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = LocalServer;
-function LocalServer(data) {
-    this.id = data.id;
-    this.name = data.name;
-    this.release = data.release;
-    this.os = data.os;
-    this.edition = data.edition;
-
-    this.serverModules = data.serverModules;
-    this.added = new Date(data.added);
-    this.licenses = [];
-
-    this.hasLicenseRequest = data.hasLicenseRequest || false;
-    this.hasCertificateRequest = data.hasCertificateRequest || false;
-    this.hasCertificate = data.hasCertificate || false;
-
-    this.addLicense = function (license) {
-        this.licenses.push(license);
-    };
-
-    this.getLicense = function (licenseID) {
-        for (var i = 0; i < this.licenses.length; i++) {
-            if (this.licenses[i].id == licenseID) return this.licenses[i];
-        }
-    };
-
-    this.getAdded = function () {
-        return this.added.toISOString().substring(0, 10);
-    };
-}
-
-/***/ }),
-
-/***/ 146:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = License;
-function License(data) {
-    this.id = data.id;
-    this.status = data.status;
-    this.users = data.users;
-    this.validTill;
-    this.validFrom = new Date(data.validFrom);
-    this.valid = data.valid;
-    this.serverModules = data.serverModules;
-
-    if (data.validTill != "") {
-        this.validTill = new Date(data.validTill);
-    }
-
-    this.added = new Date(data.added);
-
-    this.getAdded = function () {
-        return this.added.toISOString().substring(0, 10);
-    };
-
-    this.getValidTill = function () {
-        if (typeof this.validTill == "undefined") return "";
-
-        return this.validTill.toISOString().substring(0, 10);
-    };
-}
 
 /***/ }),
 
@@ -890,7 +892,9 @@ var render = function() {
                                   "a",
                                   {
                                     attrs: {
-                                      href: "/user/certificate/download",
+                                      href:
+                                        "/servers/certificate/download/" +
+                                        server.id,
                                       target: "_blank"
                                     }
                                   },
@@ -1035,7 +1039,7 @@ var render = function() {
                                     _vm._v(_vm._s(i + 1) + " License key:")
                                   ]),
                                   _vm._v(" "),
-                                  server.hasLicenseRequest
+                                  server.hasLicenseRequest && license.signed
                                     ? _c(
                                         "a",
                                         {
@@ -1258,11 +1262,11 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(142)
+  __webpack_require__(144)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(144)
+var __vue_script__ = __webpack_require__(146)
 /* template */
 var __vue_template__ = __webpack_require__(172)
 /* template functional */

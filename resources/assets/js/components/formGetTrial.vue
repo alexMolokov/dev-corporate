@@ -1,12 +1,12 @@
 <template>
     <modal-window :id="id"  @close="close" class="in"  style="display: block" :show="true" :wide="true">
         <div slot="title" v-translate>Get trial</div>
-        <div class="loading-info" v-if="visible == 'hidden'">
+        <div class="loading-info" v-if="state == states.LOADING">
             <div class="window-center">
                 <div><div class="processing_text" v-translate>Loading...</div></div>
             </div>
         </div>
-        <div :style="{ visibility: visible}">
+        <div :style="{ visibility: visible, display: display}">
             <h3 v-translate>What's next?</h3>
             <ol>
                 <li>
@@ -43,12 +43,22 @@ import {STATES} from "../mixins/states";
 var ajaxform = require('../mixins/ajax-form.vue');
 var errorInform = require('../mixins/error-inform.vue');
 var loadingInform = require('../mixins/loading-inform.vue');
+import {mapMutations } from 'vuex'
+import {LocalServer} from "../classes/LocalServer";
+import {License} from "../classes/License";
 
 export default {
   name: 'form-get-trial',
   props: {
-
-    },
+        choice: {type: Object},
+        basket: {type: Map}
+  },
+  computed:{
+      display(){
+          if(this.state == this.states.ERROR) return "none";
+          return "block";
+      }
+  },
   components: {
      "modal-window": modalWindow,
      "error-inform": errorInform,
@@ -59,7 +69,8 @@ export default {
       id: "corporateGetTrial",
       url: "servers/get-trial",
       redirect: false,
-      visible: "hidden"
+      visible: "hidden",
+      states: STATES
      }
   },
   mounted(){
@@ -82,14 +93,33 @@ export default {
          }
     },    
   methods: {
+      ...mapMutations("servers", ["addServer", "cleanServers"]),
       redirectTo: function(){
           this.$router.push({name: "userpage"})
       },
       validate: function()
       {
-          let data = {};
+          let basketProducts = [];
+          for(let key of this.basket.keys())
+          {
+              basketProducts.push(key);
+          }
+
+          let data = {os: this.choice.os, server: this.choice.server, basket: basketProducts };
+
           this.send(this.url, data, (data) => {
               this.visible = "visible";
+              this.cleanServers();
+              for(let serverId in data)
+              {
+                  let server = new LocalServer(data[serverId]);
+
+                  for(let licenseId in data[serverId]["licenses"])
+                  {
+                      server.addLicense(new License(data[serverId]["licenses"][licenseId]));
+                  }
+                  this.addServer(server);
+              }
 
           });
       }

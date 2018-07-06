@@ -74,7 +74,7 @@
             </div>
         </div>
         <form-payment v-if="showFormPayment"  @close="showFormPayment = false"></form-payment>
-        <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false"></form-get-trial>
+        <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false" :choice="choice" :basket="basket"></form-get-trial>
     </div>
     <div v-if="products.length == 0"><loading-page></loading-page></div>
     </div>
@@ -188,7 +188,7 @@
             {
                 if(this.makeDeal == ORDER_STATES.NEW_ORDER)
                 {
-                    return new newOrder();
+                    return new newOrder(this.serversMap);
                 }
                 else
                 if(this.makeDeal == ORDER_STATES.NEW_LICENSE)
@@ -430,13 +430,21 @@
                     margin-right: 3px;
                 }
 
-                span:first-child {
-                    width: 78%;
+                > span:first-child {
+                    width: 85%;
+                    @media (max-width: 767px)
+                    {
+                        width: 78%;
+                    }
                     display: inline-block;
 
                 }
-                span:last-child {
-                    width: 20%;
+                > span:last-child {
+                    width: 13%;
+                    @media (max-width: 767px)
+                    {
+                        width: 20%;
+                    }
                     display: inline-block;
                     text-align: right;
                     padding-right: 10px;

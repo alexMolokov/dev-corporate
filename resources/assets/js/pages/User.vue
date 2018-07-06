@@ -106,7 +106,7 @@
                             <div class="server-info-id"><span v-translate>Server ID</span><span>{{server.id}}</span> </div>
                             <div><span v-translate>Certificate</span>
                                 <span  v-if="!server.hasCertificateRequest"><a href="#" @click.prevent.stop="showFormCertificateRequest = true; currentServer = server.id">Upload request</a></span>
-                                <span v-if="server.hasCertificate"><a href="/user/certificate/download" target="_blank">Download</a></span>
+                                <span v-if="server.hasCertificate"><a :href="'/servers/certificate/download/' + server.id" target="_blank">Download</a></span>
                             </div>
                             <div v-if="!server.hasLicenseRequest"><span v-translate>License</span>  <a href="#" @click.prevent.stop="showFormLicenseRequest = true; currentServer = server.id">Upload request</a></div>
                             <div><span v-translate>Release</span>  <span>{{server.release}}</span></div>
@@ -131,7 +131,7 @@
                             <tbody>
                             <tr v-for="(license, i)  in server.licenses">
                                 <td>
-                                    <div class="license-key"><span>{{i+1}} License key:</span> <a target="_blank" :href="'/servers/license/download/' + license.id"  v-if="server.hasLicenseRequest">download</a></div>
+                                    <div class="license-key"><span>{{i+1}} License key:</span> <a target="_blank" :href="'/servers/license/download/' + license.id"  v-if="server.hasLicenseRequest && license.signed">download</a></div>
                                     <div class="license-number"><span>ID:</span> <span>{{license.id}}</span></div>
                                     <div class="license-date"><span>Added:</span> <span>{{license.getAdded()}}</span></div>
                                 </td>

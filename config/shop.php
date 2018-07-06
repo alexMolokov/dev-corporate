@@ -2,9 +2,14 @@
     return [
         "currency" => "USD",
         "renewDiscount" => 0.2, // %
+        "trialServers" => ["1"],
         "os" => [
             "windows" => ["name" => "Windows Server"],
             "linux" => ["name" => "Linux Debian"],
+        ],
+        "bsOs" => [
+            "windows" => "windows",
+            "linux" => "linux_x86_64",
         ],
         "periods" => [
             "trial" => ["name" => "14 days trial", "period" => 14],
@@ -13,6 +18,10 @@
         ],
         "products" => [
             "1" => [
+                "trial" => true,
+                "trialAllowedProducts" => ["3"],
+                "edition" => "standalone",
+                "release" => "2017",
                 "name" => "VIPole Enterprise, Standalone edition",
                 "baseAnnualPrice" => 250,
                 "baseLifetimePrice" => 200,
@@ -44,6 +53,7 @@
             ],
             "3" => [
                 "name" => "VoIP/SIP module",
+                "bsname" => "SIP",
                 "baseAnnualPrice" => 300,
                 "baseLifetimePrice" => 700,
                 "section" => "addons",
@@ -51,6 +61,7 @@
             ],
             "4" => [
                 "name" => "WEB module",
+                "bsname" => "BS-HTTP",
                 "baseAnnualPrice" => 100,
                 "baseLifetimePrice" => 250,
                 "section" => "addons",

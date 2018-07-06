@@ -18,7 +18,7 @@ class CacheDecorator
     private $ttl = 5;// minutes
     private $service;
 
-    private function getKey($login)
+    public function getKey($login)
     {
         return "authuser:{$login}";
     }

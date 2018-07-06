@@ -1,6 +1,6 @@
 import {OS,PERIOD,PRODUCTS, PRICES, COUNT_USERS} from "./const";
 
-export function newOrder()
+export function newOrder(serversMap)
 {
     /**
      *
@@ -23,6 +23,17 @@ export function newOrder()
         context.discount = 0;
     }
 
+    function hasTestLicense(){
+        for(let key  of serversMap.keys()) {
+            let licenses = serversMap.get(key).licenses;
+            for(let i = 0; i< licenses.length; i++)
+            {
+                  if(licenses[i].test) return true;
+            }
+        }
+        return false;
+    }
+
     /**
      *
      * @param page/Shop context
@@ -35,6 +46,12 @@ export function newOrder()
             "products": [],
         }
         setForbiddenForServer(context);
+        if(hasTestLicense())
+        {
+
+            context.forbidden.period.push(PERIOD.TRIAL);
+        }
+
     }
 
     var setForbiddenForServer = function(context){
