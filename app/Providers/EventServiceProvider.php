@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CertificateRequestUploaded' => [
             'App\Listeners\CertificateRequestUploadedListener'
         ],
+        'App\Events\ForgetRequestUploaded' => [
+            'App\Listeners\ForgetRequestUploadedListener'
+        ]
     ];
 
     /**

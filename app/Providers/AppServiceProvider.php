@@ -55,12 +55,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton("App\Contracts\DownloadServerInterface", function($app)
         {
             return new DownloadServerCacheDecorator(new DownloadServerService(config("downloadServer")));
-           // return  new DownloadServerService(config("downloadServer"));
+
         });
 
         $this->app->singleton("App\Contracts\SupportInterface", function($app)
         {
             return new SupportService();
         });
+
+
     }
 }

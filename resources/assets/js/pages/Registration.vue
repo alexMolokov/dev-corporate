@@ -9,7 +9,7 @@
                     <div class="reg-body">
                         <div class="form-group">
                             <label for="login">Email</label> <span v-show="errors.has('email')" class="help is-danger">*{{errors.first('email')}}</span>
-                            <input type="text" id="email" name="email" placeholder="" v-model="email" class="form-control input-alg readonly" :class="{error: errors.has('email')}" v-validate="'required|email'">
+                            <input type="text" id="email" name="email" placeholder="" v-model="email" class="form-control input-alg readonly" :class="{error: errors.has('email')}" v-validate="'required|email|try_email'">
                         </div>
                         <div class="form-group">
                             <label for="login">Login</label> <span v-show="errors.has('login')" class="help is-danger">*{{errors.first('login')}}</span>
@@ -26,7 +26,7 @@
 
                     <div class="reg-body">
                         <div class="captcha-wrapper"></div>
-                        <div class="alert-wrapper"></div>
+                        <error-inform :err="err" :state="state"></error-inform>
                     </div>
 
                     <div class="reg-left">
@@ -46,8 +46,10 @@
 
 <script>
     import ajaxform from '../mixins/ajax-form.vue';
+    import ErrorInform  from '../mixins/error-inform.vue';
 
     export default {
+        components: {ErrorInform},
         name: 'login',
         data(){
             return {
@@ -66,23 +68,35 @@
                 getMessage: field => this.t('Login already exists'),
                 validate: value => {
                     if(value) {
-                        console.log(this.send);
-                        return this.send("/registration/try_login", {"value": value},
-                            function (response) { // success
-                                if(response.body.status)
-                                {
-                                    return true;
+                        return window.axios.post("/registration/try-login", {login: value}).then(({data}) =>
+                        {
+                            if(data.status)
+                                return true;
 
-                                }  else {
-                                    return false;
-                                }
-                            },
-                            function (response) { // error
-                                return false;
-                            }
+                            return false;
 
+                        }).catch(function(error) {
+                            console.log('error');
+                            return false;
+                        });
 
-                        ).catch(function(error) {
+                    } else {
+                        return false;
+                    }
+                }
+            });
+
+            this.$validator.extend('try_email', {
+                getMessage: field => this.t('Email already exists'),
+                validate: value => {
+                    if(value) {
+                        return window.axios.post("/registration/try-email", {email: value}).then(({data}) =>
+                        {
+                            if(data.status)
+                                return true;
+
+                            return false;
+                        }).catch(function(error) {
                             console.log('error');
                             return false;
                         });
@@ -94,17 +108,17 @@
             });
 
 
-            this.$validator.attach({
-                name: 'try_login',
-                getter: () => this.login,
-                _delay: 1
-            });
         },
         mixins: [ajaxform],
         methods: {
             validate: function()
             {
+                let data = {"login": this.login, "password": this.password, "email": this.email};
+                this.send(this.url, data,
+                    function(data) {
 
+                    }
+                );
             },
             togglePassword: function()
             {

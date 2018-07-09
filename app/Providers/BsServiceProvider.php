@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Helpers\BsHttpClient;
 use App\Services\Bs\Http\CorporateClientService;
 use App\Services\Bs\Http\CorporateServerService;
+use App\Services\Registration\RegistrationService;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Bs\Http\Decorators\CacheDecorator;
 use Response;
@@ -49,6 +50,11 @@ class BsServiceProvider extends ServiceProvider
 
         $this->app->bind("App\Contracts\CorporateServerInterface", function($app){
             return new CorporateServerService($app->make("BsHttpClient"));
+        });
+
+        $this->app->bind("App\Contracts\RegistrationInterface", function($app)
+        {
+            return new RegistrationService($app->make("BsHttpClient"));
         });
 
     }

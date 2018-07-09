@@ -26,6 +26,12 @@ Route::group(['prefix' => 'auth', 'middleware' => ['web']], function ()
 Route::group(['prefix' => 'registration', 'middleware' => ['web']], function ()
 {
     Route::post('/allowed', 'Auth\RegisterController@isAllowed')->name("registration_allowed");
+    Route::post('/try-email', 'Auth\RegisterController@tryEmail')->name("registration_try_email");
+    Route::post('/try-login', 'Auth\RegisterController@tryLogin')->name("registration_try_login");
+    Route::post('/register', 'Auth\RegisterController@register')->name("registration_register");
+    Route::post('/activate/{code}', 'Auth\RegisterController@activate')->name("registration_activate");
+    Route::post('/forget', 'Auth\RegisterController@forget')->name("registration_forget");
+    Route::post('/change/password/{code}', 'Auth\RegisterController@changePassword')->name("registration_change_password");
  });
 
 
