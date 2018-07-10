@@ -179,8 +179,19 @@ const routes = [
     { path: '/registration',
         component: (resolve) => { require(['./pages/Registration'], resolve) },
         name: "registration",
-        meta: {requiresNoAuth: true},
+        meta: {requiresNoAuth: true}
     },
+    { path: '/registration/change/password/:code',
+        component: (resolve) => { require(['./pages/ChangeForgotPassword'], resolve) },
+        name: "changeForgotPassword",
+        meta: {requiresNoAuth: true}
+    },
+    { path: '/registration/activate/:code',
+        component: (resolve) => { require(['./pages/ActivateRegister'], resolve) },
+        name: "registrationActivate",
+        meta: {requiresNoAuth: true}
+    },
+
     { path: '/user',
         component: (resolve) => { require(['./pages/UserStart'], resolve)},
         meta: {requiresAuth: true},

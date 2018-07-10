@@ -8,21 +8,28 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App;
 
-class ForgetRequestUploaded extends Mailable
+class RegisterRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $email;
-    private $code;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email, $code)
+    private $email;
+    private $code;
+    private $login;
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($email, $code, $login)
     {
         $this->email = $email;
         $this->code = $code;
+        $this->login = $login;
     }
 
     /**
@@ -32,9 +39,11 @@ class ForgetRequestUploaded extends Mailable
      */
     public function build()
     {
-        return $this->to($this->email)->subject(__("VIPole Corporate account password reset"))->view("email.ForgetRequest")->with([
+        return $this->to($this->email)->subject(__("Activate your VIPole account"))->view("email.RegisterRequest")->with([
             "code" => $this->code,
+            "login" => $this->login,
             "lang" => App::getLocale()
         ]);
+
     }
 }

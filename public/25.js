@@ -1,12 +1,12 @@
 webpackJsonp([25],{
 
-/***/ 270:
+/***/ 275:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(271);
+var content = __webpack_require__(276);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27,7 +27,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 271:
+/***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(false);
@@ -35,24 +35,26 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-size: 21px;\n  margin-top: 30px;\n}\n#user-order-page .disabled[data-v-1ba10a26] {\n  background-color: #f5f5f5;\n  opacity: 0.5;\n}\n#user-order-page hr[data-v-1ba10a26] {\n  margin: 40px 0;\n}\n#user-order-page > h3[data-v-1ba10a26]:first-child {\n  margin-top: 10px;\n}\n#user-order-page .shop-footer[data-v-1ba10a26] {\n  text-align: right;\n}\n#user-order-page .shop-footer .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 30px;\n    font-weight: bold;\n    display: inline-block;\n}\n#user-order-page .shop-footer .price sup[data-v-1ba10a26] {\n      font-size: .5em;\n      vertical-align: baseline;\n      position: relative;\n      top: -.6666667em;\n}\n#users .field-number[data-v-1ba10a26] {\n  width: 182px;\n  margin-top: 20px;\n  display: block;\n}\n#users .field-number > *[data-v-1ba10a26] {\n    display: inline;\n    float: left;\n}\n#users .field-number .minus[data-v-1ba10a26] {\n    padding: 0px 9px 1px;\n    border-right: 0;\n    border-radius: 3px 0 0 3px;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .minus[data-v-1ba10a26]:after {\n      content: \"\\2014\";\n}\n#users .field-number .add[data-v-1ba10a26] {\n    padding: 0px 12px 1px 11px;\n    border-left: 0;\n    border-radius: 0 3px 3px 0;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .add[data-v-1ba10a26]:after {\n      content: \"+\";\n}\n#users .field-number input[data-v-1ba10a26] {\n    width: 100px;\n    height: 40px;\n    color: #000;\n    text-align: center;\n    border: 1px solid #e8e8e8;\n    font-size: 18px;\n    font-weight: 700;\n}\n#users .number .min[data-v-1ba10a26] {\n  clear: both;\n  font-size: 14px;\n  color: #888;\n  padding-top: 7px;\n  margin-bottom: 4px;\n}\n#os > div[data-v-1ba10a26], #servers > div[data-v-1ba10a26], #periods > div[data-v-1ba10a26], #services > div[data-v-1ba10a26] {\n  padding: 4px;\n}\n#os input[type=\"radio\"][data-v-1ba10a26], #servers input[type=\"radio\"][data-v-1ba10a26], #periods input[type=\"radio\"][data-v-1ba10a26], #services input[type=\"radio\"][data-v-1ba10a26] {\n  margin-right: 3px;\n}\n#addons label[data-v-1ba10a26], #os label[data-v-1ba10a26], #servers label[data-v-1ba10a26], #periods label[data-v-1ba10a26], #services label[data-v-1ba10a26] {\n  font-size: 18px;\n  color: #666;\n  font-weight: 400;\n}\n#addons .table[data-v-1ba10a26], #os .table[data-v-1ba10a26], #servers .table[data-v-1ba10a26], #periods .table[data-v-1ba10a26], #services .table[data-v-1ba10a26] {\n  display: table;\n}\n#addons .table > div[data-v-1ba10a26]:not(:first-child), #os .table > div[data-v-1ba10a26]:not(:first-child), #servers .table > div[data-v-1ba10a26]:not(:first-child), #periods .table > div[data-v-1ba10a26]:not(:first-child), #services .table > div[data-v-1ba10a26]:not(:first-child) {\n    border-top: none;\n}\n#addons .table > div[data-v-1ba10a26], #os .table > div[data-v-1ba10a26], #servers .table > div[data-v-1ba10a26], #periods .table > div[data-v-1ba10a26], #services .table > div[data-v-1ba10a26] {\n    /*display: table-row;*/\n    border: 1px solid #ccc;\n    padding: 10px;\n}\n#addons .table > div[data-v-1ba10a26]:hover, #os .table > div[data-v-1ba10a26]:hover, #servers .table > div[data-v-1ba10a26]:hover, #periods .table > div[data-v-1ba10a26]:hover, #services .table > div[data-v-1ba10a26]:hover {\n      background-color: #f5f5f5;\n}\n#addons .table > div input[type=\"checkbox\"][data-v-1ba10a26], #os .table > div input[type=\"checkbox\"][data-v-1ba10a26], #servers .table > div input[type=\"checkbox\"][data-v-1ba10a26], #periods .table > div input[type=\"checkbox\"][data-v-1ba10a26], #services .table > div input[type=\"checkbox\"][data-v-1ba10a26] {\n      margin-right: 3px;\n}\n#addons .table > div span[data-v-1ba10a26]:first-child, #os .table > div span[data-v-1ba10a26]:first-child, #servers .table > div span[data-v-1ba10a26]:first-child, #periods .table > div span[data-v-1ba10a26]:first-child, #services .table > div span[data-v-1ba10a26]:first-child {\n      width: 78%;\n      display: inline-block;\n}\n#addons .table > div span[data-v-1ba10a26]:last-child, #os .table > div span[data-v-1ba10a26]:last-child, #servers .table > div span[data-v-1ba10a26]:last-child, #periods .table > div span[data-v-1ba10a26]:last-child, #services .table > div span[data-v-1ba10a26]:last-child {\n      width: 20%;\n      display: inline-block;\n      text-align: right;\n      padding-right: 10px;\n}\n#addons .table .price[data-v-1ba10a26], #os .table .price[data-v-1ba10a26], #servers .table .price[data-v-1ba10a26], #periods .table .price[data-v-1ba10a26], #services .table .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 22px;\n    font-weight: bold;\n    display: inline-block;\n}\n", ""]);
+exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-size: 21px;\n  margin-top: 30px;\n}\n#user-order-page .disabled[data-v-1ba10a26] {\n  background-color: #f5f5f5;\n  opacity: 0.5;\n}\n#user-order-page hr[data-v-1ba10a26] {\n  margin: 40px 0;\n}\n#user-order-page > h3[data-v-1ba10a26]:first-child {\n  margin-top: 10px;\n}\n#user-order-page .shop-footer[data-v-1ba10a26] {\n  text-align: right;\n}\n#user-order-page .shop-footer .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 30px;\n    font-weight: bold;\n    display: inline-block;\n}\n#user-order-page .shop-footer .price sup[data-v-1ba10a26] {\n      font-size: .5em;\n      vertical-align: baseline;\n      position: relative;\n      top: -.6666667em;\n}\n#users .field-number[data-v-1ba10a26] {\n  width: 182px;\n  margin-top: 20px;\n  display: block;\n}\n#users .field-number > *[data-v-1ba10a26] {\n    display: inline;\n    float: left;\n}\n#users .field-number .minus[data-v-1ba10a26] {\n    padding: 0px 9px 1px;\n    border-right: 0;\n    border-radius: 3px 0 0 3px;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .minus[data-v-1ba10a26]:after {\n      content: \"\\2014\";\n}\n#users .field-number .add[data-v-1ba10a26] {\n    padding: 0px 12px 1px 11px;\n    border-left: 0;\n    border-radius: 0 3px 3px 0;\n    border: 1px solid #e8e8e8;\n    font-size: 26px;\n    font-weight: 700;\n    color: #00a0c8;\n}\n#users .field-number .add[data-v-1ba10a26]:after {\n      content: \"+\";\n}\n#users .field-number input[data-v-1ba10a26] {\n    width: 100px;\n    height: 40px;\n    color: #000;\n    text-align: center;\n    border: 1px solid #e8e8e8;\n    font-size: 18px;\n    font-weight: 700;\n}\n#users .number .min[data-v-1ba10a26] {\n  clear: both;\n  font-size: 14px;\n  color: #888;\n  padding-top: 7px;\n  margin-bottom: 4px;\n}\n#os > div[data-v-1ba10a26], #servers > div[data-v-1ba10a26], #periods > div[data-v-1ba10a26], #services > div[data-v-1ba10a26] {\n  padding: 4px;\n}\n#os input[type=\"radio\"][data-v-1ba10a26], #servers input[type=\"radio\"][data-v-1ba10a26], #periods input[type=\"radio\"][data-v-1ba10a26], #services input[type=\"radio\"][data-v-1ba10a26] {\n  margin-right: 3px;\n}\n#addons label[data-v-1ba10a26], #os label[data-v-1ba10a26], #servers label[data-v-1ba10a26], #periods label[data-v-1ba10a26], #services label[data-v-1ba10a26] {\n  font-size: 18px;\n  color: #666;\n  font-weight: 400;\n}\n#addons .table[data-v-1ba10a26], #os .table[data-v-1ba10a26], #servers .table[data-v-1ba10a26], #periods .table[data-v-1ba10a26], #services .table[data-v-1ba10a26] {\n  display: table;\n}\n#addons .table > div[data-v-1ba10a26]:not(:first-child), #os .table > div[data-v-1ba10a26]:not(:first-child), #servers .table > div[data-v-1ba10a26]:not(:first-child), #periods .table > div[data-v-1ba10a26]:not(:first-child), #services .table > div[data-v-1ba10a26]:not(:first-child) {\n    border-top: none;\n}\n#addons .table > div[data-v-1ba10a26], #os .table > div[data-v-1ba10a26], #servers .table > div[data-v-1ba10a26], #periods .table > div[data-v-1ba10a26], #services .table > div[data-v-1ba10a26] {\n    /*display: table-row;*/\n    border: 1px solid #ccc;\n    padding: 10px;\n}\n#addons .table > div[data-v-1ba10a26]:hover, #os .table > div[data-v-1ba10a26]:hover, #servers .table > div[data-v-1ba10a26]:hover, #periods .table > div[data-v-1ba10a26]:hover, #services .table > div[data-v-1ba10a26]:hover {\n      background-color: #f5f5f5;\n}\n#addons .table > div input[type=\"checkbox\"][data-v-1ba10a26], #os .table > div input[type=\"checkbox\"][data-v-1ba10a26], #servers .table > div input[type=\"checkbox\"][data-v-1ba10a26], #periods .table > div input[type=\"checkbox\"][data-v-1ba10a26], #services .table > div input[type=\"checkbox\"][data-v-1ba10a26] {\n      margin-right: 3px;\n}\n#addons .table > div > span[data-v-1ba10a26]:first-child, #os .table > div > span[data-v-1ba10a26]:first-child, #servers .table > div > span[data-v-1ba10a26]:first-child, #periods .table > div > span[data-v-1ba10a26]:first-child, #services .table > div > span[data-v-1ba10a26]:first-child {\n      width: 85%;\n      display: inline-block;\n}\n@media (max-width: 767px) {\n#addons .table > div > span[data-v-1ba10a26]:first-child, #os .table > div > span[data-v-1ba10a26]:first-child, #servers .table > div > span[data-v-1ba10a26]:first-child, #periods .table > div > span[data-v-1ba10a26]:first-child, #services .table > div > span[data-v-1ba10a26]:first-child {\n          width: 78%;\n}\n}\n#addons .table > div > span[data-v-1ba10a26]:last-child, #os .table > div > span[data-v-1ba10a26]:last-child, #servers .table > div > span[data-v-1ba10a26]:last-child, #periods .table > div > span[data-v-1ba10a26]:last-child, #services .table > div > span[data-v-1ba10a26]:last-child {\n      width: 13%;\n      display: inline-block;\n      text-align: right;\n      padding-right: 10px;\n}\n@media (max-width: 767px) {\n#addons .table > div > span[data-v-1ba10a26]:last-child, #os .table > div > span[data-v-1ba10a26]:last-child, #servers .table > div > span[data-v-1ba10a26]:last-child, #periods .table > div > span[data-v-1ba10a26]:last-child, #services .table > div > span[data-v-1ba10a26]:last-child {\n          width: 20%;\n}\n}\n#addons .table .price[data-v-1ba10a26], #os .table .price[data-v-1ba10a26], #servers .table .price[data-v-1ba10a26], #periods .table .price[data-v-1ba10a26], #services .table .price[data-v-1ba10a26] {\n    color: #67ab49;\n    font-size: 22px;\n    font-weight: bold;\n    display: inline-block;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 272:
+/***/ 277:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_loadingPage__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_loadingPage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_loadingPage__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newOrder__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_newLicense__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_renewLicense__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_upgradeLicense__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__ = __webpack_require__(16);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -135,6 +137,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+
 
 var userMenu = __webpack_require__(87);
 var ajaxform = __webpack_require__(15);
@@ -147,12 +153,13 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license", "RENEW_LI
 
 
 
+var loadingPage = __webpack_require__(90);
 
 var formPayment = function formPayment() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 277));
+    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 282));
 };
 var formGetTrial = function formGetTrial() {
-    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 283));
+    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 288));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -167,13 +174,13 @@ var formGetTrial = function formGetTrial() {
             showFormPayment: false,
             showFormGetTrial: false,
             choice: {
-                "period": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["d" /* PERIOD */].ANNUAL,
-                "os": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["c" /* OS */].WINDOWS,
-                "price": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["e" /* PRICES */].ANNUAL,
-                "server": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["f" /* PRODUCTS */].STANDALONE,
-                "users": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE,
-                "minUsers": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE,
-                "maxUsers": __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE
+                "period": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["d" /* PERIOD */].ANNUAL,
+                "os": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["c" /* OS */].WINDOWS,
+                "price": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["e" /* PRICES */].ANNUAL,
+                "server": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["f" /* PRODUCTS */].STANDALONE,
+                "users": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE,
+                "minUsers": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["a" /* COUNT_USERS */].MIN_USERS_STANDALONE,
+                "maxUsers": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["a" /* COUNT_USERS */].MAX_USERS_STANDALONE
             },
             forbidden: {
                 "period": [],
@@ -182,18 +189,19 @@ var formGetTrial = function formGetTrial() {
             },
             basket: new Map(),
             state: null,
-            PRICES: __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["e" /* PRICES */],
+            PRICES: __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["e" /* PRICES */],
             sum: "",
             discount: 0
         };
     },
 
     components: {
+        LoadingPage: __WEBPACK_IMPORTED_MODULE_0__components_loadingPage___default.a,
         "user-menu": userMenu,
         "form-payment": formPayment,
         "form-get-trial": formGetTrial
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("shop", ["products", "productsMap"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])("servers", ["serversMap"]), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("shop", ["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount"])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapState */])("shop", ["products", "productsMap"]), Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapState */])("servers", ["serversMap"]), Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])("shop", ["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount"])),
     created: function created() {
         var _this = this;
 
@@ -227,23 +235,23 @@ var formGetTrial = function formGetTrial() {
 
     mixins: [ajaxform],
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount"]), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapMutations */])("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount"]), {
         factoryState: function factoryState() {
             if (this.makeDeal == ORDER_STATES.NEW_ORDER) {
-                return new __WEBPACK_IMPORTED_MODULE_1__classes_shop_action_newOrder__["a" /* newOrder */]();
+                return new __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newOrder__["a" /* newOrder */](this.serversMap);
             } else if (this.makeDeal == ORDER_STATES.NEW_LICENSE) {
-                return new __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newLicense__["a" /* newLicense */](this.serversMap.get(this.server));
+                return new __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_newLicense__["a" /* newLicense */](this.serversMap.get(this.server));
             } else if (this.makeDeal == ORDER_STATES.RENEW_LICENSE) {
-                return new __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_renewLicense__["a" /* renewLicense */](this.serversMap.get(this.server), this.license);
+                return new __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_renewLicense__["a" /* renewLicense */](this.serversMap.get(this.server), this.license);
             }
             if (this.makeDeal == ORDER_STATES.UPGRADE_LICENSE) {
-                return new __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_upgradeLicense__["a" /* upgradeLicense */](this.serversMap.get(this.server), this.license);
+                return new __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_upgradeLicense__["a" /* upgradeLicense */](this.serversMap.get(this.server), this.license);
             }
         },
         setServer: function setServer(server) {
             this.choice.server = server;
 
-            var deleteServer = server == __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["f" /* PRODUCTS */].CLUSTER ? __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["f" /* PRODUCTS */].CLUSTER;
+            var deleteServer = server == __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["f" /* PRODUCTS */].CLUSTER ? __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["f" /* PRODUCTS */].CLUSTER;
             this.removeFromBasket(deleteServer);
             this.addToBasket(server);
             this.state.setForLicense(this);
@@ -286,7 +294,7 @@ var formGetTrial = function formGetTrial() {
         },
         setPeriod: function setPeriod(period) {
             this.choice.period = period;
-            this.choice.price = __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_const__["e" /* PRICES */][period.toUpperCase()];
+            this.choice.price = __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["e" /* PRICES */][period.toUpperCase()];
             this.state.setForLicense(this);
             this.state.sumOrder(this);
         },
@@ -311,7 +319,7 @@ var formGetTrial = function formGetTrial() {
 
 /***/ }),
 
-/***/ 273:
+/***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -319,7 +327,7 @@ var formGetTrial = function formGetTrial() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const__ = __webpack_require__(16);
 
 
-function newOrder() {
+function newOrder(serversMap) {
     /**
      *
      * @param page/Shop context
@@ -340,6 +348,38 @@ function newOrder() {
         context.discount = 0;
     };
 
+    function hasTestLicense() {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = serversMap.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var key = _step.value;
+
+                var licenses = serversMap.get(key).licenses;
+                for (var i = 0; i < licenses.length; i++) {
+                    if (licenses[i].test) return true;
+                }
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        return false;
+    }
+
     /**
      *
      * @param page/Shop context
@@ -351,6 +391,10 @@ function newOrder() {
             "products": []
         };
         setForbiddenForServer(context);
+        if (hasTestLicense()) {
+
+            context.forbidden.period.push(__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL);
+        }
     };
 
     var setForbiddenForServer = function setForbiddenForServer(context) {
@@ -402,13 +446,13 @@ function newOrder() {
 
     this.sumOrder = function (context) {
         var sum = 0;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
         try {
-            for (var _iterator = context.basket.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var product = _step.value;
+            for (var _iterator2 = context.basket.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var product = _step2.value;
 
                 if (product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE || product.id == __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER) {
                     var values = product[context.choice.price + product.postfixForLicense];
@@ -426,16 +470,16 @@ function newOrder() {
                 }
             }
         } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
         } finally {
             try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                    _iterator2.return();
                 }
             } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
+                if (_didIteratorError2) {
+                    throw _iteratorError2;
                 }
             }
         }
@@ -446,7 +490,7 @@ function newOrder() {
 
 /***/ }),
 
-/***/ 274:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -569,7 +613,7 @@ function newLicense(localServer) {
 
 /***/ }),
 
-/***/ 275:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -677,7 +721,7 @@ function renewLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 276:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -796,426 +840,449 @@ function upgradeLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 286:
+/***/ 291:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "user-order-page" } },
-    [
-      _c("h3", [
-        _vm._v("1. "),
-        _c(
-          "span",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("Maintenance period")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "section",
-        { attrs: { id: "periods" } },
-        _vm._l(_vm.getPeriods, function(item) {
-          return _c(
-            "div",
-            { class: { disabled: _vm.isDisabledPeriod(item.id) } },
-            [
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "period",
-                  disabled: _vm.isDisabledPeriod(item.id),
-                  id: "period_" + item.id
-                },
-                domProps: {
-                  value: item.id,
-                  checked: _vm.choice.period == item.id
-                },
-                on: {
-                  click: function($event) {
-                    _vm.setPeriod(item.id)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "period_" + item.id } }, [
-                _vm._v(_vm._s(item.name))
-              ])
-            ]
-          )
-        })
-      ),
-      _vm._v(" "),
-      _c("h3", [
-        _vm._v("2. "),
-        _c(
-          "span",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("Choose your deployment")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "section",
-        { attrs: { id: "servers" } },
-        _vm._l(_vm.getServers, function(item) {
-          return _c(
-            "div",
-            { class: { disabled: _vm.isDisabledProduct(item.id) } },
-            [
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "deployment",
-                  disabled: _vm.isDisabledProduct(item.id),
-                  id: "deployment_" + item.id
-                },
-                domProps: {
-                  value: item.id,
-                  checked: _vm.choice.server == item.id
-                },
-                on: {
-                  click: function($event) {
-                    _vm.setServer(item.id)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "deployment_" + item.id } }, [
-                _vm._v(_vm._s(item.name))
-              ])
-            ]
-          )
-        })
-      ),
-      _vm._v(" "),
-      _c("h3", [
-        _vm._v("3. "),
-        _c(
-          "span",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("Choose Operational system")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "section",
-        { attrs: { id: "os" } },
-        _vm._l(_vm.getOs, function(item) {
-          return _c("div", { class: { disabled: _vm.isDisabledOs(item.id) } }, [
-            _c("input", {
-              attrs: {
-                type: "radio",
-                name: "os",
-                id: "os_" + item.id,
-                disabled: _vm.isDisabledOs(item.id)
-              },
-              domProps: { value: item.id, checked: _vm.choice.os == item.id },
-              on: {
-                click: function($event) {
-                  _vm.setRadio({ id: "os", value: item.id })
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "os_" + item.id } }, [
-              _vm._v(_vm._s(item.name))
-            ])
-          ])
-        })
-      ),
-      _vm._v(" "),
-      _c("h3", [
-        _vm._v("4. "),
-        _c(
-          "span",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("User tier")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("section", { attrs: { id: "users" } }, [
-        _c("div", { staticClass: "number" }, [
-          _c("div", { staticClass: "field-number" }, [
-            _c("div", {
-              staticClass: "minus",
-              class: { disabled: this.choice.users == this.choice.minUsers },
-              on: {
-                click: function($event) {
-                  _vm.addUser(-1)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.choice.users,
-                  expression: "choice.users"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|numeric",
-                  expression: "'required|numeric'"
-                }
-              ],
-              class: { error: _vm.errors.has("users") },
-              attrs: { name: "users", type: "text" },
-              domProps: { value: _vm.choice.users },
-              on: {
-                keyup: _vm.checkCountUsers,
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.choice, "users", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", {
-              staticClass: "add",
-              class: { disabled: this.choice.users == this.choice.maxUsers },
-              on: {
-                click: function($event) {
-                  _vm.addUser(1)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "min" }, [
-            _c("span", [_vm._v("minimum")]),
-            _vm._v(" " + _vm._s(_vm.choice.minUsers) + " "),
-            _c("span", [_vm._v("users")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("h3", [
-        _vm._v("5. "),
-        _c(
-          "span",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("Choose optional addons")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("section", { attrs: { id: "addons" } }, [
-        _c(
+  return _c("div", { attrs: { id: "user-order-page" } }, [
+    _vm.products.length > 0
+      ? _c(
           "div",
-          { staticClass: "table" },
-          _vm._l(_vm.getAddons, function(item) {
-            return _c(
-              "div",
-              { class: { disabled: _vm.isDisabledProduct(item.id) } },
-              [
-                _c("span", [
-                  _c("input", {
-                    attrs: {
-                      type: "checkbox",
-                      disabled: _vm.isDisabledProduct(item.id),
-                      name: "addons",
-                      id: "addons_" + item.id
-                    },
-                    domProps: {
-                      value: item.id,
-                      checked: _vm.inBasket(item.id)
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.addCheckbox($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "addons_" + item.id } }, [
-                    _vm._v(_vm._s(item.name))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "price" }, [
-                  item[_vm.choice.price] > 0
-                    ? _c("span", [
-                        _c("sup", [_vm._v("$")]),
-                        _vm._v(_vm._s(item[_vm.choice.price]))
-                      ])
-                    : _vm._e()
-                ])
-              ]
-            )
-          })
-        )
-      ]),
-      _vm._v(" "),
-      _c("h3", [
-        _vm._v("6. "),
-        _c(
-          "span",
-          { directives: [{ name: "translate", rawName: "v-translate" }] },
-          [_vm._v("Choose optional services")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("section", { attrs: { id: "services" } }, [
-        _c(
-          "div",
-          { staticClass: "table" },
-          _vm._l(_vm.getServices, function(item) {
-            return _c(
-              "div",
-              { class: { disabled: _vm.isDisabledProduct(item.id) } },
-              [
-                _c("span", [
-                  _c("input", {
-                    attrs: {
-                      type: "checkbox",
-                      disabled: _vm.isDisabledProduct(item.id),
-                      name: "addons",
-                      id: "service_" + item.id
-                    },
-                    domProps: {
-                      value: item.id,
-                      checked: _vm.inBasket(item.id)
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.addCheckbox($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "service_" + item.id } }, [
-                    _vm._v(_vm._s(item.name))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "price" }, [
-                  item[_vm.choice.price] > 0
-                    ? _c("span", [
-                        _c("sup", [_vm._v("$")]),
-                        _vm._v(_vm._s(item[_vm.choice.price]))
-                      ])
-                    : _vm._e()
-                ])
-              ]
-            )
-          })
-        )
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "shop-footer" }, [
-        _vm.choice.price == _vm.PRICES.TRIAL
-          ? _c("div", [
+          [
+            _c("h3", [
+              _vm._v("1. "),
               _c(
-                "a",
-                {
-                  directives: [{ name: "translate", rawName: "v-translate" }],
-                  staticClass: "btn btn-middle btn-blue",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      $event.stopPropagation()
-                      _vm.showFormGetTrial = true
-                    }
-                  }
-                },
-                [_vm._v("Next")]
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("Maintenance period")]
               )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.choice.price != _vm.PRICES.TRIAL
-          ? _c("div", [
-              _vm.sum > 0
-                ? _c(
-                    "a",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      staticClass: "btn btn-middle btn-blue",
-                      attrs: { href: "#" },
+            ]),
+            _vm._v(" "),
+            _c(
+              "section",
+              { attrs: { id: "periods" } },
+              _vm._l(_vm.getPeriods, function(item) {
+                return _c(
+                  "div",
+                  { class: { disabled: _vm.isDisabledPeriod(item.id) } },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "radio",
+                        name: "period",
+                        disabled: _vm.isDisabledPeriod(item.id),
+                        id: "period_" + item.id
+                      },
+                      domProps: {
+                        value: item.id,
+                        checked: _vm.choice.period == item.id
+                      },
                       on: {
                         click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.showFormPayment = true
+                          _vm.setPeriod(item.id)
                         }
                       }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "period_" + item.id } }, [
+                      _vm._v(_vm._s(item.name))
+                    ])
+                  ]
+                )
+              })
+            ),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("2. "),
+              _c(
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("Choose your deployment")]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "section",
+              { attrs: { id: "servers" } },
+              _vm._l(_vm.getServers, function(item) {
+                return _c(
+                  "div",
+                  { class: { disabled: _vm.isDisabledProduct(item.id) } },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "radio",
+                        name: "deployment",
+                        disabled: _vm.isDisabledProduct(item.id),
+                        id: "deployment_" + item.id
+                      },
+                      domProps: {
+                        value: item.id,
+                        checked: _vm.choice.server == item.id
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.setServer(item.id)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "deployment_" + item.id } }, [
+                      _vm._v(_vm._s(item.name))
+                    ])
+                  ]
+                )
+              })
+            ),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("3. "),
+              _c(
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("Choose Operational system")]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "section",
+              { attrs: { id: "os" } },
+              _vm._l(_vm.getOs, function(item) {
+                return _c(
+                  "div",
+                  { class: { disabled: _vm.isDisabledOs(item.id) } },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "radio",
+                        name: "os",
+                        id: "os_" + item.id,
+                        disabled: _vm.isDisabledOs(item.id)
+                      },
+                      domProps: {
+                        value: item.id,
+                        checked: _vm.choice.os == item.id
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.setRadio({ id: "os", value: item.id })
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "os_" + item.id } }, [
+                      _vm._v(_vm._s(item.name))
+                    ])
+                  ]
+                )
+              })
+            ),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("4. "),
+              _c(
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("User tier")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("section", { attrs: { id: "users" } }, [
+              _c("div", { staticClass: "number" }, [
+                _c("div", { staticClass: "field-number" }, [
+                  _c("div", {
+                    staticClass: "minus",
+                    class: {
+                      disabled: this.choice.users == this.choice.minUsers
                     },
-                    [_vm._v("Check out")]
+                    on: {
+                      click: function($event) {
+                        _vm.addUser(-1)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.choice.users,
+                        expression: "choice.users"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|numeric",
+                        expression: "'required|numeric'"
+                      }
+                    ],
+                    class: { error: _vm.errors.has("users") },
+                    attrs: { name: "users", type: "text" },
+                    domProps: { value: _vm.choice.users },
+                    on: {
+                      keyup: _vm.checkCountUsers,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.choice, "users", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass: "add",
+                    class: {
+                      disabled: this.choice.users == this.choice.maxUsers
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.addUser(1)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "min" }, [
+                  _c("span", [_vm._v("minimum")]),
+                  _vm._v(" " + _vm._s(_vm.choice.minUsers) + " "),
+                  _c("span", [_vm._v("users")])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("5. "),
+              _c(
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("Choose optional addons")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("section", { attrs: { id: "addons" } }, [
+              _c(
+                "div",
+                { staticClass: "table" },
+                _vm._l(_vm.getAddons, function(item) {
+                  return _c(
+                    "div",
+                    { class: { disabled: _vm.isDisabledProduct(item.id) } },
+                    [
+                      _c("span", [
+                        _c("input", {
+                          attrs: {
+                            type: "checkbox",
+                            disabled: _vm.isDisabledProduct(item.id),
+                            name: "addons",
+                            id: "addons_" + item.id
+                          },
+                          domProps: {
+                            value: item.id,
+                            checked: _vm.inBasket(item.id)
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.addCheckbox($event)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "addons_" + item.id } }, [
+                          _vm._v(_vm._s(item.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "price" }, [
+                        item[_vm.choice.price] > 0
+                          ? _c("span", [
+                              _c("sup", [_vm._v("$")]),
+                              _vm._v(_vm._s(item[_vm.choice.price]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]
                   )
+                })
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("6. "),
+              _c(
+                "span",
+                { directives: [{ name: "translate", rawName: "v-translate" }] },
+                [_vm._v("Choose optional services")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("section", { attrs: { id: "services" } }, [
+              _c(
+                "div",
+                { staticClass: "table" },
+                _vm._l(_vm.getServices, function(item) {
+                  return _c(
+                    "div",
+                    { class: { disabled: _vm.isDisabledProduct(item.id) } },
+                    [
+                      _c("span", [
+                        _c("input", {
+                          attrs: {
+                            type: "checkbox",
+                            disabled: _vm.isDisabledProduct(item.id),
+                            name: "addons",
+                            id: "service_" + item.id
+                          },
+                          domProps: {
+                            value: item.id,
+                            checked: _vm.inBasket(item.id)
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.addCheckbox($event)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "service_" + item.id } }, [
+                          _vm._v(_vm._s(item.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "price" }, [
+                        item[_vm.choice.price] > 0
+                          ? _c("span", [
+                              _c("sup", [_vm._v("$")]),
+                              _vm._v(_vm._s(item[_vm.choice.price]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]
+                  )
+                })
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "shop-footer" }, [
+              _vm.choice.price == _vm.PRICES.TRIAL
+                ? _c("div", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ],
+                        staticClass: "btn btn-middle btn-blue",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            $event.stopPropagation()
+                            _vm.showFormGetTrial = true
+                          }
+                        }
+                      },
+                      [_vm._v("Next")]
+                    )
+                  ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "subtotal" }, [
-                _c(
-                  "h3",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }]
-                  },
-                  [_vm._v("Subtotal (USD)")]
-                ),
-                _vm._v(" "),
-                _vm.discount > 0
-                  ? _c("h3", [
+              _vm.choice.price != _vm.PRICES.TRIAL
+                ? _c("div", [
+                    _vm.sum > 0
+                      ? _c(
+                          "a",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ],
+                            staticClass: "btn btn-middle btn-blue",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                $event.stopPropagation()
+                                _vm.showFormPayment = true
+                              }
+                            }
+                          },
+                          [_vm._v("Check out")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "subtotal" }, [
                       _c(
-                        "span",
+                        "h3",
                         {
                           directives: [
                             { name: "translate", rawName: "v-translate" }
                           ]
                         },
-                        [
-                          _vm._v(
-                            "Discount: " + _vm._s(_vm.discount * 100) + "%"
-                          )
-                        ]
-                      )
+                        [_vm._v("Subtotal (USD)")]
+                      ),
+                      _vm._v(" "),
+                      _vm.discount > 0
+                        ? _c("h3", [
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  { name: "translate", rawName: "v-translate" }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "Discount: " +
+                                    _vm._s(_vm.discount * 100) +
+                                    "%"
+                                )
+                              ]
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "price" }, [
+                        _c("sup", [_vm._v("$")]),
+                        _vm._v(_vm._s(_vm.sum))
+                      ])
                     ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "price" }, [
-                  _c("sup", [_vm._v("$")]),
-                  _vm._v(_vm._s(_vm.sum))
-                ])
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm.showFormPayment
-        ? _c("form-payment", {
-            on: {
-              close: function($event) {
-                _vm.showFormPayment = false
-              }
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showFormGetTrial
-        ? _c("form-get-trial", {
-            on: {
-              close: function($event) {
-                _vm.showFormGetTrial = false
-              }
-            }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm.showFormPayment
+              ? _c("form-payment", {
+                  on: {
+                    close: function($event) {
+                      _vm.showFormPayment = false
+                    }
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showFormGetTrial
+              ? _c("form-get-trial", {
+                  attrs: { choice: _vm.choice, basket: _vm.basket },
+                  on: {
+                    close: function($event) {
+                      _vm.showFormGetTrial = false
+                    }
+                  }
+                })
+              : _vm._e()
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.products.length == 0 ? _c("div", [_c("loading-page")], 1) : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1235,13 +1302,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(270)
+  __webpack_require__(275)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(272)
+var __vue_script__ = __webpack_require__(277)
 /* template */
-var __vue_template__ = __webpack_require__(286)
+var __vue_template__ = __webpack_require__(291)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1349,6 +1416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'userMenu',
@@ -1405,6 +1473,25 @@ var render = function() {
                 attrs: { to: { name: "userpage" } }
               },
               [_vm._v("My Account")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "shop" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "shop", params: { makeDeal: "new" } } }
+              },
+              [_vm._v("Order")]
             )
           ],
           1
@@ -1479,6 +1566,110 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-cdcb15be", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 90:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\loadingPage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-356dd2e4", Component.options)
+  } else {
+    hotAPI.reload("data-v-356dd2e4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'loadingPage',
+    props: {},
+    data: function data() {
+        return {};
+    },
+
+
+    methods: {},
+    locales: {
+        ru: {
+            "Loading info...": "Загрузка информации"
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 93:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [{ name: "translate", rawName: "v-translate" }],
+      staticClass: "alert alert-warning fade in"
+    },
+    [_vm._v("Loading info...")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-356dd2e4", module.exports)
   }
 }
 

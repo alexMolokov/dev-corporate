@@ -17,6 +17,7 @@ class RegisterUserMapper
     {
 
         return new RegisterUser([
+            "customer_id" => $object->customer_id,
             "login" => $object->login,
             "email" => $object->email
         ]);

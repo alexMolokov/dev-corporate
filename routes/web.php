@@ -32,6 +32,7 @@ Route::group(['prefix' => 'registration', 'middleware' => ['web']], function ()
     Route::post('/activate/{code}', 'Auth\RegisterController@activate')->name("registration_activate");
     Route::post('/forget', 'Auth\RegisterController@forget')->name("registration_forget");
     Route::post('/change/password/{code}', 'Auth\RegisterController@changePassword')->name("registration_change_password");
+    Route::post('/check/{code}', 'Auth\RegisterController@checkCode')->name("check_code");
  });
 
 

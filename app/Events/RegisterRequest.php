@@ -10,13 +10,15 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class ForgetRequestUploaded
+class RegisterRequest
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 
     private $email;
     private $code;
+    private $login;
+
     /**
      * Create a new event instance.
      *
@@ -26,18 +28,32 @@ class ForgetRequestUploaded
     {
         $this->email = $data["email"];
         $this->code = $data["code"];
+        $this->login = $data["login"];
     }
 
+    /**
+     * @return mixed
+     */
     public function getEmail()
     {
         return $this->email;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCode()
     {
         return $this->code;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
 
     /**
      * Get the channels the event should broadcast on.

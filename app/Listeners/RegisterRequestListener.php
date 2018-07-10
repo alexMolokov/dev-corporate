@@ -2,13 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\ForgetRequestUploaded;
+use App\Events\RegisterRequest;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
-use App\Mail\ForgetRequestUploaded as MailForgetRequestUploaded;
+use App\Mail\RegisterRequest as MailRegisterRequest;
 
-class ForgetRequestUploadedListener
+class RegisterRequestListener
 {
     /**
      * Create the event listener.
@@ -23,11 +23,11 @@ class ForgetRequestUploadedListener
     /**
      * Handle the event.
      *
-     * @param  ForgetRequestUploaded  $event
+     * @param  RegisterRequest  $event
      * @return void
      */
-    public function handle(ForgetRequestUploaded $event)
+    public function handle(RegisterRequest $event)
     {
-        Mail::send(new MailForgetRequestUploaded($event->getEmail(), $event->getCode()));
+        Mail::send(new MailRegisterRequest($event->getEmail(), $event->getCode(), $event->getLogin()));
     }
 }

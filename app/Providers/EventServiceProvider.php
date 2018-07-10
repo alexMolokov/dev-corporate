@@ -24,7 +24,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\ForgetRequestUploaded' => [
             'App\Listeners\ForgetRequestUploadedListener'
-        ]
+        ],
+        'App\Events\RegisterRequest' => [
+            'App\Listeners\RegisterRequestListener'
+        ],
     ];
 
     /**

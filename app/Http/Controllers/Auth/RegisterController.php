@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Contracts\RegistrationInterface;
+use App\Events\RegisterRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangeForgetPasswordRequest;
 use App\Http\Requests\Registration\TryEmailRequest;
 use App\Http\Requests\Registration\TryLoginRequest;
 use Illuminate\Http\Request;
@@ -18,6 +20,27 @@ class RegisterController extends Controller
     public function __construct(RegistrationInterface $service)
     {
         $this->service = $service;
+    }
+
+    public function register(Request $request)
+    {
+        if(!config("app.registration_allowed"))  return response()->error(__("Registration forbidden"));
+        if(!$this->service->tryEmail($request->get('email')))  return response()->error(__("Email exists"));
+        if(!$this->service->tryLogin($request->get('login')))  return response()->error(__("Login exists"));
+
+        $data = [
+            "login" => $request->get('login'),
+            "email" => $request->get('email'),
+            "password" => $request->get('password')
+        ];
+        if($code = $this->service->saveTempRegister($data))
+        {
+            $data["code"] = $code;
+            event(new RegisterRequest($data));
+            return response()->success();
+
+        }
+        return response()->error(__("Error"));
     }
 
     public function isAllowed()
@@ -45,6 +68,49 @@ class RegisterController extends Controller
         return response()->error(__("Login exists"));
     }
 
+    public function activate($code)
+    {
+        $client = $this->service->getRegisteredClientByCode($code);
+        if(is_null($client))
+        {
+            return response()->error(__("Code not valid"));
+        }
+
+        return response()->success(["login" => $client->getLogin()]);
+    }
+
+
+    public function checkCode($code)
+    {
+        $email = $this->service->getEmailByCode($code);
+        if(is_null($email))
+        {
+            return response()->error(__("Code not valid"));
+        }
+
+        return response()->success([]);
+    }
+
+    public function changePassword(ChangeForgetPasswordRequest $request, $code)
+    {
+        $client = $this->service->getClientByCode($code);
+        if(is_null($client))
+        {
+            return response()->error(__("Code not valid"));
+        }
+
+        $result = $this->service->changePassword($client->getCustomerId(), $request->input("new_password"));
+        if($result)
+        {
+            $this->service->removeTempClient($client);
+            return response()->success([]);
+        }
+
+        return response()->error(__("Error"));
+    }
+
+
+
     public function forget(Request $request)
     {
             $search = $request->get("search");
@@ -57,7 +123,7 @@ class RegisterController extends Controller
             {
                 if($client = $this->service->getClientByLogin($search))
                 {
-                    $code = $this->service->saveCodeForEmail($client->getEmail());
+                    $code = $this->service->saveCode($client);
                     event(new ForgetRequestUploaded(["code" => $code, "email" => $client->getEmail()]));
                     return response()->success(["email" => $this->maskMail($client->getEmail())]);
                 }
@@ -66,7 +132,7 @@ class RegisterController extends Controller
 
             if($client = $this->service->getClientByEmail($search))
             {
-                $code = $this->service->saveCodeForEmail($client->getEmail());
+                $code = $this->service->saveCode($client);
                 event(new ForgetRequestUploaded(["code" => $code, "email" => $client->getEmail()]));
                 return response()->success(["email" => $this->maskMail($client->getEmail())]);
             }

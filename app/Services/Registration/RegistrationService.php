@@ -23,7 +23,8 @@ class RegistrationService  extends Service implements RegistrationInterface
         "tryEmail" => "try_email",
         "tryLogin" =>  "try_login",
         "getClientByLogin" => "get_client_by_login",
-        "getClientByEmail" => "get_client_by_email"
+        "getClientByEmail" => "get_client_by_email",
+        "changePassword" =>  "change_password",
     ];
 
     private $ttl = 1440;
@@ -35,6 +36,12 @@ class RegistrationService  extends Service implements RegistrationInterface
         {
             $this->ttl = $ttl;
         }
+    }
+
+    public function changePassword($customerId, $password)
+    {
+        $result = $this->client->sendCommand(self::OPS["changePassword"], self::PATH,["customer_id" => $customerId, "password" => $password]);
+        return $result->status;
     }
 
     public function tryEmail($email)
@@ -70,25 +77,95 @@ class RegistrationService  extends Service implements RegistrationInterface
         }
     }
 
-    public function saveCodeForEmail($email)
+    public function saveTempRegister(array $data)
     {
+        $key  = "user:register:email:{$data['email']}";
+        $result  = Redis::get($key);
+        if(!$result)
+        {
+            $code = $this->_generateCode();
+
+            Redis::set($key, json_encode(["login" => $data['login'], "email" => $data["email"], "code" => $code, "password" => $data["password"]]));
+            Redis::set($this->_getRegisteredKeyCode($code), $data["email"]);
+            Redis::expire($key,  $this->ttl);
+            Redis::expire($this->_getRegisteredKeyCode($code),  $this->ttl);
+        }
+        $data = json_decode(Redis::get($key));
+        return $data->code;
+    }
+
+    public function saveCode(RegisterUser $client)
+    {
+        $email = $client->getEmail();
         $key  = "user:forget:email:{$email}";
         $result  = Redis::get($key);
         if(!$result)
         {
             $code = $this->_generateCode();
-            Redis::set($key, $code);
+            Redis::set($key, json_encode(["login" => $client->getLogin(), "customer_id" => $client->getCustomerId(), "email" => $client->getEmail(), "code" => $code]));
             Redis::set($this->_getKeyCode($code), $email);
             Redis::expire($key,  $this->ttl);
             Redis::expire($this->_getKeyCode($code),  $this->ttl);
         }
-        return Redis::get($key);
+
+        $data = json_decode(Redis::get($key));
+        return $data->code;
     }
+
+    public function removeTempClient(RegisterUser $client)
+    {
+        $email = $client->getEmail();
+
+        if($value = Redis::get("user:forget:email:{$email}"))
+        {
+            $data = json_decode($value);
+            $key  = "user:forget:email:{$email}";
+            Redis::del($key);
+            Redis::del($this->_getKeyCode($data->code));
+        }
+
+    }
+
+    public function getClientByCode($code)
+    {
+        $email = $this->getEmailByCode($code);
+        if($email)
+        {
+            if($value = Redis::get("user:forget:email:{$email}"))
+            {
+                return new RegisterUser((array) json_decode($value));
+            }
+        }
+    }
+
+    public function getRegisteredClientByCode($code)
+    {
+        $email = $this->_getRegisterEmailByCode($code);
+        if($email)
+        {
+            if($value = Redis::get("user:register:email:{$email}"))
+            {
+                return new RegisterUser((array) json_decode($value));
+            }
+        }
+    }
+
 
     public function getEmailByCode($code)
     {
         $key = $this->_getKeyCode($code);
         return  Redis::get($key);
+    }
+
+    private function _getRegisterEmailByCode($code)
+    {
+        $key = $this->_getRegisteredKeyCode($code);
+        return  Redis::get($key);
+    }
+
+    private function _getRegisteredKeyCode($code)
+    {
+        return    "user:register:code:{$code}";
     }
 
     private function _getKeyCode($code)

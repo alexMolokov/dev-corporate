@@ -3,13 +3,13 @@
         <div class="container">
             <div id="sign_in" class="clearfix"  v-if="!emailChecked">
                 <div class="reg-header">
-                    <h2 class="text-primary">Reset your password</h2>
-                    <p class="lead">If you don’t remember your password, reset it following the instructions.</p>
+                    <h2 class="text-primary" v-translate>Reset your password</h2>
+                    <p class="lead" v-translate>If you don’t remember your password, reset it following the instructions.</p>
                 </div>
                 <form  autocomplete="off" :url="url" @submit.prevent.stop>
                     <div class="reg-body">
                         <div class="form-group">
-                            <label for="login">Login or Email</label> <span v-show="errors.has('search')" class="help is-danger">*{{errors.first('search')}}</span>
+                            <label for="login" v-translate>Login or Email</label> <span v-show="errors.has('search')" class="help is-danger">*{{errors.first('search')}}</span>
                             <input type="text" id="login" name="search" placeholder="" v-model="search" class="form-control input-alg readonly" :class="{error: errors.has('search')}" v-validate="'required|min:5'">
                         </div>
                        </div>
@@ -20,9 +20,9 @@
                     </div>
 
                     <div class="reg-left">
-                        <button type="submit" class="btn btn-primary btn-lg" @click="validate">Next</button>
+                        <button type="submit" class="btn btn-primary btn-lg" @click="validate" v-translate>Next</button>
                     </div>
-                    <div class="reg-right"> <p class="reg-choice"><router-link :to="{name: 'login'}">Return to Login</router-link></p> </div>
+                    <div class="reg-right"> <p class="reg-choice"><router-link :to="{name: 'login'}" v-translate>Return to Login</router-link></p> </div>
                 </form>
             </div>
             <div class="clearfix" v-if="emailChecked">
@@ -66,6 +66,19 @@
                     }
                 );
             },
+        },
+        locales: {
+            ru: {
+                'Reset your password': 'Сброс вашего пароля',
+                'If you don’t remember your password, reset it following the instructions.': 'Если вы не помните ваш пароль, сбросьте его, следуя нашим инструкциям.',
+                'Login or Email': 'Логин или email',
+                'Next': 'Далее',
+                'Return to Login': 'Войти',
+                "Check your email": 'Проверьте ваш email',
+                'We’ve sent an email with password reset link to': 'Мы направили письмо со ссылкой для сброса пароля на',
+                'Click on the link to confirm your password reset.': 'Перейдите по ссылке, чтобы подтвердить сброс пароля.',
+                'Verification link is valid for a single use and will expire in 24 hours.': 'Ссылка для подтверждения действительна для одноразового использования и истекает через 24 часа.'
+            }
         }
 
     }

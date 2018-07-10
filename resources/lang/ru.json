@@ -13,5 +13,13 @@
   "Please try later!": "Повторите пожалуйста операцию позднее",
   "Unknown": "Неизвестен",
   "Not valid priority": "Неверный приоритет",
-  "Not valid department": "Неверный отдел"
+  "Not valid department": "Неверный отдел",
+  "VIPole account password reset": "Смена пароля аккаунта VIPole",
+  "Click on the link below to reset the password of your VIPole Corporate account and get a new one": "Перейдите по ссылке ниже, чтобы сбросить и создать новый пароль вашего корпоративного аккаунта VIPole",
+  "Reset your password": "Изменить пароль",
+  "The activation link is valid for 24 hours": "Ссылка действительна 24 часа",
+  "VIPole Corporate account password reset": "Смена пароля корпоративного аккаунта VIPole",
+  "Activate your VIPole account": "Активируйте аккаунт VIPole",
+  "Click on the activation link below to complete the registration of your account": "Перейдите по ссылке активации ниже для завершения регистрации вашего аккаунта",
+  "Activate the account": "Активировать аккаунт"
 }
