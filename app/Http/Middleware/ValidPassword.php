@@ -16,7 +16,7 @@ class ValidPassword
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->getAuthPassword() == $request->input('password'))
+        if(Auth::user()->checkPassword($request->input('password')))
         {
             return $next($request);
         }

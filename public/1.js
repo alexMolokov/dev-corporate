@@ -1,16 +1,16 @@
 webpackJsonp([1],{
 
-/***/ 275:
+/***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(276);
+var content = __webpack_require__(277);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(13)("33998ff7", content, false, {});
+var update = __webpack_require__(14)("33998ff7", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -27,10 +27,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 276:
+/***/ 277:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(13)(false);
 // imports
 
 
@@ -42,18 +42,18 @@ exports.push([module.i, "\n@charset \"UTF-8\";\nh3[data-v-1ba10a26] {\n  font-si
 
 /***/ }),
 
-/***/ 277:
+/***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_loadingPage__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_loadingPage__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_loadingPage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_loadingPage__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newOrder__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_newLicense__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_renewLicense__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_upgradeLicense__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_shop_action_newOrder__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_shop_action_newLicense__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_shop_action_renewLicense__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_shop_action_upgradeLicense__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__ = __webpack_require__(16);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -142,7 +142,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
-var userMenu = __webpack_require__(87);
+var userMenu = __webpack_require__(88);
 var ajaxform = __webpack_require__(15);
 
 
@@ -153,13 +153,13 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license", "RENEW_LI
 
 
 
-var loadingPage = __webpack_require__(90);
+var loadingPage = __webpack_require__(91);
 
 var formPayment = function formPayment() {
-    return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 282));
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 283));
 };
 var formGetTrial = function formGetTrial() {
-    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 288));
+    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 289));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -319,7 +319,7 @@ var formGetTrial = function formGetTrial() {
 
 /***/ }),
 
-/***/ 278:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -490,7 +490,7 @@ function newOrder(serversMap) {
 
 /***/ }),
 
-/***/ 279:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -504,11 +504,6 @@ function newLicense(localServer) {
         var license = localServer.licenses[i];
         var date = new Date(license.validTill);
         var dateFrom = new Date(license.validFrom);
-
-        console.log(license);
-
-        console.log("date =  " + date);
-        console.log("dateFrom =  " + dateFrom);
 
         var days = Math.ceil((date.getTime() - dateFrom.getTime()) / (1000 * 3600 * 24));
 
@@ -613,7 +608,7 @@ function newLicense(localServer) {
 
 /***/ }),
 
-/***/ 280:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -721,7 +716,7 @@ function renewLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 281:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -840,7 +835,7 @@ function upgradeLicense(localServer, licenseID) {
 
 /***/ }),
 
-/***/ 291:
+/***/ 292:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1296,19 +1291,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 72:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(275)
+  __webpack_require__(276)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(277)
+var __vue_script__ = __webpack_require__(278)
 /* template */
-var __vue_template__ = __webpack_require__(291)
+var __vue_template__ = __webpack_require__(292)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1348,15 +1343,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(88)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(89)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1396,11 +1391,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 88:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -1417,6 +1415,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'userMenu',
@@ -1427,11 +1427,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    computed: {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("servers", ["countServers"]), {
         'currentRoute': function currentRoute() {
             return this.$route.name;
         }
-    },
+    }),
     methods: {},
     locales: {
         ru: {
@@ -1444,7 +1444,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 89:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1501,20 +1501,6 @@ var render = function() {
           "div",
           {
             staticClass: "partner-menu__item",
-            class: { active: _vm.currentRoute == "download" }
-          },
-          [
-            _c("router-link", { attrs: { to: { name: "download" } } }, [
-              _vm._v("Download")
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "partner-menu__item",
             class: { active: _vm.currentRoute == "tickets" }
           },
           [
@@ -1530,29 +1516,47 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "partner-menu__item",
-            class: {
-              active:
-                _vm.currentRoute == "documents" ||
-                _vm.currentRoute == "support_default" ||
-                _vm.currentRoute == "support_body"
-            }
-          },
-          [
-            _c(
-              "router-link",
+        _vm.countServers > 0
+          ? _c(
+              "div",
               {
-                directives: [{ name: "translate", rawName: "v-translate" }],
-                attrs: { to: { name: "documents" } }
+                staticClass: "partner-menu__item",
+                class: { active: _vm.currentRoute == "download" }
               },
-              [_vm._v("Documents")]
+              [
+                _c("router-link", { attrs: { to: { name: "download" } } }, [
+                  _vm._v("Download")
+                ])
+              ],
+              1
             )
-          ],
-          1
-        )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.countServers > 0
+          ? _c(
+              "div",
+              {
+                staticClass: "partner-menu__item",
+                class: {
+                  active:
+                    _vm.currentRoute == "documents" ||
+                    _vm.currentRoute == "support_default" ||
+                    _vm.currentRoute == "support_body"
+                }
+              },
+              [
+                _c(
+                  "router-link",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { to: { name: "documents" } }
+                  },
+                  [_vm._v("Documents")]
+                )
+              ],
+              1
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("label", { attrs: { for: "partner-menu__checkbox" } })
@@ -1571,7 +1575,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -1656,11 +1660,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      directives: [{ name: "translate", rawName: "v-translate" }],
-      staticClass: "alert alert-warning fade in"
-    },
-    [_vm._v("Loading info...")]
+    { staticClass: "alert alert-warning fade in" },
+    [_vm._t("loading", [_vm._v("Loading info...")])],
+    2
   )
 }
 var staticRenderFns = []

@@ -8,19 +8,25 @@
                 <form  autocomplete="off" :url="url" @submit.prevent.stop>
                     <div class="reg-body">
                         <div class="form-group">
+                            <label for="name" v-translate>Company name</label> <span v-show="errors.has('name')" class="help is-danger">*{{errors.first('name')}}</span>
+                            <input type="text" id="name" name="name" placeholder="" v-model="name" class="form-control input-alg readonly" :class="{error: errors.has('name')}" v-validate="'required|min:3'">
+                        </div>
+                        <div class="form-group">
                             <label for="login" v-translate>Email</label> <span v-show="errors.has('email')" class="help is-danger">*{{errors.first('email')}}</span>
                             <input type="text" id="email" name="email" placeholder="" v-model="email" class="form-control input-alg readonly" :class="{error: errors.has('email')}" v-validate="'required|email|try_email'">
                         </div>
                         <div class="form-group">
                             <label for="login" v-translate>Login</label> <span v-show="errors.has('login')" class="help is-danger">*{{errors.first('login')}}</span>
-                            <input type="text"  id="login" name="login" placeholder="" v-model="login" class="form-control input-alg readonly" :class="{error: errors.has('login')}" v-validate="'required|min:6|try_login'">
+                            <input type="text"  id="login" name="login" placeholder="" v-model="login" class="form-control input-alg readonly" :class="{error: errors.has('login')}" v-validate="'required|min:6|regex:^[a-zA-Z_0-9]+$|try_login'" @focus="focus('login-help')" @blur="blur('login-help')">
+                            <span class="help-block hidden" id="login-help" v-translate>Choose your login, minimum 6 letters or combine letters and numbers.</span>
                         </div>
                         <div class="form-group">
                             <label for="password" v-translate>Password</label> <span v-show="errors.has('password')" class="help is-danger">*{{errors.first('password')}}</span>
                             <div class="input-group">
-                                <input :type="type_password" id="password" name="password" v-model="password" class="form-control input-alg" :class="{error: errors.has('password')}" v-validate="'required|min:6'">
+                                <input :type="type_password" id="password" name="password" v-model="password" class="form-control input-alg" :class="{error: errors.has('password')}" v-validate="'required|min:6'" @focus="focus('password-help')" @blur="blur('password-help')">
                                 <a href="#" class="input-group-addon" @click.prevent.stop="togglePassword"><span class="glyphicon" :class="{'glyphicon-eye-close': type_password == 'password', 'glyphicon-eye-open': type_password != 'password'}" aria-hidden="true"></span></a>
                             </div>
+                            <span class="help-block hidden" id="password-help" v-translate>Use strong password, at least 6 characters.</span>
                         </div>
                     </div>
 
@@ -30,7 +36,7 @@
                     </div>
 
                     <div class="reg-left">
-                        <button type="submit" class="btn btn-primary btn-lg" @click="validate" :disabled="emailExists || loginExists" v-translate>Create account</button>
+                        <button type="submit" class="btn btn-primary btn-lg" :class="{'submitting': submitting}" @click="validate" :disabled="emailExists || loginExists || submitting" v-translate>Create account</button>
                     </div>
                     <div class="reg-right"></div>
 
@@ -67,10 +73,12 @@
                 email: null,
                 login: null,
                 password: null,
+                name: "",
                 type_password: "password",
                 emailExists: false,
                 loginExists: false,
-                registered: false
+                registered: false,
+                submitting: false
             }
         },
         created(){
@@ -122,13 +130,25 @@
         },
         mixins: [ajaxform],
         methods: {
+            blur: function(id){
+                document.getElementById(id).classList.add('hidden');
+            },
+            focus: function(id){
+                document.getElementById(id).classList.remove('hidden');
+            },
+
             validate: function()
             {
-                let data = {"login": this.login, "password": this.password, "email": this.email};
+                let data = {"login": this.login, "password": this.password, "email": this.email, "name": this.name};
+                this.submitting = true;
                 this.send(this.url, data,
                     (data) => {
                             this.registered = true;
-                    }
+                            this.submitting = false;
+                    },
+                    (data) => {
+                        this.submitting = false;
+                    },
                 );
             },
             togglePassword: function()
@@ -138,6 +158,7 @@
         },
         locales: {
             ru: {
+                'Company name': 'Название компании',
                 'Registration': 'Регистрация',
                 'Login': 'Логин',
                 'Password': 'Пароль',
@@ -150,6 +171,8 @@
                 'Check your email and activate VIPole Corporate account by clicking the activation link that we have just sent to': 'Проверьте ваш email и активируйте корпоративный аккаунт VIPole, перейдя по ссылке активации в письме, которое мы отправили на адрес',
                 'Once your Corporate account is activated, VIPole services will be enabled for your account': 'Как только вы активируете аккаунт, вы сможете начать пользоваться сервисом VIPole для корпоративных клиентов',
                 'Activation link is valid for a single use and will expire in 24 hours': 'Ссылка активации одноразовая и действует в течение 24 часов',
+                'Use strong password, at least 6 characters.': "Используйте стойкий пароль, минимум 6 символов.",
+                'Choose your login, minimum 6 letters or combine letters and numbers.': '6 и более символов (только буквы и цифры)'
             }
         }
 

@@ -15,8 +15,9 @@ class RegisterUser
     protected $login;
     protected $customer_id;
     protected $password;
+    protected $name;
 
-    protected $fillable = ['email','login', 'customer_id', 'password'];
+    protected $fillable = ['email','login', 'customer_id', 'password', 'name'];
 
 
     public function __construct(array $data)
@@ -50,6 +51,14 @@ class RegisterUser
     /**
      * @return mixed
      */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getLogin()
     {
         return $this->login;
@@ -61,6 +70,22 @@ class RegisterUser
     public function getCustomerId()
     {
         return $this->customer_id;
+    }
+
+    /**
+     * @param mixed $customer_id
+     */
+    public function setCustomerId($customer_id)
+    {
+        $this->customer_id = $customer_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 
 

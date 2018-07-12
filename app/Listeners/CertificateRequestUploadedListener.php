@@ -10,6 +10,8 @@ use App\Mail\CertificateRequestUploaded as MailCertificateRequestUploaded;
 
 class CertificateRequestUploadedListener
 {
+
+    private $delay = 20;
     /**
      * Create the event listener.
      *
@@ -28,6 +30,6 @@ class CertificateRequestUploadedListener
      */
     public function handle(CertificateRequestUploaded $event)
     {
-        Mail::send(new MailCertificateRequestUploaded($event->getServerId()));
+        Mail::later(time() + $this->delay, new MailCertificateRequestUploaded($event->getServerId()));
     }
 }

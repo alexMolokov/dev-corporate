@@ -14,6 +14,8 @@
   "Unknown": "Неизвестен",
   "Not valid priority": "Неверный приоритет",
   "Not valid department": "Неверный отдел",
+  "User not found": "Пользователь не найден",
+  "Only letters and numbers": "Только буквы и цифры",
   "VIPole account password reset": "Смена пароля аккаунта VIPole",
   "Click on the link below to reset the password of your VIPole Corporate account and get a new one": "Перейдите по ссылке ниже, чтобы сбросить и создать новый пароль вашего корпоративного аккаунта VIPole",
   "Reset your password": "Изменить пароль",

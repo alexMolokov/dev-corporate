@@ -40,7 +40,7 @@ export default {
                 }
             });
         },
-        send: function(url, data, success)
+        send: function(url, data, success, fail)
         {
             Object.assign(data, {lang: this.$store.state.lang});
 
@@ -79,9 +79,20 @@ export default {
                     {
                         success(response.data);
                     }
-                 }
+                 } else {
+
+                    if(typeof  fail == 'function')
+                    {
+                        fail(response.data);
+                    }
+                }
 
             }, ({response}) => {
+                if(typeof  fail == 'function')
+                {
+                    fail(response.data);
+                }
+
                 if(response.status == HTTP_CODES.UnprocessableEntity)
                 {
                     this.state = STATES.ERROR;

@@ -15,8 +15,10 @@ const getters =  {
     },
     isLoaded: (state) => {
         return state.loaded;
+    },
+    countServers: (state) => {
+        return state.servers.length;
     }
-
 };
 
 const actions =  {};

@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="reg-left">
-                        <button type="submit" class="btn btn-primary btn-lg" @click="validate"  v-translate>Log In</button>
+                        <button type="submit" class="btn btn-primary btn-lg" :class="{'submitting':submitting}" :disabled="submitting" @click="validate"  v-translate>Log In</button>
                     </div>
                     <div class="reg-right">
                         <p v-if="isRegisterAllowed"class="reg-choice"><router-link :to="{name:'forgot'}" tabindex="-1"  v-translate>Forgot password?</router-link></p>
@@ -56,6 +56,7 @@
                 url: "/auth/login",
                 login: null,
                 password: null,
+                submitting: false,
                 type_password: "password"
             }
         },
@@ -73,12 +74,14 @@
             {
                 let data = {"login": this.login, "password": this.password};
                 let authLogin = this.authLogin;
-
+                this.submitting = true;
                 this.send(this.url, data,
                     function(data) {
                         authLogin(new User(data));
-                    }
-                );
+                    },
+                    (data) => {
+                        this.submitting = false;
+                    });
 
 
             }

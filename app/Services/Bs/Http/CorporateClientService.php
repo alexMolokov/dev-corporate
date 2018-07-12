@@ -125,16 +125,20 @@ class CorporateClientService extends Service implements CorporateClientInterface
 
     private function __getCorporateClient($response)
     {
+
         $client =  new CorporateClient([
             "customerId" => $response->customer_id,
             "name" => $response->name,
             "title" => $response->title,
             "login" => $response->login,
-            "password" => $response->password,
+            "password" => $response->site_password,
             "phone" => $response->phone,
             "email" => $response->email,
-            "address" => $response->address
+            "address" => $response->address,
+            "service_domain" => $response->service_domain
         ]);
+
+
 
         foreach($response->contacts as $contact)
         {

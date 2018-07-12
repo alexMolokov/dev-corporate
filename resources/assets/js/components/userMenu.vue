@@ -5,9 +5,10 @@
             <div class="wrapper">
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'userpage' }"><router-link :to="{name: 'userpage'}" v-translate>My Account</router-link></div>
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'shop'}"><router-link :to="{name: 'shop', params: {makeDeal: 'new'}}" v-translate>Order</router-link></div>
-                <div class="partner-menu__item" :class="{ active: currentRoute == 'download' }"><router-link :to="{name: 'download'}">Download</router-link></div>
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'tickets' }"><router-link :to="{name: 'tickets'}" v-translate>Tickets</router-link></div>
-                <div class="partner-menu__item" :class="{ active: currentRoute == 'documents' || currentRoute == 'support_default'  || currentRoute == 'support_body'}"><router-link :to="{name: 'documents'}" v-translate>Documents</router-link></div>
+                <div v-if="countServers > 0" class="partner-menu__item" :class="{ active: currentRoute == 'download' }"><router-link :to="{name: 'download'}">Download</router-link></div>
+                <div v-if="countServers > 0" class="partner-menu__item" :class="{ active: currentRoute == 'documents' || currentRoute == 'support_default'  || currentRoute == 'support_body'}"><router-link :to="{name: 'documents'}" v-translate>Documents</router-link></div>
+
             </div>
             <label for="partner-menu__checkbox"></label>
         </div>
@@ -15,6 +16,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import {mapGetters} from 'vuex'
 export default {
     name: 'userMenu',
     props: {},
@@ -25,6 +27,7 @@ export default {
 
     },
     computed: {
+        ...mapGetters("servers",["countServers"]),
         'currentRoute': function()
         {
             return this.$route.name;

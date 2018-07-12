@@ -15,7 +15,7 @@
                         <li><a target="_blank" :href="rootReference + '/pricing'"><span v-translate>Pricing</span></a></li>
                         <li><a target="_blank" :href="rootReference + '/support'"><span v-translate>Support</span></a></li>
                         <li><a target="_blank" :href="rootReference + '/download'" id="a-download"><span id="v-download" v-translate>Download</span></a></li>
-                        <li v-if="!isAuth"><router-link :to="{name:'registration'}" class="a-sign"><span id="v-sign" v-translate>Sign in</span></router-link></li>
+                        <li v-if="!isAuth"><router-link :to="{name:'login'}" class="a-sign"><span id="v-sign" v-translate>Sign in</span></router-link></li>
                         <li  v-if="isAuth"class="sub-menu">
                             <router-link :to="{name: 'userpage'}" class="username hidden-xs"><div>{{getLogin}}</div><img src="/images/icons/icon-userpic-white.png" alt></router-link>
                             <ul>

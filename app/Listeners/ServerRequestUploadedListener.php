@@ -10,6 +10,7 @@ use App\Mail\LicenceRequestUploaded;
 
 class ServerRequestUploadedListener
 {
+    private $delay = 20;
     /**
      * Create the event listener.
      *
@@ -28,6 +29,6 @@ class ServerRequestUploadedListener
      */
     public function handle(ServerRequestUploaded $event)
     {
-        Mail::send(new LicenceRequestUploaded($event->getServerId()));
+        Mail::later(time() + $this->delay, new LicenceRequestUploaded($event->getServerId()));
     }
 }

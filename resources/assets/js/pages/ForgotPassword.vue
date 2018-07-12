@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="reg-left">
-                        <button type="submit" class="btn btn-primary btn-lg" @click="validate" v-translate>Next</button>
+                        <button type="submit" class="btn btn-primary btn-lg" @click="validate" v-translate :class="{'submitting':submitting}" :disabled="submitting">Next</button>
                     </div>
                     <div class="reg-right"> <p class="reg-choice"><router-link :to="{name: 'login'}" v-translate>Return to Login</router-link></p> </div>
                 </form>
@@ -48,7 +48,8 @@
                 url: "/registration/forget",
                 search: null,
                 emailChecked:  false,
-                email: "example@mail.com"
+                email: "example@mail.com",
+                submitting: false
             }
         },
         mixins: [ajaxform],
@@ -56,13 +57,16 @@
         methods: {
             validate: function()
             {
-
                 let data = {"search": this.search};
-
+                this.submitting = true;
                 this.send(this.url, data,
                     (data) => {
                         this.email = data.email;
                         this.emailChecked = true;
+                        this.submitting = false;
+                    },
+                    (data) => {
+                        this.submitting = false;
                     }
                 );
             },

@@ -11,6 +11,8 @@ use App\Http\Requests\Registration\TryLoginRequest;
 use Illuminate\Http\Request;
 use Validator;
 use App\Events\ForgetRequestUploaded;
+use App\Http\Requests\Registration\RegisterRequest as RegistrationRegisterRequest;
+
 
 
 class RegisterController extends Controller
@@ -22,13 +24,14 @@ class RegisterController extends Controller
         $this->service = $service;
     }
 
-    public function register(Request $request)
+    public function register(RegistrationRegisterRequest $request)
     {
         if(!config("app.registration_allowed"))  return response()->error(__("Registration forbidden"));
         if(!$this->service->tryEmail($request->get('email')))  return response()->error(__("Email exists"));
         if(!$this->service->tryLogin($request->get('login')))  return response()->error(__("Login exists"));
 
         $data = [
+            "name" => $request->get('name'),
             "login" => $request->get('login'),
             "email" => $request->get('email'),
             "password" => $request->get('password')
@@ -70,13 +73,37 @@ class RegisterController extends Controller
 
     public function activate($code)
     {
-        $client = $this->service->getRegisteredClientByCode($code);
-        if(is_null($client))
+        if(!config("app.registration_allowed"))  return response()->error(__("Registration forbidden"));
+
+        $registeredClient = $this->service->getRegisteredClientByCode($code);
+        if(is_null($registeredClient))
         {
             return response()->error(__("Code not valid"));
         }
 
-        return response()->success(["login" => $client->getLogin()]);
+        if(!$this->service->tryEmail($registeredClient->getEmail()))  return response()->error(__("Email exists"));
+        if(!$this->service->tryLogin($registeredClient->getLogin()))  return response()->error(__("Login exists"));
+
+        if($this->service->addClient($registeredClient))
+        {
+            if($client = $this->service->getClientByEmail($registeredClient->getEmail()))
+            {
+                if($this->service->changeCredentials($client->getCustomerId(), $registeredClient->getLogin(), $registeredClient->getPassword()))
+                {
+                    $this->service->removeTempClient($registeredClient);
+                    return response()->success(["login" => $registeredClient->getLogin()]);
+                }
+            }
+
+            response()->error(__('Error'));
+        }
+        else
+        {
+            response()->error(__('Error'));
+        }
+
+
+
     }
 
 
@@ -102,7 +129,7 @@ class RegisterController extends Controller
         $result = $this->service->changePassword($client->getCustomerId(), $request->input("new_password"));
         if($result)
         {
-            $this->service->removeTempClient($client);
+            $this->service->removeForgetClient($client);
             return response()->success([]);
         }
 

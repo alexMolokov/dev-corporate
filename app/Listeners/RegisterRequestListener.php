@@ -10,6 +10,7 @@ use App\Mail\RegisterRequest as MailRegisterRequest;
 
 class RegisterRequestListener
 {
+    private $delay = 20;
     /**
      * Create the event listener.
      *
@@ -28,6 +29,7 @@ class RegisterRequestListener
      */
     public function handle(RegisterRequest $event)
     {
-        Mail::send(new MailRegisterRequest($event->getEmail(), $event->getCode(), $event->getLogin()));
+
+        Mail::later(time() + $this->delay, new MailRegisterRequest($event->getEmail(), $event->getCode(), $event->getLogin()));
     }
 }

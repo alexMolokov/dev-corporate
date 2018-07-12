@@ -32,7 +32,7 @@ class LicenceRequestUploaded extends Mailable
      */
     public function build()
     {
-        return $this->to("sportmalex@yandex.ru")->view("email.LicenseRequest")->with([
+        return $this->to(config("bsystem.mail_admin"))->view("email.LicenseRequest")->with([
             "id" => $this->serverId,
             "lang" => $this->lang
         ]);

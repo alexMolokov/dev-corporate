@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 105:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37,7 +37,7 @@ function LocalServer(data) {
 
 /***/ }),
 
-/***/ 106:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72,17 +72,17 @@ function License(data) {
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(150);
+var content = __webpack_require__(151);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(13)("42531d60", content, false, {});
+var update = __webpack_require__(14)("42531d60", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -99,10 +99,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 150:
+/***/ 151:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(12)(false);
+exports = module.exports = __webpack_require__(13)(false);
 // imports
 
 
@@ -114,14 +114,14 @@ exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-ch
 
 /***/ }),
 
-/***/ 151:
+/***/ 152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(107);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -300,27 +300,27 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 var ajaxform = __webpack_require__(15);
-var userMenu = __webpack_require__(87);
+var userMenu = __webpack_require__(88);
 var formChangePassword = function formChangePassword() {
-    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 152));
+    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 153));
 };
 var formChangeCompanyName = function formChangeCompanyName() {
-    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 155));
+    return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, 156));
 };
 var formChangeCompanyDetails = function formChangeCompanyDetails() {
-    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, 158));
+    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 159));
 };
 var formChangeTechContact = function formChangeTechContact() {
-    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 161));
+    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 162));
 };
 var formChangeMainContact = function formChangeMainContact() {
-    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 164));
+    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, 165));
 };
 var formLicenseRequest = function formLicenseRequest() {
-    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 167));
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 168));
 };
 var formCertificateRequest = function formCertificateRequest() {
-    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 172));
+    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 173));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -399,7 +399,7 @@ var formCertificateRequest = function formCertificateRequest() {
 
 /***/ }),
 
-/***/ 177:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1256,19 +1256,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 67:
+/***/ 68:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(149)
+  __webpack_require__(150)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(151)
+var __vue_script__ = __webpack_require__(152)
 /* template */
-var __vue_template__ = __webpack_require__(177)
+var __vue_template__ = __webpack_require__(178)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1308,15 +1308,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(88)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(89)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1356,11 +1356,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 88:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -1377,6 +1380,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'userMenu',
@@ -1387,11 +1392,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    computed: {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("servers", ["countServers"]), {
         'currentRoute': function currentRoute() {
             return this.$route.name;
         }
-    },
+    }),
     methods: {},
     locales: {
         ru: {
@@ -1404,7 +1409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 89:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1461,20 +1466,6 @@ var render = function() {
           "div",
           {
             staticClass: "partner-menu__item",
-            class: { active: _vm.currentRoute == "download" }
-          },
-          [
-            _c("router-link", { attrs: { to: { name: "download" } } }, [
-              _vm._v("Download")
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "partner-menu__item",
             class: { active: _vm.currentRoute == "tickets" }
           },
           [
@@ -1490,29 +1481,47 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "partner-menu__item",
-            class: {
-              active:
-                _vm.currentRoute == "documents" ||
-                _vm.currentRoute == "support_default" ||
-                _vm.currentRoute == "support_body"
-            }
-          },
-          [
-            _c(
-              "router-link",
+        _vm.countServers > 0
+          ? _c(
+              "div",
               {
-                directives: [{ name: "translate", rawName: "v-translate" }],
-                attrs: { to: { name: "documents" } }
+                staticClass: "partner-menu__item",
+                class: { active: _vm.currentRoute == "download" }
               },
-              [_vm._v("Documents")]
+              [
+                _c("router-link", { attrs: { to: { name: "download" } } }, [
+                  _vm._v("Download")
+                ])
+              ],
+              1
             )
-          ],
-          1
-        )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.countServers > 0
+          ? _c(
+              "div",
+              {
+                staticClass: "partner-menu__item",
+                class: {
+                  active:
+                    _vm.currentRoute == "documents" ||
+                    _vm.currentRoute == "support_default" ||
+                    _vm.currentRoute == "support_body"
+                }
+              },
+              [
+                _c(
+                  "router-link",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { to: { name: "documents" } }
+                  },
+                  [_vm._v("Documents")]
+                )
+              ],
+              1
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("label", { attrs: { for: "partner-menu__checkbox" } })

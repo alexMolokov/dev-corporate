@@ -9,12 +9,6 @@ export function newLicense(localServer)
         let date = new Date(license.validTill);
         let dateFrom = new Date(license.validFrom);
 
-        console.log(license)
-
-        console.log("date =  " + date);
-        console.log("dateFrom =  " + dateFrom);
-
-
         let days = Math.ceil((date.getTime() - dateFrom.getTime()) / (1000 * 3600 * 24));
 
         if(days > 364)  addSumServer = false;

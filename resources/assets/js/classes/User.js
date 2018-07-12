@@ -30,6 +30,8 @@ export function User (data)
             email: ""
     }
 
+    if(typeof data['contacts'] == "undefined") data['contacts'] = [];
+
     data['contacts'].forEach((contact) => {
         if(contact.type == TYPE_MAIN) {
             this.primary = contact;

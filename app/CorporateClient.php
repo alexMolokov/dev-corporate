@@ -12,6 +12,7 @@ class CorporateClient implements AuthenticatableContract
     // auth info
     protected  $login;
     protected  $password;
+    protected  $service_domain;
 
     // billing info
     protected  $name;
@@ -73,6 +74,15 @@ class CorporateClient implements AuthenticatableContract
     public function getLogin()
     {
         return $this->login;
+    }
+
+    public function checkPassword($password)
+    {
+        $s1=sha1($this->service_domain.$this->login,true);
+        $s2=sha1($s1.$password,true);
+        $result=base64_encode($s2);
+
+        return $result == $this->password;
     }
 }
 

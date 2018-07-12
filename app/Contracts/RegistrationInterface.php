@@ -8,6 +8,7 @@
 
 namespace App\Contracts;
 
+use App\Models\User\RegisterUser;
 
 interface RegistrationInterface
 {
@@ -28,6 +29,9 @@ interface RegistrationInterface
 
     public function getClientByEmail($email);
 
+    public function addClient(RegisterUser $client);
+
+    public function changeCredentials($customer_id, $login, $password);
 
 
 

@@ -93,6 +93,8 @@ class CorporateServerService extends Service implements CorporateServerInterface
         $ar  = [];
         $result = $this->client->sendCommand(self::OPS["getServers"], self::PATH,["customer_id" => $customerId]);
 
+
+
         if($result->status)
         {
             foreach($result->response as $object)

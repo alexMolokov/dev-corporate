@@ -10,6 +10,7 @@ use App\Mail\ForgetRequestUploaded as MailForgetRequestUploaded;
 
 class ForgetRequestUploadedListener
 {
+    private $delay = 20;
     /**
      * Create the event listener.
      *
@@ -28,6 +29,6 @@ class ForgetRequestUploadedListener
      */
     public function handle(ForgetRequestUploaded $event)
     {
-        Mail::send(new MailForgetRequestUploaded($event->getEmail(), $event->getCode()));
+        Mail::later(time() + $this->delay, new MailForgetRequestUploaded($event->getEmail(), $event->getCode()));
     }
 }

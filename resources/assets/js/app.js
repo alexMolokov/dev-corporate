@@ -33,6 +33,7 @@ const dictionary = {
             password:  () => 'Not valid',
             login: () => 'Not valid',
             is: () => 'Not valid',
+            regex: () => 'Not valid'
         }
     },
     ru: {
@@ -46,7 +47,8 @@ const dictionary = {
             url: () => 'Некорректное значение',
             password: () => 'Некорректное значение',
             login: () => 'Некорректное значение',
-            is: () => 'Некорректное значение'
+            is: () => 'Некорректное значение',
+            regex: () => 'Некорректное значение'
         }
     }
 };
