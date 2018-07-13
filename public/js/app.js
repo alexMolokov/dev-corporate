@@ -57071,6 +57071,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         logo: { type: String, default: '' },
         rootSite: { type: String, default: '' }
     },
+    data: function data() {
+        return {
+            langMenu: false
+        };
+    },
+
     computed: _extends({
         currentLanguageName: function currentLanguageName() {
             var langs = {
@@ -57096,6 +57102,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default.a],
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setLang', 'logout']), {
         changeLanguage: function changeLanguage(lang) {
+            this.langMenu = false;
             this.setLang({ lang: lang, translate: this.$translate });
         },
         closeMenu: function closeMenu() {
@@ -58141,10 +58148,13 @@ var render = function() {
                 "a",
                 {
                   staticClass: "dropdown-toggle",
-                  attrs: {
-                    href: "#",
-                    id: "drop-down-lang",
-                    "data-toggle": "dropdown"
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      $event.stopPropagation()
+                      _vm.langMenu = !_vm.langMenu
+                    }
                   }
                 },
                 [
@@ -58154,57 +58164,63 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "ul",
-                {
-                  staticClass:
-                    "dropdown-menu dropdown-menu-left lang-dropdown-menu",
-                  staticStyle: { bottom: "100%", top: "auto" }
-                },
-                [
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: { href: "#" },
-                        on: {
-                          click: [
-                            function($event) {
-                              _vm.changeLanguage("en")
-                            },
-                            function($event) {
-                              $event.preventDefault()
-                              $event.stopPropagation()
+              _vm.langMenu
+                ? _c(
+                    "ul",
+                    {
+                      staticClass:
+                        "dropdown-menu dropdown-menu-left lang-dropdown-menu",
+                      staticStyle: {
+                        bottom: "100%",
+                        top: "auto",
+                        display: "block"
+                      }
+                    },
+                    [
+                      _c("li", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: [
+                                function($event) {
+                                  _vm.changeLanguage("en")
+                                },
+                                function($event) {
+                                  $event.preventDefault()
+                                  $event.stopPropagation()
+                                }
+                              ]
                             }
-                          ]
-                        }
-                      },
-                      [_vm._v("English (English)")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: { href: "#" },
-                        on: {
-                          click: [
-                            function($event) {
-                              _vm.changeLanguage("ru")
-                            },
-                            function($event) {
-                              $event.preventDefault()
-                              $event.stopPropagation()
+                          },
+                          [_vm._v("English (English)")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: [
+                                function($event) {
+                                  _vm.changeLanguage("ru")
+                                },
+                                function($event) {
+                                  $event.preventDefault()
+                                  $event.stopPropagation()
+                                }
+                              ]
                             }
-                          ]
-                        }
-                      },
-                      [_vm._v("Russian (Русский)")]
-                    )
-                  ])
-                ]
-              )
+                          },
+                          [_vm._v("Russian (Русский)")]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e()
             ])
           ])
         ]),

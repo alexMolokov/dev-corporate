@@ -107,7 +107,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-child {\n  margin-left: 10px;\n}\n.group-attr .info-value span[data-v-123bcd7c]:first-child {\n  color: #666;\n}\n.info-head .glyphicon-pencil[data-v-123bcd7c] {\n  font-size: 12px;\n  display: inline-block;\n  margin-left: 10px;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c] {\n  flex-grow: 1;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c]:last-child {\n  flex-grow: 5;\n}\n.flex-row .user-card[data-v-123bcd7c]:last-child {\n  flex-grow: 1.5;\n}\n.server-info[data-v-123bcd7c] {\n  padding: 10px 20px 10px 40px;\n}\n@media (max-width: 767px) {\n.server-info[data-v-123bcd7c] {\n      display: block;\n}\n}\n.server-info > div[data-v-123bcd7c] {\n    margin-bottom: 0px;\n}\n.server-info > div > div[data-v-123bcd7c] {\n    padding: 2px 10px;\n    color: #999;\n}\n.server-info > div > div span[data-v-123bcd7c] {\n      display: inline-block;\n      margin-right: 5px;\n}\n.server-info > div > div span[data-v-123bcd7c]:first-child:after {\n      content: \":\";\n      margin-right: 5px;\n}\n.server-info .server-info-name[data-v-123bcd7c] {\n    color: #000;\n    font-size: 18px;\n    padding: 2px 0px;\n}\n.server-info .server-info-add-license[data-v-123bcd7c] {\n    text-align: right;\n}\n@media (max-width: 767px) {\n.server-info .server-info-add-license[data-v-123bcd7c] {\n        text-align: left;\n        margin-left: 10px;\n        padding: 2px 0px;\n}\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n  margin: -3px 0 0 20px;\n}\n.server-license-info .head.flex-row > *[data-v-123bcd7c] {\n  margin-bottom: 0px;\n}\n@media (max-width: 600px) {\n.server-license-info .head.flex-row a.btn[data-v-123bcd7c] {\n    min-width: 100px;\n}\n}\n@media (max-width: 400px) {\n.server-license-info .head.flex-row[data-v-123bcd7c] {\n    height: auto;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c], .server-license-info .head.flex-row a[data-v-123bcd7c] {\n      display: block;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c] {\n      margin-bottom: 10px;\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n      width: 150px;\n      margin-left: 0px;\n}\n}\n.server-license-info .product-license[data-v-123bcd7c] {\n  width: 100%;\n  font-size: 18px;\n  border-bottom: 1px solid #eee;\n  color: #000;\n}\n.server-license-info .product-license > div[data-v-123bcd7c] {\n    padding: 10px 20px 10px 40px;\n}\n.server-license-info .table th[data-v-123bcd7c] {\n  font-size: 18px;\n  font-weight: normal;\n  color: #000;\n  text-align: center;\n}\n.server-license-info .table th[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table th.blue[data-v-123bcd7c] {\n    color: #00a0c8;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c] {\n  text-align: center;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table tbody .license-key span[data-v-123bcd7c] {\n  color: #000;\n  font-weight: 700;\n  font-size: 14px;\n  padding-bottom: 5px;\n}\n.server-license-info .table tbody .license-key a[data-v-123bcd7c] {\n  font-size: 14px;\n}\n.server-license-info .table tbody .license-number[data-v-123bcd7c], .server-license-info .table tbody .license-date[data-v-123bcd7c] {\n  color: #999;\n  font-weight: 500;\n  font-size: 14px;\n  padding: 2px 15px;\n}\n.server-license-info .table-responsive[data-v-123bcd7c] {\n  padding: 20px 0px 10px 40px;\n}\n", ""]);
+exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-child {\n  margin-left: 10px;\n}\n.group-attr .info-value span[data-v-123bcd7c]:first-child {\n  color: #666;\n}\n.info-head .glyphicon-pencil[data-v-123bcd7c] {\n  font-size: 12px;\n  display: inline-block;\n  margin-left: 10px;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c] {\n  flex-grow: 1;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c]:last-child {\n  flex-grow: 5;\n}\n.flex-row .user-card[data-v-123bcd7c]:last-child {\n  flex-grow: 1.5;\n}\n.server-info[data-v-123bcd7c] {\n  padding: 10px 20px 10px 40px;\n}\n@media (max-width: 767px) {\n.server-info[data-v-123bcd7c] {\n      display: block;\n}\n}\n.server-info > div[data-v-123bcd7c] {\n    margin-bottom: 0px;\n}\n.server-info > div > div[data-v-123bcd7c] {\n    padding: 2px 10px;\n    color: #999;\n}\n.server-info > div > div span[data-v-123bcd7c] {\n      display: inline-block;\n      margin-right: 5px;\n}\n.server-info > div > div span[data-v-123bcd7c]:first-child:after {\n      content: \":\";\n      margin-right: 5px;\n}\n.server-info .server-info-name[data-v-123bcd7c] {\n    color: #000;\n    font-size: 18px;\n    padding: 2px 0px;\n}\n.server-info .server-info-add-license[data-v-123bcd7c] {\n    text-align: right;\n}\n@media (max-width: 767px) {\n.server-info .server-info-add-license[data-v-123bcd7c] {\n        text-align: left;\n        margin-left: 10px;\n        padding: 2px 0px;\n}\n}\n.server-license-info .license-links a[data-v-123bcd7c] {\n  display: block;\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n  margin: -3px 0 0 20px;\n}\n.server-license-info .head.flex-row > *[data-v-123bcd7c] {\n  margin-bottom: 0px;\n}\n@media (max-width: 600px) {\n.server-license-info .head.flex-row a.btn[data-v-123bcd7c] {\n    min-width: 100px;\n}\n}\n@media (max-width: 400px) {\n.server-license-info .head.flex-row[data-v-123bcd7c] {\n    height: auto;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c], .server-license-info .head.flex-row a[data-v-123bcd7c] {\n      display: block;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c] {\n      margin-bottom: 10px;\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n      width: 150px;\n      margin-left: 0px;\n}\n}\n.server-license-info .product-license[data-v-123bcd7c] {\n  width: 100%;\n  font-size: 18px;\n  border-bottom: 1px solid #eee;\n  color: #000;\n}\n.server-license-info .product-license > div[data-v-123bcd7c] {\n    padding: 10px 20px 10px 40px;\n}\n.server-license-info .table th[data-v-123bcd7c] {\n  font-size: 18px;\n  font-weight: normal;\n  color: #000;\n  text-align: center;\n}\n.server-license-info .table th[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table th.blue[data-v-123bcd7c] {\n    color: #00a0c8;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c] {\n  text-align: center;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table tbody .license-key span[data-v-123bcd7c] {\n  color: #000;\n  font-weight: 700;\n  font-size: 14px;\n  padding-bottom: 5px;\n}\n.server-license-info .table tbody .license-key a[data-v-123bcd7c] {\n  font-size: 14px;\n}\n.server-license-info .table tbody .license-number[data-v-123bcd7c], .server-license-info .table tbody .license-date[data-v-123bcd7c] {\n  color: #999;\n  font-weight: 500;\n  font-size: 14px;\n  padding: 2px 15px;\n}\n.server-license-info .table-responsive[data-v-123bcd7c] {\n  padding: 20px 0px 10px 40px;\n}\n", ""]);
 
 // exports
 
@@ -122,7 +122,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(107);
+var _ru;
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
 //
@@ -375,7 +379,7 @@ var formCertificateRequest = function formCertificateRequest() {
 
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("servers", ["setLoaded", "addServer"])),
     locales: {
-        ru: {
+        ru: (_ru = {
             'Profile': 'Профиль',
             'Company': 'Компания',
             'Primary contact': 'Основной контакт',
@@ -390,9 +394,28 @@ var formCertificateRequest = function formCertificateRequest() {
             'Billing details': 'Платежная информация',
             'My Account': 'Мой аккаунт',
             'Tickets': 'Тикеты',
-            'Documents': 'Документы'
-
-        }
+            'Documents': 'Документы',
+            "Software and services": "",
+            "Product/License": "Сервер/Лицензия",
+            "Certificate": "Сертификат",
+            "Upload request": "Загрузить запрос",
+            "Download": "Скачать",
+            "License": "Лицензия",
+            "Release": "Релиз",
+            "OS": "ОС",
+            "Server modules": "Модули",
+            "Added": "Добавлен",
+            "User Licenses": "Лицензии",
+            "Users": "Пользователи",
+            "Valid till": "Годен до",
+            "Status": "Статус",
+            "Added:": "Добавлена:",
+            "Renew": "Обновить",
+            "Upgrade": "Улучшить",
+            "download": "Загрузить",
+            "Server ID": "Сервер ID",
+            "License key": "ID лицензии"
+        }, _defineProperty(_ru, "Software and services", "Программное обеспечение"), _defineProperty(_ru, "New Order", "Новый заказ"), _defineProperty(_ru, "New licence", "Новая лицензия"), _defineProperty(_ru, "active", "Активна"), _defineProperty(_ru, "payment required", "Требуется оплата"), _ru)
     }
 
 });
@@ -809,6 +832,9 @@ var render = function() {
                         _c(
                           "router-link",
                           {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ],
                             staticClass: "btn btn-blue btn-middle",
                             attrs: {
                               to: { name: "shop", params: { makeDeal: "new" } }
@@ -871,6 +897,12 @@ var render = function() {
                                 _c(
                                   "a",
                                   {
+                                    directives: [
+                                      {
+                                        name: "translate",
+                                        rawName: "v-translate"
+                                      }
+                                    ],
                                     attrs: { href: "#" },
                                     on: {
                                       click: function($event) {
@@ -922,6 +954,12 @@ var render = function() {
                               _c(
                                 "a",
                                 {
+                                  directives: [
+                                    {
+                                      name: "translate",
+                                      rawName: "v-translate"
+                                    }
+                                  ],
                                   attrs: { href: "#" },
                                   on: {
                                     click: function($event) {
@@ -1018,7 +1056,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v("Add new licence")]
+                            [_vm._v("New licence")]
                           )
                         ],
                         1
@@ -1027,7 +1065,50 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "table-responsive" }, [
                       _c("table", { staticClass: "table" }, [
-                        _vm._m(0, true),
+                        _c("thead", [
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              staticClass: "blue"
+                            },
+                            [_vm._v("User Licenses")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Users")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Valid till")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Status")]
+                          ),
+                          _vm._v(" "),
+                          _c("th", [_vm._v(" ")])
+                        ]),
                         _vm._v(" "),
                         _c(
                           "tbody",
@@ -1036,13 +1117,32 @@ var render = function() {
                               _c("td", [
                                 _c("div", { staticClass: "license-key" }, [
                                   _c("span", [
-                                    _vm._v(_vm._s(i + 1) + " License key:")
+                                    _vm._v(_vm._s(i + 1) + " "),
+                                    _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "translate",
+                                            rawName: "v-translate"
+                                          }
+                                        ]
+                                      },
+                                      [_vm._v("License key")]
+                                    ),
+                                    _vm._v(":")
                                   ]),
                                   _vm._v(" "),
                                   server.hasLicenseRequest && license.signed
                                     ? _c(
                                         "a",
                                         {
+                                          directives: [
+                                            {
+                                              name: "translate",
+                                              rawName: "v-translate"
+                                            }
+                                          ],
                                           attrs: {
                                             target: "_blank",
                                             href:
@@ -1062,7 +1162,18 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "license-date" }, [
-                                  _c("span", [_vm._v("Added:")]),
+                                  _c(
+                                    "span",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "translate",
+                                          rawName: "v-translate"
+                                        }
+                                      ]
+                                    },
+                                    [_vm._v("Added:")]
+                                  ),
                                   _vm._v(" "),
                                   _c("span", [
                                     _vm._v(_vm._s(license.getAdded()))
@@ -1078,12 +1189,35 @@ var render = function() {
                               _vm._v(" "),
                               _c("td", [
                                 license.valid
-                                  ? _c("span", [_vm._v("active")])
-                                  : _c("span", [_vm._v("payment required")])
+                                  ? _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "translate",
+                                            rawName: "v-translate"
+                                          }
+                                        ]
+                                      },
+                                      [_vm._v("active")]
+                                    )
+                                  : _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "translate",
+                                            rawName: "v-translate"
+                                          }
+                                        ]
+                                      },
+                                      [_vm._v("payment required")]
+                                    )
                               ]),
                               _vm._v(" "),
                               _c(
                                 "td",
+                                { staticClass: "license-links" },
                                 [
                                   _c(
                                     "router-link",
@@ -1105,7 +1239,7 @@ var render = function() {
                                         }
                                       }
                                     },
-                                    [_vm._v("Renew license")]
+                                    [_vm._v("Renew")]
                                   ),
                                   _vm._v(" "),
                                   _c(
@@ -1117,6 +1251,7 @@ var render = function() {
                                           rawName: "v-translate"
                                         }
                                       ],
+                                      staticClass: "top-10",
                                       attrs: {
                                         to: {
                                           name: "shop",
@@ -1227,24 +1362,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("th", { staticClass: "blue" }, [_vm._v("User Licenses")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Users")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Valid till")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Status")]),
-      _vm._v(" "),
-      _c("th", [_vm._v(" ")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -1402,7 +1520,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         ru: {
             'My Account': 'Мой аккаунт',
             'Tickets': 'Тикеты',
-            'Documents': 'Документы'
+            'Documents': 'Документы',
+            'Order': 'Заказ'
         }
     }
 });

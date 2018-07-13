@@ -14,6 +14,11 @@ export function newLicense(localServer)
         if(days > 364)  addSumServer = false;
     }
 
+    this.getUrl = function()
+    {
+        return '/shop/new-license';
+    }
+
 
     this.setDefaultChoice = function(context)
     {

@@ -40,7 +40,8 @@ export default {
         ru: {
             'My Account': 'Мой аккаунт',
             'Tickets': 'Тикеты',
-            'Documents': 'Документы'
+            'Documents': 'Документы',
+            'Order': 'Заказ'
         }
     }
 }

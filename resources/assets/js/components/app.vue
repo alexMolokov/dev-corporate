@@ -145,8 +145,8 @@
                     <div class="col-sm-5 language">
                         <div class="dropdown v-choose-language">
                             <span v-translate>Language:</span>
-                            <a href="#" id="drop-down-lang" class="dropdown-toggle" data-toggle="dropdown"><span class="lang">{{currentLanguageName}}</span></a>
-                            <ul class="dropdown-menu dropdown-menu-left lang-dropdown-menu" style="bottom:100%; top: auto;">
+                            <a href="#"  class="dropdown-toggle" @click.prevent.stop="langMenu = !langMenu"><span class="lang">{{currentLanguageName}}</span></a>
+                            <ul class="dropdown-menu dropdown-menu-left lang-dropdown-menu"  style="bottom:100%; top: auto; display: block" v-if="langMenu">
                                 <li><a href="#" @click="changeLanguage('en')" @click.prevent.stop>English (English)</a></li>
                                 <li><a href="#" @click="changeLanguage('ru')" @click.prevent.stop>Russian (Русский)</a></li>
                             </ul>
@@ -181,6 +181,11 @@ export default {
         logo: {type: String, default: ''},
         rootSite: {type: String, default: ''}
     },
+    data() {
+        return {
+            langMenu: false,
+        }
+    },
     computed: {
         currentLanguageName(){
           const langs = {
@@ -212,6 +217,7 @@ export default {
         ...mapMutations(['setLang', 'logout']),
         changeLanguage(lang)
         {
+            this.langMenu = false;
             this.setLang({lang: lang, translate: this.$translate});
         },
         closeMenu()

@@ -33,6 +33,11 @@ export function renewLicense(localServer, licenseID)
 
     }
 
+    this.getUrl = function()
+    {
+        return '/shop/renew-license';
+    }
+
     this.setForbidden = function(context)
     {
         let data = {

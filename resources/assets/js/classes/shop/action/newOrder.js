@@ -23,6 +23,11 @@ export function newOrder(serversMap)
         context.discount = 0;
     }
 
+    this.getUrl = function()
+    {
+        return '/shop/buy-server';
+    }
+
     function hasTestLicense(){
         for(let key  of serversMap.keys()) {
             let licenses = serversMap.get(key).licenses;

@@ -191,7 +191,8 @@ var formGetTrial = function formGetTrial() {
             state: null,
             PRICES: __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["e" /* PRICES */],
             sum: "",
-            discount: 0
+            discount: 0,
+            purchase: {}
         };
     },
 
@@ -308,7 +309,48 @@ var formGetTrial = function formGetTrial() {
                 this.choice.users = Math.abs(this.choice.users);
             }
             this.state.sumOrder(this);
+        },
+        choosePayment: function choosePayment() {
+            this.purchase = {
+                "server_id": this.server,
+                "license_id": this.license,
+                "period": this.choice.period,
+                "os": this.choice.os,
+                "users": this.choice.users,
+                "basket": [],
+                'url': this.state.getUrl()
+            };
+
+            var ar = [];
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.basket.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var key = _step.value;
+
+                    ar.push(key);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            this.purchase.basket = ar;
+            this.showFormPayment = true;
         }
+
     }),
 
     locales: {
@@ -346,6 +388,10 @@ function newOrder(serversMap) {
         context.addToBasket(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE);
         context.addToBasket(__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].SIP);
         context.discount = 0;
+    };
+
+    this.getUrl = function () {
+        return '/shop/buy-server';
     };
 
     function hasTestLicense() {
@@ -510,6 +556,10 @@ function newLicense(localServer) {
         if (days > 364) addSumServer = false;
     }
 
+    this.getUrl = function () {
+        return '/shop/new-license';
+    };
+
     this.setDefaultChoice = function (context) {
         var product = localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER;
         context.choice = {
@@ -644,6 +694,10 @@ function renewLicense(localServer, licenseID) {
         if (license.valid) context.discount = context.getRenewDiscount;
     };
 
+    this.getUrl = function () {
+        return '/shop/renew-license';
+    };
+
     this.setForbidden = function (context) {
         var data = {
             "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
@@ -740,6 +794,10 @@ function upgradeLicense(localServer, licenseID) {
         days = Math.ceil((date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24));
         if (days < 0) days = 1;
     }
+
+    this.getUrl = function () {
+        return '/shop/upgrade-license';
+    };
 
     this.setDefaultChoice = function (context) {
         var product = localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE ? __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE : __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER;
@@ -1203,7 +1261,7 @@ var render = function() {
                               click: function($event) {
                                 $event.preventDefault()
                                 $event.stopPropagation()
-                                _vm.showFormPayment = true
+                                return _vm.choosePayment($event)
                               }
                             }
                           },
@@ -1253,6 +1311,7 @@ var render = function() {
             _vm._v(" "),
             _vm.showFormPayment
               ? _c("form-payment", {
+                  attrs: { purchase: _vm.purchase },
                   on: {
                     close: function($event) {
                       _vm.showFormPayment = false
@@ -1437,7 +1496,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         ru: {
             'My Account': 'Мой аккаунт',
             'Tickets': 'Тикеты',
-            'Documents': 'Документы'
+            'Documents': 'Документы',
+            'Order': 'Заказ'
         }
     }
 });

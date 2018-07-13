@@ -20,19 +20,19 @@ export default {
   data () {
     return {
             payments: [
+                {name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png"},
                 {name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png"},
                 {name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png"},
                 {name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png"},
                 {name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru"},
                 {name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru"},
                 {name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru"},
-                {name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png"},
                 {name: "Other", value: "visa_mastercard"},
                 
             ],
             choosen: {
-                name: "Visa",
-                value: "visa_mastercard"
+                name: "Bitcoin",
+                value: "bitcoin"
             }
      }
   },
@@ -43,12 +43,17 @@ export default {
              'Qiwi': 'Киви',
              "Yandex.Money": "Яндекс.Деньги"
          }
-    }, 
+    },
+    created() {
+        this.$emit("choosen", {method: this.choosen.value})
+    },
+
     methods: {
         choose: function(payment)
         {
             this.choosen.name = payment.name;
             this.choosen.value = payment.value;
+            this.$emit("choosen", {method: this.choosen.value})
         },
         show: function(payment) {
             if(this.lang == payment.lang || typeof payment.lang == 'undefined'){

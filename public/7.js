@@ -625,7 +625,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         ru: {
             'My Account': 'Мой аккаунт',
             'Tickets': 'Тикеты',
-            'Documents': 'Документы'
+            'Documents': 'Документы',
+            'Order': 'Заказ'
         }
     }
 });

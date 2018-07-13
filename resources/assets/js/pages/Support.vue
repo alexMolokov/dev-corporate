@@ -21,23 +21,6 @@
 
 <script type="text/ecmascript-6">
 
-    /* checkVisibility(el){
-        var dTop = $(window).scrollTop(),
-            dBot = dTop + $(window).height(),
-            elTop = $(el).offset().top,
-            elBot = elTop + $(el).height();
-        return ((elTop <= dBot) && (elTop >= dTop));
-    }*/
-
-   /* $(document).on('scroll', function(){
-        var myDiv = $('#scroll');
-        console.log(myDiv.length);
-        if(checkVisibility(myDiv)){
-            console.log('Я тут');
-        } else {
-            console.log('Ушёл на обед');
-        }
-    });*/
     //const userMenu = require('../components/userMenu.vue');
 
     const treeMenu = require('../components/treeMenu.vue');
@@ -125,13 +108,29 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped="">
 
     .container.v-page {
         position: relative;
     }
 
+
     #support-page {
+
+        .alert-note
+        {
+            background: #fffdf6;
+            border-color: #ffeaae;
+
+            pre {
+                border: none;
+                background-color: #fffdf6;
+                font-size: 16px;
+            }
+        }
+
+
+
         margin-top: -35px;
         &.flex-row {
             > div {

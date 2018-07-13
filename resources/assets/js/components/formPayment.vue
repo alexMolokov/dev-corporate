@@ -6,7 +6,7 @@
             <div slot="buttons"></div>
         </loading-inform>        
         <form :url="url" @submit.prevent.stop>
-             <payment-methods ></payment-methods>
+             <payment-methods @choosen="choosen"></payment-methods>
             <div class="row">
                   <div class="col-md-12">
                           <hr>
@@ -16,7 +16,7 @@
             <error-inform v-bind:err="err" v-bind:state="state"></error-inform>
             
             <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" v-translate >Next</button>
+                    <button type="submit" class="btn btn-primary" @click="validate" v-translate >Next</button>
             </div>
         </form>  
     </modal-window>
@@ -31,7 +31,7 @@ var paymentMethods = require('./paymentMethods.vue');
 export default {
   name: 'form-payment',
   props: {
-
+      purchase: {type: Object},
     },
   components: {
      "modal-window": modalWindow,
@@ -42,9 +42,7 @@ export default {
   data () {
     return {
       id: "corporatePayment",
-      url: "user/payment",
-      redirect: true,
-      sum: 5,
+      payment_method: ""
 
      }
   },
@@ -55,7 +53,19 @@ export default {
          }
     },    
   methods: {
+      choosen: function(data){
+          this.payment_method = data.method;
+      },
+      validate: function()
+      {
 
+          let data = {...this.purchase, payment_method: this.payment_method};
+
+          this.send(this.purchase.url, data, (data) => {
+
+          });
+
+      }
   }          
 }
 </script>   

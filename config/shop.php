@@ -3,6 +3,15 @@
         "currency" => "USD",
         "renewDiscount" => 0.2, // %
         "trialServers" => ["1"],
+        "paymentMethods" => [
+            "bitcoin" => "Bitcoin",
+            "visa_mastercard" => "Visa",
+            "card" => "American Express",
+            "paypal" => "Paypal",
+            "webmoney" => "Webmoney",
+            "yandex" => "Yandex.Money",
+            "qiwi" => "Qiwi"
+        ],
         "os" => [
             "windows" => ["name" => "Windows Server"],
             "linux" => ["name" => "Linux Debian"],

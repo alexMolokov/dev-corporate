@@ -21,6 +21,11 @@ export function upgradeLicense(localServer, licenseID)
         if(days < 0) days = 1;
     }
 
+    this.getUrl = function()
+    {
+        return '/shop/upgrade-license';
+    }
+
     this.setDefaultChoice = function(context)
     {
         let product = (localServer.edition == EDITIONS.STANDALONE)? PRODUCTS.STANDALONE : PRODUCTS.CLUSTER;

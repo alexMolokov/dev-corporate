@@ -58,6 +58,10 @@ Route::group(['prefix' => 'servers', 'middleware' => ['web', 'auth']], function 
 Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
 {
     Route::post('/get-product-list', 'Client\ShopController@getProductList')->name('shop_product_list');
+    Route::match(["get", "post"],'/buy-server', 'Client\ShopController@buyServer')->name('buy_server');
+    Route::match(["get", "post"],'/renew-license', 'Client\ShopController@renewLicense')->name('renew_license');
+    Route::match(["get", "post"],'/upgrade-license', 'Client\ShopController@upgradeLicense')->name('upgrade_license');
+    Route::match(["get", "post"],'/new-license', 'Client\ShopController@newLicense')->name('new_license');
 });
 
 

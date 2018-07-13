@@ -55,6 +55,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -87,7 +89,9 @@ var paymentMethods = __webpack_require__(285);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'form-payment',
-  props: {},
+  props: {
+    purchase: { type: Object }
+  },
   components: {
     "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
     "error-inform": errorInform,
@@ -97,9 +101,7 @@ var paymentMethods = __webpack_require__(285);
   data: function data() {
     return {
       id: "corporatePayment",
-      url: "user/payment",
-      redirect: true,
-      sum: 5
+      payment_method: ""
 
     };
   },
@@ -108,7 +110,17 @@ var paymentMethods = __webpack_require__(285);
   locales: {
     ru: {}
   },
-  methods: {}
+  methods: {
+    choosen: function choosen(data) {
+      this.payment_method = data.method;
+    },
+    validate: function validate() {
+
+      var data = _extends({}, this.purchase, { payment_method: this.payment_method });
+
+      this.send(this.purchase.url, data, function (data) {});
+    }
+  }
 });
 
 /***/ }),
@@ -187,10 +199,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            payments: [{ name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Other", value: "visa_mastercard" }],
+            payments: [{ name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Other", value: "visa_mastercard" }],
             choosen: {
-                name: "Visa",
-                value: "visa_mastercard"
+                name: "Bitcoin",
+                value: "bitcoin"
             }
         };
     },
@@ -203,10 +215,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             "Yandex.Money": "Яндекс.Деньги"
         }
     },
+    created: function created() {
+        this.$emit("choosen", { method: this.choosen.value });
+    },
+
+
     methods: {
         choose: function choose(payment) {
             this.choosen.name = payment.name;
             this.choosen.value = payment.value;
+            this.$emit("choosen", { method: this.choosen.value });
         },
         show: function show(payment) {
             if (this.lang == payment.lang || typeof payment.lang == 'undefined') {
@@ -366,7 +384,7 @@ var render = function() {
           }
         },
         [
-          _c("payment-methods"),
+          _c("payment-methods", { on: { choosen: _vm.choosen } }),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-12" }, [
@@ -395,7 +413,8 @@ var render = function() {
               {
                 directives: [{ name: "translate", rawName: "v-translate" }],
                 staticClass: "btn btn-primary",
-                attrs: { type: "submit" }
+                attrs: { type: "submit" },
+                on: { click: _vm.validate }
               },
               [_vm._v("Next")]
             )

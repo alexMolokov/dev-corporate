@@ -79,7 +79,24 @@ https://project.vipole.biz:10443/pages/viewpage.action?pageId=14614609
 
 +Удалять запись из редиса после активации аккаунта
 +Попробовать запихнуть письмо в очередь (чтобы не работало синхронно)
-Сервера на странице пользователей (перевод)
++Сервера на странице пользователей (перевод)
+
++Сделать смену языка
+Сделать меню для помощи
+
+
+
+11. Магазин
+
+Что передавать
+ID - клиента
+server_id
+license_id
+список покупок
+метод оплаты
+
+
+
 
 Где то хранить информацию о сделанном заказе (список заказанных товаров)
 Выводить в бизнес системе сделанные (оплаченные и нет заказы)
@@ -87,6 +104,25 @@ https://project.vipole.biz:10443/pages/viewpage.action?pageId=14614609
 
 initTransaction (заполняются данными о транзакции) (VPaymentTransaction)
 сохранить данные о транзакции
+
+Пример для тим аккаунта
+VBSPaymentCtrlBase::business_account_purchase(stdClass $command)
+VBSPaymentProvider::purchaseBusinessAccount(stdClass $command,Vaccount $account,&$error)
+[
+     VBSPaymentProvider::initTransaction(string $op,array $parameters,Vsubscription $subscription=null)     есть информация об аккаунтID
+     [
+        VBSPaymentProvider::createRawTransaction(VPaymentTransaction $transaction)                          есть информация об аккаунтID
+        VBSPaymentProvider::fillSubscriptionTransaction($transaction,$parameters,$subscription);            не зависит от аккаунта
+        VBSPaymentProvider::prefillRawTransaction(VPaymentTransaction $transaction,$parameters)             не зависит от аккаунта
+        VBSPaymentProvider::runTransaction(VPaymentTransaction $transaction)                                не зависит от аккаунта
+        [
+            VBSPaymentProvider::prepareTransaction($transaction);                                           не зависит от аккаунта
+
+        ]
+    ]
+]
+
+
 
 initTransaction
 {

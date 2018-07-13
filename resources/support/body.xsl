@@ -51,6 +51,13 @@
         </div>
     </xsl:template>
 
+    <xsl:template match="ac:structured-macro[@ac:name]">
+        <div>
+            <xsl:attribute name="class">alert alert-<xsl:value-of select = "./@ac:name"/></xsl:attribute>
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+
     <xsl:template match="ac:structured-macro/ac:rich-text-body">
         <div class="rich-text">
             <xsl:apply-templates/>

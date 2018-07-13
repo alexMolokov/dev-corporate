@@ -1,47 +1,5 @@
 webpackJsonp([2],{
 
-/***/ 183:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(184);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(14)("06a5d00a", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7264ebb0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Support.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7264ebb0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Support.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 184:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(13)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.container.v-page {\n  position: relative;\n}\n#support-page {\n  margin-top: -35px;\n}\n#support-page.flex-row > div {\n    flex-grow: 1;\n    flex-basis: 1px;\n    padding: 20px 20px 0 20px;\n}\n#support-page.flex-row > div:first-child {\n      flex-grow: 0;\n      min-width: 360px;\n      border-right: 2px solid #f5f5f5;\n      padding: 20px 20px 0 0;\n      height: 100%;\n}\n#support-menu-catalog {\n  width: 300px;\n  position: absolute;\n  top: 60px;\n  left: 0;\n  bottom: 0;\n  padding: 10px;\n  border-right: 2px solid #f5f5f5;\n  z-index: 6;\n}\n#support-menu-catalog ul li {\n    list-style-type: none;\n    margin-left: 10px;\n    line-height: 25px;\n}\n#support-menu-catalog .fa {\n    display: inline-block;\n    font: normal normal normal 11px/1 FontAwesome;\n    font-size: inherit;\n    text-rendering: auto;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n#support-menu-catalog .fa-chevron-down:before {\n    content: \"\\F078\";\n}\n#document-support-body {\n  padding-left: 330px;\n  padding-top: 10px;\n}\n#document-support-body p {\n    margin: 0 0 20px;\n    text-align: left;\n}\n#document-support-body div.panel.pdl {\n    border: 1px solid #ccc;\n    border-radius: 3px;\n}\n#document-support-body div.panel.pdl.code {\n      overflow: auto;\n}\n#document-support-body div.panel.pdl pre {\n      line-height: 25px;\n      background-color: #fff;\n      border: none;\n      border-radius: 0px;\n}\n#document-support-body div.panel.pdl .codeContent .line {\n      white-space: pre;\n      padding: 5px;\n}\n#document-support-body div.panel.pdl .codeContent .line:first-child {\n        padding-top: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line:last-child {\n        padding-bottom: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line.comment {\n        color: #008200 !important;\n}\n#document-support-body div.panel.pdl .panelHeader.pdl {\n      border-bottom: 1px solid #ccc;\n      text-align: left;\n      padding: 5px 15px;\n      background: #f5f5f5;\n      overflow: hidden;\n      position: relative;\n      font-weight: bold;\n}\n#document-support-body ul.square li:before {\n    content: \"\\25A0\";\n    color: #00a0c8;\n    font-size: 15px;\n    font-weight: 700;\n    display: block;\n    line-height: 30px;\n}\n#document-support-body ul.square li {\n    list-style: none;\n    margin-left: 20px;\n    display: flex;\n}\n#document-support-body ul.square li > span {\n      display: block;\n      margin: 0 0 0 15px;\n      line-height: 30px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ 185:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73,23 +31,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
-/* checkVisibility(el){
-    var dTop = $(window).scrollTop(),
-        dBot = dTop + $(window).height(),
-        elTop = $(el).offset().top,
-        elBot = elTop + $(el).height();
-    return ((elTop <= dBot) && (elTop >= dTop));
-}*/
-
-/* $(document).on('scroll', function(){
-     var myDiv = $('#scroll');
-     console.log(myDiv.length);
-     if(checkVisibility(myDiv)){
-         console.log('Я тут');
-     } else {
-         console.log('Ушёл на обед');
-     }
- });*/
 //const userMenu = require('../components/userMenu.vue');
 
 var treeMenu = __webpack_require__(186);
@@ -437,7 +378,49 @@ if (false) {
 
 /***/ }),
 
-/***/ 191:
+/***/ 299:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(300);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(14)("58947d41", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7264ebb0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Support.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7264ebb0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Support.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 300:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.container.v-page[data-v-7264ebb0] {\n  position: relative;\n}\n#support-page[data-v-7264ebb0] {\n  margin-top: -35px;\n}\n#support-page .alert-note[data-v-7264ebb0] {\n    background: #fffdf6;\n    border-color: #ffeaae;\n}\n#support-page .alert-note pre[data-v-7264ebb0] {\n      border: none;\n      background-color: #fffdf6;\n      font-size: 16px;\n}\n#support-page.flex-row > div[data-v-7264ebb0] {\n    flex-grow: 1;\n    flex-basis: 1px;\n    padding: 20px 20px 0 20px;\n}\n#support-page.flex-row > div[data-v-7264ebb0]:first-child {\n      flex-grow: 0;\n      min-width: 360px;\n      border-right: 2px solid #f5f5f5;\n      padding: 20px 20px 0 0;\n      height: 100%;\n}\n#support-menu-catalog[data-v-7264ebb0] {\n  width: 300px;\n  position: absolute;\n  top: 60px;\n  left: 0;\n  bottom: 0;\n  padding: 10px;\n  border-right: 2px solid #f5f5f5;\n  z-index: 6;\n}\n#support-menu-catalog ul li[data-v-7264ebb0] {\n    list-style-type: none;\n    margin-left: 10px;\n    line-height: 25px;\n}\n#support-menu-catalog .fa[data-v-7264ebb0] {\n    display: inline-block;\n    font: normal normal normal 11px/1 FontAwesome;\n    font-size: inherit;\n    text-rendering: auto;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n#support-menu-catalog .fa-chevron-down[data-v-7264ebb0]:before {\n    content: \"\\F078\";\n}\n#document-support-body[data-v-7264ebb0] {\n  padding-left: 330px;\n  padding-top: 10px;\n}\n#document-support-body p[data-v-7264ebb0] {\n    margin: 0 0 20px;\n    text-align: left;\n}\n#document-support-body div.panel.pdl[data-v-7264ebb0] {\n    border: 1px solid #ccc;\n    border-radius: 3px;\n}\n#document-support-body div.panel.pdl.code[data-v-7264ebb0] {\n      overflow: auto;\n}\n#document-support-body div.panel.pdl pre[data-v-7264ebb0] {\n      line-height: 25px;\n      background-color: #fff;\n      border: none;\n      border-radius: 0px;\n}\n#document-support-body div.panel.pdl .codeContent .line[data-v-7264ebb0] {\n      white-space: pre;\n      padding: 5px;\n}\n#document-support-body div.panel.pdl .codeContent .line[data-v-7264ebb0]:first-child {\n        padding-top: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line[data-v-7264ebb0]:last-child {\n        padding-bottom: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line.comment[data-v-7264ebb0] {\n        color: #008200 !important;\n}\n#document-support-body div.panel.pdl .panelHeader.pdl[data-v-7264ebb0] {\n      border-bottom: 1px solid #ccc;\n      text-align: left;\n      padding: 5px 15px;\n      background: #f5f5f5;\n      overflow: hidden;\n      position: relative;\n      font-weight: bold;\n}\n#document-support-body ul.square li[data-v-7264ebb0]:before {\n    content: \"\\25A0\";\n    color: #00a0c8;\n    font-size: 15px;\n    font-weight: 700;\n    display: block;\n    line-height: 30px;\n}\n#document-support-body ul.square li[data-v-7264ebb0] {\n    list-style: none;\n    margin-left: 20px;\n    display: flex;\n}\n#document-support-body ul.square li > span[data-v-7264ebb0] {\n      display: block;\n      margin: 0 0 0 15px;\n      line-height: 30px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 301:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -493,19 +476,19 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(183)
+  __webpack_require__(299)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(185)
 /* template */
-var __vue_template__ = __webpack_require__(191)
+var __vue_template__ = __webpack_require__(301)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-7264ebb0"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(

@@ -65,7 +65,7 @@
               <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="showFormGetTrial = true" v-translate>Next</a>
             </div>
             <div v-if="choice.price != PRICES.TRIAL">
-                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="showFormPayment = true" v-translate v-if="sum > 0">Check out</a>
+                <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="choosePayment" v-translate v-if="sum > 0">Check out</a>
                 <div class="subtotal">
                     <h3 v-translate>Subtotal (USD)</h3>
                     <h3 v-if="discount > 0"><span v-translate>Discount: {{discount*100}}%</span></h3>
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <form-payment v-if="showFormPayment"  @close="showFormPayment = false"></form-payment>
+        <form-payment v-if="showFormPayment"  @close="showFormPayment = false" :purchase="purchase"></form-payment>
         <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false" :choice="choice" :basket="basket"></form-get-trial>
     </div>
     <div v-if="products.length == 0"><loading-page></loading-page></div>
@@ -128,7 +128,8 @@
                 state: null,
                 PRICES: PRICES,
                 sum: "",
-                discount: 0
+                discount: 0,
+                purchase: {}
             }
         },
         components: {
@@ -281,7 +282,28 @@
                     this.choice.users = Math.abs(this.choice.users);
                 }
                 this.state.sumOrder(this);
-             }
+             },
+            choosePayment: function()
+            {
+                this.purchase = {
+                    "server_id": this.server,
+                    "license_id": this.license,
+                    "period": this.choice.period,
+                    "os": this.choice.os,
+                    "users": this.choice.users,
+                    "basket": [],
+                    'url': this.state.getUrl()
+                };
+
+                let ar = [];
+                for(let key of this.basket.keys()) {
+                    ar.push(key)
+                }
+                this.purchase.basket = ar;
+                this.showFormPayment = true;
+
+            }
+
         },
 
         locales: {

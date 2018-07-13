@@ -92,7 +92,7 @@
         <div class="flex-row flex_user_card server-license-info" v-if="isLoaded">
             <div class="user-card">
                 <div class="head flex-row">
-                    <div><div class="user-card_profile"><span v-translate>Software and services</span> <router-link :to="{name: 'shop', params:{'makeDeal':'new'}}" class="btn btn-blue btn-middle">New Order</router-link></div>  </div>
+                    <div><div class="user-card_profile"><span v-translate>Software and services</span> <router-link :to="{name: 'shop', params:{'makeDeal':'new'}}" class="btn btn-blue btn-middle" v-translate>New Order</router-link></div>  </div>
                 </div>
                 <div class="product-license">
                     <div v-translate>Product/License</div>
@@ -105,42 +105,42 @@
                             <div class="server-info-name">{{server.name}}</div>
                             <div class="server-info-id"><span v-translate>Server ID</span><span>{{server.id}}</span> </div>
                             <div><span v-translate>Certificate</span>
-                                <span  v-if="!server.hasCertificateRequest"><a href="#" @click.prevent.stop="showFormCertificateRequest = true; currentServer = server.id">Upload request</a></span>
+                                <span  v-if="!server.hasCertificateRequest"><a href="#" @click.prevent.stop="showFormCertificateRequest = true; currentServer = server.id" v-translate>Upload request</a></span>
                                 <span v-if="server.hasCertificate"><a :href="'/servers/certificate/download/' + server.id" target="_blank">Download</a></span>
                             </div>
-                            <div v-if="!server.hasLicenseRequest"><span v-translate>License</span>  <a href="#" @click.prevent.stop="showFormLicenseRequest = true; currentServer = server.id">Upload request</a></div>
+                            <div v-if="!server.hasLicenseRequest"><span v-translate>License</span>  <a href="#" @click.prevent.stop="showFormLicenseRequest = true; currentServer = server.id" v-translate>Upload request</a></div>
                             <div><span v-translate>Release</span>  <span>{{server.release}}</span></div>
                             <div><span v-translate>OS</span>  <span>{{server.os}}</span></div>
                             <div><span v-translate>Server modules</span> <span v-if="server.serverModules.length == 0">no</span><span v-else>{{server.serverModules.join(",")}}</span></div>
                             <div><span v-translate>Added</span>  <span>{{server.getAdded()}}</span></div>
                         </div>
                         <div class="server-info-add-license">
-                            <router-link :to="{name: 'shop', params:{'makeDeal':'new-license', 'server': server.id}}" v-translate>Add new licence</router-link>
+                            <router-link :to="{name: 'shop', params:{'makeDeal':'new-license', 'server': server.id}}" v-translate>New licence</router-link>
                         </div>
                     </div>
 
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                            <th class="blue">User Licenses</th>
-                            <th>Users</th>
-                            <th>Valid till</th>
-                            <th>Status</th>
+                            <th class="blue" v-translate>User Licenses</th>
+                            <th v-translate>Users</th>
+                            <th v-translate>Valid till</th>
+                            <th v-translate>Status</th>
                             <th>&nbsp;</th>
                             </thead>
                             <tbody>
                             <tr v-for="(license, i)  in server.licenses">
                                 <td>
-                                    <div class="license-key"><span>{{i+1}} License key:</span> <a target="_blank" :href="'/servers/license/download/' + license.id"  v-if="server.hasLicenseRequest && license.signed">download</a></div>
+                                    <div class="license-key"><span>{{i+1}} <span v-translate>License key</span>:</span> <a target="_blank" :href="'/servers/license/download/' + license.id"  v-if="server.hasLicenseRequest && license.signed" v-translate>download</a></div>
                                     <div class="license-number"><span>ID:</span> <span>{{license.id}}</span></div>
-                                    <div class="license-date"><span>Added:</span> <span>{{license.getAdded()}}</span></div>
+                                    <div class="license-date"><span v-translate>Added:</span> <span>{{license.getAdded()}}</span></div>
                                 </td>
                                 <td>{{license.users}}</td>
                                 <td>{{license.getValidTill()}}</td>
-                                <td><span v-if="license.valid">active</span><span v-else>payment required</span></td>
-                                <td>
-                                    <router-link :to="{name: 'shop', params:{'makeDeal':'renew', 'server': server.id, 'license':license.id }}" v-translate>Renew license</router-link>
-                                    <router-link :to="{name: 'shop', params:{'makeDeal':'upgrade', 'server': server.id, 'license':license.id}}" v-translate>Upgrade</router-link>
+                                <td><span v-if="license.valid" v-translate>active</span><span v-else v-translate>payment required</span></td>
+                                <td class="license-links">
+                                    <router-link :to="{name: 'shop', params:{'makeDeal':'renew', 'server': server.id, 'license':license.id }}" v-translate>Renew</router-link>
+                                    <router-link :to="{name: 'shop', params:{'makeDeal':'upgrade', 'server': server.id, 'license':license.id}}" class="top-10" v-translate>Upgrade</router-link>
                                 </td>
                             </tr>
                             </tbody>
@@ -254,8 +254,31 @@
                 'My Account': 'Мой аккаунт',
                 'Tickets': 'Тикеты',
                 'Documents': 'Документы',
-
-
+                "Software and services": "",
+                "Product/License": "Сервер/Лицензия",
+                "Certificate": "Сертификат",
+                "Upload request": "Загрузить запрос",
+                "Download": "Скачать",
+                "License": "Лицензия",
+                "Release": "Релиз",
+                "OS": "ОС",
+                "Server modules": "Модули",
+                "Added": "Добавлен",
+                "User Licenses": "Лицензии",
+                "Users": "Пользователи",
+                "Valid till": "Годен до",
+                "Status": "Статус",
+                "Added:": "Добавлена:",
+                "Renew": "Обновить",
+                "Upgrade": "Улучшить",
+                "download": "Загрузить",
+                "Server ID": "Сервер ID",
+                "License key": "ID лицензии",
+                "Software and services": "Программное обеспечение",
+                "New Order": "Новый заказ",
+                "New licence": "Новая лицензия",
+                "active": "Активна",
+                "payment required": "Требуется оплата",
             }
         }
 
@@ -332,6 +355,12 @@
     }
 
     .server-license-info {
+
+            .license-links {
+                a {
+                    display: block;
+                }
+            }
 
             .head.flex-row {
                 a {margin: -3px 0 0 20px}
