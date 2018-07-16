@@ -7,7 +7,7 @@
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'shop'}"><router-link :to="{name: 'shop', params: {makeDeal: 'new'}}" v-translate>Order</router-link></div>
                 <div class="partner-menu__item" :class="{ active: currentRoute == 'tickets' }"><router-link :to="{name: 'tickets'}" v-translate>Tickets</router-link></div>
                 <div v-if="countServers > 0" class="partner-menu__item" :class="{ active: currentRoute == 'download' }"><router-link :to="{name: 'download'}">Download</router-link></div>
-                <div v-if="countServers > 0" class="partner-menu__item" :class="{ active: currentRoute == 'documents' || currentRoute == 'support_default'  || currentRoute == 'support_body'}"><router-link :to="{name: 'documents'}" v-translate>Documents</router-link></div>
+                <div v-if="countServers > 0" class="partner-menu__item" :class="{ active: currentRoute == 'documents' || currentRoute == 'supportHtml'  || currentRoute == 'support_body'}"><router-link :to="{name: 'documents'}" v-translate>Documents</router-link></div>
 
             </div>
             <label for="partner-menu__checkbox"></label>

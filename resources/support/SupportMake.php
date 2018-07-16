@@ -117,8 +117,8 @@ class SupportMakeFromXml
 
                          $body = new DOMDocument('1.0', 'utf-8');
                          $str = '<?xml version="1.0" encoding="utf-8"?><root xmlns:ri="http://www.vipole.com/support/attacments" xmlns:ac="http://www.vipole.com/support" 
-                            doc-id="' . $id. '" edition="'. $file['edition'] . '" os="' . $file['os'] . '" lang="'.  $file['lang']. '">' .
-                         $this-> deleteInvalidCharacters($bodies[0]->__toString()) . '</root>';
+                           ' . ' doc-id="' . $id. '" edition="'. $file['edition'] . '" os="' . $file['os'] . '" lang="'.  $file['lang']. '">' .
+                         '<h2>'. $hash[$id]["title"] . '</h2>' . $this-> deleteInvalidCharacters($bodies[0]->__toString()) . '</root>';
 
                          $body->loadXML($str);
                          $newdom = $proc->transformToDoc($body);

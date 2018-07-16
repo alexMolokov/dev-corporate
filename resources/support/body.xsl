@@ -81,6 +81,14 @@
         </div>
     </xsl:template>
 
+    <xsl:template match="table">
+        <div class="table-responsive">
+            <table class="table">
+                <xsl:apply-templates/>
+            </table>
+        </div>
+    </xsl:template>
+
     <xsl:template match="ac:parameter[@ac:name='title']">
         <div class="codeHeader panelHeader pdl">
             <xsl:apply-templates/>

@@ -1,16 +1,19 @@
 <template>
 
 <div id="support-page">
-    <div id="scroll"></div>
     <div v-if="isCatalogLoad">
-        <div id="support-menu-catalog" v-if="menu != ''">
+        <div id="support-menu-catalog" v-if="menu != ''" :class="{'opened': opened}">
+            <div class="close-support-menu" @click="opened=false">×</div>
             <ul id="accordeon">
-                <tree-menu class="item" :model="menu"  @clickmenu="clickMenu"/>
+                <tree-menu class="item" :model="menu" :doc_id="doc_id" @clickmenu="clickMenu"/>
             </ul>
         </div>
         <div id="document-support-body">
+            <div class="side-navigation-open-button" @click="opened=!opened"></div>
             <div v-if="body == ''" class="top-30"><loading-page></loading-page></div>
-            <span v-else v-html="body"></span>
+            <div v-else v-html="body"></div>
+
+
         </div>
     </div>
     <div  class="top-60" v-else>
@@ -61,7 +64,8 @@
                 body: "",
                 doc_id: "",
                 edition: "",
-                os: ""
+                os: "",
+                opened: false
 
             }
         },
@@ -90,6 +94,7 @@
                 if(this.getDoc.has(this.getDocKey(id)))
                 {
                     let data =   this.getDoc.get(this.getDocKey(id));
+                    this.doc_id = id;
                     this.body = data;
                     return;
                 }
@@ -98,6 +103,7 @@
                 let path =  '/support/' + this.lang + '/' + this.edition + '/' + this.os  + '/body/' + id;
                 this.uploadInfo(path, {}, (data) => {
                     this.body = data;
+                    this.doc_id = id;
                     this.saveDoc({"key": this.getDocKey(id), "data": data});
                 });
 
@@ -108,24 +114,140 @@
     }
 </script>
 
-<style lang="scss" scoped="">
+<style lang="scss">
 
     .container.v-page {
         position: relative;
     }
 
-
     #support-page {
+
+        @media (max-width: 767px)
+        {
+            .side-navigation-open-button
+            {
+                height: 30px;
+                width: 30px;
+                border-radius: 3px;
+                position: absolute;
+                left: 10px;
+                top: 30px;
+                opacity: 1;
+                cursor: pointer;
+                background: #F4F5F7 url("/images/icons/sidebar-open.svg") no-repeat center;
+
+                &:hover {
+                    background-color: #D2D5DA;
+                }
+            }
+            #support-menu-catalog {
+
+
+                display: block;
+                position: fixed;
+                z-index: 8;
+                top: 75px;
+                left: -300px;
+                transition: left .2s;
+                background-color: #fff;
+
+                .close-support-menu {
+                    display: none;
+                    font-size: 30px;
+                    font-weight: 300;
+                    color: #ddd;
+                    text-align: right;
+                    padding: 0 5px;
+
+                }
+
+                &.opened {
+                    left: 0;
+                    right: 10px;
+                    bottom: 0;
+                    min-width: 300px;
+                    box-shadow: 0 0 20px 0 rgba(22,22,22,0.1);
+                    overflow: auto;
+
+                    .close-support-menu {
+                        display: block;
+                        cursor: pointer;
+                        margin-top: -15px;
+                    }
+
+                    #accordeon {
+                        margin-top: -15px;
+                    }
+
+                    ul li {
+                        line-height: 30px;
+
+
+                    }
+
+
+
+
+                }
+
+            }
+
+            #document-support-body {
+                padding-left: 50px;
+                position: relative;
+
+            }
+        }
+
+        @media (min-width: 768px)
+        {
+            .side-navigation-open-button
+            {
+                display: none;
+            }
+        }
+
+
+
+
+        .auto-cursor-target {
+            display: none;
+        }
+
+        h4 {
+            font-weight: 600;
+        }
+        table {
+
+            th {
+                background-color: #f0f0f0;
+            }
+            pre {
+                white-space: pre;
+                border: none;
+                background-color: #fff;
+                font-size:  12px;
+            }
+        }
+
+        pre {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+
 
         .alert-note
         {
-            background: #fffdf6;
+            background: #FEFBD7;
             border-color: #ffeaae;
 
             pre {
                 border: none;
-                background-color: #fffdf6;
-                font-size: 16px;
+                background-color: #FEFBD7;
+                white-space: pre-wrap;
+
+
             }
         }
 
@@ -160,6 +282,14 @@
         border-right: 2px solid #f5f5f5;
         z-index: 6;
 
+        .close-support-menu {
+            display: none;
+        }
+
+        a {
+            padding: 3px;
+        }
+
         ul li {
             list-style-type: none;
             margin-left: 10px;
@@ -182,6 +312,17 @@
 
 
     #document-support-body {
+
+        .support.article {
+            .alert-warning {
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+            }
+        }
+
+
+
         padding-left: 330px;
         padding-top: 10px;
 
@@ -264,4 +405,5 @@
 
         }
     }
+
 </style>

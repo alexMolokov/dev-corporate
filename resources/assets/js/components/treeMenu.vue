@@ -3,12 +3,13 @@
           <li v-if="!model.root"  @click="toggle(model.id)" :class="{'open': open}" style="cursor:pointer">
              <span v-if="isFolder"><span class="glyphicon glyphicon-chevron-down"></span> </span>
 
-              <a href="#"  @click.prevent.stop="toggle(model.id)">{{ model.name }}</a>
+              <a href="#"  @click.prevent.stop="toggle(model.id)" :class="{'selected': doc_id == model.id}">{{ model.name }}</a>
             <ul v-show="open" v-if="isFolder">
               <tree-menu
                 class="item"
                 v-for="(model, index) in model.children"
                 :key="index"
+                :doc_id="doc_id"
                 :model="model"
                 @clickmenu="clickMenu"
               >
@@ -20,6 +21,7 @@
                 class="item"
                 v-for="(model, index) in model.children"
                 :key="index"
+                :doc_id="doc_id"
                 :model="model"
                  @clickmenu="clickMenu"
                 >
@@ -35,11 +37,13 @@
     export default {
         name: 'tree-menu',
         props: {
-            model: Object
+            model: Object,
+            doc_id: Number
         },
         data: function () {
             return {
-                open: false
+                open: false,
+
             }
         },
         computed: {
@@ -65,6 +69,10 @@
 </script>
 
 <style lang="scss" scoped="">
+
+    .selected {
+        font-weight: 800;
+    }
 
     .glyphicon-chevron-down {
         font-size:10px;

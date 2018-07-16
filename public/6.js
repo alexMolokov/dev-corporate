@@ -348,7 +348,7 @@ var render = function() {
                 class: {
                   active:
                     _vm.currentRoute == "documents" ||
-                    _vm.currentRoute == "support_default" ||
+                    _vm.currentRoute == "supportHtml" ||
                     _vm.currentRoute == "support_body"
                 }
               },
