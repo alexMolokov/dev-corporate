@@ -49,7 +49,7 @@ class BuyServerRequest extends FormRequest
             "period" => "bail|required|in:" . implode(",",["annual", "lifetime"]),
             "users" => "bail|required|integer|min:10",
             "basket" => "bail|required|array",
-            "lang" => "required"
+            "lang" => "required|in:" . implode(",",["en", "ru"])
         ];
 
         if($server = $this->_getServerProduct())

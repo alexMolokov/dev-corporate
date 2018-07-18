@@ -31,7 +31,7 @@ class NewLicenseRequest extends FormRequest
             "period" => "bail|required|in:" . implode(",",["annual", "lifetime"]),
             "users" => "bail|required|integer|min:1",
             "basket" => "bail|required|array",
-            "lang" => "required",
+            "lang" => "required|in:" . implode(",",["en", "ru"]),
             "server_id" => "required",
         ];
 

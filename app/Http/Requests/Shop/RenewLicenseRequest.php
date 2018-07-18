@@ -29,8 +29,10 @@ class RenewLicenseRequest extends FormRequest
             "users" => "bail|required|integer|min:1",
             "basket" => "bail|required|array",
             "license_id" => "required",
+            "period" => "bail|required|in:" . implode(",",["annual", "lifetime"]),
             "server_id" => "required",
             "payment_method" => "bail|required|in:" . implode(",",array_keys($config["paymentMethods"])),
+            "lang" => "required|in:" . implode(",",["en", "ru"])
         ];
 
         return $rules;
