@@ -139,8 +139,8 @@
                                 <td>{{license.getValidTill()}}</td>
                                 <td><span v-if="license.valid" v-translate>active</span><span v-else v-translate>payment required</span></td>
                                 <td class="license-links">
-                                    <router-link :to="{name: 'shop', params:{'makeDeal':'renew', 'server': server.id, 'license':license.id }}" v-translate>Renew</router-link>
-                                    <router-link :to="{name: 'shop', params:{'makeDeal':'upgrade', 'server': server.id, 'license':license.id}}" class="top-10" v-translate>Upgrade</router-link>
+                                    <router-link  v-if="license.getValidTill() != ''" :to="{name: 'shop', params:{'makeDeal':'renew', 'server': server.id, 'license':license.id }}" v-translate>Renew</router-link>
+                                    <router-link v-if="license.valid" :to="{name: 'shop', params:{'makeDeal':'upgrade', 'server': server.id, 'license':license.id}}"  v-translate>Upgrade</router-link>
                                 </td>
                             </tr>
                             </tbody>
@@ -296,6 +296,15 @@
         font-size: 12px;
         display: inline-block;
         margin-left: 10px;
+    }
+
+    .license-links {
+        a:last-child {
+            margin-top: 10px;
+        }
+        a:first-child {
+            margin-top: 0px !important;
+        }
     }
 
     .v-user-cabinet-ver1 .partner-menu .partner-menu__item {

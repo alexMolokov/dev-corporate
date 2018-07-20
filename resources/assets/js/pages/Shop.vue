@@ -26,9 +26,9 @@
         <section id="users">
             <div class="number">
                 <div class="field-number">
-                    <div class="minus" @click="addUser(-1)" :class="{ disabled: this.choice.users == this.choice.minUsers }"></div>
-                    <input  name="users" type="text"   v-model="choice.users"  @keyup="checkCountUsers" v-validate="'required|numeric'" :class="{error: errors.has('users')}">
-                    <div class="add" @click="addUser(1)"  :class="{ disabled: this.choice.users == this.choice.maxUsers }"></div>
+                    <div class="minus" @click="addUser(-1)" :class="{ disabled: this.choice.users == this.choice.minUsers ||  isDisabledUsers()}"></div>
+                    <input  name="users" type="text"  :disabled="isDisabledUsers()" v-model="choice.users"  @keyup="checkCountUsers" v-validate="'required|numeric'" :class="{error: errors.has('users')}">
+                    <div class="add" @click="addUser(1)"  :class="{ disabled: this.choice.users == this.choice.maxUsers ||  isDisabledUsers()}"></div>
                 </div>
                 <p  class="min"><span >minimum</span> {{choice.minUsers}} <span>users</span></p>
             </div>
@@ -123,6 +123,7 @@
                     "period": [],
                     "os": [],
                     "products": [],
+                    "users": false
                 },
                 basket: new Map(),
                 state: null,
@@ -246,6 +247,10 @@
             isDisabledPeriod: function(key)
             {
                 return  this.forbidden.period.indexOf(key) != -1;
+            },
+            isDisabledUsers: function(key)
+            {
+                return  this.forbidden.users;
             },
 
             addCheckbox(e)

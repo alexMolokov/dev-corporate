@@ -36,7 +36,8 @@ class ShopController extends Controller
             "customer_id" => Auth::user()->getCustomerId()
         ]))
         {
-            return response()->success($response);
+            $url = $response->url."?" .http_build_query((array)$response->parameters);
+            return response()->success($url);
         }
         return response()->error(__("Error"), []);
     }
@@ -54,7 +55,8 @@ class ShopController extends Controller
             "customer_id" => Auth::user()->getCustomerId()
         ]))
         {
-            return response()->success($response);
+            $url = $response->url."?" .http_build_query((array)$response->parameters);
+            return response()->success($url);
         }
         return response()->error(__("Error"), []);
     }
@@ -65,13 +67,15 @@ class ShopController extends Controller
             "license_id" => $request->get("license_id"),
             "server_id" => $request->get("server_id"),
             "payment_method" => $request->get("payment_method"),
+            "period" => $request->get("period"),
             "users" => $request->get("users"),
             "basket" => $request->get("basket"),
             "lang" => $request->get("lang"),
             "customer_id" => Auth::user()->getCustomerId()
         ]))
         {
-            return response()->success($response);
+            $url = $response->url."?" .http_build_query((array)$response->parameters);
+            return response()->success($url);
         }
         return response()->error(__("Error"), []);
     }
@@ -82,14 +86,15 @@ class ShopController extends Controller
         if($response = $this->service->newLicense([
             "server_id" => $request->get("server_id"),
             "payment_method" => $request->get("payment_method"),
-            "period" =>$request->get("period"),
-            "users" =>$request->get("users"),
+            "period" => $request->get("period"),
+            "users" => $request->get("users"),
             "basket" => $request->get("basket"),
             "lang" => $request->get("lang"),
             "customer_id" => Auth::user()->getCustomerId()
         ]))
         {
-            return response()->success($response);
+            $url = $response->url."?" .http_build_query((array)$response->parameters);
+            return response()->success($url);
         }
         return response()->error(__("Error"), []);
     }

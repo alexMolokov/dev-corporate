@@ -23,5 +23,16 @@
   "VIPole Corporate account password reset": "Смена пароля корпоративного аккаунта VIPole",
   "Activate your VIPole account": "Активируйте аккаунт VIPole",
   "Click on the activation link below to complete the registration of your account": "Перейдите по ссылке активации ниже для завершения регистрации вашего аккаунта",
-  "Activate the account": "Активировать аккаунт"
+  "Activate the account": "Активировать аккаунт",
+  "High": "Высокая",
+  "Normal": "Средняя",
+  "Low": "Низкая",
+  "closed successful": "закрыт",
+  "closed unsuccessful": "закрыт",
+  "open": "открыт",
+  "removed": "удален",
+  "Technical Support": "Техническая поддержка",
+  "Sales": "Продажи"
+
+
 }

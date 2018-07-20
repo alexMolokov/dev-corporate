@@ -38,6 +38,12 @@ export default {
                         fail(data.message)
                     }
                 }
+            }, ({response}) => {
+
+                if(response.status == HTTP_CODES.Unauthenticated)
+                {
+                    this.$store.commit("logout");
+                }
             });
         },
         send: function(url, data, success, fail)

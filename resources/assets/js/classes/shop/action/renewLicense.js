@@ -41,13 +41,14 @@ export function renewLicense(localServer, licenseID)
     this.setForbidden = function(context)
     {
         let data = {
-            "period": [PERIOD.TRIAL],
+            "period": [PERIOD.TRIAL, PERIOD.LIFETIME],
             "os": [(localServer.os == OS.WINDOWS)? OS.LINUX : OS.WINDOWS],
             "products": [],
+            "users": true
         }
         if(localServer.edition == EDITIONS.STANDALONE)
         {
-            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER];
+            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER, PRODUCTS.CLUSTER];
             for(let i = 0; i< ar.length; i++)
             {
                 data.products.push(ar[i]);
@@ -56,13 +57,14 @@ export function renewLicense(localServer, licenseID)
         }
         else if(localServer.edition == EDITIONS.CLUSTER)
         {
-            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE];
+            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE,  PRODUCTS.STANDALONE];
             for(let i = 0; i< ar.length; i++)
             {
                 data.products.push(ar[i]);
                 context.removeFromBasket(ar[i]);
             }
         }
+
         context.forbidden = data;
     }
 
@@ -74,7 +76,6 @@ export function renewLicense(localServer, licenseID)
     this.sumOrder = function(context)
     {
         let sum = 0;
-        console.log(context);
 
         for(let product of context.basket.values())
         {

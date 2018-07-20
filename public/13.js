@@ -108,7 +108,9 @@ var paymentMethods = __webpack_require__(285);
 
   mixins: [ajaxform],
   locales: {
-    ru: {}
+    ru: {
+      "Payment options": "Выбор оплаты"
+    }
   },
   methods: {
     choosen: function choosen(data) {
@@ -118,7 +120,11 @@ var paymentMethods = __webpack_require__(285);
 
       var data = _extends({}, this.purchase, { payment_method: this.payment_method });
 
-      this.send(this.purchase.url, data, function (data) {});
+      this.send(this.purchase.url, data, function (data) {
+        document.location.href = data;
+      }, function (data) {
+        console.log("error");
+      });
     }
   }
 });

@@ -102,6 +102,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -172,7 +175,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//import { mapState } from 'vuex'
+
 
 var ajaxform = __webpack_require__(15);
 var errorInform = __webpack_require__(76);
@@ -203,8 +206,7 @@ var loadingInform = __webpack_require__(84);
         };
     },
 
-    computed: {
-        //...mapState(ticket,{queues: state => state.queues}),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])("ticket", ["getQueues", "getPriorities", "getDefaultPriority", "getDefaultQueue"]), {
         labelForFiles: function labelForFiles() {
             if (this.files.length > 1) {
                 return this.files.length + " " + this.$translate.text("files selected");
@@ -214,7 +216,7 @@ var loadingInform = __webpack_require__(84);
                 return this.files[0].name;
             }
         }
-    },
+    }),
     mixins: [ajaxform],
     locales: {
         ru: {
@@ -233,24 +235,27 @@ var loadingInform = __webpack_require__(84);
     created: function created() {
         var _this = this;
 
-        /* alert("1");
-         console.log("------");
-         console.log(this.queues);
-         console.log("------");
-         alert("2")*/
+        if (this.getQueues.length == 0) {
+            this.uploadInfo("/ticket/queues-priorities", {}, function (data) {
+                _this.priorities = data.priorities;
+                _this.departments = data.queues;
+                _this.priority = data.defaultPriority;
+                _this.department = data.defaultQueue;
 
-        this.uploadInfo("/ticket/queues-priorities", {}, function (data) {
-            _this.priorities = data.priorities;
-            _this.departments = data.queues;
-            _this.priority = data.defaultPriority;
-            _this.department = data.defaultQueue;
-
-            _this.setState(data.queues);
-        });
+                _this.setQueues(data.queues);
+                _this.setPriorities(data.priorities);
+                _this.setDefaultQueue(data.defaultQueue);
+                _this.setDefaultPriority(data.defaultPriority);
+            });
+        } else {
+            this.priorities = this.getPriorities;
+            this.departments = this.getQueues;
+            this.priority = this.getDefaultPriority;
+            this.department = this.getDefaultQueue;
+        }
     },
 
-    methods: {
-        // ...mapActions(ticket,["setState"]),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapMutations */])("ticket", ["setQueues", "setPriorities", "setDefaultQueue", "setDefaultPriority"]), {
         validate: function validate() {
             var formData = new FormData();
             var data = { "priority": this.priority, "department": this.department, "theme": this.theme, "message": this.message };
@@ -279,7 +284,7 @@ var loadingInform = __webpack_require__(84);
             }
         }
 
-    }
+    })
 });
 
 /***/ }),

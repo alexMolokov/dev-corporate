@@ -49,7 +49,7 @@ export default {
   mixins: [ajaxform],
    locales: {
     	ru: {
-
+                "Payment options": "Выбор оплаты"
          }
     },    
   methods: {
@@ -62,7 +62,9 @@ export default {
           let data = {...this.purchase, payment_method: this.payment_method};
 
           this.send(this.purchase.url, data, (data) => {
-
+                document.location.href = data;
+          }, (data) => {
+              console.log("error");
           });
 
       }

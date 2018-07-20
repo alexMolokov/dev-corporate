@@ -68,7 +68,7 @@
 <script>
 import { Validator } from 'vee-validate';    
 import modalWindow from '../modalWindow.vue';
-//import { mapState } from 'vuex'
+import { mapGetters,mapMutations } from 'vuex'
 
 var ajaxform = require('../../mixins/ajax-form.vue');
 const errorInform = require('../../mixins/error-inform.vue');
@@ -100,7 +100,7 @@ export default {
      }
   },
   computed: {
-      //...mapState(ticket,{queues: state => state.queues}),
+      ...mapGetters("ticket",["getQueues", "getPriorities", "getDefaultPriority", "getDefaultQueue"]),
       labelForFiles() {
           if (this.files.length > 1) {
               return this.files.length + " " + this.$translate.text("files selected");
@@ -128,23 +128,31 @@ export default {
     },
     created()
     {
-       /* alert("1");
-        console.log("------");
-        console.log(this.queues);
-        console.log("------");
-        alert("2")*/
 
-        this.uploadInfo("/ticket/queues-priorities", {}, (data) => {
+        if(this.getQueues.length == 0)
+        {
+            this.uploadInfo("/ticket/queues-priorities", {}, (data) => {
             this.priorities = data.priorities;
             this.departments = data.queues;
             this.priority =  data.defaultPriority;
             this.department = data.defaultQueue;
 
-            this.setState(data.queues);
-        });
+            this.setQueues(data.queues);
+            this.setPriorities(data.priorities);
+            this.setDefaultQueue(data.defaultQueue);
+            this.setDefaultPriority(data.defaultPriority);
+
+            });
+        } else {
+            this.priorities = this.getPriorities;
+            this.departments = this.getQueues;
+            this.priority =  this.getDefaultPriority;
+            this.department = this.getDefaultQueue;
+        }
+
     },
   methods: {
-    // ...mapActions(ticket,["setState"]),
+     ...mapMutations("ticket",["setQueues", "setPriorities", "setDefaultQueue", "setDefaultPriority"]),
      validate: function()
      {
          let formData = new FormData();

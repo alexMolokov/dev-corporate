@@ -59,7 +59,7 @@ export function upgradeLicense(localServer, licenseID)
 
         if(localServer.edition == EDITIONS.STANDALONE)
         {
-            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER];
+            let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER, PRODUCTS.CLUSTER];
             for(let i = 0; i< ar.length; i++)
             {
                 forbidden.products.push(ar[i]);
@@ -68,7 +68,7 @@ export function upgradeLicense(localServer, licenseID)
         }
         else if(localServer.edition == EDITIONS.CLUSTER)
         {
-            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE];
+            let ar = [PRODUCTS.INSTALL_STANDALONE, PRODUCTS.RECOVER_STANDALONE, PRODUCTS.STANDALONE];
             for(let i = 0; i< ar.length; i++)
             {
                 forbidden.products.push(ar[i]);

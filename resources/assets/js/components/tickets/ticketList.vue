@@ -38,7 +38,7 @@
         data () {
             return {
                 showFormAddTicket: false,
-                url: "/ticket/list",
+                url: "/ticket/list?lang=" + this.$store.state.lang,
                 fields: [
                     {
                         name: '__component:TicketLine',
@@ -103,7 +103,8 @@
                     'Last Updated': "Последнее изменение",
                     'Theme': "Тема",
                     "Department": "Отдел",
-                    "Date": "Дата"
+                    "Date": "Дата",
+                    "Add Ticket": "Добавить тикет"
             }
         },
         methods: {

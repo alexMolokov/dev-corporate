@@ -185,7 +185,8 @@ var formGetTrial = function formGetTrial() {
             forbidden: {
                 "period": [],
                 "os": [],
-                "products": []
+                "products": [],
+                "users": false
             },
             basket: new Map(),
             state: null,
@@ -280,6 +281,9 @@ var formGetTrial = function formGetTrial() {
         },
         isDisabledPeriod: function isDisabledPeriod(key) {
             return this.forbidden.period.indexOf(key) != -1;
+        },
+        isDisabledUsers: function isDisabledUsers(key) {
+            return this.forbidden.users;
         },
 
         addCheckbox: function addCheckbox(e) {
@@ -700,23 +704,25 @@ function renewLicense(localServer, licenseID) {
 
     this.setForbidden = function (context) {
         var data = {
-            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL],
+            "period": [__WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].TRIAL, __WEBPACK_IMPORTED_MODULE_0__const__["d" /* PERIOD */].LIFETIME],
             "os": [localServer.os == __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS ? __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].LINUX : __WEBPACK_IMPORTED_MODULE_0__const__["c" /* OS */].WINDOWS],
-            "products": []
+            "products": [],
+            "users": true
         };
         if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE) {
-            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER];
+            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER];
             for (var i = 0; i < ar.length; i++) {
                 data.products.push(ar[i]);
                 context.removeFromBasket(ar[i]);
             }
         } else if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].CLUSTER) {
-            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE];
+            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE];
             for (var _i = 0; _i < _ar.length; _i++) {
                 data.products.push(_ar[_i]);
                 context.removeFromBasket(_ar[_i]);
             }
         }
+
         context.forbidden = data;
     };
 
@@ -724,7 +730,6 @@ function renewLicense(localServer, licenseID) {
 
     this.sumOrder = function (context) {
         var sum = 0;
-        console.log(context);
 
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -828,13 +833,13 @@ function upgradeLicense(localServer, licenseID) {
         }
 
         if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].STANDALONE) {
-            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER];
+            var ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLASTER_WORKER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_CLASTER, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].CLUSTER];
             for (var _i = 0; _i < ar.length; _i++) {
                 forbidden.products.push(ar[_i]);
                 context.removeFromBasket(ar[_i]);
             }
         } else if (localServer.edition == __WEBPACK_IMPORTED_MODULE_0__const__["b" /* EDITIONS */].CLUSTER) {
-            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE];
+            var _ar = [__WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].INSTALL_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].RECOVER_STANDALONE, __WEBPACK_IMPORTED_MODULE_0__const__["f" /* PRODUCTS */].STANDALONE];
             for (var _i2 = 0; _i2 < _ar.length; _i2++) {
                 forbidden.products.push(_ar[_i2]);
                 context.removeFromBasket(_ar[_i2]);
@@ -1049,7 +1054,9 @@ var render = function() {
                   _c("div", {
                     staticClass: "minus",
                     class: {
-                      disabled: this.choice.users == this.choice.minUsers
+                      disabled:
+                        this.choice.users == this.choice.minUsers ||
+                        _vm.isDisabledUsers()
                     },
                     on: {
                       click: function($event) {
@@ -1074,7 +1081,11 @@ var render = function() {
                       }
                     ],
                     class: { error: _vm.errors.has("users") },
-                    attrs: { name: "users", type: "text" },
+                    attrs: {
+                      name: "users",
+                      type: "text",
+                      disabled: _vm.isDisabledUsers()
+                    },
                     domProps: { value: _vm.choice.users },
                     on: {
                       keyup: _vm.checkCountUsers,
@@ -1090,7 +1101,9 @@ var render = function() {
                   _c("div", {
                     staticClass: "add",
                     class: {
-                      disabled: this.choice.users == this.choice.maxUsers
+                      disabled:
+                        this.choice.users == this.choice.maxUsers ||
+                        _vm.isDisabledUsers()
                     },
                     on: {
                       click: function($event) {

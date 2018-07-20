@@ -29,7 +29,6 @@ class ShopService  extends Service implements ShopInterface
     {
         if($result = $this->client->sendCommand(self::OPS["buyServer"], self::PATH, $data))
         {
-            var_dump($result);
             if($result->status) return $result->response;
         }
     }
