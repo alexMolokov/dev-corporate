@@ -100,10 +100,15 @@ class CorporateServer
         foreach($this->licenses as $license) {
             if($license->isValid())
             {
-                $ar = array_merge($ar,$license->getServerModules());
+                $modules = $license->getServerModules();
+                foreach($modules as $module)
+                {
+                    if(!in_array($module, $ar)) $ar[] = $module;
+                }
+                //$ar = array_merge($ar,$license->getServerModules());
             }
         }
-        return $ar;
+        return array_unique($ar);
     }
 
     /**

@@ -76,6 +76,8 @@ export function upgradeLicense(localServer, licenseID)
             }
         }
 
+
+        console.log(forbidden);
         context.forbidden = forbidden;
 
 

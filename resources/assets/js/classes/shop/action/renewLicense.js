@@ -46,6 +46,12 @@ export function renewLicense(localServer, licenseID)
             "products": [],
             "users": true
         }
+
+        for(let i = 0; i < license.serverModules.length; i++)
+        {
+             data.products.push(PRODUCTS[license.serverModules[i]]);
+        }
+
         if(localServer.edition == EDITIONS.STANDALONE)
         {
             let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER, PRODUCTS.CLUSTER];

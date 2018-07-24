@@ -204,7 +204,7 @@
                 }
                 if(this.makeDeal == ORDER_STATES.UPGRADE_LICENSE)
                 {
-                    return new upgradeLicense(this.serversMap.get(this.server), this.license);
+                          return new upgradeLicense(this.serversMap.get(this.server), this.license);
                 }
             },
             setServer: function(server)

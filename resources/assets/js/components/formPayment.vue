@@ -23,6 +23,7 @@
 </template>
 <script>
 import modalWindow from './modalWindow.vue';
+import {STATES} from "../mixins/states";
 var ajaxform = require('../mixins/ajax-form.vue');
 var errorInform = require('../mixins/error-inform.vue');
 var loadingInform = require('../mixins/loading-inform.vue');
@@ -42,14 +43,15 @@ export default {
   data () {
     return {
       id: "corporatePayment",
-      payment_method: ""
-
+      payment_method: "",
+      redirect: true
      }
   },
   mixins: [ajaxform],
    locales: {
     	ru: {
-                "Payment options": "Выбор оплаты"
+                "Payment options": "Выбор оплаты",
+                "Redirecting to payment details...": "Перенаправляем на страницу платежной системы ..."
          }
     },    
   methods: {
@@ -62,6 +64,7 @@ export default {
           let data = {...this.purchase, payment_method: this.payment_method};
 
           this.send(this.purchase.url, data, (data) => {
+                this.state = STATES.REDIRECT;
                 document.location.href = data;
           }, (data) => {
               console.log("error");

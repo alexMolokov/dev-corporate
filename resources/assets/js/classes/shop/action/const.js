@@ -15,7 +15,7 @@ export const PRODUCTS = {
     "STANDALONE":"1",
     "CLUSTER":"2",
     "SIP": "3",
-    "HTTP": "4",
+    "BS-HTTP": "4",
     "MEDIA_WORKER": "5",
     "CLASTER_WORKER": "6",
     "INSTALL_STANDALONE": "7",
