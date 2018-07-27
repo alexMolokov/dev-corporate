@@ -1,1 +1,1053 @@
-webpackJsonp([13],{260:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=a(60),n=a.n(s),o=a(12),i=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var a=arguments[e];for(var s in a)Object.prototype.hasOwnProperty.call(a,s)&&(t[s]=a[s])}return t},r=a(15),l=a(57),c=a(65),d=a(261);e.default={name:"form-payment",props:{purchase:{type:Object}},components:{"modal-window":n.a,"error-inform":l,"loading-inform":c,"payment-methods":d},data:function(){return{id:"corporatePayment",payment_method:"",redirect:!0}},mixins:[r],locales:{ru:{"Payment options":"Выбор оплаты"}},methods:{choosen:function(t){this.payment_method=t.method},validate:function(){var t=this,e=i({},this.purchase,{payment_method:this.payment_method});this.send(this.purchase.url,e,function(e){t.state=o.a.REDIRECT,document.location.href=e},function(t){console.log("error")})}}}},261:function(t,e,a){var s=a(3)(a(262),a(263),!1,null,null,null);t.exports=s.exports},262:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"payment-methods",props:{lang:{type:String,default:"en"}},data:function(){return{payments:[{name:"Bitcoin",value:"bitcoin",img:"/static/common/img/payment_methods_new/bitcoin.png"},{name:"Visa",value:"visa_mastercard",img:"/static/common/img/payment_methods_new/visa.png"},{name:"American Express",value:"card",img:"/static/common/img/payment_methods_new/americanexpress.png"},{name:"Paypal",value:"paypal",img:"/static/common/img/payment_methods_new/paypal.png"},{name:"Webmoney",value:"webmoney",img:"/static/common/img/payment_methods_new/webmoney.png",lang:"ru"},{name:"Yandex.Money",value:"yandex",img:"/static/common/img/payment_methods_new/yandex.png",lang:"ru"},{name:"Qiwi",value:"qiwi",img:"/static/common/img/payment_methods_new/qiwi.png",lang:"ru"},{name:"Other",value:"visa_mastercard"}],choosen:{name:"Bitcoin",value:"bitcoin"}}},locales:{ru:{Other:"Другое",Bitcoin:"Биткойн",Qiwi:"Киви","Yandex.Money":"Яндекс.Деньги"}},created:function(){this.$emit("choosen",{method:this.choosen.value})},methods:{choose:function(t){this.choosen.name=t.name,this.choosen.value=t.value,this.$emit("choosen",{method:this.choosen.value})},show:function(t){return this.lang==t.lang||void 0===t.lang}}}},263:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"row choose_payment"},[a("input",{directives:[{name:"model",rawName:"v-model",value:t.choosen.value,expression:"choosen.value"}],attrs:{type:"hidden",name:"payment_method"},domProps:{value:t.choosen.value},on:{input:function(e){e.target.composing||t.$set(t.choosen,"value",e.target.value)}}}),t._v(" "),t._l(t.payments,function(e){return t.show(e)?a("div",{staticClass:"col-xs-4 pds0"},[a("div",{staticClass:"choose",class:{active:e.name==t.choosen.name}},[e.img?a("img",{staticClass:"img-responsive",attrs:{alt:t.t(e.name),src:e.img},on:{click:function(a){t.choose(e)}}}):t._e(),t._v(" "),e.img?t._e():a("div",{directives:[{name:"translate",rawName:"v-translate"}],on:{click:function(a){t.choose(e)}}},[t._v(t._s(e.name))])])]):t._e()})],2)},staticRenderFns:[]}},264:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("modal-window",{staticClass:"in",staticStyle:{display:"block"},attrs:{id:t.id,show:!0},on:{close:t.close}},[a("div",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{slot:"title"},slot:"title"},[t._v("Payment options")]),t._v(" "),a("loading-inform",{attrs:{state:t.state},on:{close:t.close}},[a("div",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{slot:"ok-message-redirect"},slot:"ok-message-redirect"},[t._v("Redirecting to payment details...")]),t._v(" "),a("div",{attrs:{slot:"buttons"},slot:"buttons"})]),t._v(" "),a("form",{attrs:{url:t.url},on:{submit:function(t){t.preventDefault(),t.stopPropagation()}}},[a("payment-methods",{on:{choosen:t.choosen}}),t._v(" "),a("div",{staticClass:"row"},[a("div",{staticClass:"col-md-12"},[a("hr"),t._v(" "),a("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"info"},[t._v("By clicking NEXT you will be redirected to proceed with payment details")])])]),t._v(" "),a("error-inform",{attrs:{err:t.err,state:t.state}}),t._v(" "),a("div",{staticClass:"modal-footer"},[a("button",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"btn btn-primary",attrs:{type:"submit"},on:{click:t.validate}},[t._v("Next")])])],1)],1)},staticRenderFns:[]}},285:function(t,e,a){var s=a(3)(a(260),a(264),!1,null,null,null);t.exports=s.exports},57:function(t,e,a){var s=a(3)(a(58),a(59),!1,null,null,null);t.exports=s.exports},58:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=a(12);e.default={name:"error-inform",props:{state:{type:Number,default:s.a.START},err:{type:Object,default:function(){return{validation:[],common:[]}}}},data:function(){return{}},computed:{showError:function(){return(this.err.validation.length>0||this.err.common.length>0)&&this.state==s.a.ERROR}}}},59:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return t.showError?a("div",{staticClass:"error-block"},[a("div",{staticClass:"alert alert-danger fade in"},[t._l(t.err.validation,function(e){return a("div",{staticClass:"top-10"},[t._v("\n             "+t._s(e.name)+" - "+t._s(e.description)+"\n         ")])}),t._v(" "),t._l(t.err.common,function(e){return a("div",{staticClass:"top-10"},[a("div",{staticClass:"top-10"},[t._v(t._s(e))])])})],2)]):t._e()},staticRenderFns:[]}},60:function(t,e,a){var s=a(3)(a(63),a(64),!1,function(t){a(61)},"data-v-71b60c8a",null);t.exports=s.exports},61:function(t,e,a){var s=a(62);"string"==typeof s&&(s=[[t.i,s,""]]),s.locals&&(t.exports=s.locals);a(14)("501f0cad",s,!0,{})},62:function(t,e,a){(t.exports=a(13)(!1)).push([t.i,".modal[data-v-71b60c8a]{overflow:auto;overflow-y:scroll}",""])},63:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"modal-window",props:{id:{type:String,required:!0},show:{type:Boolean,required:!1},wide:{type:Boolean,default:!1}},watch:{show:function(){this.show?($("body").addClass("dialog-open"),$("body").addClass("modal-open")):($("body").removeClass("dialog-open"),$("body").removeClass("modal-open"))}},methods:{close:function(t){var e=void 0!==t.srcElement?t.srcElement:t.target;"input"==e&&"radio"==e.type||(t.stopPropagation(),this.$emit("close"))},clickInside:function(t){var e=void 0!==t.srcElement?t.srcElement:t.target;"input"==e&&"radio"==e.type||t.stopPropagation()},bclose:function(){$("#"+this.id).trigger("click")}}}},64:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"modal fade modal-user",attrs:{tabindex:"-1",role:"dialog",id:t.id},on:{click:t.close}},[a("div",{staticClass:"modal-dialog",class:{"modal-dialog-wide":t.wide},attrs:{role:"document"},on:{click:t.clickInside}},[a("div",{staticClass:"modal-content"},[a("div",{staticClass:"modal-header"},[a("button",{staticClass:"close",attrs:{type:"button","data-dismiss":"modal","aria-label":"Close"},on:{click:t.bclose}},[a("span",{attrs:{"aria-hidden":"true"}},[t._v("×")])]),t._v(" "),a("h4",{staticClass:"modal-title"},[t._t("title",[t._v("Modal Title")])],2)]),t._v(" "),a("div",{staticClass:"modal-body"},[t._t("default")],2)])])])},staticRenderFns:[]}},65:function(t,e,a){var s=a(3)(a(66),a(67),!1,null,null,null);t.exports=s.exports},66:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=a(12);e.default={name:"loading-inform",props:{state:{type:Number,default:s.a.START}},data:function(){return{STATES:s.a}},locales:{ru:{"Loading...":"Отправляем запрос..."}},methods:{close:function(){this.$emit("close")}}}},67:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",[t.state==t.STATES.LOADING?a("div",{staticClass:"loading-info"},[a("div",{staticClass:"window-center"},[a("div",[a("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"processing_text"},[t._v("Loading...")])])])]):t._e(),t._v(" "),t.state==t.STATES.ANSWER?a("div",{staticClass:"ok-message"},[a("div",{staticClass:"window-center"},[a("div",{staticClass:"complete-body"},[a("div",{staticClass:"complete-body_text"},[t._t("ok-message")],2)])]),t._v(" "),t._t("buttons",[a("div",{staticClass:"button-close"},[a("button",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"btn btn-green",attrs:{type:"button"},on:{click:t.close}},[t._v("Ok")])])])],2):t._e(),t._v(" "),t.state==t.STATES.REDIRECT?a("div",{staticClass:"ok-message"},[a("div",{staticClass:"window-center"},[a("div",{staticClass:"complete-body"},[a("div",{staticClass:"complete-body_text"},[t._t("ok-message-redirect")],2)])])]):t._e(),t._v(" "),t.state==t.STATES.RELOAD?a("div",{staticClass:"ok-message"},[a("div",{staticClass:"window-center"},[a("div",{staticClass:"complete-body"},[a("div",{staticClass:"complete-body_text"},[t._t("ok-message-reload")],2)])]),t._v(" "),t._t("buttons-reload")],2):t._e()])},staticRenderFns:[]}}});
+webpackJsonp([13],{
+
+/***/ 283:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(284)
+/* template */
+var __vue_template__ = __webpack_require__(288)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\formPayment.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55db7e1b", Component.options)
+  } else {
+    hotAPI.reload("data-v-55db7e1b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 284:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_states__ = __webpack_require__(12);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+var ajaxform = __webpack_require__(15);
+var errorInform = __webpack_require__(76);
+var loadingInform = __webpack_require__(84);
+var paymentMethods = __webpack_require__(285);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'form-payment',
+  props: {
+    purchase: { type: Object }
+  },
+  components: {
+    "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
+    "error-inform": errorInform,
+    "loading-inform": loadingInform,
+    "payment-methods": paymentMethods
+  },
+  data: function data() {
+    return {
+      id: "corporatePayment",
+      payment_method: "",
+      redirect: true
+    };
+  },
+
+  mixins: [ajaxform],
+  locales: {
+    ru: {
+      "Payment options": "Выбор оплаты",
+      "Redirecting to payment details...": "Перенаправляем на страницу платежной системы ..."
+    }
+  },
+  methods: {
+    choosen: function choosen(data) {
+      this.payment_method = data.method;
+    },
+    validate: function validate() {
+      var _this = this;
+
+      var data = _extends({}, this.purchase, { payment_method: this.payment_method });
+
+      this.send(this.purchase.url, data, function (data) {
+        _this.state = __WEBPACK_IMPORTED_MODULE_1__mixins_states__["a" /* STATES */].REDIRECT;
+        document.location.href = data;
+      }, function (data) {
+        console.log("error");
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 285:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(286)
+/* template */
+var __vue_template__ = __webpack_require__(287)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\paymentMethods.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e742003a", Component.options)
+  } else {
+    hotAPI.reload("data-v-e742003a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 286:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'payment-methods',
+    props: {
+        lang: { type: String, default: "en" }
+
+    },
+    data: function data() {
+        return {
+            payments: [{ name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Other", value: "visa_mastercard" }],
+            choosen: {
+                name: "Bitcoin",
+                value: "bitcoin"
+            }
+        };
+    },
+
+    locales: {
+        ru: {
+            'Other': 'Другое',
+            'Bitcoin': 'Биткойн',
+            'Qiwi': 'Киви',
+            "Yandex.Money": "Яндекс.Деньги"
+        }
+    },
+    created: function created() {
+        this.$emit("choosen", { method: this.choosen.value });
+    },
+
+
+    methods: {
+        choose: function choose(payment) {
+            this.choosen.name = payment.name;
+            this.choosen.value = payment.value;
+            this.$emit("choosen", { method: this.choosen.value });
+        },
+        show: function show(payment) {
+            if (this.lang == payment.lang || typeof payment.lang == 'undefined') {
+                return true;
+            }
+            return false;
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 287:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row choose_payment" },
+    [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.choosen.value,
+            expression: "choosen.value"
+          }
+        ],
+        attrs: { type: "hidden", name: "payment_method" },
+        domProps: { value: _vm.choosen.value },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.choosen, "value", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.payments, function(payment) {
+        return _vm.show(payment)
+          ? _c("div", { staticClass: "col-xs-4 pds0" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "choose",
+                  class: { active: payment.name == _vm.choosen.name }
+                },
+                [
+                  payment.img
+                    ? _c("img", {
+                        staticClass: "img-responsive",
+                        attrs: { alt: _vm.t(payment.name), src: payment.img },
+                        on: {
+                          click: function($event) {
+                            _vm.choose(payment)
+                          }
+                        }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !payment.img
+                    ? _c(
+                        "div",
+                        {
+                          directives: [
+                            { name: "translate", rawName: "v-translate" }
+                          ],
+                          on: {
+                            click: function($event) {
+                              _vm.choose(payment)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(payment.name))]
+                      )
+                    : _vm._e()
+                ]
+              )
+            ])
+          : _vm._e()
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e742003a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 288:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "modal-window",
+    {
+      staticClass: "in",
+      staticStyle: { display: "block" },
+      attrs: { id: _vm.id, show: true },
+      on: { close: _vm.close }
+    },
+    [
+      _c(
+        "div",
+        {
+          directives: [{ name: "translate", rawName: "v-translate" }],
+          attrs: { slot: "title" },
+          slot: "title"
+        },
+        [_vm._v("Payment options")]
+      ),
+      _vm._v(" "),
+      _c(
+        "loading-inform",
+        { attrs: { state: _vm.state }, on: { close: _vm.close } },
+        [
+          _c(
+            "div",
+            {
+              directives: [{ name: "translate", rawName: "v-translate" }],
+              attrs: { slot: "ok-message-redirect" },
+              slot: "ok-message-redirect"
+            },
+            [_vm._v("Redirecting to payment details...")]
+          ),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "buttons" }, slot: "buttons" })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { url: _vm.url },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              $event.stopPropagation()
+            }
+          }
+        },
+        [
+          _c("payment-methods", { on: { choosen: _vm.choosen } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info"
+                },
+                [
+                  _vm._v(
+                    "By clicking NEXT you will be redirected to proceed with payment details"
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("error-inform", { attrs: { err: _vm.err, state: _vm.state } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: { click: _vm.validate }
+              },
+              [_vm._v("Next")]
+            )
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-55db7e1b", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\mixins\\error-inform.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41c6c4ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-41c6c4ae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'error-inform',
+  props: {
+    state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START },
+    err: { type: Object, default: function _default() {
+        return { validation: [], common: [] };
+      } }
+  },
+  data: function data() {
+    return {};
+  },
+
+  computed: {
+    showError: function showError() {
+      return (this.err.validation.length > 0 || this.err.common.length > 0) && this.state == __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showError
+    ? _c("div", { staticClass: "error-block" }, [
+        _c(
+          "div",
+          { staticClass: "alert alert-danger fade in" },
+          [
+            _vm._l(_vm.err.validation, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _vm._v(
+                  "\n             " +
+                    _vm._s(er.name) +
+                    " - " +
+                    _vm._s(er.description) +
+                    "\n         "
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.err.common, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _c("div", { staticClass: "top-10" }, [_vm._v(_vm._s(er))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-41c6c4ae", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(80)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(83)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-12158cf6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\modalWindow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12158cf6", Component.options)
+  } else {
+    hotAPI.reload("data-v-12158cf6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(81);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(14)("81548b54", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12158cf6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modalWindow.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12158cf6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modalWindow.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal[data-v-12158cf6] {\n    overflow: auto;\n    overflow-y: scroll;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'modal-window',
+    props: {
+        id: { type: String, required: true },
+        show: { type: Boolean, required: false },
+        wide: { type: Boolean, default: false }
+    },
+    watch: {
+        show: function show() {
+            if (this.show) {
+                $('body').addClass('dialog-open');
+                $('body').addClass('modal-open');
+            } else {
+                $('body').removeClass('dialog-open');
+                $('body').removeClass('modal-open');
+            }
+        }
+    },
+    methods: {
+        close: function close(e) {
+            var el = typeof e.srcElement != "undefined" ? e.srcElement : e.target;
+            if (el == "input" && el.type == "radio") return;
+            e.stopPropagation();
+
+            this.$emit('close');
+        },
+        clickInside: function clickInside(e) {
+
+            var el = typeof e.srcElement != "undefined" ? e.srcElement : e.target;
+            if (el != "input" || el.type != "radio") e.stopPropagation();
+        },
+
+        bclose: function bclose() {
+            $("#" + this.id).trigger('click');
+        }
+
+    }
+});
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade modal-user",
+      attrs: { tabindex: "-1", role: "dialog", id: _vm.id },
+      on: { click: _vm.close }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal-dialog",
+          class: { "modal-dialog-wide": _vm.wide },
+          attrs: { role: "document" },
+          on: { click: _vm.clickInside }
+        },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: {
+                    type: "button",
+                    "data-dismiss": "modal",
+                    "aria-label": "Close"
+                  },
+                  on: { click: _vm.bclose }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "h4",
+                { staticClass: "modal-title" },
+                [_vm._t("title", [_vm._v("Modal Title")])],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2)
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-12158cf6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\mixins\\loading-inform.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-29930135", Component.options)
+  } else {
+    hotAPI.reload("data-v-29930135", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'loading-inform',
+    props: {
+        state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START }
+    },
+    data: function data() {
+        return {
+            STATES: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */]
+        };
+    },
+
+    locales: {
+        ru: {
+            'Loading...': 'Отправляем запрос...'
+        }
+    },
+    methods: {
+        close: function close() {
+            this.$emit('close');
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.state == _vm.STATES.LOADING
+      ? _c("div", { staticClass: "loading-info" }, [
+          _c("div", { staticClass: "window-center" }, [
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "processing_text"
+                },
+                [_vm._v("Loading...")]
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.state == _vm.STATES.ANSWER
+      ? _c(
+          "div",
+          { staticClass: "ok-message" },
+          [
+            _c("div", { staticClass: "window-center" }, [
+              _c("div", { staticClass: "complete-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "complete-body_text" },
+                  [_vm._t("ok-message")],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._t("buttons", [
+              _c("div", { staticClass: "button-close" }, [
+                _c(
+                  "button",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    staticClass: "btn btn-green",
+                    attrs: { type: "button" },
+                    on: { click: _vm.close }
+                  },
+                  [_vm._v("Ok")]
+                )
+              ])
+            ])
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.state == _vm.STATES.REDIRECT
+      ? _c("div", { staticClass: "ok-message" }, [
+          _c("div", { staticClass: "window-center" }, [
+            _c("div", { staticClass: "complete-body" }, [
+              _c(
+                "div",
+                { staticClass: "complete-body_text" },
+                [_vm._t("ok-message-redirect")],
+                2
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.state == _vm.STATES.RELOAD
+      ? _c(
+          "div",
+          { staticClass: "ok-message" },
+          [
+            _c("div", { staticClass: "window-center" }, [
+              _c("div", { staticClass: "complete-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "complete-body_text" },
+                  [_vm._t("ok-message-reload")],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._t("buttons-reload")
+          ],
+          2
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-29930135", module.exports)
+  }
+}
+
+/***/ })
+
+});

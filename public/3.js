@@ -1,1 +1,1665 @@
-webpackJsonp([3],{131:function(e,a,t){var s=t(132);"string"==typeof s&&(s=[[e.i,s,""]]),s.locals&&(e.exports=s.locals);t(14)("2d2153e0",s,!0,{})},132:function(e,a,t){(e.exports=t(13)(!1)).push([e.i,'.group-attr .info-value span[data-v-96cf4a4e]:last-child{margin-left:10px}.group-attr .info-value span[data-v-96cf4a4e]:first-child{color:#666}.info-head .glyphicon-pencil[data-v-96cf4a4e]{font-size:12px;display:inline-block;margin-left:10px}.license-links a[data-v-96cf4a4e]:last-child{margin-top:10px}.license-links a[data-v-96cf4a4e]:first-child{margin-top:0!important}.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-96cf4a4e]{flex-grow:1}.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-96cf4a4e]:last-child{flex-grow:5}.flex-row .user-card[data-v-96cf4a4e]:last-child{flex-grow:1.5}.server-info[data-v-96cf4a4e]{padding:10px 20px 10px 40px}@media (max-width:767px){.server-info[data-v-96cf4a4e]{display:block}}.server-info>div[data-v-96cf4a4e]{margin-bottom:0}.server-info>div>div[data-v-96cf4a4e]{padding:2px 10px;color:#999}.server-info>div>div span[data-v-96cf4a4e]{display:inline-block;margin-right:5px}.server-info>div>div span[data-v-96cf4a4e]:first-child:after{content:":";margin-right:5px}.server-info .server-info-name[data-v-96cf4a4e]{color:#000;font-size:18px;padding:2px 0}.server-info .server-info-add-license[data-v-96cf4a4e]{text-align:right}@media (max-width:767px){.server-info .server-info-add-license[data-v-96cf4a4e]{text-align:left;margin-left:10px;padding:2px 0}}.server-license-info .license-links a[data-v-96cf4a4e]{display:block}.server-license-info .head.flex-row a[data-v-96cf4a4e]{margin:-3px 0 0 20px}.server-license-info .head.flex-row>[data-v-96cf4a4e]{margin-bottom:0}@media (max-width:600px){.server-license-info .head.flex-row a.btn[data-v-96cf4a4e]{min-width:100px}}@media (max-width:400px){.server-license-info .head.flex-row[data-v-96cf4a4e]{height:auto}.server-license-info .head.flex-row a[data-v-96cf4a4e],.server-license-info .head.flex-row span[data-v-96cf4a4e]{display:block}.server-license-info .head.flex-row span[data-v-96cf4a4e]{margin-bottom:10px}.server-license-info .head.flex-row a[data-v-96cf4a4e]{width:150px;margin-left:0}}.server-license-info .product-license[data-v-96cf4a4e]{width:100%;font-size:18px;border-bottom:1px solid #eee;color:#000}.server-license-info .product-license>div[data-v-96cf4a4e]{padding:10px 20px 10px 40px}.server-license-info .table th[data-v-96cf4a4e]{font-size:18px;font-weight:400;color:#000;text-align:center}.server-license-info .table th[data-v-96cf4a4e]:first-child{text-align:left}.server-license-info .table th.blue[data-v-96cf4a4e]{color:#00a0c8}.server-license-info .table tbody tr>td[data-v-96cf4a4e]{text-align:center}.server-license-info .table tbody tr>td[data-v-96cf4a4e]:first-child{text-align:left}.server-license-info .table tbody .license-key span[data-v-96cf4a4e]{color:#000;font-weight:700;font-size:14px;padding-bottom:5px}.server-license-info .table tbody .license-key a[data-v-96cf4a4e]{font-size:14px}.server-license-info .table tbody .license-date[data-v-96cf4a4e],.server-license-info .table tbody .license-number[data-v-96cf4a4e]{color:#999;font-weight:500;font-size:14px;padding:2px 15px}.server-license-info .table-responsive[data-v-96cf4a4e]{padding:20px 0 10px 40px}',""])},133:function(e,a,t){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var s,n=t(4),r=t(87),i=t(88),l=Object.assign||function(e){for(var a=1;a<arguments.length;a++){var t=arguments[a];for(var s in t)Object.prototype.hasOwnProperty.call(t,s)&&(e[s]=t[s])}return e};function o(e,a,t){return a in e?Object.defineProperty(e,a,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[a]=t,e}var c=t(15),v=t(69);a.default={name:"login",data:function(){return{currentServer:"",showFormChangePassword:!1,showFormChangeCompanyName:!1,showFormChangeContact:!1,showFormChangeDetails:!1,showFormChangeTechContact:!1,showFormChangeMainContact:!1,showFormLicenseRequest:!1,showFormCertificateRequest:!1}},components:{"user-menu":v,"form-change-password":function(){return t.e(20).then(t.bind(null,134))},"form-change-company-name":function(){return t.e(23).then(t.bind(null,137))},"form-change-details":function(){return t.e(22).then(t.bind(null,140))},"form-change-tech-contact":function(){return t.e(19).then(t.bind(null,143))},"form-change-main-contact":function(){return t.e(21).then(t.bind(null,146))},"form-license-request":function(){return t.e(16).then(t.bind(null,149))},"form-certificate-request":function(){return t.e(17).then(t.bind(null,154))}},computed:l({},Object(n.d)({user:function(e){return e.user}}),Object(n.b)("servers",["getServers","isLoaded"])),mixins:[c],created:function(){var e=this;this.isLoaded||this.uploadInfo("/servers/get-servers",{},function(a){for(var t in a){var s=new r.a(a[t]);for(var n in a[t].licenses)s.addLicense(new i.a(a[t].licenses[n]));e.addServer(s)}e.setLoaded()})},methods:l({},Object(n.c)("servers",["setLoaded","addServer"])),locales:{ru:(s={Profile:"Профиль",Company:"Компания","Primary contact":"Основной контакт","Full name:":"Имя:","Job title:":"Должность:",Password:"Пароль:","Customer ID":"ID Клиента","Address:":"Адрес:","Technical contact":"Технический контакт","Phone:":"Телефон:",Contacts:"Контакты","Billing details":"Платежная информация","My Account":"Мой аккаунт",Tickets:"Тикеты",Documents:"Документы","Software and services":"","Product/License":"Сервер/Лицензия",Certificate:"Сертификат","Upload request":"Загрузить запрос",Download:"Скачать",License:"Лицензия",Release:"Релиз",OS:"ОС","Server modules":"Модули",Added:"Добавлен","User Licenses":"Лицензии",Users:"Пользователи","Valid till":"Годен до",Status:"Статус","Added:":"Добавлена:",Renew:"Обновить",Upgrade:"Улучшить",download:"Загрузить","Server ID":"Сервер ID","License key":"ID лицензии"},o(s,"Software and services","Программное обеспечение"),o(s,"New Order","Новый заказ"),o(s,"New licence","Новая лицензия"),o(s,"active","Активна"),o(s,"payment required","Требуется оплата"),s)}}},159:function(e,a){e.exports={render:function(){var e=this,a=e.$createElement,t=e._self._c||a;return t("div",[t("div",{staticClass:"flex-row flex_user_card"},[t("div",{staticClass:"user-card"},[t("div",{staticClass:"head flex-row"},[t("div",[t("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"user-card_icon user-card_profile"},[e._v("Profile")])])]),e._v(" "),t("div",{staticClass:"info"},[t("div",{staticClass:"info_section"},[t("div",[t("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"info-head"},[e._v("Customer ID")]),e._v(" "),t("div",{staticClass:"info-value"},[e._v(e._s(e.user.id))])]),e._v(" "),t("div",[t("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"info-head"},[e._v("Company")]),e._v(" "),t("div",{staticClass:"info-value"},[t("span",[e._v(e._s(e.user.name))]),e._v(" "),t("a",{attrs:{href:"#"},on:{click:function(a){a.preventDefault(),a.stopPropagation(),e.showFormChangeCompanyName=!0}}},[t("span",{staticClass:"glyphicon glyphicon-pencil blue",attrs:{"aria-hidden":"true"}})])])]),e._v(" "),t("div",[t("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"info-head"},[e._v("Password")]),e._v(" "),t("div",{staticClass:"info-value"},[t("span",[e._v("**************")]),e._v(" "),t("a",{attrs:{href:"#"},on:{click:function(a){a.preventDefault(),a.stopPropagation(),e.showFormChangePassword=!0}}},[t("span",{staticClass:"glyphicon glyphicon-pencil blue",attrs:{"aria-hidden":"true"}})])])])]),e._v(" "),t("div",{staticClass:"info_section"},[t("div",[t("div",{staticClass:"info-head"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Primary contact")]),e._v(" "),t("a",{staticClass:"ml-10",attrs:{href:"#"},on:{click:function(a){a.preventDefault(),a.stopPropagation(),e.showFormChangeMainContact=!0}}},[t("span",{staticClass:"glyphicon glyphicon-pencil blue",attrs:{"aria-hidden":"true"}})])]),e._v(" "),t("div",{staticClass:"group-attr"},[t("div",{staticClass:"info-value"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Full name:")]),e._v(" "),t("span",{staticStyle:{"margin-left":"5px"}},[e._v(e._s(e.user.primary.lastName)+" "+e._s(e.user.primary.firstName))])]),e._v(" "),t("div",{staticClass:"info-value top-10"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Job title:")]),e._v(" "),t("span",[e._v(e._s(e.user.primary.jobTitle))])]),e._v(" "),t("div",{staticClass:"info-value top-10"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Email:")]),e._v(" "),t("span",[e._v(e._s(e.user.primary.email))])])])])])])]),e._v(" "),t("div",{staticClass:"user-card"},[t("div",{staticClass:"head flex-row"},[t("div",[t("div",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"user-card_icon user-card_balance"},[e._v("Contacts")])])]),e._v(" "),t("div",{staticClass:"info"},[t("div",{staticClass:"info_section"},[t("div",[t("div",{staticClass:"info-head"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Billing details")]),e._v(" "),t("a",{staticClass:"ml-10",attrs:{href:"#"},on:{click:function(a){a.preventDefault(),a.stopPropagation(),e.showFormChangeDetails=!0}}},[t("span",{staticClass:"glyphicon glyphicon-pencil blue",attrs:{"aria-hidden":"true"}})])]),e._v(" "),t("div",{staticClass:"group-attr"},[t("div",{staticClass:"info-value"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Address:")]),e._v(" "),t("span",{staticStyle:{"margin-left":"5px"}},[e._v(e._s(e.user.billing.address))])]),e._v(" "),t("div",{staticClass:"info-value top-10"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Phone:")]),e._v(" "),t("span",[e._v(e._s(e.user.billing.phone))])]),e._v(" "),t("div",{staticClass:"info-value top-10"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Email:")]),e._v(" "),t("span",[e._v(e._s(e.user.billing.email))])])])])]),e._v(" "),t("div",{staticClass:"info_section"},[t("div",[t("div",{staticClass:"info-head"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Technical contact")]),e._v(" "),t("a",{staticClass:"ml-10",attrs:{href:"#"},on:{click:function(a){a.preventDefault(),a.stopPropagation(),e.showFormChangeTechContact=!0}}},[t("span",{staticClass:"glyphicon glyphicon-pencil blue",attrs:{"aria-hidden":"true"}})])]),e._v(" "),t("div",{staticClass:"group-attr"},[t("div",{staticClass:"info-value"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Full name:")]),e._v(" "),t("span",{staticStyle:{"margin-left":"5px"}},[e._v(e._s(e.user.tech.lastName)+" "+e._s(e.user.tech.firstName))])]),e._v(" "),t("div",{staticClass:"info-value top-10"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Job title:")]),e._v(" "),t("span",[e._v(e._s(e.user.tech.jobTitle))])]),e._v(" "),t("div",{staticClass:"info-value top-10"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Email:")]),e._v(" "),t("span",[e._v(e._s(e.user.tech.email))])])])])])])])]),e._v(" "),e.isLoaded?t("div",{staticClass:"flex-row flex_user_card server-license-info"},[t("div",{staticClass:"user-card"},[t("div",{staticClass:"head flex-row"},[t("div",[t("div",{staticClass:"user-card_profile"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Software and services")]),e._v(" "),t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"btn btn-blue btn-middle",attrs:{to:{name:"shop",params:{makeDeal:"new"}}}},[e._v("New Order")])],1)])]),e._v(" "),t("div",{staticClass:"product-license"},[t("div",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Product/License")])]),e._v(" "),e._l(e.getServers,function(a){return t("div",[t("div",{staticClass:"flex-row server-info"},[t("div",[t("div",{staticClass:"server-info-name"},[e._v(e._s(a.name))]),e._v(" "),t("div",{staticClass:"server-info-id"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Server ID")]),t("span",[e._v(e._s(a.id))])]),e._v(" "),t("div",[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Certificate")]),e._v(" "),a.hasCertificateRequest?e._e():t("span",[t("a",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{href:"#"},on:{click:function(t){t.preventDefault(),t.stopPropagation(),e.showFormCertificateRequest=!0,e.currentServer=a.id}}},[e._v("Upload request")])]),e._v(" "),a.hasCertificate?t("span",[t("a",{attrs:{href:"/servers/certificate/download/"+a.id,target:"_blank"}},[e._v("Download")])]):e._e()]),e._v(" "),a.hasLicenseRequest?e._e():t("div",[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("License")]),e._v(" "),t("a",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{href:"#"},on:{click:function(t){t.preventDefault(),t.stopPropagation(),e.showFormLicenseRequest=!0,e.currentServer=a.id}}},[e._v("Upload request")])]),e._v(" "),t("div",[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Release")]),e._v(" "),t("span",[e._v(e._s(a.release))])]),e._v(" "),t("div",[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("OS")]),e._v(" "),t("span",[e._v(e._s(a.os))])]),e._v(" "),t("div",[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Server modules")]),e._v(" "),0==a.serverModules.length?t("span",[e._v("no")]):t("span",[e._v(e._s(a.serverModules.join(",")))])]),e._v(" "),t("div",[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Added")]),e._v(" "),t("span",[e._v(e._s(a.getAdded()))])])]),e._v(" "),t("div",{staticClass:"server-info-add-license"},[t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"shop",params:{makeDeal:"new-license",server:a.id}}}},[e._v("New licence")])],1)]),e._v(" "),t("div",{staticClass:"table-responsive"},[t("table",{staticClass:"table"},[t("thead",[t("th",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"blue"},[e._v("User Licenses")]),e._v(" "),t("th",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Users")]),e._v(" "),t("th",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Valid till")]),e._v(" "),t("th",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Status")]),e._v(" "),t("th",[e._v(" ")])]),e._v(" "),t("tbody",e._l(a.licenses,function(s,n){return t("tr",[t("td",[t("div",{staticClass:"license-key"},[t("span",[e._v(e._s(n+1)+" "),t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("License key")]),e._v(":")]),e._v(" "),a.hasLicenseRequest&&s.signed?t("a",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{target:"_blank",href:"/servers/license/download/"+s.id}},[e._v("download")]):e._e()]),e._v(" "),t("div",{staticClass:"license-number"},[t("span",[e._v("ID:")]),e._v(" "),t("span",[e._v(e._s(s.id))])]),e._v(" "),t("div",{staticClass:"license-date"},[t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Added:")]),e._v(" "),t("span",[e._v(e._s(s.getAdded()))])])]),e._v(" "),t("td",[e._v(e._s(s.users))]),e._v(" "),t("td",[e._v(e._s(s.getValidTill()))]),e._v(" "),t("td",[s.valid?t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("active")]):t("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("payment required")])]),e._v(" "),t("td",{staticClass:"license-links"},[""!=s.getValidTill()?t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"shop",params:{makeDeal:"renew",server:a.id,license:s.id}}}},[e._v("Renew")]):e._e(),e._v(" "),s.valid?t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"shop",params:{makeDeal:"upgrade",server:a.id,license:s.id}}}},[e._v("Upgrade")]):e._e()],1)])}))])])])})],2)]):e._e(),e._v(" "),t("div",{attrs:{id:"modal-list"}},[e.showFormChangePassword?t("form-change-password",{on:{close:function(a){e.showFormChangePassword=!1}}}):e._e(),e._v(" "),e.showFormChangeCompanyName?t("form-change-company-name",{on:{close:function(a){e.showFormChangeCompanyName=!1}}}):e._e(),e._v(" "),e.showFormChangeDetails?t("form-change-details",{on:{close:function(a){e.showFormChangeDetails=!1}}}):e._e(),e._v(" "),e.showFormChangeMainContact?t("form-change-main-contact",{on:{close:function(a){e.showFormChangeMainContact=!1}}}):e._e(),e._v(" "),e.showFormChangeTechContact?t("form-change-tech-contact",{on:{close:function(a){e.showFormChangeTechContact=!1}}}):e._e(),e._v(" "),e.showFormLicenseRequest?t("form-license-request",{attrs:{server:e.currentServer},on:{close:function(a){e.showFormLicenseRequest=!1}}}):e._e(),e._v(" "),e.showFormCertificateRequest?t("form-certificate-request",{attrs:{server:e.currentServer},on:{close:function(a){e.showFormCertificateRequest=!1}}}):e._e()],1)])},staticRenderFns:[]}},279:function(e,a,t){var s=t(3)(t(133),t(159),!1,function(e){t(131)},"data-v-96cf4a4e",null);e.exports=s.exports},69:function(e,a,t){var s=t(3)(t(70),t(71),!1,null,null,null);e.exports=s.exports},70:function(e,a,t){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var s=t(4),n=Object.assign||function(e){for(var a=1;a<arguments.length;a++){var t=arguments[a];for(var s in t)Object.prototype.hasOwnProperty.call(t,s)&&(e[s]=t[s])}return e};a.default={name:"userMenu",props:{},data:function(){return{checked:!1}},computed:n({},Object(s.b)("servers",["countServers"]),{currentRoute:function(){return this.$route.name}}),methods:{},locales:{ru:{"My Account":"Мой аккаунт",Tickets:"Тикеты",Documents:"Документы",Order:"Заказ"}}}},71:function(e,a){e.exports={render:function(){var e=this,a=e.$createElement,t=e._self._c||a;return t("section",{staticClass:"partner-menu"},[t("input",{attrs:{id:"partner-menu__checkbox",type:"checkbox"},domProps:{checked:e.checked}}),e._v(" "),t("div",[t("div",{staticClass:"wrapper"},[t("div",{staticClass:"partner-menu__item",class:{active:"userpage"==e.currentRoute}},[t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"userpage"}}},[e._v("My Account")])],1),e._v(" "),t("div",{staticClass:"partner-menu__item",class:{active:"shop"==e.currentRoute}},[t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"shop",params:{makeDeal:"new"}}}},[e._v("Order")])],1),e._v(" "),t("div",{staticClass:"partner-menu__item",class:{active:"tickets"==e.currentRoute}},[t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"tickets"}}},[e._v("Tickets")])],1),e._v(" "),e.countServers>0?t("div",{staticClass:"partner-menu__item",class:{active:"download"==e.currentRoute}},[t("router-link",{attrs:{to:{name:"download"}}},[e._v("Download")])],1):e._e(),e._v(" "),e.countServers>0?t("div",{staticClass:"partner-menu__item",class:{active:"documents"==e.currentRoute||"supportHtml"==e.currentRoute||"support_body"==e.currentRoute}},[t("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"documents"}}},[e._v("Documents")])],1):e._e()]),e._v(" "),t("label",{attrs:{for:"partner-menu__checkbox"}})])])},staticRenderFns:[]}},87:function(e,a,t){"use strict";a.a=function(e){this.id=e.id,this.name=e.name,this.release=e.release,this.os=e.os,this.edition=e.edition,this.serverModules=e.serverModules,this.added=new Date(e.added),this.licenses=[],this.hasLicenseRequest=e.hasLicenseRequest||!1,this.hasCertificateRequest=e.hasCertificateRequest||!1,this.hasCertificate=e.hasCertificate||!1,this.addLicense=function(e){this.licenses.push(e)},this.getLicense=function(e){for(var a=0;a<this.licenses.length;a++)if(this.licenses[a].id==e)return this.licenses[a]},this.getAdded=function(){return this.added.toISOString().substring(0,10)}}},88:function(e,a,t){"use strict";a.a=function(e){this.id=e.id,this.status=e.status,this.users=e.users,this.validTill,this.validFrom=new Date(e.validFrom),this.valid=e.valid,this.serverModules=e.serverModules,this.signed=e.signed,this.test=e.test,""!=e.validTill&&(this.validTill=new Date(e.validTill));this.added=new Date(e.added),this.getAdded=function(){return this.added.toISOString().substring(0,10)},this.getValidTill=function(){return void 0===this.validTill?"":this.validTill.toISOString().substring(0,10)}}}});
+webpackJsonp([3],{
+
+/***/ 106:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = LocalServer;
+function LocalServer(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.release = data.release;
+    this.os = data.os;
+    this.edition = data.edition;
+
+    this.serverModules = data.serverModules;
+    this.added = new Date(data.added);
+    this.licenses = [];
+
+    this.hasLicenseRequest = data.hasLicenseRequest || false;
+    this.hasCertificateRequest = data.hasCertificateRequest || false;
+    this.hasCertificate = data.hasCertificate || false;
+
+    this.addLicense = function (license) {
+        this.licenses.push(license);
+    };
+
+    this.getLicense = function (licenseID) {
+        for (var i = 0; i < this.licenses.length; i++) {
+            if (this.licenses[i].id == licenseID) return this.licenses[i];
+        }
+    };
+
+    this.getAdded = function () {
+        return this.added.toISOString().substring(0, 10);
+    };
+}
+
+/***/ }),
+
+/***/ 107:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = License;
+function License(data) {
+    this.id = data.id;
+    this.status = data.status;
+    this.users = data.users;
+    this.validTill;
+    this.validFrom = new Date(data.validFrom);
+    this.valid = data.valid;
+    this.serverModules = data.serverModules;
+    this.signed = data.signed;
+    this.test = data.test;
+
+    if (data.validTill != "") {
+        this.validTill = new Date(data.validTill);
+    }
+
+    this.added = new Date(data.added);
+
+    this.getAdded = function () {
+        return this.added.toISOString().substring(0, 10);
+    };
+
+    this.getValidTill = function () {
+        if (typeof this.validTill == "undefined") return "";
+
+        return this.validTill.toISOString().substring(0, 10);
+    };
+}
+
+/***/ }),
+
+/***/ 150:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(151);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(14)("42531d60", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-123bcd7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-123bcd7c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 151:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.group-attr .info-value span[data-v-123bcd7c]:last-child {\n  margin-left: 10px;\n}\n.group-attr .info-value span[data-v-123bcd7c]:first-child {\n  color: #666;\n}\n.info-head .glyphicon-pencil[data-v-123bcd7c] {\n  font-size: 12px;\n  display: inline-block;\n  margin-left: 10px;\n}\n.license-links a[data-v-123bcd7c]:last-child {\n  margin-top: 10px;\n}\n.license-links a[data-v-123bcd7c]:first-child {\n  margin-top: 0px !important;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c] {\n  flex-grow: 1;\n}\n.v-user-cabinet-ver1 .partner-menu .partner-menu__item[data-v-123bcd7c]:last-child {\n  flex-grow: 5;\n}\n.flex-row .user-card[data-v-123bcd7c]:last-child {\n  flex-grow: 1.5;\n}\n.server-info[data-v-123bcd7c] {\n  padding: 10px 20px 10px 40px;\n}\n@media (max-width: 767px) {\n.server-info[data-v-123bcd7c] {\n      display: block;\n}\n}\n.server-info > div[data-v-123bcd7c] {\n    margin-bottom: 0px;\n}\n.server-info > div > div[data-v-123bcd7c] {\n    padding: 2px 10px;\n    color: #999;\n}\n.server-info > div > div span[data-v-123bcd7c] {\n      display: inline-block;\n      margin-right: 5px;\n}\n.server-info > div > div span[data-v-123bcd7c]:first-child:after {\n      content: \":\";\n      margin-right: 5px;\n}\n.server-info .server-info-name[data-v-123bcd7c] {\n    color: #000;\n    font-size: 18px;\n    padding: 2px 0px;\n}\n.server-info .server-info-add-license[data-v-123bcd7c] {\n    text-align: right;\n}\n@media (max-width: 767px) {\n.server-info .server-info-add-license[data-v-123bcd7c] {\n        text-align: left;\n        margin-left: 10px;\n        padding: 2px 0px;\n}\n}\n.server-license-info .license-links a[data-v-123bcd7c] {\n  display: block;\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n  margin: -3px 0 0 20px;\n}\n.server-license-info .head.flex-row > *[data-v-123bcd7c] {\n  margin-bottom: 0px;\n}\n@media (max-width: 600px) {\n.server-license-info .head.flex-row a.btn[data-v-123bcd7c] {\n    min-width: 100px;\n}\n}\n@media (max-width: 400px) {\n.server-license-info .head.flex-row[data-v-123bcd7c] {\n    height: auto;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c], .server-license-info .head.flex-row a[data-v-123bcd7c] {\n      display: block;\n}\n.server-license-info .head.flex-row span[data-v-123bcd7c] {\n      margin-bottom: 10px;\n}\n.server-license-info .head.flex-row a[data-v-123bcd7c] {\n      width: 150px;\n      margin-left: 0px;\n}\n}\n.server-license-info .product-license[data-v-123bcd7c] {\n  width: 100%;\n  font-size: 18px;\n  border-bottom: 1px solid #eee;\n  color: #000;\n}\n.server-license-info .product-license > div[data-v-123bcd7c] {\n    padding: 10px 20px 10px 40px;\n}\n.server-license-info .table th[data-v-123bcd7c] {\n  font-size: 18px;\n  font-weight: normal;\n  color: #000;\n  text-align: center;\n}\n.server-license-info .table th[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table th.blue[data-v-123bcd7c] {\n    color: #00a0c8;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c] {\n  text-align: center;\n}\n.server-license-info .table tbody tr > td[data-v-123bcd7c]:first-child {\n    text-align: left;\n}\n.server-license-info .table tbody .license-key span[data-v-123bcd7c] {\n  color: #000;\n  font-weight: 700;\n  font-size: 14px;\n  padding-bottom: 5px;\n}\n.server-license-info .table tbody .license-key a[data-v-123bcd7c] {\n  font-size: 14px;\n}\n.server-license-info .table tbody .license-number[data-v-123bcd7c], .server-license-info .table tbody .license-date[data-v-123bcd7c] {\n  color: #999;\n  font-weight: 500;\n  font-size: 14px;\n  padding: 2px 15px;\n}\n.server-license-info .table-responsive[data-v-123bcd7c] {\n  padding: 20px 0px 10px 40px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 152:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_License__ = __webpack_require__(107);
+var _ru;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+var ajaxform = __webpack_require__(15);
+var userMenu = __webpack_require__(88);
+var formChangePassword = function formChangePassword() {
+    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 153));
+};
+var formChangeCompanyName = function formChangeCompanyName() {
+    return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, 156));
+};
+var formChangeCompanyDetails = function formChangeCompanyDetails() {
+    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 159));
+};
+var formChangeTechContact = function formChangeTechContact() {
+    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 162));
+};
+var formChangeMainContact = function formChangeMainContact() {
+    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, 165));
+};
+var formLicenseRequest = function formLicenseRequest() {
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 168));
+};
+var formCertificateRequest = function formCertificateRequest() {
+    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 173));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'login',
+    data: function data() {
+        return {
+            currentServer: "",
+            showFormChangePassword: false,
+            showFormChangeCompanyName: false,
+            showFormChangeContact: false,
+            showFormChangeDetails: false,
+            showFormChangeTechContact: false,
+            showFormChangeMainContact: false,
+            showFormLicenseRequest: false,
+            showFormCertificateRequest: false
+
+        };
+    },
+
+    components: {
+        "user-menu": userMenu,
+        "form-change-password": formChangePassword,
+        "form-change-company-name": formChangeCompanyName,
+        "form-change-details": formChangeCompanyDetails,
+        "form-change-tech-contact": formChangeTechContact,
+        "form-change-main-contact": formChangeMainContact,
+        "form-license-request": formLicenseRequest,
+        "form-certificate-request": formCertificateRequest
+    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({ user: function user(state) {
+            return state.user;
+        } }), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("servers", ["getServers", "isLoaded"])),
+    mixins: [ajaxform],
+    created: function created() {
+        var _this = this;
+
+        if (!this.isLoaded) {
+            this.uploadInfo("/servers/get-servers", {}, function (data) {
+                for (var serverId in data) {
+                    var server = new __WEBPACK_IMPORTED_MODULE_1__classes_LocalServer__["a" /* LocalServer */](data[serverId]);
+
+                    for (var licenseId in data[serverId]["licenses"]) {
+                        server.addLicense(new __WEBPACK_IMPORTED_MODULE_2__classes_License__["a" /* License */](data[serverId]["licenses"][licenseId]));
+                    }
+                    _this.addServer(server);
+                }
+
+                _this.setLoaded();
+            });
+        }
+    },
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])("servers", ["setLoaded", "addServer"])),
+    locales: {
+        ru: (_ru = {
+            'Profile': 'Профиль',
+            'Company': 'Компания',
+            'Primary contact': 'Основной контакт',
+            'Full name:': 'Имя:',
+            'Job title:': 'Должность:',
+            'Password': 'Пароль:',
+            'Customer ID': "ID Клиента",
+            'Address:': 'Адрес:',
+            'Technical contact': 'Технический контакт',
+            'Phone:': 'Телефон:',
+            'Contacts': 'Контакты',
+            'Billing details': 'Платежная информация',
+            'My Account': 'Мой аккаунт',
+            'Tickets': 'Тикеты',
+            'Documents': 'Документы',
+            "Software and services": "",
+            "Product/License": "Сервер/Лицензия",
+            "Certificate": "Сертификат",
+            "Upload request": "Загрузить запрос",
+            "Download": "Скачать",
+            "License": "Лицензия",
+            "Release": "Релиз",
+            "OS": "ОС",
+            "Server modules": "Модули",
+            "Added": "Добавлен",
+            "User Licenses": "Лицензии",
+            "Users": "Пользователи",
+            "Valid till": "Годен до",
+            "Status": "Статус",
+            "Added:": "Добавлена:",
+            "Renew": "Обновить",
+            "Upgrade": "Улучшить",
+            "download": "Загрузить",
+            "Server ID": "Сервер ID",
+            "License key": "ID лицензии"
+        }, _defineProperty(_ru, "Software and services", "Программное обеспечение"), _defineProperty(_ru, "New Order", "Новый заказ"), _defineProperty(_ru, "New licence", "Новая лицензия"), _defineProperty(_ru, "active", "Активна"), _defineProperty(_ru, "payment required", "Требуется оплата"), _ru)
+    }
+
+});
+
+/***/ }),
+
+/***/ 178:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "flex-row flex_user_card" }, [
+      _c("div", { staticClass: "user-card" }, [
+        _c("div", { staticClass: "head flex-row" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "user-card_icon user-card_profile"
+              },
+              [_vm._v("Profile")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info" }, [
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info-head"
+                },
+                [_vm._v("Customer ID")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-value" }, [
+                _vm._v(_vm._s(_vm.user.id))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info-head"
+                },
+                [_vm._v("Company")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-value" }, [
+                _c("span", [_vm._v(_vm._s(_vm.user.name))]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeCompanyName = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info-head"
+                },
+                [_vm._v("Password")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-value" }, [
+                _c("span", [_vm._v("**************")]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangePassword = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c("div", { staticClass: "info-head" }, [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Primary contact")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeMainContact = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group-attr" }, [
+                _c("div", { staticClass: "info-value" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Full name:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                    _vm._v(
+                      _vm._s(_vm.user.primary.lastName) +
+                        " " +
+                        _vm._s(_vm.user.primary.firstName)
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Job title:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.primary.jobTitle))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Email:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.primary.email))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "user-card" }, [
+        _c("div", { staticClass: "head flex-row" }, [
+          _c("div", [
+            _c(
+              "div",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "user-card_icon user-card_balance"
+              },
+              [_vm._v("Contacts")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info" }, [
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c("div", { staticClass: "info-head" }, [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Billing details")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeDetails = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group-attr" }, [
+                _c("div", { staticClass: "info-value" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Address:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                    _vm._v(_vm._s(_vm.user.billing.address))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Phone:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.billing.phone))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Email:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.billing.email))])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_section" }, [
+            _c("div", [
+              _c("div", { staticClass: "info-head" }, [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Technical contact")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "ml-10",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        $event.stopPropagation()
+                        _vm.showFormChangeTechContact = true
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "glyphicon glyphicon-pencil blue",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "group-attr" }, [
+                _c("div", { staticClass: "info-value" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Full name:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                    _vm._v(
+                      _vm._s(_vm.user.tech.lastName) +
+                        " " +
+                        _vm._s(_vm.user.tech.firstName)
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Job title:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.tech.jobTitle))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-value top-10" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Email:")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.user.tech.email))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.isLoaded
+      ? _c(
+          "div",
+          { staticClass: "flex-row flex_user_card server-license-info" },
+          [
+            _c(
+              "div",
+              { staticClass: "user-card" },
+              [
+                _c("div", { staticClass: "head flex-row" }, [
+                  _c("div", [
+                    _c(
+                      "div",
+                      { staticClass: "user-card_profile" },
+                      [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ]
+                          },
+                          [_vm._v("Software and services")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ],
+                            staticClass: "btn btn-blue btn-middle",
+                            attrs: {
+                              to: { name: "shop", params: { makeDeal: "new" } }
+                            }
+                          },
+                          [_vm._v("New Order")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "product-license" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Product/License")]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.getServers, function(server) {
+                  return _c("div", [
+                    _c("div", { staticClass: "flex-row server-info" }, [
+                      _c("div", [
+                        _c("div", { staticClass: "server-info-name" }, [
+                          _vm._v(_vm._s(server.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "server-info-id" }, [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Server ID")]
+                          ),
+                          _c("span", [_vm._v(_vm._s(server.id))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Certificate")]
+                          ),
+                          _vm._v(" "),
+                          !server.hasCertificateRequest
+                            ? _c("span", [
+                                _c(
+                                  "a",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "translate",
+                                        rawName: "v-translate"
+                                      }
+                                    ],
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        $event.stopPropagation()
+                                        _vm.showFormCertificateRequest = true
+                                        _vm.currentServer = server.id
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Upload request")]
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          server.hasCertificate
+                            ? _c("span", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href:
+                                        "/servers/certificate/download/" +
+                                        server.id,
+                                      target: "_blank"
+                                    }
+                                  },
+                                  [_vm._v("Download")]
+                                )
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        !server.hasLicenseRequest
+                          ? _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  directives: [
+                                    {
+                                      name: "translate",
+                                      rawName: "v-translate"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("License")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  directives: [
+                                    {
+                                      name: "translate",
+                                      rawName: "v-translate"
+                                    }
+                                  ],
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      $event.stopPropagation()
+                                      _vm.showFormLicenseRequest = true
+                                      _vm.currentServer = server.id
+                                    }
+                                  }
+                                },
+                                [_vm._v("Upload request")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Release")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(server.release))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("OS")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(server.os))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Server modules")]
+                          ),
+                          _vm._v(" "),
+                          server.serverModules.length == 0
+                            ? _c("span", [_vm._v("no")])
+                            : _c("span", [
+                                _vm._v(_vm._s(server.serverModules.join(",")))
+                              ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Added")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(server.getAdded()))])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "server-info-add-license" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              attrs: {
+                                to: {
+                                  name: "shop",
+                                  params: {
+                                    makeDeal: "new-license",
+                                    server: server.id
+                                  }
+                                }
+                              }
+                            },
+                            [_vm._v("New licence")]
+                          )
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "table-responsive" }, [
+                      _c("table", { staticClass: "table" }, [
+                        _c("thead", [
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              staticClass: "blue"
+                            },
+                            [_vm._v("User Licenses")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Users")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Valid till")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "th",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Status")]
+                          ),
+                          _vm._v(" "),
+                          _c("th", [_vm._v(" ")])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(server.licenses, function(license, i) {
+                            return _c("tr", [
+                              _c("td", [
+                                _c("div", { staticClass: "license-key" }, [
+                                  _c("span", [
+                                    _vm._v(_vm._s(i + 1) + " "),
+                                    _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "translate",
+                                            rawName: "v-translate"
+                                          }
+                                        ]
+                                      },
+                                      [_vm._v("License key")]
+                                    ),
+                                    _vm._v(":")
+                                  ]),
+                                  _vm._v(" "),
+                                  server.hasLicenseRequest && license.signed
+                                    ? _c(
+                                        "a",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "translate",
+                                              rawName: "v-translate"
+                                            }
+                                          ],
+                                          attrs: {
+                                            target: "_blank",
+                                            href:
+                                              "/servers/license/download/" +
+                                              license.id
+                                          }
+                                        },
+                                        [_vm._v("download")]
+                                      )
+                                    : _vm._e()
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "license-number" }, [
+                                  _c("span", [_vm._v("ID:")]),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v(_vm._s(license.id))])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "license-date" }, [
+                                  _c(
+                                    "span",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "translate",
+                                          rawName: "v-translate"
+                                        }
+                                      ]
+                                    },
+                                    [_vm._v("Added:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", [
+                                    _vm._v(_vm._s(license.getAdded()))
+                                  ])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(license.users))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(license.getValidTill()))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                license.valid
+                                  ? _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "translate",
+                                            rawName: "v-translate"
+                                          }
+                                        ]
+                                      },
+                                      [_vm._v("active")]
+                                    )
+                                  : _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "translate",
+                                            rawName: "v-translate"
+                                          }
+                                        ]
+                                      },
+                                      [_vm._v("payment required")]
+                                    )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                { staticClass: "license-links" },
+                                [
+                                  license.getValidTill() != ""
+                                    ? _c(
+                                        "router-link",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "translate",
+                                              rawName: "v-translate"
+                                            }
+                                          ],
+                                          attrs: {
+                                            to: {
+                                              name: "shop",
+                                              params: {
+                                                makeDeal: "renew",
+                                                server: server.id,
+                                                license: license.id
+                                              }
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Renew")]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  license.valid
+                                    ? _c(
+                                        "router-link",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "translate",
+                                              rawName: "v-translate"
+                                            }
+                                          ],
+                                          attrs: {
+                                            to: {
+                                              name: "shop",
+                                              params: {
+                                                makeDeal: "upgrade",
+                                                server: server.id,
+                                                license: license.id
+                                              }
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Upgrade")]
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ])
+                          })
+                        )
+                      ])
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { id: "modal-list" } },
+      [
+        _vm.showFormChangePassword
+          ? _c("form-change-password", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangePassword = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeCompanyName
+          ? _c("form-change-company-name", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeCompanyName = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeDetails
+          ? _c("form-change-details", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeDetails = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeMainContact
+          ? _c("form-change-main-contact", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeMainContact = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormChangeTechContact
+          ? _c("form-change-tech-contact", {
+              on: {
+                close: function($event) {
+                  _vm.showFormChangeTechContact = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormLicenseRequest
+          ? _c("form-license-request", {
+              attrs: { server: _vm.currentServer },
+              on: {
+                close: function($event) {
+                  _vm.showFormLicenseRequest = false
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.showFormCertificateRequest
+          ? _c("form-certificate-request", {
+              attrs: { server: _vm.currentServer },
+              on: {
+                close: function($event) {
+                  _vm.showFormCertificateRequest = false
+                }
+              }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-123bcd7c", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 68:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(150)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(152)
+/* template */
+var __vue_template__ = __webpack_require__(178)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-123bcd7c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\pages\\User.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-123bcd7c", Component.options)
+  } else {
+    hotAPI.reload("data-v-123bcd7c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\userMenu.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cdcb15be", Component.options)
+  } else {
+    hotAPI.reload("data-v-cdcb15be", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 89:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'userMenu',
+    props: {},
+    data: function data() {
+        return {
+            checked: false
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])("servers", ["countServers"]), {
+        'currentRoute': function currentRoute() {
+            return this.$route.name;
+        }
+    }),
+    methods: {},
+    locales: {
+        ru: {
+            'My Account': 'Мой аккаунт',
+            'Tickets': 'Тикеты',
+            'Documents': 'Документы',
+            'Order': 'Заказ'
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 90:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "partner-menu" }, [
+    _c("input", {
+      attrs: { id: "partner-menu__checkbox", type: "checkbox" },
+      domProps: { checked: _vm.checked }
+    }),
+    _vm._v(" "),
+    _c("div", [
+      _c("div", { staticClass: "wrapper" }, [
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "userpage" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "userpage" } }
+              },
+              [_vm._v("My Account")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "shop" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "shop", params: { makeDeal: "new" } } }
+              },
+              [_vm._v("Order")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "partner-menu__item",
+            class: { active: _vm.currentRoute == "tickets" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                attrs: { to: { name: "tickets" } }
+              },
+              [_vm._v("Tickets")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm.countServers > 0
+          ? _c(
+              "div",
+              {
+                staticClass: "partner-menu__item",
+                class: { active: _vm.currentRoute == "download" }
+              },
+              [
+                _c("router-link", { attrs: { to: { name: "download" } } }, [
+                  _vm._v("Download")
+                ])
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.countServers > 0
+          ? _c(
+              "div",
+              {
+                staticClass: "partner-menu__item",
+                class: {
+                  active:
+                    _vm.currentRoute == "documents" ||
+                    _vm.currentRoute == "supportHtml" ||
+                    _vm.currentRoute == "support_body"
+                }
+              },
+              [
+                _c(
+                  "router-link",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { to: { name: "documents" } }
+                  },
+                  [_vm._v("Documents")]
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "partner-menu__checkbox" } })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cdcb15be", module.exports)
+  }
+}
+
+/***/ })
+
+});

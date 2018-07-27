@@ -2,6 +2,7 @@ import {OS,PERIOD,PRODUCTS, PRICES, COUNT_USERS, EDITIONS} from "./const";
 
 export function upgradeLicense(localServer, licenseID)
 {
+    let year = 365;
     let license = localServer.getLicense(licenseID);
 
     let period = PERIOD.ANNUAL;
@@ -17,9 +18,13 @@ export function upgradeLicense(localServer, licenseID)
     {
         let date = new Date(license.validTill);
         let dateNow = new Date();
+
         days = Math.ceil((date.getTime() - dateNow.getTime()) / (1000 * 3600 * 24));
         if(days < 0) days = 1;
     }
+
+    console.log(days);
+
 
     this.getUrl = function()
     {
@@ -75,9 +80,6 @@ export function upgradeLicense(localServer, licenseID)
                 context.removeFromBasket(ar[i]);
             }
         }
-
-
-        console.log(forbidden);
         context.forbidden = forbidden;
 
 
@@ -108,7 +110,7 @@ export function upgradeLicense(localServer, licenseID)
                 }
 
 
-                sum += Math.round(Math.abs(context.choice.users - license.users)*price/days, 0);
+                sum += Math.round(price*(days/year), 2)*Math.abs(context.choice.users - license.users);
             }
             else {
                 sum += product[context.choice.price];

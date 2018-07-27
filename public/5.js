@@ -1,1 +1,560 @@
-webpackJsonp([5],{125:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});a(18);var r=a(4),n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e},s=a(72),o=a(57),i=a(15);t.default={name:"activateAccount",created:function(){var e=this;this.code=this.$route.params.code;var t="/registration/activate/"+this.code;this.uploadInfo(t,{},function(t){e.checked=!0,e.error=!1,e.login=t.login},{},function(t){e.checked=!0,e.error=!0})},data:function(){return{code:"",checked:!1,error:!1,login:""}},computed:n({},Object(r.d)(["lang"])),mixins:[i],components:{"loading-page":s,"error-inform":o},methods:{togglePassword:function(e){"type_input_new"==e?this.type_input_new="password"==this.type_input_new?"text":"password":"type_input_repeat"==e&&(this.type_input_repeat="password"==this.type_input_repeat?"text":"password")}},locales:{ru:{"Your Corporate VIPole account is successfully activated!":"Ваш корпоративный аккаунт VIPole успешно активирован!","Your login":"Ваш логин","To manage you account and connected services go to your":"Управлять аккаунтом и подключенными сервисами вы можете в","Profile page":"Личном кабинете корпоративного пользователя","Error! Operation can not be completed now.":"Ошибка! Операция не может быть сейчас выполнена.",Please:"Пожалуйста","try again":"попробуйте","later or contact VIPole support team":"позже или свяжитесь со службой поддержки VIPole","Please, wait until the activation process is complete...":"Пожалуйста, подождите пока идет процесс активации"}}}},126:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{staticClass:"login-page"},[a("div",{staticClass:"container"},[e.checked&&e.error?a("div",{staticClass:"clearfix"},[a("div",{staticClass:"reg-header"},[a("h2",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"text-danger"},[e._v("Error! Operation can not be completed now.")]),e._v(" "),a("p",{staticClass:"lead"},[a("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Please")]),e._v(", "),a("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"register"}}},[e._v("try again")]),e._v(" "),a("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("later or contact VIPole support team")]),e._v(".")],1)])]):e._e(),e._v(" "),e.checked&&!e.error?a("div",{staticClass:"clearfix"},[a("h2",{directives:[{name:"translate",rawName:"v-translate"}],staticClass:"text-primary"},[e._v("Your Corporate VIPole account is successfully activated!")]),e._v(" "),a("p",{staticClass:"complete-body"}),a("p",{staticClass:"lead"},[a("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Your login")]),e._v(" - "),a("strong",[e._v(e._s(e.login))]),e._v("."),a("br"),e._v(" "),a("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("To manage you account and connected services go to your")]),e._v(" "),a("router-link",{directives:[{name:"translate",rawName:"v-translate"}],attrs:{to:{name:"login"}}},[e._v("Profile page")]),e._v(".")],1)]):e._e()]),e._v(" "),e.checked?e._e():a("div",[a("loading-page",[a("template",{slot:"loading"},[a("span",{directives:[{name:"translate",rawName:"v-translate"}]},[e._v("Please, wait until the activation process is complete...")])])],2)],1)])},staticRenderFns:[]}},277:function(e,t,a){var r=a(3)(a(125),a(126),!1,null,null,null);e.exports=r.exports},57:function(e,t,a){var r=a(3)(a(58),a(59),!1,null,null,null);e.exports=r.exports},58:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=a(12);t.default={name:"error-inform",props:{state:{type:Number,default:r.a.START},err:{type:Object,default:function(){return{validation:[],common:[]}}}},data:function(){return{}},computed:{showError:function(){return(this.err.validation.length>0||this.err.common.length>0)&&this.state==r.a.ERROR}}}},59:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return e.showError?a("div",{staticClass:"error-block"},[a("div",{staticClass:"alert alert-danger fade in"},[e._l(e.err.validation,function(t){return a("div",{staticClass:"top-10"},[e._v("\n             "+e._s(t.name)+" - "+e._s(t.description)+"\n         ")])}),e._v(" "),e._l(e.err.common,function(t){return a("div",{staticClass:"top-10"},[a("div",{staticClass:"top-10"},[e._v(e._s(t))])])})],2)]):e._e()},staticRenderFns:[]}},72:function(e,t,a){var r=a(3)(a(73),a(74),!1,null,null,null);e.exports=r.exports},73:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"loadingPage",props:{},data:function(){return{}},methods:{},locales:{ru:{"Loading info...":"Загрузка информации"}}}},74:function(e,t){e.exports={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"alert alert-warning fade in"},[this._t("loading",[this._v("Loading info...")])],2)},staticRenderFns:[]}}});
+webpackJsonp([5],{
+
+/***/ 144:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__classes_User__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var loadingPage = __webpack_require__(91);
+var ErrorInform = __webpack_require__(76);
+
+
+var ajaxform = __webpack_require__(15);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'activateAccount',
+    created: function created() {
+        var _this = this;
+
+        this.code = this.$route.params.code;
+        var path = '/registration/activate/' + this.code;
+        this.uploadInfo(path, {}, function (data) {
+            _this.checked = true;
+            _this.error = false;
+            _this.login = data.login;
+        }, {}, function (data) {
+            _this.checked = true;
+            _this.error = true;
+        });
+    },
+    data: function data() {
+        return {
+            code: "",
+            checked: false,
+            error: false,
+            login: ""
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapState */])(["lang"])),
+    mixins: [ajaxform],
+
+    components: {
+        "loading-page": loadingPage,
+        "error-inform": ErrorInform
+    },
+    methods: {
+        togglePassword: function togglePassword(type) {
+            if (type == 'type_input_new') {
+                this.type_input_new = this.type_input_new == 'password' ? 'text' : 'password';
+            } else if (type == 'type_input_repeat') {
+                this.type_input_repeat = this.type_input_repeat == 'password' ? 'text' : 'password';
+            }
+        }
+    },
+    locales: {
+        ru: {
+            'Your Corporate VIPole account is successfully activated!': 'Ваш корпоративный аккаунт VIPole успешно активирован!',
+            'Your login': 'Ваш логин',
+            'To manage you account and connected services go to your': 'Управлять аккаунтом и подключенными сервисами вы можете в',
+            'Profile page': 'Личном кабинете корпоративного пользователя',
+            'Error! Operation can not be completed now.': 'Ошибка! Операция не может быть сейчас выполнена.',
+            "Please": 'Пожалуйста',
+            'try again': 'попробуйте',
+            'later or contact VIPole support team': 'позже или свяжитесь со службой поддержки VIPole',
+            'Please, wait until the activation process is complete...': 'Пожалуйста, подождите пока идет процесс активации'
+        }
+    }
+
+});
+
+/***/ }),
+
+/***/ 145:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "login-page" }, [
+    _c("div", { staticClass: "container" }, [
+      _vm.checked && _vm.error
+        ? _c("div", { staticClass: "clearfix" }, [
+            _c("div", { staticClass: "reg-header" }, [
+              _c(
+                "h2",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "text-danger"
+                },
+                [_vm._v("Error! Operation can not be completed now.")]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "lead" },
+                [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("Please")]
+                  ),
+                  _vm._v(", "),
+                  _c(
+                    "router-link",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { to: { name: "register" } }
+                    },
+                    [_vm._v("try again")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("later or contact VIPole support team")]
+                  ),
+                  _vm._v(".")
+                ],
+                1
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.checked && !_vm.error
+        ? _c("div", { staticClass: "clearfix" }, [
+            _c(
+              "h2",
+              {
+                directives: [{ name: "translate", rawName: "v-translate" }],
+                staticClass: "text-primary"
+              },
+              [
+                _vm._v(
+                  "Your Corporate VIPole account is successfully activated!"
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "complete-body" }),
+            _c(
+              "p",
+              { staticClass: "lead" },
+              [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Your login")]
+                ),
+                _vm._v(" - "),
+                _c("strong", [_vm._v(_vm._s(_vm.login))]),
+                _vm._v("."),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [
+                    _vm._v(
+                      "To manage you account and connected services go to your"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { to: { name: "login" } }
+                  },
+                  [_vm._v("Profile page")]
+                ),
+                _vm._v(".")
+              ],
+              1
+            )
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    !_vm.checked
+      ? _c(
+          "div",
+          [
+            _c(
+              "loading-page",
+              [
+                _c("template", { slot: "loading" }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "Please, wait until the activation process is complete..."
+                      )
+                    ]
+                  )
+                ])
+              ],
+              2
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e6a423a6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 66:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(144)
+/* template */
+var __vue_template__ = __webpack_require__(145)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\pages\\ActivateRegister.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e6a423a6", Component.options)
+  } else {
+    hotAPI.reload("data-v-e6a423a6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\mixins\\error-inform.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41c6c4ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-41c6c4ae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'error-inform',
+  props: {
+    state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START },
+    err: { type: Object, default: function _default() {
+        return { validation: [], common: [] };
+      } }
+  },
+  data: function data() {
+    return {};
+  },
+
+  computed: {
+    showError: function showError() {
+      return (this.err.validation.length > 0 || this.err.common.length > 0) && this.state == __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showError
+    ? _c("div", { staticClass: "error-block" }, [
+        _c(
+          "div",
+          { staticClass: "alert alert-danger fade in" },
+          [
+            _vm._l(_vm.err.validation, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _vm._v(
+                  "\n             " +
+                    _vm._s(er.name) +
+                    " - " +
+                    _vm._s(er.description) +
+                    "\n         "
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.err.common, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _c("div", { staticClass: "top-10" }, [_vm._v(_vm._s(er))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-41c6c4ae", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 91:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\loadingPage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-356dd2e4", Component.options)
+  } else {
+    hotAPI.reload("data-v-356dd2e4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'loadingPage',
+    props: {},
+    data: function data() {
+        return {};
+    },
+
+
+    methods: {},
+    locales: {
+        ru: {
+            "Loading info...": "Загрузка информации"
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 93:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "alert alert-warning fade in" },
+    [_vm._t("loading", [_vm._v("Loading info...")])],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-356dd2e4", module.exports)
+  }
+}
+
+/***/ })
+
+});
