@@ -73,7 +73,8 @@ export default {
   mixins: [ajaxform],
   locales: {
     	ru: {
-
+                'License request has been uploaded.': 'Запрос лицензии успешно загружен',
+                'License request': 'Запрос лицензии'
          }
     },
   methods: {

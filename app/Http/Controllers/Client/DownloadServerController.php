@@ -21,16 +21,18 @@ class DownloadServerController extends Controller
     public function download($os, $edition)
     {
       if(!$this->_hasServerEdition($edition)) return view("download_warning");
-
       $response = $this->service->download($edition, $os);
 
-      $result = response($response["body"],200)->header("Content-Type", "application/octet-stream")->
-      header("Content-Disposition", $response["headers"]["Content-Disposition"][0])->
-      header("Content-Description", $response["headers"]["Content-Description"][0])->
-      header("Content-Length", $response["headers"]["Content-Length"][0]);
+      if(isset($response["headers"]["Content-Disposition"]))
+      {
+          return
+              response($response["body"],200)->header("Content-Type", "application/octet-stream")->
+              header("Content-Disposition", $response["headers"]["Content-Disposition"][0])->
+              header("Content-Description", $response["headers"]["Content-Description"][0])->
+              header("Content-Length", $response["headers"]["Content-Length"][0]);
+      }
 
-
-       return $result;
+      return  response($response["body"],200);
     }
 
     private function _hasServerEdition($edition)

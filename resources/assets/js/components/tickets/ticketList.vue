@@ -20,20 +20,25 @@
                       :fields="fields"
                       :css="css"
                       track-by="login"
-            ></vuetable>
+            @vuetable:load-success="dataLoaded"></vuetable>
         </div>
+        <error-inform :err="err" :state="state"></error-inform>
 
     </div>
 </template>
 
 <script>
     import Vuetable from '../vipole-table.vue';
+    import ajaxform from '../../mixins/ajax-form.vue';
+    import errorInform from '../../mixins/error-inform.vue';
+    import {STATES} from  '../../mixins/states';
     const FormAddTicket  = () => System.import('./formAddTicket.vue');
 
     export default {
         components: {
             Vuetable,
-            FormAddTicket
+            FormAddTicket,
+            "error-inform": errorInform,
         },
         data () {
             return {
@@ -96,6 +101,7 @@
                 }
             }
         },
+        mixins: [ajaxform],
         locales: {
             ru: {
                     'My Tickets': "Мои тикеты",
@@ -108,7 +114,17 @@
             }
         },
         methods: {
+            dataLoaded(response)
+            {
+                let data = JSON.parse(response.request.response);
 
+                if(!data.status)
+                {
+                    this.state = STATES.ERROR;
+                    this.err.common = [];
+                    this.err.common.push(data.message)
+                }
+            }
         }
     }
 </script>

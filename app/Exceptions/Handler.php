@@ -44,6 +44,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof ServiceDataError)
+        {
+            return response()->error(__("Service temporary unavailable! Please try later."), []);
+        }
+
         return parent::render($request, $exception);
     }
 

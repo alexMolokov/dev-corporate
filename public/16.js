@@ -183,7 +183,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default.a],
     locales: {
-        ru: {}
+        ru: {
+            'License request has been uploaded.': 'Запрос лицензии успешно загружен',
+            'License request': 'Запрос лицензии'
+        }
     },
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])("servers", ["updateServer"]), {
         validate: function validate() {

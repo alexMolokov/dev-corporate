@@ -16,6 +16,7 @@ class CacheDecorator implements DownloadServerInterface
     private $ttl = 24*60;// minutes
     private $service;
     private $prefix = "download:server";
+    private $minBodyLength=1000;
 
 
     public function __construct(DownloadServerInterface $service)
@@ -29,11 +30,11 @@ class CacheDecorator implements DownloadServerInterface
         if (Cache::has($key))
         {
             $result = Cache::get($key);
-            if(strlen($result["body"]) > 0) return $result;
+            if(strlen($result["body"]) > $this->minBodyLength) return $result;
         }
 
         $result = $this->service->download($edition, $os);
-        if($result && strlen($result["body"]) > 0)
+        if($result && strlen($result["body"]) > $this->minBodyLength)
         {
             Cache::put($key, $result, $this->ttl);
             return $result;

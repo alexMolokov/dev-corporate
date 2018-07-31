@@ -1,6 +1,8 @@
 <?php
 
 namespace App\OTRS;
+use  App\Exceptions\ServiceDataError;
+
 
 class GenericTicketConnector extends \SoapClient
 {
@@ -47,11 +49,11 @@ class GenericTicketConnector extends \SoapClient
     public function __construct(array $options = array(), $wsdl = null)
     {
     
-  foreach (self::$classmap as $key => $value) {
-    if (!isset($options['classmap'][$key])) {
-      $options['classmap'][$key] = $value;
-    }
-  }
+      foreach (self::$classmap as $key => $value) {
+        if (!isset($options['classmap'][$key])) {
+          $options['classmap'][$key] = $value;
+        }
+      }
       $options = array_merge(array (
           'features' => 1,
         ), $options);
@@ -60,6 +62,19 @@ class GenericTicketConnector extends \SoapClient
              $wsdl = __DIR__ . DIRECTORY_SEPARATOR . 'otrs.wsdl';
         }
         parent::__construct($wsdl, $options);
+    }
+
+
+    private function _callSoap($name, array $params)
+    {
+        try {
+            $result = $this->__soapCall($name, $params);
+            return $result;
+        }
+        catch (\Exception $e)
+        {
+            throw new ServiceDataError("Service unavailable", $e);
+        }
     }
 
     /**
@@ -96,14 +111,16 @@ class GenericTicketConnector extends \SoapClient
      */
     public function TicketSearch(TicketSearch $parameters)
     {
-        return $this->__soapCall('TicketSearch', array($parameters));
+        return $this->_callSoap('TicketSearch', array($parameters));
+        //return $this->__soapCall('TicketSearch', array($parameters));
     }
 
     public function TicketSearchBsystem(TicketSearch $ticketSearch)
     {
+        return $this->_callSoap('TicketSearch', [$this->__setParams($ticketSearch)]);
 
-        $result =  $this->__soapCall('TicketSearch',[$this->__setParams($ticketSearch)]);
-        return $result;
+        //$result =  $this->__soapCall('TicketSearch',[$this->__setParams($ticketSearch)]);
+        //return $result;
     }
 
     /**

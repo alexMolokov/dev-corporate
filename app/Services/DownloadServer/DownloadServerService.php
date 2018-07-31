@@ -3,7 +3,7 @@ namespace App\Services\DownloadServer;
 
 use App\Contracts\DownloadServerInterface;
 use App\Helpers\HttpClient;
-use Mockery\Exception;
+use  App\Exceptions\ServiceDataError;
 
 class DownloadServerService implements  DownloadServerInterface
 {
@@ -36,7 +36,14 @@ class DownloadServerService implements  DownloadServerInterface
 
     public function download($edition, $os)
     {
-        $this->client->createCurl($this->urls[$edition][$os]);
+        try {
+            $this->client->createCurl($this->urls[$edition][$os]);
+        }
+        catch (\Exception $e)
+        {
+              throw new ServiceDataError("Service unavailable", $e);
+        }
+
 
         return [
             "headers" => $this->client->getResponseHeaders(),

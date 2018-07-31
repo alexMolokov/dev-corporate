@@ -47,6 +47,8 @@
             ],
             "2" => [
                 "name" => "VIPole Enterprise, Cluster edition",
+                "edition" => "cluster",
+                "release" => "2017",
                 "baseAnnualPrice" => 200,
                 "baseLifetimePrice" => 0,
                 "startUsers" => 30,

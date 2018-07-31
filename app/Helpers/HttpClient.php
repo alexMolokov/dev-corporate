@@ -267,6 +267,7 @@ class HttpClient
         rewind($verbose);
 
         $this->responseHeaders = $headers;
+
         $header=substr($data,0,curl_getinfo($s,CURLINFO_HEADER_SIZE));
         $body=substr($data,curl_getinfo($s,CURLINFO_HEADER_SIZE));
 
