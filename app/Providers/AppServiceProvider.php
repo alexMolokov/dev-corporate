@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\DownloadServer\DownloadServerService;
+use App\Services\Search\SearchSphinx;
 use App\Services\Support\SupportService;
 use App\OTRS\OtrsClientService;
 use App\OTRS\Decorators\CacheDecorator;
@@ -63,6 +64,10 @@ class AppServiceProvider extends ServiceProvider
             return new SupportService();
         });
 
-
+        $this->app->singleton("App\Contracts\SearchInterface", function($app)
+        {
+            $ar = config("support");
+            return new SearchSphinx($ar["search"]);
+        });
     }
 }

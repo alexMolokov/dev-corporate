@@ -1,23 +1,65 @@
 <template>
-
 <div id="support-page">
-    <div v-if="isCatalogLoad">
-        <div id="support-menu-catalog" v-if="menu != ''" :class="{'opened': opened}">
-            <div class="close-support-menu" @click="opened=false">×</div>
-            <ul id="accordeon">
-                <tree-menu class="item" :model="menu" :doc_id="doc_id" @clickmenu="clickMenu"/>
-            </ul>
+    <div v-show="!search.showResult">
+        <div v-if="isCatalogLoad">
+            <div id="support-menu-catalog" v-if="menu != ''" :class="{'opened': opened}">
+                <div class="close-support-menu" @click="opened=false">×</div>
+                <ul id="accordeon">
+                    <tree-menu class="item" :model="menu" :doc_id="doc_id" @clickmenu="clickMenu"/>
+                </ul>
+            </div>
+            <div id="document-support-body">
+                <div class="side-navigation-open-button" @click="opened=!opened"></div>
+                <div v-if="body == ''" class="top-30"><loading-page></loading-page></div>
+                <div v-else>
+                    <div  v-html="body"></div>
+                    <div v-if="search.allowed">
+                        <section id="search-section">
+                            <form class="search" role="search" @submit.prevent.stop="searchQuery">
+                                <input id="query" class="ui-autocomplete-input" name="query" v-model="query" placeholder="SEARCH" autocomplete="off" value="" type="search">
+                                <input src="/static/common/img/icons/icon-search.png" width="14" height="14" type="image">
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="document-support-body">
-            <div class="side-navigation-open-button" @click="opened=!opened"></div>
-            <div v-if="body == ''" class="top-30"><loading-page></loading-page></div>
-            <div v-else v-html="body"></div>
-
-
+        <div  class="top-60" v-else>
+            <loading-page></loading-page>
         </div>
     </div>
-    <div  class="top-60" v-else>
-        <loading-page></loading-page>
+
+    <section v-show="search.showResult" id="search">
+        <div class="container">
+            <div class="search-container">
+                <h1 v-translate>How can we help?</h1>
+                <form class="search" role="search" @submit.prevent.stop="searchQuery">
+                    <input  name="query" placeholder="Find anything" class="ui-autocomplete-input" autocomplete="off" type="search" v-model="query">
+                    <input src="/static/common/img/icons/icon-search.png" type="image">
+                </form>
+             </div>
+        </div>
+    </section>
+
+    <div v-show="search.showResult" class="container search-result">
+        <div class="count-found">
+            <div>
+                <div v-if="lang == 'ru'"> <span v-translate>results found for</span> "{{search.query}}" : {{search.count}}</div>
+                <div v-else>{{search.count}} <span>results found for</span> "{{search.query}}"</div>
+            </div>
+        </div>
+        <div v-if="search.count > 0">
+            <div class="list-doc">
+                <div class="search-doc" v-for="doc in search.list">
+                    <div><a href="#" @click.prevent.stop="go(doc.id)" v-html="doc.title"></a></div>
+                    <div class="snippet" v-html="doc.snippet"></div>
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <div><span v-translate>Sorry! We didn’t find anything about</span> <b>{{query}}</b>.</div>
+            <div><span v-translate>Try a different search, or</span> <a href="/en/support" v-translate>browse our help topics instead</a>.</div>
+        </div>
     </div>
 </div>
 </template>
@@ -65,7 +107,17 @@
                 doc_id: "",
                 edition: "",
                 os: "",
-                opened: false
+                opened: false,
+
+                query: "",
+                search: {
+                    allowed: true,
+                    showResult: false,
+                    list: [],
+                    count: 0,
+                    query: ""
+                }
+
 
             }
         },
@@ -106,11 +158,51 @@
                     this.doc_id = id;
                     this.saveDoc({"key": this.getDocKey(id), "data": data});
                 });
+            },
 
+            scroll: function(){
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+            },
+
+            go: function(doc_id) {
+                this.search.showResult = false;
+                this.clickMenu(parseInt(doc_id));
+                this.scroll();
+
+            },
+            searchQuery: function()
+            {
+                if(this.query.trim() == "")
+                {
+                    alert(this.t("Please enter query!"));
+                    return;
+                }
+
+                let path =  '/support/search/' + this.lang + '/' + this.edition + '/' + this.os;
+                this.uploadInfo(path, {query: this.query}, (data) =>
+                {
+                    this.search.showResult = true;
+                    this.search.count = data.count;
+                    this.search.list = data.list;
+                    this.search.query = data.query;
+                    this.scroll();
+
+
+                });
             }
 
+        },
+        locales: {
+            ru: {
+                "Please enter query!": "Пожалуйста введите запрос!",
+                "How can we help?": "Чем мы можем помочь?",
+                "Find anything": "Найдите что нибудь",
+                "Sorry! We didn’t find anything about": "Очень жаль, но мы не нашли ничего о",
+                "Try a different search, or": "Попробуйте другой поиск или",
+                "browse our help topics instead": 'посмотрите, нет ли подходящей темы в разделе "Документация".',
+                "results found for":"Результатов поиска для"
+            }
         }
-
     }
 </script>
 
@@ -121,6 +213,108 @@
     }
 
     #support-page {
+
+        #search {
+            min-width: 320px;
+            height: 250px;
+            background-color: #00a0c8;
+            margin-bottom: 50px;
+            text-align: center;
+            margin-top: 60px;
+
+            h1 {
+                font-size: 48px;
+                font-weight: 700;
+                color: #fff;
+                margin: 60px 0 32px;
+            }
+            form {position: relative;}
+            input[name=query] {
+                font-size: 14px;
+                line-height: 20px;
+                padding: 20px 55px 20px 20px;
+                border: 0;
+                border-radius: 3px;
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            input[type=image] {
+                position: absolute;
+                top: 20px;
+                right: 25px;
+            }
+        }
+
+       .search-result {
+           .count-found,  .not-found {
+               text-align: center;
+
+               div > div:first-child {
+                   font-size: 24px;
+                   font-weight: 700;
+                   color: #00a0c8;
+                   margin-bottom: 30px;
+               }
+           }
+
+           .list-doc {
+
+               .search-doc {
+                   margin-bottom: 40px;
+
+                   > div a {
+                       font-size: 15px;
+                       font-weight: 600;
+                       color: #00a0c8;
+                   }
+
+                   .snippet {
+                       margin-top: 10px;
+                       font-size: 15px;
+                       color: #4c6d7d;
+                   }
+               }
+           }
+
+
+        }
+
+
+
+        #search-section {
+            margin: 0 auto;
+            /*max-width: 660px;*/
+
+            #query {
+                border: 0;
+                border-radius: 2px;
+                display: block;
+                font-size: 12px;
+                line-height: 15px;
+                padding: 13px 55px 12px 15px;
+                margin: 45px 0;
+                width: 100%;
+                background-color: #f5f5f5;
+            }
+
+            .search {
+                position: relative;
+
+                input[type=image] {
+                    position: absolute;
+                    right: 20px;
+                    top: 15px;
+                    width: 14px;
+                    height: 14px;
+                }
+            }
+
+
+        }
+
+
 
         @media (max-width: 767px)
         {

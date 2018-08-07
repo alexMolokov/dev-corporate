@@ -1,14 +1,14 @@
 webpackJsonp([21],{
 
-/***/ 165:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(166)
+var __vue_script__ = __webpack_require__(160)
 /* template */
-var __vue_template__ = __webpack_require__(167)
+var __vue_template__ = __webpack_require__(161)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\formChangeMainContact.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formChangeDetails.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6d1424a8", Component.options)
+    hotAPI.createRecord("data-v-279214c7", Component.options)
   } else {
-    hotAPI.reload("data-v-6d1424a8", Component.options)
+    hotAPI.reload("data-v-279214c7", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 166:
+/***/ 160:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -118,15 +118,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -136,71 +127,57 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'form-change-contact',
+    name: 'form-change-details',
     components: {
         "modal-window": __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default.a,
         "error-inform": __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default.a,
         "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])({
-        primary: function primary(state) {
-            return state.user.primary;
+        'billing': function billing(state) {
+            return state.user.billing;
         }
     })),
     mounted: function mounted() {
-        this.firstName = this.primary.firstName;
-        this.lastName = this.primary.lastName;
-        this.jobTitle = this.primary.jobTitle;
-        this.email = this.primary.email;
-        this.contact_id = this.primary.id;
+        console.log(this.billing);
+        this.address = this.billing.address;
+        this.email = this.billing.email;
+        this.phone = this.billing.phone;
     },
     data: function data() {
         return {
-            id: "change-contact",
-            url: "/user/contact/change",
+            id: "change-details",
+            url: "/user/company-details/change",
             redirect: false,
-            type_input: "password",
-            password: '',
-            type: "main",
-            firstName: '',
-            lastName: '',
-            jobTitle: '',
+            address: '',
+            phone: '',
             email: '',
-            contact_id: ''
+            password: '',
+            type_input: "password"
         };
     },
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
     locales: {
         ru: {
+            'Change company info': 'Изменить данные о компании',
+            'Company info has been changed.': 'Информация о компании была изменена',
             'Password': 'Пароль',
-            'First Name': 'Имя',
-            'Last Name': 'Фамилия',
-            'Job title': 'Должность',
-            'Next': 'Далее',
-            'Change Contact': "Изменить контакт",
-            'Contact has been changed.': 'Контакт был изменен.'
+            'Address': 'Адрес',
+            'Next': 'Далее'
         }
     },
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setContact']), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setDetails']), {
         togglePassword: function togglePassword(type) {
-            this.type_input = this.type_input_current == 'password' ? 'text' : 'password';
+            this.type_input = this.type_input == 'password' ? 'text' : 'password';
         },
+
         validate: function validate() {
             var _this = this;
 
-            var data = {
-                "id": this.contact_id,
-                "email": this.email,
-                "jobTitle": this.jobTitle,
-                "firstName": this.firstName,
-                "lastName": this.lastName,
-                "password": this.password,
-                "type": this.type
-            };
-
+            var data = { "address": this.address, "email": this.email, "phone": this.phone, "password": this.password };
             this.send(this.url, data, function () {
-                _this.setContact(data);
+                _this.setDetails(data);
             });
         }
 
@@ -209,7 +186,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /***/ }),
 
-/***/ 167:
+/***/ 161:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -232,7 +209,7 @@ var render = function() {
           attrs: { slot: "title" },
           slot: "title"
         },
-        [_vm._v("Change Contact")]
+        [_vm._v("Change company info")]
       ),
       _vm._v(" "),
       _c(
@@ -253,7 +230,7 @@ var render = function() {
                   directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "complete-body"
                 },
-                [_vm._v("Contact has been changed.")]
+                [_vm._v("Company info has been changed.")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "button-close-ok" }, [
@@ -287,11 +264,6 @@ var render = function() {
           }
         },
         [
-          _c("input", {
-            attrs: { type: "hidden", name: "type" },
-            domProps: { value: _vm.type }
-          }),
-          _vm._v(" "),
           _c("div", [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
@@ -302,9 +274,9 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "firstName" }
+                      attrs: { for: "address" }
                     },
-                    [_vm._v("First Name")]
+                    [_vm._v("Address")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -314,13 +286,13 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("firstName"),
-                          expression: "errors.has('firstName')"
+                          value: _vm.errors.has("address"),
+                          expression: "errors.has('address')"
                         }
                       ],
                       staticClass: "help is-danger"
                     },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("firstName")))]
+                    [_vm._v("*" + _vm._s(_vm.errors.first("address")))]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group" }, [
@@ -329,26 +301,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.firstName,
-                          expression: "firstName"
+                          value: _vm.address,
+                          expression: "address"
                         },
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: { rules: { required: true, min: 3 } },
-                          expression: "{ rules: { required:true, min:3}}"
+                          value: "required|min:5",
+                          expression: "'required|min:5'"
                         }
                       ],
                       staticClass: "form-control",
-                      class: { error: _vm.errors.has("firstName") },
-                      attrs: { name: "firstName" },
-                      domProps: { value: _vm.firstName },
+                      class: { error: _vm.errors.has("address") },
+                      attrs: { id: "address", name: "address" },
+                      domProps: { value: _vm.address },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.firstName = $event.target.value
+                          _vm.address = $event.target.value
                         }
                       }
                     })
@@ -362,9 +334,9 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "lastName" }
+                      attrs: { for: "detail_phone" }
                     },
-                    [_vm._v("Last Name")]
+                    [_vm._v("Phone")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -374,13 +346,13 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("lastName"),
-                          expression: "errors.has('lastName')"
+                          value: _vm.errors.has("phone"),
+                          expression: "errors.has('phone')"
                         }
                       ],
                       staticClass: "help is-danger"
                     },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("lastName")))]
+                    [_vm._v("*" + _vm._s(_vm.errors.first("phone")))]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group" }, [
@@ -389,26 +361,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.lastName,
-                          expression: "lastName"
+                          value: _vm.phone,
+                          expression: "phone"
                         },
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: { rules: { required: true, min: 3 } },
-                          expression: "{ rules: { required:true, min:3}}"
+                          value: { rules: { required: true, min: 10 } },
+                          expression: "{ rules: { required:true, min:10}}"
                         }
                       ],
                       staticClass: "form-control",
-                      class: { error: _vm.errors.has("lastName") },
-                      attrs: { name: "lastName" },
-                      domProps: { value: _vm.lastName },
+                      class: { error: _vm.errors.has("phone") },
+                      attrs: { id: "detail_phone", name: "phone" },
+                      domProps: { value: _vm.phone },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.lastName = $event.target.value
+                          _vm.phone = $event.target.value
                         }
                       }
                     })
@@ -422,67 +394,7 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "jobTitle" }
-                    },
-                    [_vm._v("Job title")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("job_title"),
-                          expression: "errors.has('job_title')"
-                        }
-                      ],
-                      staticClass: "help is-danger"
-                    },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("job_title")))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.jobTitle,
-                          expression: "jobTitle"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: { rules: { required: true, min: 3 } },
-                          expression: "{ rules: { required:true, min:3}}"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: { error: _vm.errors.has("jobTitle") },
-                      attrs: { name: "jobTitle" },
-                      domProps: { value: _vm.jobTitle },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.jobTitle = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group  top-10" }, [
-                  _c(
-                    "label",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: { for: "email" }
+                      attrs: { for: "detail_email" }
                     },
                     [_vm._v("Email")]
                   ),
@@ -521,7 +433,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       class: { error: _vm.errors.has("email") },
-                      attrs: { name: "email" },
+                      attrs: { id: "detail_email", name: "email" },
                       domProps: { value: _vm.email },
                       on: {
                         input: function($event) {
@@ -542,7 +454,7 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "password" }
+                      attrs: { for: "detail-password" }
                     },
                     [_vm._v("Password")]
                   ),
@@ -576,13 +488,17 @@ var render = function() {
                             {
                               name: "validate",
                               rawName: "v-validate",
-                              value: { rules: { required: true, min: 6 } },
-                              expression: "{ rules: { required:true, min:6}}"
+                              value: "required",
+                              expression: "'required'"
                             }
                           ],
                           staticClass: "form-control",
                           class: { error: _vm.errors.has("password") },
-                          attrs: { name: "password", type: "checkbox" },
+                          attrs: {
+                            id: "detail-password",
+                            name: "password",
+                            type: "checkbox"
+                          },
                           domProps: {
                             checked: Array.isArray(_vm.password)
                               ? _vm._i(_vm.password, null) > -1
@@ -622,13 +538,17 @@ var render = function() {
                               {
                                 name: "validate",
                                 rawName: "v-validate",
-                                value: { rules: { required: true, min: 6 } },
-                                expression: "{ rules: { required:true, min:6}}"
+                                value: "required",
+                                expression: "'required'"
                               }
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: { name: "password", type: "radio" },
+                            attrs: {
+                              id: "detail-password",
+                              name: "password",
+                              type: "radio"
+                            },
                             domProps: { checked: _vm._q(_vm.password, null) },
                             on: {
                               change: function($event) {
@@ -647,13 +567,17 @@ var render = function() {
                               {
                                 name: "validate",
                                 rawName: "v-validate",
-                                value: { rules: { required: true, min: 6 } },
-                                expression: "{ rules: { required:true, min:6}}"
+                                value: "required",
+                                expression: "'required'"
                               }
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: { name: "password", type: _vm.type_input },
+                            attrs: {
+                              id: "detail-password",
+                              name: "password",
+                              type: _vm.type_input
+                            },
                             domProps: { value: _vm.password },
                             on: {
                               input: function($event) {
@@ -695,28 +619,7 @@ var render = function() {
               },
               [_vm._v("Next")]
             )
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.contact_id,
-                expression: "contact_id"
-              }
-            ],
-            attrs: { type: "hidden", name: "id" },
-            domProps: { value: _vm.contact_id },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.contact_id = $event.target.value
-              }
-            }
-          })
+          ])
         ],
         1
       )
@@ -730,7 +633,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6d1424a8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-279214c7", module.exports)
   }
 }
 

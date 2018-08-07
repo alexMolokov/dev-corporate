@@ -74,7 +74,9 @@ export default {
   locales: {
     	ru: {
                 'License request has been uploaded.': 'Запрос лицензии успешно загружен',
-                'License request': 'Запрос лицензии'
+                'License request': 'Запрос лицензии',
+                "Send": "Отправить",
+                "Select license file request": "Выберите файл лицензии"
          }
     },
   methods: {

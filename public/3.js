@@ -306,25 +306,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var ajaxform = __webpack_require__(15);
 var userMenu = __webpack_require__(88);
 var formChangePassword = function formChangePassword() {
-    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 153));
+    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 153));
 };
 var formChangeCompanyName = function formChangeCompanyName() {
-    return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, 156));
+    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 156));
 };
 var formChangeCompanyDetails = function formChangeCompanyDetails() {
-    return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 159));
+    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, 159));
 };
 var formChangeTechContact = function formChangeTechContact() {
-    return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 162));
+    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 162));
 };
 var formChangeMainContact = function formChangeMainContact() {
-    return __webpack_require__.e/* import() */(21).then(__webpack_require__.bind(null, 165));
+    return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 165));
 };
 var formLicenseRequest = function formLicenseRequest() {
-    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 168));
+    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 168));
 };
 var formCertificateRequest = function formCertificateRequest() {
-    return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 173));
+    return __webpack_require__.e/* import() */(16).then(__webpack_require__.bind(null, 173));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({

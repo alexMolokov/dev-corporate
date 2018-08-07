@@ -6,6 +6,10 @@
  * Time: 18:33
  */
 
+
+include "SphinxIndex.php";
+include "../../app/Services/Support/SupportSearchMapper.php";
+
 class SupportMakeFromXml
 {
     private $files = [
@@ -57,6 +61,22 @@ class SupportMakeFromXml
         $xsl_doc->load($this->xslDoc);
         $proc = new XSLTProcessor();
         $proc->importStylesheet($xsl_doc);
+
+        $sphinx = new SphinxIndex(
+            [
+                "id" => SphinxIndex::RAW,
+                "reference" => SphinxIndex::RAW,
+                "edition" => SphinxIndex::RAW,
+                "os" => SphinxIndex::RAW,
+                "lang" => SphinxIndex::RAW,
+                "title" => SphinxIndex::CDATA,
+                "content" => SphinxIndex::CDATA,
+                "langint" => SphinxIndex::RAW,
+	            "editionint" => SphinxIndex::RAW,
+	            "osint" => SphinxIndex::RAW
+            ]
+        );
+        $searchMapper = new App\Services\Support\SupportSearchMapper();
 
         // корень 14614612
         foreach($this->files as $file) {
@@ -124,6 +144,19 @@ class SupportMakeFromXml
                          $newdom = $proc->transformToDoc($body);
                          $hash[$id]["body"] = $newdom->saveXML();
 
+                         $sphinx->addNode([
+                             "id" => $id,
+                             "doc_id" => $id,
+                             "lang" => $file['lang'],
+                             "os" => $file['os'],
+                             "edition" => $file['edition'],
+                             "title" =>  $hash[$id]["title"],
+                             "content" => $hash[$id]["body"],
+                             "langint" => $searchMapper->getLang($file['lang']),
+                             "editionint" => $searchMapper->getEdition($file['edition']),
+                             "osint" => $searchMapper->getOs($file['os'])
+                         ]);
+
 
                             foreach($attachments as $attachment)
                             {
@@ -182,7 +215,12 @@ class SupportMakeFromXml
         $menu = '<?php return ' . getMenu($rootId, $hash, "", $rootId) . ';';
         $h=fopen("../../public/support/{$file['lang']}/{$file['edition']}/{$file['os']}/menu.php", "w") ;
         fwrite($h,$menu);
-        fclose($h) ;
+        fclose($h);
+
+        $h=fopen("sphinxindex.xml", "w") ;
+        fwrite($h,$sphinx->getXmlForIndex());
+        fclose($h);
+
         //echo $menu;
     }
 

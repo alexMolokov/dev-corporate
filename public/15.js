@@ -1,24 +1,24 @@
 webpackJsonp([15],{
 
-/***/ 270:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(271)
+  __webpack_require__(169)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(273)
+var __vue_script__ = __webpack_require__(171)
 /* template */
-var __vue_template__ = __webpack_require__(274)
+var __vue_template__ = __webpack_require__(172)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-2ec877a5"
+var __vue_scopeId__ = "data-v-2c05c389"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\tickets\\formAddArticle.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formLicenseRequest.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2ec877a5", Component.options)
+    hotAPI.createRecord("data-v-2c05c389", Component.options)
   } else {
-    hotAPI.reload("data-v-2ec877a5", Component.options)
+    hotAPI.reload("data-v-2c05c389", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,23 +52,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 271:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(272);
+var content = __webpack_require__(170);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(14)("04b9062c", content, false, {});
+var update = __webpack_require__(14)("d9a82a6e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2ec877a5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formAddArticle.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2ec877a5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formAddArticle.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2c05c389\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formLicenseRequest.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2c05c389\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formLicenseRequest.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 272:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(13)(false);
@@ -87,31 +87,29 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, "\n.inputfile[data-v-2ec877a5] {\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: 2;\n    border: 1px solid black;\n}\n.inputfile + label[data-v-2ec877a5] {\n    font-size: 11px;\n    text-transform: uppercase;\n    font-weight: 500;\n    color: white;\n\n    display: inline-block;\n    padding: 7px 20px;\n    border-radius: 3px;\n    cursor: pointer;\n    background-color: #00a0c8;\n}\n.inputfile + label > img[data-v-2ec877a5] {\n    display: inline-block;\n    margin: 0 5px 5px 5px;\n    width: 20px;\n    height: 20px;\n    color: #fff;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.inputfile[data-v-2c05c389] {\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: 2;\n    border: 1px solid black;\n}\n.inputfile + label[data-v-2c05c389] {\n    font-size: 11px;\n    text-transform: uppercase;\n    font-weight: 500;\n    color: white;\n\n    display: inline-block;\n    padding: 7px 20px;\n    border-radius: 3px;\n    cursor: pointer;\n    background-color: #00a0c8;\n}\n.inputfile + label > img[data-v-2c05c389] {\n    display: inline-block;\n    margin: 0 5px 5px 5px;\n    width: 20px;\n    height: 20px;\n    color: #fff;\n}\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 273:
+/***/ 171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__modalWindow_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -146,58 +144,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var ajaxform = __webpack_require__(15);
-var errorInform = __webpack_require__(76);
-var loadingInform = __webpack_require__(84);
+
+
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'form-add-ticket',
+    name: 'form-license-request',
     components: {
-        "modal-window": __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue___default.a,
-        "error-inform": errorInform,
-        "loading-inform": loadingInform
+        "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
+        "error-inform": __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default.a,
+        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
     },
-    props: {
-        'ticketNumber': { type: String }
-    },
-    data: function data() {
-        return {
-            id: "article-add",
-            url: "/ticket/article/add",
-            redirect: false,
-            wide: true,
-            message: "",
-            files: []
-        };
-    },
-
-    computed: {
+    computed: _extends({
         labelForFiles: function labelForFiles() {
             if (this.files.length > 1) {
                 return this.files.length + " " + this.$translate.text("files selected");
             } else if (this.files.length == 0) {
-                return this.$translate.text("Select files");
+                return this.$translate.text("Select license file request");
             } else {
                 return this.files[0].name;
             }
         }
+    }, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])("servers", ["serversMap"])),
+    props: {
+        server: { "type": String }
     },
-    mixins: [ajaxform],
+    data: function data() {
+        return {
+            id: "license-request",
+            url: "/servers/license/request",
+            redirect: false,
+
+            files: []
+        };
+    },
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default.a],
     locales: {
         ru: {
-            'Add Answer': 'Добавить ответ',
-            'Answer has been added.': 'Ответ был отправлен',
-            'Message': "Сообщение",
-            'Send': "Отправить",
-            'Select files': "Выберите файлы",
-            'files selected': "файла выбрано"
-
+            'License request has been uploaded.': 'Запрос лицензии успешно загружен',
+            'License request': 'Запрос лицензии',
+            "Send": "Отправить",
+            "Select license file request": "Выберите файл лицензии"
         }
     },
-    methods: {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])("servers", ["updateServer"]), {
         validate: function validate() {
+            var _this = this;
+
             var formData = new FormData();
-            var data = { "ticketNumber": this.ticketNumber, "message": this.message };
+            var data = { "server": this.server };
 
             for (var key in data) {
                 formData.append(key, data[key]);
@@ -215,20 +213,24 @@ var loadingInform = __webpack_require__(84);
                 }
             }
 
-            this.send(this.url, formData, headers);
+            var server = this.serversMap.get(this.server);
+
+            this.send(this.url, formData, function (data) {
+                server.hasLicenseRequest = true;
+                _this.updateServer(server);
+            }, headers);
         },
         handleFileUploads: function handleFileUploads() {
             if (typeof this.$refs.files != "undefined") {
                 this.files = this.$refs.files.files;
             }
         }
-
-    }
+    })
 });
 
 /***/ }),
 
-/***/ 274:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -240,7 +242,7 @@ var render = function() {
     {
       staticClass: "in",
       staticStyle: { display: "block" },
-      attrs: { id: "change-password", show: true, wide: _vm.wide },
+      attrs: { id: _vm.id, show: true },
       on: { close: _vm.close }
     },
     [
@@ -251,7 +253,7 @@ var render = function() {
           attrs: { slot: "title" },
           slot: "title"
         },
-        [_vm._v("Add Answer")]
+        [_vm._v("License request")]
       ),
       _vm._v(" "),
       _c(
@@ -272,7 +274,7 @@ var render = function() {
                   directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "complete-body"
                 },
-                [_vm._v("Answer has been added.")]
+                [_vm._v("License request has been uploaded.")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "button-close-ok" }, [
@@ -308,84 +310,12 @@ var render = function() {
         [
           _c("div", [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group top-10" }, [
-                  _c(
-                    "label",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: { for: "article_message" }
-                    },
-                    [_vm._v("Message")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("message"),
-                          expression: "errors.has('message')"
-                        }
-                      ],
-                      staticClass: "help is-danger"
-                    },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("message")))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group" }, [
-                    _c(
-                      "textarea",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.message,
-                            expression: "message"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: { rules: { required: true, min: 5 } },
-                            expression: "{ rules: { required:true, min:5}}"
-                          }
-                        ],
-                        attrs: {
-                          name: "message",
-                          id: "article_message",
-                          rows: "7"
-                        },
-                        domProps: { value: _vm.message },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.message = $event.target.value
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.message))]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticStyle: { position: "relative" } }, [
+              _c("div", { staticClass: "col-md-12 top-20" }, [
+                _c("div", { attrs: { align: "center" } }, [
                   _c("input", {
                     ref: "files",
                     staticClass: "inputfile",
-                    attrs: {
-                      type: "file",
-                      multiple: "multiple",
-                      id: "files",
-                      accept:
-                        "image/*, application/pdf,application/msword,application/excel, application/zip"
-                    },
+                    attrs: { type: "file", id: "files", accept: ".req" },
                     on: {
                       change: function($event) {
                         _vm.handleFileUploads()
@@ -397,7 +327,15 @@ var render = function() {
                     _c("img", {
                       attrs: { src: "/images/icons/icon-download.svg" }
                     }),
-                    _c("span", [_vm._v(_vm._s(_vm.labelForFiles))])
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ]
+                      },
+                      [_vm._v(_vm._s(_vm.labelForFiles))]
+                    )
                   ])
                 ])
               ])
@@ -420,8 +358,8 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("input", {
-            attrs: { type: "hidden", name: "ticketNumber" },
-            domProps: { value: _vm.ticketNumber }
+            attrs: { type: "hidden", name: "server" },
+            domProps: { value: _vm.server }
           })
         ],
         1
@@ -436,7 +374,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2ec877a5", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2c05c389", module.exports)
   }
 }
 

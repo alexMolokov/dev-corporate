@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, "\n.container.v-page {\n  position: relative;\n}\n#support-page {\n  margin-top: -35px;\n}\n@media (max-width: 767px) {\n#support-page .side-navigation-open-button {\n      height: 30px;\n      width: 30px;\n      border-radius: 3px;\n      position: absolute;\n      left: 10px;\n      top: 30px;\n      opacity: 1;\n      cursor: pointer;\n      background: #F4F5F7 url(\"/images/icons/sidebar-open.svg\") no-repeat center;\n}\n#support-page .side-navigation-open-button:hover {\n        background-color: #D2D5DA;\n}\n#support-page #support-menu-catalog {\n      display: block;\n      position: fixed;\n      z-index: 8;\n      top: 75px;\n      left: -300px;\n      transition: left .2s;\n      background-color: #fff;\n}\n#support-page #support-menu-catalog .close-support-menu {\n        display: none;\n        font-size: 30px;\n        font-weight: 300;\n        color: #ddd;\n        text-align: right;\n        padding: 0 5px;\n}\n#support-page #support-menu-catalog.opened {\n        left: 0;\n        right: 10px;\n        bottom: 0;\n        min-width: 300px;\n        box-shadow: 0 0 20px 0 rgba(22, 22, 22, 0.1);\n        overflow: auto;\n}\n#support-page #support-menu-catalog.opened .close-support-menu {\n          display: block;\n          cursor: pointer;\n          margin-top: -15px;\n}\n#support-page #support-menu-catalog.opened #accordeon {\n          margin-top: -15px;\n}\n#support-page #support-menu-catalog.opened ul li {\n          line-height: 30px;\n}\n#support-page #document-support-body {\n      padding-left: 50px;\n      position: relative;\n}\n}\n@media (min-width: 768px) {\n#support-page .side-navigation-open-button {\n      display: none;\n}\n}\n#support-page .auto-cursor-target {\n    display: none;\n}\n#support-page h4 {\n    font-weight: 600;\n}\n#support-page table th {\n    background-color: #f0f0f0;\n}\n#support-page table pre {\n    white-space: pre;\n    border: none;\n    background-color: #fff;\n    font-size: 12px;\n}\n#support-page pre {\n    font-size: 16px;\n    padding: 10px;\n}\n#support-page .alert-note {\n    background: #FEFBD7;\n    border-color: #ffeaae;\n}\n#support-page .alert-note pre {\n      border: none;\n      background-color: #FEFBD7;\n      white-space: pre-wrap;\n}\n#support-page.flex-row > div {\n    flex-grow: 1;\n    flex-basis: 1px;\n    padding: 20px 20px 0 20px;\n}\n#support-page.flex-row > div:first-child {\n      flex-grow: 0;\n      min-width: 360px;\n      border-right: 2px solid #f5f5f5;\n      padding: 20px 20px 0 0;\n      height: 100%;\n}\n#support-menu-catalog {\n  width: 300px;\n  position: absolute;\n  top: 60px;\n  left: 0;\n  bottom: 0;\n  padding: 10px;\n  border-right: 2px solid #f5f5f5;\n  z-index: 6;\n}\n#support-menu-catalog .close-support-menu {\n    display: none;\n}\n#support-menu-catalog a {\n    padding: 3px;\n}\n#support-menu-catalog ul li {\n    list-style-type: none;\n    margin-left: 10px;\n    line-height: 25px;\n}\n#support-menu-catalog .fa {\n    display: inline-block;\n    font: normal normal normal 11px/1 FontAwesome;\n    font-size: inherit;\n    text-rendering: auto;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n#support-menu-catalog .fa-chevron-down:before {\n    content: \"\\F078\";\n}\n#document-support-body {\n  padding-left: 330px;\n  padding-top: 10px;\n}\n#document-support-body .support.article .alert-warning {\n    color: #a94442;\n    background-color: #f2dede;\n    border-color: #ebccd1;\n}\n#document-support-body p {\n    margin: 0 0 20px;\n    text-align: left;\n}\n#document-support-body div.panel.pdl {\n    border: 1px solid #ccc;\n    border-radius: 3px;\n}\n#document-support-body div.panel.pdl.code {\n      overflow: auto;\n}\n#document-support-body div.panel.pdl pre {\n      line-height: 25px;\n      background-color: #fff;\n      border: none;\n      border-radius: 0px;\n}\n#document-support-body div.panel.pdl .codeContent .line {\n      white-space: pre;\n      padding: 5px;\n}\n#document-support-body div.panel.pdl .codeContent .line:first-child {\n        padding-top: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line:last-child {\n        padding-bottom: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line.comment {\n        color: #008200 !important;\n}\n#document-support-body div.panel.pdl .panelHeader.pdl {\n      border-bottom: 1px solid #ccc;\n      text-align: left;\n      padding: 5px 15px;\n      background: #f5f5f5;\n      overflow: hidden;\n      position: relative;\n      font-weight: bold;\n}\n#document-support-body ul.square li:before {\n    content: \"\\25A0\";\n    color: #00a0c8;\n    font-size: 15px;\n    font-weight: 700;\n    display: block;\n    line-height: 30px;\n}\n#document-support-body ul.square li {\n    list-style: none;\n    margin-left: 20px;\n    display: flex;\n}\n#document-support-body ul.square li > span {\n      display: block;\n      margin: 0 0 0 15px;\n      line-height: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.container.v-page {\n  position: relative;\n}\n#support-page {\n  margin-top: -35px;\n}\n#support-page #search {\n    min-width: 320px;\n    height: 250px;\n    background-color: #00a0c8;\n    margin-bottom: 50px;\n    text-align: center;\n    margin-top: 60px;\n}\n#support-page #search h1 {\n      font-size: 48px;\n      font-weight: 700;\n      color: #fff;\n      margin: 60px 0 32px;\n}\n#support-page #search form {\n      position: relative;\n}\n#support-page #search input[name=query] {\n      font-size: 14px;\n      line-height: 20px;\n      padding: 20px 55px 20px 20px;\n      border: 0;\n      border-radius: 3px;\n      display: block;\n      width: 100%;\n      margin-bottom: 20px;\n}\n#support-page #search input[type=image] {\n      position: absolute;\n      top: 20px;\n      right: 25px;\n}\n#support-page .search-result .count-found, #support-page .search-result .not-found {\n    text-align: center;\n}\n#support-page .search-result .count-found div > div:first-child, #support-page .search-result .not-found div > div:first-child {\n      font-size: 24px;\n      font-weight: 700;\n      color: #00a0c8;\n      margin-bottom: 30px;\n}\n#support-page .search-result .list-doc .search-doc {\n    margin-bottom: 40px;\n}\n#support-page .search-result .list-doc .search-doc > div a {\n      font-size: 15px;\n      font-weight: 600;\n      color: #00a0c8;\n}\n#support-page .search-result .list-doc .search-doc .snippet {\n      margin-top: 10px;\n      font-size: 15px;\n      color: #4c6d7d;\n}\n#support-page #search-section {\n    margin: 0 auto;\n    /*max-width: 660px;*/\n}\n#support-page #search-section #query {\n      border: 0;\n      border-radius: 2px;\n      display: block;\n      font-size: 12px;\n      line-height: 15px;\n      padding: 13px 55px 12px 15px;\n      margin: 45px 0;\n      width: 100%;\n      background-color: #f5f5f5;\n}\n#support-page #search-section .search {\n      position: relative;\n}\n#support-page #search-section .search input[type=image] {\n        position: absolute;\n        right: 20px;\n        top: 15px;\n        width: 14px;\n        height: 14px;\n}\n@media (max-width: 767px) {\n#support-page .side-navigation-open-button {\n      height: 30px;\n      width: 30px;\n      border-radius: 3px;\n      position: absolute;\n      left: 10px;\n      top: 30px;\n      opacity: 1;\n      cursor: pointer;\n      background: #F4F5F7 url(\"/images/icons/sidebar-open.svg\") no-repeat center;\n}\n#support-page .side-navigation-open-button:hover {\n        background-color: #D2D5DA;\n}\n#support-page #support-menu-catalog {\n      display: block;\n      position: fixed;\n      z-index: 8;\n      top: 75px;\n      left: -300px;\n      transition: left .2s;\n      background-color: #fff;\n}\n#support-page #support-menu-catalog .close-support-menu {\n        display: none;\n        font-size: 30px;\n        font-weight: 300;\n        color: #ddd;\n        text-align: right;\n        padding: 0 5px;\n}\n#support-page #support-menu-catalog.opened {\n        left: 0;\n        right: 10px;\n        bottom: 0;\n        min-width: 300px;\n        box-shadow: 0 0 20px 0 rgba(22, 22, 22, 0.1);\n        overflow: auto;\n}\n#support-page #support-menu-catalog.opened .close-support-menu {\n          display: block;\n          cursor: pointer;\n          margin-top: -15px;\n}\n#support-page #support-menu-catalog.opened #accordeon {\n          margin-top: -15px;\n}\n#support-page #support-menu-catalog.opened ul li {\n          line-height: 30px;\n}\n#support-page #document-support-body {\n      padding-left: 50px;\n      position: relative;\n}\n}\n@media (min-width: 768px) {\n#support-page .side-navigation-open-button {\n      display: none;\n}\n}\n#support-page .auto-cursor-target {\n    display: none;\n}\n#support-page h4 {\n    font-weight: 600;\n}\n#support-page table th {\n    background-color: #f0f0f0;\n}\n#support-page table pre {\n    white-space: pre;\n    border: none;\n    background-color: #fff;\n    font-size: 12px;\n}\n#support-page pre {\n    font-size: 16px;\n    padding: 10px;\n}\n#support-page .alert-note {\n    background: #FEFBD7;\n    border-color: #ffeaae;\n}\n#support-page .alert-note pre {\n      border: none;\n      background-color: #FEFBD7;\n      white-space: pre-wrap;\n}\n#support-page.flex-row > div {\n    flex-grow: 1;\n    flex-basis: 1px;\n    padding: 20px 20px 0 20px;\n}\n#support-page.flex-row > div:first-child {\n      flex-grow: 0;\n      min-width: 360px;\n      border-right: 2px solid #f5f5f5;\n      padding: 20px 20px 0 0;\n      height: 100%;\n}\n#support-menu-catalog {\n  width: 300px;\n  position: absolute;\n  top: 60px;\n  left: 0;\n  bottom: 0;\n  padding: 10px;\n  border-right: 2px solid #f5f5f5;\n  z-index: 6;\n}\n#support-menu-catalog .close-support-menu {\n    display: none;\n}\n#support-menu-catalog a {\n    padding: 3px;\n}\n#support-menu-catalog ul li {\n    list-style-type: none;\n    margin-left: 10px;\n    line-height: 25px;\n}\n#support-menu-catalog .fa {\n    display: inline-block;\n    font: normal normal normal 11px/1 FontAwesome;\n    font-size: inherit;\n    text-rendering: auto;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n#support-menu-catalog .fa-chevron-down:before {\n    content: \"\\F078\";\n}\n#document-support-body {\n  padding-left: 330px;\n  padding-top: 10px;\n}\n#document-support-body .support.article .alert-warning {\n    color: #a94442;\n    background-color: #f2dede;\n    border-color: #ebccd1;\n}\n#document-support-body p {\n    margin: 0 0 20px;\n    text-align: left;\n}\n#document-support-body div.panel.pdl {\n    border: 1px solid #ccc;\n    border-radius: 3px;\n}\n#document-support-body div.panel.pdl.code {\n      overflow: auto;\n}\n#document-support-body div.panel.pdl pre {\n      line-height: 25px;\n      background-color: #fff;\n      border: none;\n      border-radius: 0px;\n}\n#document-support-body div.panel.pdl .codeContent .line {\n      white-space: pre;\n      padding: 5px;\n}\n#document-support-body div.panel.pdl .codeContent .line:first-child {\n        padding-top: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line:last-child {\n        padding-bottom: 10px;\n}\n#document-support-body div.panel.pdl .codeContent .line.comment {\n        color: #008200 !important;\n}\n#document-support-body div.panel.pdl .panelHeader.pdl {\n      border-bottom: 1px solid #ccc;\n      text-align: left;\n      padding: 5px 15px;\n      background: #f5f5f5;\n      overflow: hidden;\n      position: relative;\n      font-weight: bold;\n}\n#document-support-body ul.square li:before {\n    content: \"\\25A0\";\n    color: #00a0c8;\n    font-size: 15px;\n    font-weight: 700;\n    display: block;\n    line-height: 30px;\n}\n#document-support-body ul.square li {\n    list-style: none;\n    margin-left: 20px;\n    display: flex;\n}\n#document-support-body ul.square li > span {\n      display: block;\n      margin: 0 0 0 15px;\n      line-height: 30px;\n}\n", ""]);
 
 // exports
 
@@ -50,6 +50,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -119,7 +161,16 @@ var ajaxform = __webpack_require__(15);
             doc_id: "",
             edition: "",
             os: "",
-            opened: false
+            opened: false,
+
+            query: "",
+            search: {
+                allowed: true,
+                showResult: false,
+                list: [],
+                count: 0,
+                query: ""
+            }
 
         };
     },
@@ -156,10 +207,47 @@ var ajaxform = __webpack_require__(15);
                 _this2.doc_id = id;
                 _this2.saveDoc({ "key": _this2.getDocKey(id), "data": data });
             });
+        },
+
+        scroll: function scroll() {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        },
+
+        go: function go(doc_id) {
+            this.search.showResult = false;
+            this.clickMenu(parseInt(doc_id));
+            this.scroll();
+        },
+        searchQuery: function searchQuery() {
+            var _this3 = this;
+
+            if (this.query.trim() == "") {
+                alert(this.t("Please enter query!"));
+                return;
+            }
+
+            var path = '/support/search/' + this.lang + '/' + this.edition + '/' + this.os;
+            this.uploadInfo(path, { query: this.query }, function (data) {
+                _this3.search.showResult = true;
+                _this3.search.count = data.count;
+                _this3.search.list = data.list;
+                _this3.search.query = data.query;
+                _this3.scroll();
+            });
         }
 
-    })
-
+    }),
+    locales: {
+        ru: {
+            "Please enter query!": "Пожалуйста введите запрос!",
+            "How can we help?": "Чем мы можем помочь?",
+            "Find anything": "Найдите что нибудь",
+            "Sorry! We didn’t find anything about": "Очень жаль, но мы не нашли ничего о",
+            "Try a different search, or": "Попробуйте другой поиск или",
+            "browse our help topics instead": 'посмотрите, нет ли подходящей темы в разделе "Документация".',
+            "results found for": "Результатов поиска для"
+        }
+    }
 });
 
 /***/ }),
@@ -439,61 +527,328 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "support-page" } }, [
-    _vm.isCatalogLoad
-      ? _c("div", [
-          _vm.menu != ""
-            ? _c(
-                "div",
-                {
-                  class: { opened: _vm.opened },
-                  attrs: { id: "support-menu-catalog" }
-                },
-                [
-                  _c(
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.search.showResult,
+            expression: "!search.showResult"
+          }
+        ]
+      },
+      [
+        _vm.isCatalogLoad
+          ? _c("div", [
+              _vm.menu != ""
+                ? _c(
                     "div",
                     {
-                      staticClass: "close-support-menu",
-                      on: {
-                        click: function($event) {
-                          _vm.opened = false
-                        }
-                      }
+                      class: { opened: _vm.opened },
+                      attrs: { id: "support-menu-catalog" }
                     },
-                    [_vm._v("×")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { attrs: { id: "accordeon" } },
                     [
-                      _c("tree-menu", {
-                        staticClass: "item",
-                        attrs: { model: _vm.menu, doc_id: _vm.doc_id },
-                        on: { clickmenu: _vm.clickMenu }
-                      })
-                    ],
-                    1
+                      _c(
+                        "div",
+                        {
+                          staticClass: "close-support-menu",
+                          on: {
+                            click: function($event) {
+                              _vm.opened = false
+                            }
+                          }
+                        },
+                        [_vm._v("×")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "ul",
+                        { attrs: { id: "accordeon" } },
+                        [
+                          _c("tree-menu", {
+                            staticClass: "item",
+                            attrs: { model: _vm.menu, doc_id: _vm.doc_id },
+                            on: { clickmenu: _vm.clickMenu }
+                          })
+                        ],
+                        1
+                      )
+                    ]
                   )
-                ]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "document-support-body" } }, [
-            _c("div", {
-              staticClass: "side-navigation-open-button",
-              on: {
-                click: function($event) {
-                  _vm.opened = !_vm.opened
-                }
-              }
-            }),
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "document-support-body" } }, [
+                _c("div", {
+                  staticClass: "side-navigation-open-button",
+                  on: {
+                    click: function($event) {
+                      _vm.opened = !_vm.opened
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.body == ""
+                  ? _c(
+                      "div",
+                      { staticClass: "top-30" },
+                      [_c("loading-page")],
+                      1
+                    )
+                  : _c("div", [
+                      _c("div", { domProps: { innerHTML: _vm._s(_vm.body) } }),
+                      _vm._v(" "),
+                      _vm.search.allowed
+                        ? _c("div", [
+                            _c("section", { attrs: { id: "search-section" } }, [
+                              _c(
+                                "form",
+                                {
+                                  staticClass: "search",
+                                  attrs: { role: "search" },
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      $event.stopPropagation()
+                                      return _vm.searchQuery($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.query,
+                                        expression: "query"
+                                      }
+                                    ],
+                                    staticClass: "ui-autocomplete-input",
+                                    attrs: {
+                                      id: "query",
+                                      name: "query",
+                                      placeholder: "SEARCH",
+                                      autocomplete: "off",
+                                      value: "",
+                                      type: "search"
+                                    },
+                                    domProps: { value: _vm.query },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.query = $event.target.value
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: {
+                                      src:
+                                        "/static/common/img/icons/icon-search.png",
+                                      width: "14",
+                                      height: "14",
+                                      type: "image"
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+              ])
+            ])
+          : _c("div", { staticClass: "top-60" }, [_c("loading-page")], 1)
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "section",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.search.showResult,
+            expression: "search.showResult"
+          }
+        ],
+        attrs: { id: "search" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "search-container" }, [
+            _c(
+              "h1",
+              { directives: [{ name: "translate", rawName: "v-translate" }] },
+              [_vm._v("How can we help?")]
+            ),
             _vm._v(" "),
-            _vm.body == ""
-              ? _c("div", { staticClass: "top-30" }, [_c("loading-page")], 1)
-              : _c("div", { domProps: { innerHTML: _vm._s(_vm.body) } })
+            _c(
+              "form",
+              {
+                staticClass: "search",
+                attrs: { role: "search" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    $event.stopPropagation()
+                    return _vm.searchQuery($event)
+                  }
+                }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.query,
+                      expression: "query"
+                    }
+                  ],
+                  staticClass: "ui-autocomplete-input",
+                  attrs: {
+                    name: "query",
+                    placeholder: "Find anything",
+                    autocomplete: "off",
+                    type: "search"
+                  },
+                  domProps: { value: _vm.query },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.query = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: {
+                    src: "/static/common/img/icons/icon-search.png",
+                    type: "image"
+                  }
+                })
+              ]
+            )
           ])
         ])
-      : _c("div", { staticClass: "top-60" }, [_c("loading-page")], 1)
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.search.showResult,
+            expression: "search.showResult"
+          }
+        ],
+        staticClass: "container search-result"
+      },
+      [
+        _c("div", { staticClass: "count-found" }, [
+          _c("div", [
+            _vm.lang == "ru"
+              ? _c("div", [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ]
+                    },
+                    [_vm._v("results found for")]
+                  ),
+                  _vm._v(
+                    ' "' +
+                      _vm._s(_vm.search.query) +
+                      '" : ' +
+                      _vm._s(_vm.search.count)
+                  )
+                ])
+              : _c("div", [
+                  _vm._v(_vm._s(_vm.search.count) + " "),
+                  _c("span", [_vm._v("results found for")]),
+                  _vm._v(' "' + _vm._s(_vm.search.query) + '"')
+                ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.search.count > 0
+          ? _c("div", [
+              _c(
+                "div",
+                { staticClass: "list-doc" },
+                _vm._l(_vm.search.list, function(doc) {
+                  return _c("div", { staticClass: "search-doc" }, [
+                    _c("div", [
+                      _c("a", {
+                        attrs: { href: "#" },
+                        domProps: { innerHTML: _vm._s(doc.title) },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            $event.stopPropagation()
+                            _vm.go(doc.id)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", {
+                      staticClass: "snippet",
+                      domProps: { innerHTML: _vm._s(doc.snippet) }
+                    })
+                  ])
+                })
+              )
+            ])
+          : _c("div", [
+              _c("div", [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Sorry! We didn’t find anything about")]
+                ),
+                _vm._v(" "),
+                _c("b", [_vm._v(_vm._s(_vm.query))]),
+                _vm._v(".")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Try a different search, or")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { href: "/en/support" }
+                  },
+                  [_vm._v("browse our help topics instead")]
+                ),
+                _vm._v(".")
+              ])
+            ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []

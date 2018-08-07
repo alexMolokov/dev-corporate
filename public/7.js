@@ -127,7 +127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var userMenu = __webpack_require__(88);
 
 var formAddArticle = function formAddArticle() {
-    return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 270));
+    return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 270));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({

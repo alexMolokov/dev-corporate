@@ -25,12 +25,14 @@ class BsHttpClientTest extends TestCase
             "cookie" => env("BSYSTEM_COOKIE")
         ]);
 
+        var_dump($this->client);
+
 
     }
 
 
     public function testGetClientByLogin() {
-        $result = $this->client->sendCommand("get_client_by_login", "/admin/corporates/client", ["login" => "vasja"]);
+        $result = $this->client->sendCommand("get_client_by_login", "/admin/corporates/client", ["login" => "vasyaa"]);
         $this->assertTrue(true);
         var_dump( $result);
     }

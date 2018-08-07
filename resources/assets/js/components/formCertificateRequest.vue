@@ -71,7 +71,10 @@ export default {
   mixins: [ajaxform],
   locales: {
     	ru: {
-
+                "Certificate request": "Запрос сертификата",
+                "Certificate request has been uploaded.": "Запрос сертификата успешно загружен.",
+                "Send": "Отправить",
+                "Select file certificate request": "Выберите файл сертификата"
          }
     },
   methods: {

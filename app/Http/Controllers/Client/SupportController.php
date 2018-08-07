@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Services\Search\SearchQuery;
+use App\Services\Support\SupportSearchMapper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -23,6 +25,36 @@ class SupportController extends Controller
         $this->service->setEdition($edition);
         $this->service->setOs($os);
         $this->service->setLang($lang);
+    }
+
+
+    public function search($lang,$edition, $os, Request $request) {
+        $this->_init($lang, $edition, $os);
+
+        $engine =  resolve("App\Contracts\SearchInterface");
+        $supportMapper = new SupportSearchMapper();
+        $searchQuery = new SearchQuery();
+        $searchQuery->setQuery($request->get("query"));
+        $searchQuery->addAttribute("langint", $supportMapper->getLang($lang));
+        $searchQuery->addAttribute("osint", $supportMapper->getOs($os));
+        $searchQuery->addAttribute("editionint", $supportMapper->getEdition($edition));
+
+        $result = $engine->search($searchQuery);
+        $response = ["count" => 0,  "query" => $request->get("query"), "list" => []];
+        if($result->getCountRecords() == 0) return response()->success($response);
+
+        $response["count"] = $result->getCountRecords();
+        $docs = $result->getDocs();
+        foreach($docs as $doc)
+        {
+            $response["list"][] = [
+                "id" => $doc->doc_id,
+                "title" => $doc->title,
+                "snippet" => $doc->snippet
+            ];
+
+        }
+        return response()->success($response);
     }
 
 

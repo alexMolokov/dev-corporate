@@ -84,6 +84,12 @@ Route::group(['prefix' => 'support','middleware' => ['web', 'auth']],function ()
     where('edition', 'standalone|cluster')->
     name('get_support_catalog');
 
+    Route::post('/search/{lang}/{edition}/{os}', 'Client\SupportController@search')->
+    where('os', 'windows|linux')->
+    where('lang', 'ru|en')->
+    where('edition', 'standalone|cluster')->
+    name('support_search');
+
     Route::post('/{lang}/{edition}/{os}/catalog', 'Client\SupportController@getCatalog')->
     where('os', 'windows|linux')->
     where('lang', 'ru|en')->
