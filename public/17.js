@@ -72,15 +72,15 @@ function License(data) {
 
 /***/ }),
 
-/***/ 289:
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(290)
+var __vue_script__ = __webpack_require__(295)
 /* template */
-var __vue_template__ = __webpack_require__(291)
+var __vue_template__ = __webpack_require__(296)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -120,7 +120,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 290:
+/***/ 295:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -281,7 +281,7 @@ var loadingInform = __webpack_require__(84);
 
 /***/ }),
 
-/***/ 291:
+/***/ 296:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -455,145 +455,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-54973b1b", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 76:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(77)
-/* template */
-var __vue_template__ = __webpack_require__(78)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\mixins\\error-inform.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-41c6c4ae", Component.options)
-  } else {
-    hotAPI.reload("data-v-41c6c4ae", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 77:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'error-inform',
-  props: {
-    state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START },
-    err: { type: Object, default: function _default() {
-        return { validation: [], common: [] };
-      } }
-  },
-  data: function data() {
-    return {};
-  },
-
-  computed: {
-    showError: function showError() {
-      return (this.err.validation.length > 0 || this.err.common.length > 0) && this.state == __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 78:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.showError
-    ? _c("div", { staticClass: "error-block" }, [
-        _c(
-          "div",
-          { staticClass: "alert alert-danger fade in" },
-          [
-            _vm._l(_vm.err.validation, function(er) {
-              return _c("div", { staticClass: "top-10" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(er.name) +
-                    " - " +
-                    _vm._s(er.description) +
-                    "\n         "
-                )
-              ])
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.err.common, function(er) {
-              return _c("div", { staticClass: "top-10" }, [
-                _c("div", { staticClass: "top-10" }, [_vm._v(_vm._s(er))])
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-41c6c4ae", module.exports)
   }
 }
 

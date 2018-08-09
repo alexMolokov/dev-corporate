@@ -93,7 +93,7 @@ export function upgradeLicense(localServer, licenseID)
     this.sumOrder = function(context)
     {
         let sum = 0;
-
+        let rate = context.getRate;
         for(let product of context.basket.values())
         {
             if(product.id == PRODUCTS.STANDALONE || product.id == PRODUCTS.CLUSTER)
@@ -110,10 +110,10 @@ export function upgradeLicense(localServer, licenseID)
                 }
 
 
-                sum += Math.round(price*(days/year), 2)*Math.abs(context.choice.users - license.users);
+                sum += Math.round(Math.round(price*(days/year), 2)*Math.abs(context.choice.users - license.users)/rate);
             }
             else {
-                sum += product[context.choice.price];
+                sum += Math.round(product[context.choice.price]/rate);
             }
         }
 

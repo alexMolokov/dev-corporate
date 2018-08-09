@@ -157,7 +157,7 @@
                 <div class="row copyright">
                     <div class="col-md-12">
                         <p class="legal">
-                            <span>© {{currentYear}} VIPole International LP, United Kingdom, All rights reserved.</span>
+                            <span>© {{currentYear}} VIPole LTD, All rights reserved.</span>
                         </p>
                         <p class="legal">
                             <span><a :href="rootReference + '/user_agreement'">User Agreement</a> | <a :href="rootReference + '/terms_of_use'">Terms of Use</a>  | <a :href="rootReference + '/confidentiality'">Privacy Policy</a></span>

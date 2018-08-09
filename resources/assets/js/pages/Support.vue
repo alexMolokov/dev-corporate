@@ -7,6 +7,7 @@
                 <ul id="accordeon">
                     <tree-menu class="item" :model="menu" :doc_id="doc_id" @clickmenu="clickMenu"/>
                 </ul>
+                <form-search @search-section:search="searchForm"></form-search>
             </div>
             <div id="document-support-body">
                 <div class="side-navigation-open-button" @click="opened=!opened"></div>
@@ -14,12 +15,7 @@
                 <div v-else>
                     <div  v-html="body"></div>
                     <div v-if="search.allowed">
-                        <section id="search-section">
-                            <form class="search" role="search" @submit.prevent.stop="searchQuery">
-                                <input id="query" class="ui-autocomplete-input" name="query" v-model="query" placeholder="SEARCH" autocomplete="off" value="" type="search">
-                                <input src="/static/common/img/icons/icon-search.png" width="14" height="14" type="image">
-                            </form>
-                        </section>
+                        <form-search @search-section:search="searchForm"></form-search>
                     </div>
                 </div>
             </div>
@@ -70,6 +66,7 @@
 
     const treeMenu = require('../components/treeMenu.vue');
     const loadingPage = require('../components/loadingPage.vue');
+    const formSearch = require('../components/formSearch.vue');
 
     let ajaxform = require('../mixins/ajax-form.vue');
     import {mapState, mapMutations, mapGetters} from "vuex";
@@ -125,11 +122,19 @@
             ...mapState(["lang"]),
             ...mapGetters("support", ["getCatalog", "getDoc"])
         },
+        watch: {
+            lang()
+            {
+                this.$router.push({name: 'documents'});
+                this.scroll();
+            }
+        },
         mixins: [ajaxform],
 
         components: {
             'tree-menu': treeMenu,
-            "loading-page": loadingPage
+            "loading-page": loadingPage,
+            "form-search": formSearch
 
         },
         methods: {
@@ -169,6 +174,11 @@
                 this.clickMenu(parseInt(doc_id));
                 this.scroll();
 
+            },
+            searchForm: function(query)
+            {
+                this.query = query;
+                this.searchQuery();
             },
             searchQuery: function()
             {
@@ -281,7 +291,13 @@
 
         }
 
-
+        #support-menu-catalog {
+            #search-section {
+                #query {
+                    margin: 25px 0;
+                }
+            }
+        }
 
         #search-section {
             margin: 0 auto;
@@ -298,6 +314,8 @@
                 width: 100%;
                 background-color: #f5f5f5;
             }
+
+
 
             .search {
                 position: relative;

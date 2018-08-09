@@ -18,12 +18,21 @@ class ShopService  extends Service implements ShopInterface
 {
     const PATH = "/payment";
     const OPS =[
+        "getConfig" => "get_shop_config",
         "buyServer" => "buy_corporate_server",
         "renewLicense" =>  "renew_corporate_license",
         "upgradeLicense" => "upgrade_corporate_license",
         "newLicense" => "new_corporate_license",
     ];
 
+
+    public function getConfig()
+    {
+        if($result = $this->client->sendCommand(self::OPS["getConfig"], self::PATH, []))
+        {
+            if($result->status) return $result->response;
+        }
+    }
 
     public function buyServer(array $data)
     {

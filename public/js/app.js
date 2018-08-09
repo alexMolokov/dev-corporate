@@ -7972,7 +7972,7 @@ var routes = [{ path: '/',
         name: "documents"
     }, { path: 'support/:edition/:os',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(70)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(70)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         },
         name: "supportHtml"
     }, { path: 'tickets',
@@ -7988,7 +7988,7 @@ var routes = [{ path: '/',
         name: "ticket"
     }, { path: 'shop/:makeDeal/:server?/:license?',
         component: function component(resolve) {
-            __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(73)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(73)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         },
         props: true,
         name: "shop"
@@ -56605,6 +56605,11 @@ var mutations = {
 "use strict";
 var state = {
     currency: undefined,
+    exchangeRate: {},
+    shortCurrencySymbols: {
+        "USD": "$",
+        "EUR": "&#x20ac;"
+    },
     discount: 0,
     periods: [],
     os: [],
@@ -56635,6 +56640,17 @@ var getters = {
     },
     getRenewDiscount: function getRenewDiscount(state) {
         return state.discount;
+    },
+    getCurrency: function getCurrency(state) {
+        return state.currency;
+    },
+    getShortCurrencySymbol: function getShortCurrencySymbol(state) {
+        if (typeof state.shortCurrencySymbols[state.currency] !== "undefined") return state.shortCurrencySymbols[state.currency];
+        return state.currency;
+    },
+    getRate: function getRate(state) {
+        if (typeof state.exchangeRate[state.currency] !== "undefined") return state.exchangeRate[state.currency];
+        return 1;
     }
 };
 var actions = {};
@@ -56648,6 +56664,9 @@ var mutations = {
     },
     addOs: function addOs(state, os) {
         state.os.push(os);
+    },
+    addRate: function addRate(state, rate) {
+        state.exchangeRate[rate.id] = rate.value;
     },
     setCurrency: function setCurrency(state, currency) {
         state.currency = currency;
@@ -58263,7 +58282,7 @@ var render = function() {
                 _vm._v(
                   "© " +
                     _vm._s(_vm.currentYear) +
-                    " VIPole International LP, United Kingdom, All rights reserved."
+                    " VIPole LTD, All rights reserved."
                 )
               ])
             ]),

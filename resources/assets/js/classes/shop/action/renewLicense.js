@@ -82,6 +82,7 @@ export function renewLicense(localServer, licenseID)
     this.sumOrder = function(context)
     {
         let sum = 0;
+        let rate = context.getRate;
 
         for(let product of context.basket.values())
         {
@@ -99,10 +100,10 @@ export function renewLicense(localServer, licenseID)
                 }
 
 
-                sum += Math.abs(context.choice.users)*price;
+                sum += Math.round(Math.abs(context.choice.users)*price/rate);
             }
             else {
-                sum += product[context.choice.price];
+                sum += Math.round(product[context.choice.price]/rate);
             }
         }
 

@@ -41,7 +41,7 @@
                     <span>
                     <input type="checkbox" :disabled="isDisabledProduct(item.id)" name="addons" :id="'addons_' + item.id" @click="addCheckbox($event)" :value="item.id" :checked="inBasket(item.id)"> <label :for="'addons_' + item.id">{{item.name}}</label>
                     </span>
-                    <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
+                    <span class="price"><span v-if="item[choice.price] > 0"><sup v-html="getShortCurrencySymbol"></sup>{{getPrice(item[choice.price])}}</span></span>
                 </div>
             </div>
         </section>
@@ -53,7 +53,7 @@
                     <span>
                     <input type="checkbox"  :disabled="isDisabledProduct(item.id)" name="addons" :id="'service_' + item.id" @click="addCheckbox($event)" :value="item.id" :checked="inBasket(item.id)"> <label :for="'service_' + item.id">{{item.name}}</label>
                     </span>
-                    <span class="price"><span v-if="item[choice.price] > 0"><sup>$</sup>{{item[choice.price]}}</span></span>
+                    <span class="price"><span v-if="item[choice.price] > 0"><sup v-html="getShortCurrencySymbol"></sup>{{getPrice(item[choice.price])}}</span></span>
 
                 </div>
             </div>
@@ -67,16 +67,19 @@
             <div v-if="choice.price != PRICES.TRIAL">
                 <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="choosePayment" v-translate v-if="sum > 0">Check out</a>
                 <div class="subtotal">
-                    <h3 v-translate>Subtotal (USD)</h3>
+                    <h3 v-translate>Subtotal ({{getCurrency}})</h3>
                     <h3 v-if="discount > 0"><span v-translate>Discount: {{discount*100}}%</span></h3>
-                    <div class="price"><sup>$</sup>{{sum}}</div>
+                    <div class="price"><sup v-html="getShortCurrencySymbol"></sup>{{sum}}</div>
                 </div>
             </div>
         </div>
         <form-payment v-if="showFormPayment"  @close="showFormPayment = false" :purchase="purchase"></form-payment>
         <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false" :choice="choice" :basket="basket"></form-get-trial>
     </div>
-    <div v-if="products.length == 0"><loading-page></loading-page></div>
+    <div v-if="products.length == 0">
+        <loading-page v-if="loadingConfig"></loading-page>
+        <error-inform :err="err" :state="stateLoading"></error-inform>
+    </div>
     </div>
 
 </template>
@@ -98,6 +101,9 @@
 
     const formPayment = () => System.import('../components/formPayment.vue');
     const formGetTrial = () => System.import('../components/formGetTrial.vue');
+    import {STATES} from "../mixins/states";
+    import ErrorInform from "../mixins/error-inform.vue";
+
 
     export default {
         name: 'order',
@@ -108,6 +114,8 @@
         },
         data(){
             return {
+                err: {validation:[], common: []},
+                stateLoading: STATES.START,
                 showFormPayment: false,
                 showFormGetTrial: false,
                 choice: {
@@ -134,6 +142,7 @@
             }
         },
         components: {
+            ErrorInform,
             LoadingPage,
             "user-menu": userMenu,
             "form-payment": formPayment,
@@ -142,7 +151,10 @@
         computed: {
             ...mapState("shop",["products","productsMap"]),
             ...mapState("servers",["serversMap"]),
-            ...mapGetters("shop",["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount"]),
+            ...mapGetters("shop",["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount", "getCurrency", "getShortCurrencySymbol", "getRate"]),
+            loadingConfig(){
+                return this.stateLoading != STATES.ERROR
+            }
         },
         created()
         {
@@ -151,6 +163,7 @@
             if(this.products.length == 0)
             {
                 this.uploadInfo("/shop/get-product-list", {}, (data) => {
+
                     for(let productId in data.products)
                     {
                         this.addProduct({"id": productId, ...data.products[productId]});
@@ -166,11 +179,19 @@
                         this.addOs({"id": os, ...data.os[os]});
                     }
 
+                    for(let rate in data.exchangeRate)
+                    {
+                        this.addRate({"id": rate, "value": data.exchangeRate[rate]});
+                    }
+
                     this.setCurrency(data.currency);
                     this.setDiscount(data.renewDiscount);
                     this.state.setDefaultChoice(this);
                     this.state.setForbidden(this);
                     this.state.sumOrder(this);
+                },  {}, (data) => {
+                   this.stateLoading =  STATES.ERROR;
+                   this.err.common.push(data);
                 });
             }
             else
@@ -185,7 +206,10 @@
         mixins: [ajaxform],
 
         methods: {
-            ...mapMutations("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount"]),
+            ...mapMutations("shop", ["addProduct", "addPeriod", "addOs", "setCurrency", "setDiscount", "addRate"]),
+            getPrice(price){
+              return Math.round(price/this.getRate,0);
+            },
             factoryState: function()
             {
                 if(this.makeDeal == ORDER_STATES.NEW_ORDER)

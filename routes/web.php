@@ -62,6 +62,7 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
     Route::match(["get", "post"],'/renew-license', 'Client\ShopController@renewLicense')->name('renew_license');
     Route::match(["get", "post"],'/upgrade-license', 'Client\ShopController@upgradeLicense')->name('upgrade_license');
     Route::match(["get", "post"],'/new-license', 'Client\ShopController@newLicense')->name('new_license');
+    Route::match(["get", "post"],'/get-invoice', 'Client\ShopController@getInvoice')->name('get_invoice');
 });
 
 

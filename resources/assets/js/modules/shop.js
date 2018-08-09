@@ -1,5 +1,10 @@
 const state = {
     currency: undefined,
+    exchangeRate: {},
+    shortCurrencySymbols: {
+        "USD":"$",
+        "EUR": "&#x20ac;"
+    },
     discount: 0,
     periods: [],
     os: [],
@@ -24,6 +29,17 @@ const getters =  {
     },
     getRenewDiscount: (state) => {
         return state.discount;
+    },
+    getCurrency: (state) => {
+        return state.currency;
+    },
+    getShortCurrencySymbol: (state) => {
+        if(typeof state.shortCurrencySymbols[state.currency] !== "undefined" ) return  state.shortCurrencySymbols[state.currency];
+        return state.currency;
+    },
+    getRate: (state) => {
+        if(typeof state.exchangeRate[state.currency] !== "undefined" ) return  state.exchangeRate[state.currency];
+        return 1;
     }
 };
 const actions =  {};
@@ -40,6 +56,9 @@ const mutations = {
     addOs: function(state, os)
     {
         state.os.push(os);
+    },
+    addRate: function(state, rate) {
+        state.exchangeRate[rate.id] = rate.value;
     },
     setCurrency: function(state, currency)
     {
