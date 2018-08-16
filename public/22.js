@@ -1,14 +1,14 @@
 webpackJsonp([22],{
 
-/***/ 156:
+/***/ 232:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(157)
+var __vue_script__ = __webpack_require__(233)
 /* template */
-var __vue_template__ = __webpack_require__(158)
+var __vue_template__ = __webpack_require__(234)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\formChangeCompanyName.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formChangeDetails.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-268e34a6", Component.options)
+    hotAPI.createRecord("data-v-279214c7", Component.options)
   } else {
-    hotAPI.reload("data-v-268e34a6", Component.options)
+    hotAPI.reload("data-v-279214c7", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,18 +48,18 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 157:
+/***/ 233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(4);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -105,7 +105,44 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -115,53 +152,78 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'form-change-company-name',
+    name: 'form-change-details',
+    components: {
+        "modal-window": __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default.a,
+        "error-inform": __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default.a,
+        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
+    },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])({
-        companyName: function companyName(state) {
-            return state.user.name;
+        'billing': function billing(state) {
+            return state.user.billing;
         }
     })),
     mounted: function mounted() {
-        this.name = this.companyName;
-    },
-
-    components: {
-        "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
-        "error-inform": __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default.a,
-        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
+        this.address = this.billing.address;
+        this.email = this.billing.email;
+        this.phone = this.billing.phone;
+        this.country = this.billing.country;
+        this.city = this.billing.city;
+        this.areaState = this.billing.state;
+        this.zip = this.billing.zip;
     },
     data: function data() {
         return {
-            id: "change-name",
-            url: "/user/company/change",
+            id: "change-details",
+            url: "/user/company-details/change",
             redirect: false,
+            address: '',
+            phone: '',
+            email: '',
+            city: '',
+            areaState: '',
+            country: '',
+            zip: '',
             password: '',
-            name: '',
             type_input: "password"
         };
     },
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default.a],
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
     locales: {
         ru: {
+            'Change company info': 'Изменить данные о компании',
+            'Company info has been changed.': 'Информация о компании была изменена',
             'Password': 'Пароль',
-            'Company': 'Компания',
+            'Address': 'Адрес',
             'Next': 'Далее',
-            'Company name has been changed.': 'Название компании было изменено.',
-            'Change company name': 'Изменить название компании'
+            "City": 'Город',
+            'State': 'Область',
+            'Country': 'Страна',
+            'Zip code': 'Индекс',
+            'Phone': 'Телефон'
         }
     },
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setCompanyName']), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setDetails']), {
         togglePassword: function togglePassword(type) {
-            this.type_input = this.type_input_current == 'password' ? 'text' : 'password';
+            this.type_input = this.type_input == 'password' ? 'text' : 'password';
         },
 
         validate: function validate() {
             var _this = this;
 
-            var data = { "name": this.name, "password": this.password };
+            var data = {
+                "address": this.address,
+                "email": this.email,
+                "phone": this.phone,
+                "password": this.password,
+                "city": this.city,
+                "country": this.country,
+                "state": this.areaState,
+                "zip": this.zip
+            };
             this.send(this.url, data, function () {
-                _this.setCompanyName({ "name": _this.name });
+                _this.setDetails(data);
             });
         }
 
@@ -170,7 +232,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /***/ }),
 
-/***/ 158:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -182,7 +244,7 @@ var render = function() {
     {
       staticClass: "in",
       staticStyle: { display: "block" },
-      attrs: { id: "change-name", show: true },
+      attrs: { id: _vm.id, show: true },
       on: { close: _vm.close }
     },
     [
@@ -193,7 +255,7 @@ var render = function() {
           attrs: { slot: "title" },
           slot: "title"
         },
-        [_vm._v("Change company name")]
+        [_vm._v("Change company info")]
       ),
       _vm._v(" "),
       _c(
@@ -214,7 +276,7 @@ var render = function() {
                   directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "complete-body"
                 },
-                [_vm._v("Company name has been changed.")]
+                [_vm._v("Company info has been changed.")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "button-close-ok" }, [
@@ -258,9 +320,9 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "company" }
+                      attrs: { for: "address" }
                     },
-                    [_vm._v("Company")]
+                    [_vm._v("Address")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -270,13 +332,13 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("name"),
-                          expression: "errors.has('name')"
+                          value: _vm.errors.has("address"),
+                          expression: "errors.has('address')"
                         }
                       ],
                       staticClass: "help is-danger"
                     },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("name")))]
+                    [_vm._v("*" + _vm._s(_vm.errors.first("address")))]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group" }, [
@@ -285,26 +347,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.name,
-                          expression: "name"
+                          value: _vm.address,
+                          expression: "address"
                         },
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: "required|min:3",
-                          expression: "'required|min:3'"
+                          value: "required|min:5",
+                          expression: "'required|min:5'"
                         }
                       ],
                       staticClass: "form-control",
-                      class: { error: _vm.errors.has("name") },
-                      attrs: { id: "company", name: "name" },
-                      domProps: { value: _vm.name },
+                      class: { error: _vm.errors.has("address") },
+                      attrs: { id: "address", name: "address" },
+                      domProps: { value: _vm.address },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.name = $event.target.value
+                          _vm.address = $event.target.value
                         }
                       }
                     })
@@ -318,7 +380,367 @@ var render = function() {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "password" }
+                      attrs: { for: "address" }
+                    },
+                    [_vm._v("City")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("city"),
+                          expression: "errors.has('city')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("city")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.city,
+                          expression: "city"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "min:3",
+                          expression: "'min:3'"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("city") },
+                      attrs: { id: "city", name: "city" },
+                      domProps: { value: _vm.city },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.city = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "address" }
+                    },
+                    [_vm._v("State")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("state"),
+                          expression: "errors.has('state')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("state")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.areaState,
+                          expression: "areaState"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "min:3",
+                          expression: "'min:3'"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("state") },
+                      attrs: { id: "state", name: "state" },
+                      domProps: { value: _vm.areaState },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.areaState = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "address" }
+                    },
+                    [_vm._v("Country")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("country"),
+                          expression: "errors.has('country')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("country")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.country,
+                          expression: "country"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "min:3",
+                          expression: "'min:3'"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("country") },
+                      attrs: { id: "country", name: "country" },
+                      domProps: { value: _vm.country },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.country = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "address" }
+                    },
+                    [_vm._v("Zip code")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("zip"),
+                          expression: "errors.has('zip')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("zip")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.zip,
+                          expression: "zip"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "min:3",
+                          expression: "'min:3'"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("zip") },
+                      attrs: { id: "zip", name: "zip" },
+                      domProps: { value: _vm.zip },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.zip = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "detail_phone" }
+                    },
+                    [_vm._v("Phone")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("phone"),
+                          expression: "errors.has('phone')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("phone")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.phone,
+                          expression: "phone"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, min: 10 } },
+                          expression: "{ rules: { required:true, min:10}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("phone") },
+                      attrs: { id: "detail_phone", name: "phone" },
+                      domProps: { value: _vm.phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.phone = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "detail_email" }
+                    },
+                    [_vm._v("Email")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("email")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, email: true } },
+                          expression: "{ rules: { required:true, email:true}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("email") },
+                      attrs: { id: "detail_email", name: "email" },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "detail-password" }
                     },
                     [_vm._v("Password")]
                   ),
@@ -358,7 +780,11 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           class: { error: _vm.errors.has("password") },
-                          attrs: { name: "password", type: "checkbox" },
+                          attrs: {
+                            id: "detail-password",
+                            name: "password",
+                            type: "checkbox"
+                          },
                           domProps: {
                             checked: Array.isArray(_vm.password)
                               ? _vm._i(_vm.password, null) > -1
@@ -404,7 +830,11 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: { name: "password", type: "radio" },
+                            attrs: {
+                              id: "detail-password",
+                              name: "password",
+                              type: "radio"
+                            },
                             domProps: { checked: _vm._q(_vm.password, null) },
                             on: {
                               change: function($event) {
@@ -429,7 +859,11 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: { name: "password", type: _vm.type_input },
+                            attrs: {
+                              id: "detail-password",
+                              name: "password",
+                              type: _vm.type_input
+                            },
                             domProps: { value: _vm.password },
                             on: {
                               input: function($event) {
@@ -485,21 +919,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-268e34a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-279214c7", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 76:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(77)
+var __vue_script__ = __webpack_require__(80)
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(81)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -539,12 +973,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 77:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
 //
 //
 //
@@ -582,7 +1016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 78:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -630,19 +1064,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 79:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(80)
+  __webpack_require__(84)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(82)
+var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(83)
+var __vue_template__ = __webpack_require__(87)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -682,17 +1116,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 80:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(81);
+var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(14)("81548b54", content, false, {});
+var update = __webpack_require__(13)("81548b54", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -709,10 +1143,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(12)(false);
 // imports
 
 
@@ -724,7 +1158,7 @@ exports.push([module.i, "\n.modal[data-v-12158cf6] {\n    overflow: auto;\n    o
 
 /***/ }),
 
-/***/ 82:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -786,7 +1220,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 83:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -857,15 +1291,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 84:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(85)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(86)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -905,12 +1339,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 85:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
 //
 //
 //
@@ -982,7 +1416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 86:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

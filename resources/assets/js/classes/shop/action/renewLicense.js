@@ -52,6 +52,16 @@ export function renewLicense(localServer, licenseID)
              data.products.push(PRODUCTS[license.serverModules[i]]);
         }
 
+        let addons = context.getAddons;
+        for(let i = 0; i < addons.length; i++)
+        {
+            data.products.push(PRODUCTS[addons[i]["bsname"]]);
+        }
+
+        data.products.push(PRODUCTS["MEDIA_WORKER"]);
+        data.products.push(PRODUCTS["CLASTER_WORKER"]);
+
+
         if(localServer.edition == EDITIONS.STANDALONE)
         {
             let ar = [PRODUCTS.CLASTER_WORKER,PRODUCTS.INSTALL_CLASTER, PRODUCTS.RECOVER_CLASTER, PRODUCTS.CLUSTER];

@@ -20,10 +20,15 @@ class CorporateClient implements AuthenticatableContract
     protected  $phone;
     protected  $email;
     protected  $address;
+    protected  $zip;
+    protected  $city;
+    protected  $country;
+    protected  $state;
+
 
     protected $contacts = [];
 
-    protected $fillable = ['customerId','login', 'name','title', 'phone', 'email', 'address'];
+    protected $fillable = ['customerId','login', 'name','title', 'phone', 'email', 'address', 'zip', 'city', 'country', 'state'];
 
     public function __construct(array $data)
     {

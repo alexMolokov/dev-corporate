@@ -18,6 +18,12 @@ class DownloadServerController extends Controller
         $this->serverService = resolve("App\Contracts\CorporateServerInterface");
     }
 
+    public function getAddons()
+    {
+        $config = config("downloadServer.addons");
+        return  response()->success($config);
+    }
+
     public function download($os, $edition)
     {
       if(!$this->_hasServerEdition($edition)) return view("download_warning");

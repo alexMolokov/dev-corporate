@@ -119,6 +119,8 @@ class CorporateClientService extends Service implements CorporateClientInterface
      */
     public function changeCompanyDetails($customerId, array $info)
     {
+
+
         $result = $this->client->sendCommand(self::OPS["changeCompanyDetails"], self::PATH, array_merge(["customer_id" => $customerId], $info));
         return $result->status;
     }
@@ -135,10 +137,13 @@ class CorporateClientService extends Service implements CorporateClientInterface
             "phone" => $response->phone,
             "email" => $response->email,
             "address" => $response->address,
-            "service_domain" => $response->service_domain
+            "service_domain" => $response->service_domain,
+            "zip" => $response->zip,
+            "city" => $response->city,
+            "country" => $response->country,
+            "state" => $response->state
+
         ]);
-
-
 
         foreach($response->contacts as $contact)
         {

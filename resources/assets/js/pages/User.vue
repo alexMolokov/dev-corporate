@@ -48,15 +48,17 @@
 
             <div class="user-card">
                 <div class="head flex-row">
-                    <div><div class="user-card_icon user-card_balance" v-translate>Contacts</div></div>
+                    <div><div class="user-card_icon user-card_balance" v-translate>Billing details and contacts</div></div>
                  </div>
                 <div class="info">
                     <div class="info_section">
                         <div>
                             <div class="info-head"><span v-translate>Billing details</span>  <a href="#" class="ml-10" @click.prevent.stop="showFormChangeDetails = true"><span class="glyphicon glyphicon-pencil blue" aria-hidden="true"></span></a></div>
                             <div class="group-attr">
-                                <div class="info-value">
-                                    <span v-translate>Address:</span> <span style="margin-left: 5px">{{user.billing.address}}</span>
+                                <div class="info-value flex-row">
+                                    <span v-translate style="flex-grow: 0; margin-bottom: 0px;">Address:</span> <span style="margin-left: 5px;  margin-bottom: 0px;">
+                                    {{getAddress}}
+                                </span>
                                 </div>
                                 <div class="info-value top-10">
                                     <span v-translate>Phone:</span> <span>{{user.billing.phone}}</span>
@@ -82,6 +84,12 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="top-10" v-if="getServers.length > 0">
+                        <div class="top-10"> <router-link :to="{name: 'payments'}" v-translate>History payments</router-link></div>
+                       <div class="top-10"><router-link :to="{name: 'unpaid_invoices'}"><span v-translate>Unpaid invoices</span></router-link></div>
+
                     </div>
 
 
@@ -211,7 +219,9 @@
         },
         computed: {
             ...mapState({user: state => state.user}),
-            ...mapGetters("servers",["getServers", "isLoaded"])
+            ...mapGetters("servers",["getServers", "isLoaded"]),
+            ...mapGetters(["getAddress"]),
+
         },
         mixins: [ajaxform],
         created()
@@ -251,6 +261,7 @@
                 'Phone:': 'Телефон:',
                 'Contacts': 'Контакты',
                 'Billing details': 'Платежная информация',
+                'Billing details and contacts': 'Реквизиты оплаты и контакты',
                 'My Account': 'Мой аккаунт',
                 'Tickets': 'Тикеты',
                 'Documents': 'Документы',
@@ -279,6 +290,9 @@
                 "New licence": "Новая лицензия",
                 "active": "Активна",
                 "payment required": "Требуется оплата",
+                "Payments": "Платежи",
+                "Unpaid invoices": "Неоплаченные счета",
+                "History payments": "История платежей"
             }
         }
 

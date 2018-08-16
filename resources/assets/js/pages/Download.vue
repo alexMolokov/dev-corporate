@@ -18,12 +18,21 @@
         </div>
 
 
+        <div v-if="addons.length > 0" class="top-60">
+            <h2 v-translate>Addons</h2>
+            <div v-for="addon in addons" class="top-5"><a :href="addon.url" target="_blank">{{addon.name}}</a></div>
+
+
+        </div>
+
+
     </div>
 
 </template>
 
 <script type="text/ecmascript-6">
     let userMenu = require('../components/userMenu.vue');
+    var ajaxform = require('../mixins/ajax-form.vue');
     import { mapState} from 'vuex';
     import {EDITIONS} from "../classes/shop/action/const";
 
@@ -43,13 +52,24 @@
         },
         data(){
             return {
-                
+                "addons" : []
             }
+        },
+        mixins: [ajaxform],
+        created(){
+            this.uploadInfo("/download/get-addons", {}, (data) => {
+                for(let addon in data)
+                {
+
+                    this.addons.push({"id": addon, "url": data[addon]["url"],  "name": data[addon]["name"] });
+                }
+
+            })
         },
 
         locales: {
             ru: {
-
+                    'Addons': 'Дополнения'
 
 
             }

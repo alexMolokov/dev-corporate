@@ -19,6 +19,31 @@
                             </div>
                         </div>
                         <div class="form-group  top-10">
+                            <label for="address" v-translate>City</label> <span v-show="errors.has('city')" class="help is-danger">*{{errors.first('city')}}</span>
+                            <div class="input-group">
+                                <input  v-model="city"  id="city" name="city" class="form-control" :class="{error: errors.has('city')}" v-validate="'min:3'">
+                            </div>
+                        </div>
+                        <div class="form-group  top-10">
+                            <label for="address" v-translate>State</label> <span v-show="errors.has('state')" class="help is-danger">*{{errors.first('state')}}</span>
+                            <div class="input-group">
+                                <input  v-model="areaState"  id="state" name="state" class="form-control" :class="{error: errors.has('state')}" v-validate="'min:3'">
+                            </div>
+                        </div>
+                        <div class="form-group  top-10">
+                            <label for="address" v-translate>Country</label> <span v-show="errors.has('country')" class="help is-danger">*{{errors.first('country')}}</span>
+                            <div class="input-group">
+                                <input  v-model="country"  id="country" name="country" class="form-control" :class="{error: errors.has('country')}" v-validate="'min:3'">
+                            </div>
+                        </div>
+                        <div class="form-group  top-10">
+                            <label for="address" v-translate>Zip code</label> <span v-show="errors.has('zip')" class="help is-danger">*{{errors.first('zip')}}</span>
+                            <div class="input-group">
+                                <input  v-model="zip"  id="zip" name="zip" class="form-control" :class="{error: errors.has('zip')}" v-validate="'min:3'">
+                            </div>
+                        </div>
+
+                        <div class="form-group  top-10">
                             <label for="detail_phone" v-translate>Phone</label> <span v-show="errors.has('phone')" class="help is-danger">*{{errors.first('phone')}}</span>
                             <div class="input-group">
                                 <input  v-model="phone"  id="detail_phone" name="phone" class="form-control" :class="{error: errors.has('phone')}" v-validate="{ rules: { required:true, min:10}}">
@@ -74,10 +99,13 @@ export default {
       })
    },
   mounted(){
-      console.log(this.billing);
     this.address = this.billing.address;
     this.email = this.billing.email;
     this.phone = this.billing.phone;
+    this.country = this.billing.country;
+    this.city = this.billing.city;
+    this.areaState = this.billing.state;
+    this.zip = this.billing.zip;
 
   },
   data () {
@@ -88,6 +116,10 @@ export default {
         address: '',
         phone: '',
         email: '',
+        city: '',
+        areaState: '',
+        country: '',
+        zip: '',
         password: '',
         type_input: "password"
      }
@@ -99,7 +131,12 @@ export default {
                 'Company info has been changed.': 'Информация о компании была изменена',
                 'Password': 'Пароль',
                 'Address': 'Адрес',
-                'Next': 'Далее'
+                'Next': 'Далее',
+                "City": 'Город',
+                'State': 'Область',
+                'Country': 'Страна',
+                'Zip code': 'Индекс',
+                'Phone': 'Телефон'
          }
     },    
   methods: {
@@ -111,7 +148,16 @@ export default {
 
       validate: function()
       {
-          let data = {"address": this.address, "email": this.email, "phone": this.phone, "password": this.password};
+          let data = {
+              "address": this.address,
+              "email": this.email,
+              "phone": this.phone,
+              "password": this.password,
+              "city": this.city,
+              "country": this.country,
+              "state": this.areaState,
+              "zip": this.zip,
+          };
           this.send(this.url, data, () => {
               this.setDetails(data);
           });

@@ -27,7 +27,11 @@ class ChangeCompanyDetailsRequest extends FormRequest
             'address' => 'required|min:5',
             'phone' => 'required|min:10',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'zip' => 'nullable|min:3',
+            'state' => 'nullable|min:3',
+            'country' => 'nullable|min:3',
+            'city' => 'nullable|min:3',
         ];
     }
 }

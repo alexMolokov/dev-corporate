@@ -16,5 +16,9 @@ return [
             "linux" => env("DOWNLOAD_SERVER_LINUX_CLUSTER",
                 "https://www.vipole.com/download-server/cluster-linux_x86_64-2017-en")
         ]
+    ],
+    "addons" => [
+        "redis" => ["name" => "Redis", "url" => "https://redis.io"],
+        "mongo" => ["name" => "Mongo", "url" => "https://www.mongodb.com"]
     ]
 ];

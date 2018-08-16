@@ -76,6 +76,10 @@ const store = new Vuex.Store({
             },
             billing: {
                     address: "",
+                    zip: "",
+                    country: "",
+                    state: "",
+                    city: "",
                     phone: "",
                     email: ""
             },
@@ -100,6 +104,21 @@ const store = new Vuex.Store({
         isRegisterAllowed: state => {
             return state.registrationAllowed;
         },
+        getAddress: state => {
+            let ar = [];
+            let billing = state.user.billing;
+            let fields = ["address", "city", "state", "country", "zip"];
+            fields.forEach(function(element) {
+                if(typeof billing[element] != "undefined" && billing[element].length > 0)
+                {
+                    ar.push(billing[element])
+                }
+            });
+
+
+            return ar.join(', ');
+
+        },
 
     },
     mutations: {
@@ -118,6 +137,9 @@ const store = new Vuex.Store({
         {
             let billing = state.user.billing;
             billing.address = obj.address;
+            billing.city = obj.city;
+            billing.country = obj.country;
+            billing.zip = obj.zip;
             billing.email = obj.email;
             billing.phone = obj.phone;
         },
@@ -151,6 +173,11 @@ const store = new Vuex.Store({
                     }
                 }
             }
+
+            store.commit("servers/logout");
+
+
+            //cleanServers
             state.auth = false;
             router.push({name: 'login'});
         },
@@ -159,6 +186,11 @@ const store = new Vuex.Store({
             state.user = user;
             state.auth = true;
             router.push({name: 'userpage'});
+        },
+        activate(state,user)
+        {
+            state.user = user;
+            state.auth = true;
         }
     },
     modules: {
@@ -229,7 +261,15 @@ const routes = [
             { path: 'download',
                 component: (resolve) => { require(['./pages/Download'], resolve)},
                 name: "download"
-            }
+            },
+            { path: 'payments',
+                component: (resolve) => { require(['./pages/Payments'], resolve)},
+                name: "payments"
+            },
+            { path: 'unpaid/invoices',
+                component: (resolve) => { require(['./pages/UnpaidInvoices'], resolve)},
+                name: "unpaid_invoices"
+            },
         ]
     },
     { path: '/forgot',
@@ -244,6 +284,7 @@ export const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     const auth = router.app.$options.store.state.auth;
 
     if (to.matched.some(record => record.meta.requiresAuth))

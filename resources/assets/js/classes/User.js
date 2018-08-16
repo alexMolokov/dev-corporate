@@ -19,7 +19,11 @@ export function User (data)
     this.billing =  {
             address: data['address'] || "",
             phone: data['phone'] || "",
-            email: data['email'] || ""
+            email: data['email'] || "",
+            city: data['city'] || "",
+            state: data['state'] || "",
+            zip: data['zip'] || "",
+            country: data['country'] || ""
     };
 
     this.tech =  {

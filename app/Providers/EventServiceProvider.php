@@ -28,6 +28,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\RegisterRequest' => [
             'App\Listeners\RegisterRequestListener'
         ],
+
+        'App\Events\ConfirmInvoice' => [
+            'App\Listeners\ConfirmInvoiceListener'
+        ],
     ];
 
     /**

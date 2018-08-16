@@ -62,7 +62,12 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
     Route::match(["get", "post"],'/renew-license', 'Client\ShopController@renewLicense')->name('renew_license');
     Route::match(["get", "post"],'/upgrade-license', 'Client\ShopController@upgradeLicense')->name('upgrade_license');
     Route::match(["get", "post"],'/new-license', 'Client\ShopController@newLicense')->name('new_license');
-    Route::match(["get", "post"],'/get-invoice', 'Client\ShopController@getInvoice')->name('get_invoice');
+    Route::match(["get", "post"],'/get-invoice/{id}', 'Client\ShopController@getInvoice')->where('id', '[0-9]+')->name('get_invoice');
+    Route::match(["post"],'/payments', 'Client\ShopController@getPayments')->name('get_payments');
+    Route::match(["get","post"],'/invoices/unpaid', 'Client\ShopController@getUnpaidInvoices')->name('get_unpaid_invoices');
+    Route::match(["post"],'/invoice/confirm', 'Client\ShopController@confirmInvoice')->name('invoice_confirm');
+    Route::match(["post"],'/invoice/cancel/{id}', 'Client\ShopController@cancelInvoice')->where('id', '[0-9]+')->name('invoice_cancel');
+
 });
 
 
@@ -72,6 +77,8 @@ Route::group(['prefix' => 'download','middleware' => ['web', 'auth']],function (
     name('download_server')->
     where('os', 'windows|linux')->
     where('edition', 'standalone|cluster');
+
+    Route::post('/get-addons', 'Client\DownloadServerController@getAddons')->name('get_addons');
 });
 
 Route::group(['prefix' => 'support','middleware' => ['web', 'auth']],function ()

@@ -18,12 +18,36 @@ class ShopServiceTest extends TestCase
         $this->client = $app->make("App\Contracts\ShopInterface");
     }
 
+
+    public function testGetUnpaidInvoices(){
+        $data = ["customer_id" => "1000033"];
+        $result = $this->client->getUnpaidInvoices($data["customer_id"]);
+        var_dump($result);
+        $this->assertTrue(true);
+
+    }
+
+
+   /* public function testGetInvoice(){
+        $data = ["customer_id" => "1000033", "id" => "2018134018"];
+        $result = $this->client->getInvoice($data["id"], $data["customer_id"]);
+        $this->assertTrue(true);
+    }*/
+
+   /* public function testGetTransactions()
+    {
+        $data = ["customer_id" => "1000033"];
+        $result = $this->client->corporatePayments($data);
+        var_dump($result);
+        $this->assertTrue(true);
+    }*/
+
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testBuyServer()
+   /* public function testBuyServer()
     {
 
         $data = [
@@ -41,5 +65,5 @@ class ShopServiceTest extends TestCase
         $result = $this->client->buyServer($data);
         var_dump($result);
         $this->assertTrue(true);
-    }
+    }*/
 }

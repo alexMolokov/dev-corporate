@@ -33,7 +33,7 @@
                         <p v-if="isRegisterAllowed"class="reg-choice"><router-link :to="{name:'forgot'}" tabindex="-1"  v-translate>Forgot password?</router-link></p>
                     </div>
                     <div class="reg-footer">
-                        <p v-if="isRegisterAllowed" class="h4 text-center"><span v-translate>Don't have an account?</span> <router-link :to="{name:'registration'}" tabindex="-1"  v-translate>Sign In</router-link></p>
+                        <p v-if="isRegisterAllowed" class="h4 text-center"><span v-translate>Don't have an account?</span> <router-link :to="{name:'registration'}" tabindex="-1"  v-translate>Sign Up</router-link></p>
                     </div>
 
                 </form>
@@ -94,7 +94,7 @@
                 'Log In': 'Войти',
                 'Forgot password?': 'Забыли пароль?',
                 "Don't have an account?": 'У вас нет аккаунта?',
-                'Sign In': ' Зарегистрируйтесь'
+                'Sign Up': ' Зарегистрируйтесь'
             }
         }
     }

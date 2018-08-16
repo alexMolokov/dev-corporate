@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Client;
 
 use App\Contracts\ShopInterface;
+use App\Events\ConfirmInvoice;
 use App\Http\Requests\Shop\BuyServerRequest;
 use App\Http\Requests\Shop\NewLicenseRequest;
 use App\Http\Requests\Shop\RenewLicenseRequest;
 use App\Http\Requests\Shop\UpgradeLicenseRequest;
+use App\Http\Requests\Shop\ConfirmInvoiceRequest;
 use App\Http\Controllers\Controller;
 use Dompdf\Dompdf;
 use Auth;
 use View;
+use File;
 
 class ShopController extends Controller
 {
@@ -36,6 +39,28 @@ class ShopController extends Controller
         }
         return response()->error(__("Service temporary unavailable"));
     }
+
+    public function getPayments()
+    {
+        if($result = $this->service->corporatePayments([
+            "customer_id" => Auth::user()->getCustomerId()
+        ])) {
+
+            foreach($result as $recordKey => $record)
+            {
+                $record["date_int"] = date("YmdHi",$record["date"]);
+                $record["date"] = date("Y-m-d H:i:s",$record["date"]);
+                $result[$recordKey] = $record;
+            }
+
+            return response()->success($result);
+        }
+
+        return response()->error(__("Error"), []);
+    }
+
+
+
 
     public function buyServer(BuyServerRequest $request)
     {
@@ -111,49 +136,94 @@ class ShopController extends Controller
         return response()->error(__("Error"), []);
     }
 
-    public function getInvoice()
+    public function getUnpaidInvoices()
     {
-        if($response = $this->service->getConfig())
+        if($result = $this->service->getUnpaidInvoices(
+             Auth::user()->getCustomerId()
+        )) {
+
+
+            foreach($result as $recordKey => $record)
+            {
+                $record = (array) $record;
+                //$record["date_int"] = date("YmdHi",$record["date"]);
+                //$record["date"] = date("Y-m-d H:i:s",$record["date"]);
+                $result[$recordKey] = $record;
+            }
+
+            return response()->success($result);
+        }
+
+        return response()->success([]);
+    }
+
+    public function confirmInvoice( ConfirmInvoiceRequest $request)
+    {
+        $files = $request->files->get("files");
+
+        if(!is_array($files)) return response()->error(__("Error") . " " . __("Please choose File!"), []);
+
+        $file = [
+            "ContentType" => $files[0]->getClientMimeType(),
+            "Filename"    => $files[0]->getRealPath(),
+            "OriginalName" => $files[0]->getClientOriginalName()
+        ];
+
+        event(new ConfirmInvoice($request->get("id"),$file));
+
+       if($this->service->confirmInvoice($request->get("id"), Auth::user()->getCustomerId()))
+       {
+            return response()->success();
+       }
+
+        return response()->error(__("Error") . " " . __("Please try later!"), []);
+    }
+
+    public function cancelInvoice($id)
+    {
+        if($this->service->cancelInvoice($id, Auth::user()->getCustomerId()))
         {
-            $pdf = new Dompdf();
-            $pdf->loadHtml(View::make('shop.invoice')->with(
+            return response()->success();
+        }
+
+        return response()->error(__("Error") . " " . __("Please try later!"), []);
+    }
+
+    public function getInvoice($id)
+    {
+        $config = $this->service->getConfig();
+        if(!$config) return view("shop.invoice_not_found");
+
+        $invoice = $this->service->getInvoice($id, Auth::user()->getCustomerId());
+        if(!$invoice) return view("shop.invoice_not_found");
+
+        $sum = 0;
+        $basket = [];
+
+        for($i=0; $i<count($invoice->invoiceList); $i++)
+        {
+            $product = $invoice->invoiceList[$i];
+            $basket[] = (array) $product;
+            $sum += $product->price*$product->count;
+        }
+
+
+        $pdf = new Dompdf();
+        $pdf->loadHtml(View::make('shop.invoice')->with(
                 [
-                    "number" => "V072618/01",
-                    "currency" => "EUR",
-                    "exchangeRate" => 1.1,
-                    "date" => "07-26-2018",
-                    "company" => [
-                        "name" => "G&C Alliance S.A.",
-                        "number" => "CHE-115.975.750",
-                        "address" => "Rue des Piletes 3, c/o Fiduconsult S.A., 1700",
-                        "city" => "Fribourg",
-                        "country" => "Swiss Confederation"
-                    ],
-                    "payment" => [
-                        "method" => "Banka transfer",
-                        "type" => "Prepaid",
-                        "terms" => "15",
-                    ],
-                    "companyFrom" => (array) $response->company,
-                    "basket" => [
-                        [
-                            "count" => 1,
-                            "price" => 250,
-                            "name" => "VIPole Corporate Server, Standalone Edition"
-                        ],
-                        [
-                            "count" => 25,
-                            "price" => 70,
-                            "name" => "VIPole Corporate Server, Standalone Edition user lifetime licenses"
-                        ]
-                    ],
-                    "sum" => 2000
+                    "number" => $invoice->id,
+                    "currency" =>  $invoice->currency,
+                    "exchangeRate" =>  $invoice->exchange_rate,
+                    "date" => date("m-d-Y",$invoice->creation_time),
+                    "company" => Auth::user()->toArray(),
+                    "payment" => (array) $config->company->invoice,
+                    "companyFrom" => (array) $config->company,
+                    "basket" => $basket,
+                    "sum" => $sum
 
                 ]
             )->render());
             $pdf->render();
-
-
 
 
             $headers = [
@@ -161,10 +231,10 @@ class ShopController extends Controller
                 // 'Content-Disposition' => 'attachment; filename="invoice.pdf"'
             ];
             return response($pdf->output())->withHeaders($headers);
-        }
 
 
 
-            // return view("shop.invoice");
+
+
     }
 }

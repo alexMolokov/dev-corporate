@@ -23,6 +23,11 @@ class ShopService  extends Service implements ShopInterface
         "renewLicense" =>  "renew_corporate_license",
         "upgradeLicense" => "upgrade_corporate_license",
         "newLicense" => "new_corporate_license",
+        "corporatePayments" => "get_corporate_payment_transactions",
+        "getInvoice" => "get_invoice",
+        "getUnpaidInvoices" => "get_unpaid_invoices",
+        "cancelInvoice" => "cancel_invoice",
+        "confirmInvoice" => "confirm_invoice"
     ];
 
 
@@ -61,6 +66,69 @@ class ShopService  extends Service implements ShopInterface
     public function newLicense(array $data)
     {
         if($result = $this->client->sendCommand(self::OPS["newLicense"], self::PATH, $data))
+        {
+            if($result->status) return $result->response;
+        }
+    }
+
+    public function corporatePayments(array $data)
+    {
+        if($result = $this->client->sendCommand(self::OPS["corporatePayments"], self::PATH, $data))
+        {
+            $return = [];
+            if($result->status)
+            {
+                $ar = $result->response;
+                foreach($ar as $row)
+                {
+                    $return[] = [
+                        "id" => $row->id,
+                        "date" => $row->date,
+                        "amount" => $row->amount,
+                        "currency" => $row->currency,
+                        "currency_rate" =>  $row->currency_rate,
+                        "invoice_id"  => $row->invoice_id
+                    ];
+                }
+            }
+
+
+
+
+            return $return;
+        }
+    }
+
+    public function getInvoice($id, $customerId)
+    {
+        if($result = $this->client->sendCommand(self::OPS["getInvoice"], self::PATH, ["id" => $id, "customer_id" => $customerId]))
+        {
+            if($result->status) return $result->response;
+        }
+    }
+
+    public function cancelInvoice($id, $customerId)
+    {
+        if($result = $this->client->sendCommand(self::OPS["cancelInvoice"], self::PATH, ["id" => $id, "customer_id" => $customerId]))
+        {
+            return $result->status;
+        }
+        return false;
+    }
+
+    public function confirmInvoice($id, $customerId)
+    {
+        if($result = $this->client->sendCommand(self::OPS["confirmInvoice"], self::PATH, ["id" => $id, "customer_id" => $customerId]))
+        {
+            return $result->status;
+        }
+        return false;
+    }
+
+
+    public function getUnpaidInvoices($customerId)
+    {
+        if($result = $this->client->sendCommand(self::OPS["getUnpaidInvoices"], self::PATH, ["customer_id" => $customerId]))
         {
             if($result->status) return $result->response;
         }

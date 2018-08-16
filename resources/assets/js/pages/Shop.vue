@@ -1,6 +1,25 @@
 <template>
     <div id="user-order-page">
         <div v-if="products.length > 0">
+
+        <div v-if="makeDeal == 'new'">
+                <h2 class="blue" v-translate>New Order</h2>
+                <span class="license-number blue"><span v-translate>Select products to purchase</span></span>
+        </div>
+
+            <div v-if="makeDeal == 'upgrade'">
+            <h2 class="blue" v-translate>Upgrade license</h2>
+            <span class="license-number blue"><span v-translate>Select options to upgrade for license</span> {{license}}</span>
+        </div>
+
+
+        <div v-if="makeDeal == 'renew'">
+            <h2 class="blue" v-translate>Renew license</h2>
+            <span class="license-number blue"><span v-translate>Select new maintenance period for license</span> {{license}}</span>
+        </div>
+
+
+
         <h3>1. <span v-translate>Maintenance period</span></h3>
         <section id="periods">
             <div v-for="item in getPeriods" :class="{ disabled: isDisabledPeriod(item.id) }">
@@ -30,7 +49,7 @@
                     <input  name="users" type="text"  :disabled="isDisabledUsers()" v-model="choice.users"  @keyup="checkCountUsers" v-validate="'required|numeric'" :class="{error: errors.has('users')}">
                     <div class="add" @click="addUser(1)"  :class="{ disabled: this.choice.users == this.choice.maxUsers ||  isDisabledUsers()}"></div>
                 </div>
-                <p  class="min"><span >minimum</span> {{choice.minUsers}} <span>users</span></p>
+                <p  class="min"><span v-translate>minimum</span> {{choice.minUsers}} <span v-translate>users</span></p>
             </div>
         </section>
 
@@ -61,14 +80,16 @@
 
         <hr>
         <div  class="shop-footer">
-            <div v-if="choice.price == PRICES.TRIAL">
+            <div class="hidden-xs col-sm-6" style="text-align: left"><a href="#" class="btn btn-middle btn-green" @click.prevent.stop="back" v-translate>Back</a></div>
+            <div v-if="choice.price == PRICES.TRIAL" class="col-xs-12 col-sm-6">
               <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="showFormGetTrial = true" v-translate>Next</a>
             </div>
-            <div v-if="choice.price != PRICES.TRIAL">
+
+            <div v-if="choice.price != PRICES.TRIAL" class="col-xs-12 col-sm-6">
                 <a href="#"  class="btn btn-middle btn-blue" @click.prevent.stop="choosePayment" v-translate v-if="sum > 0">Check out</a>
                 <div class="subtotal">
-                    <h3 v-translate>Subtotal ({{getCurrency}})</h3>
-                    <h3 v-if="discount > 0"><span v-translate>Discount: {{discount*100}}%</span></h3>
+                    <h3><span v-translate>Subtotal</span> ({{getCurrency}})</h3>
+                    <h3 v-if="discount > 0"><span v-translate>Discount</span>: {{discount*100}}%</h3>
                     <div class="price"><sup v-html="getShortCurrencySymbol"></sup>{{sum}}</div>
                 </div>
             </div>
@@ -200,7 +221,7 @@
                 this.state.setForbidden(this);
             }
 
-
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
 
         },
         mixins: [ajaxform],
@@ -287,6 +308,7 @@
                 }
             },
             addUser(count){
+              if(this.isDisabledUsers()) return;
               if(this.choice.users + count >= this.choice.minUsers && this.choice.users + count < this.choice.maxUsers)  this.choice.users = this.choice.users + count;
                 this.state.sumOrder(this);
             },
@@ -297,6 +319,9 @@
               this.choice.price = PRICES[period.toUpperCase()];
               this.state.setForLicense(this);
               this.state.sumOrder(this);
+            },
+            back: function(){
+              this.$router.back();
             },
             checkCountUsers: function()
             {
@@ -337,9 +362,25 @@
 
         locales: {
             ru: {
-
-
-
+                'New Order': 'Новый заказ',
+                'Select products to purchase': 'выберите продукты для покупки',
+                'Maintenance period': 'Период обслуживания',
+                'Choose your deployment': 'Выберите вариант развертывания',
+                'Choose Operational system': 'Выберите операционную систему',
+                'User tier':'Количество пользователей',
+                'Choose optional addons':'Выберите дополнительные модули',
+                'Choose optional services':'Выберите дополнительные услуги',
+                'minimum': 'минимум',
+                'users': 'пользователей',
+                'Upgrade license': 'Обновление лицензии',
+                'Select options to upgrade for license' : 'выберите новые опции для лицензии',
+                'Renew license': 'Продление лицензии',
+                'Select new maintenance period for license' : 'выберите новый период обслуживания для лицензии',
+                'Check out': 'Оплатить',
+                'Back': 'Назад',
+                'Next' : 'Далее',
+                'Discount': 'Скидка',
+                'Subtotal': 'Итого'
             }
         }
 
@@ -347,6 +388,14 @@
 </script>
 
 <style scoped lang="scss">
+
+    h2 {
+        .license-number {
+            font-size: 14px;
+        }
+    }
+
+
     h3 {
         font-size: 21px;
         margin-top: 30px;

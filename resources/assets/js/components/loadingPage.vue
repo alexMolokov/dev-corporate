@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-warning fade in"><slot name="loading"  v-translate>Loading info...</slot></div>
+    <div class="alert alert-warning fade in"><slot name="loading"><span v-translate>Loading info...</span></slot></div>
 </template>
 
 <script type="text/ecmascript-6">

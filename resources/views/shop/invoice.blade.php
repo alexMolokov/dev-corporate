@@ -55,11 +55,13 @@
                                 <div><span style="font-weight: 600;font-size: 16px;">Invoice to:</span></div>
                                 <div style="margin-top: 5px">{{$company["name"]}}</div>
 
-                                @if($company["number"])
-                                    <div>Company Number {{$company["number"]}}</div>
-                                @endif
                                 @if($company["address"])
-                                    <div>Address: {{$company["address"]}}</div>
+                                    <div>
+                                        Address: {{$company["address"]}}
+                                        @if($company["zip"])
+                                            ,{{$company["zip"]}}
+                                        @endif
+                                    </div>
                                 @endif
                                 @if($company["city"] || $company["country"])
                                     <div>{{$company["city"]}} {{$company["country"]}} </div>
@@ -92,7 +94,7 @@
                     <div style="text-align: left; margin-top: 10px; font-size: 14px;">
                         <div style="font-weight: 600;padding: 3px;">Payment method: {{$payment["method"]}}</div>
                         <div style="padding: 3px;">Payment type: {{$payment["type"]}}</div>
-                        <div style="padding: 3px;">Payment terms: {{$payment["terms"]}} days</div>
+                        <div style="padding: 3px;">Payment terms: {{$payment["days"]}} days</div>
                     </div>
 
 

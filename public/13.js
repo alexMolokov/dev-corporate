@@ -1,61 +1,16 @@
 webpackJsonp([13],{
 
-/***/ 288:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(289)
-/* template */
-var __vue_template__ = __webpack_require__(293)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\formPayment.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55db7e1b", Component.options)
-  } else {
-    hotAPI.reload("data-v-55db7e1b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 289:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_states__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_User__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(4);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -81,70 +36,454 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
-var ajaxform = __webpack_require__(15);
-var errorInform = __webpack_require__(76);
-var loadingInform = __webpack_require__(84);
-var paymentMethods = __webpack_require__(290);
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'form-payment',
-  props: {
-    purchase: { type: Object }
-  },
-  components: {
-    "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
-    "error-inform": errorInform,
-    "loading-inform": loadingInform,
-    "payment-methods": paymentMethods
-  },
-  data: function data() {
-    return {
-      id: "corporatePayment",
-      payment_method: "",
-      redirect: true
-    };
-  },
-
-  mixins: [ajaxform],
-  locales: {
-    ru: {
-      "Payment options": "Выбор оплаты",
-      "Redirecting to payment details...": "Перенаправляем на страницу платежной системы ..."
-    }
-  },
-  methods: {
-    choosen: function choosen(data) {
-      this.payment_method = data.method;
+    components: { ErrorInform: __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default.a },
+    name: 'login',
+    data: function data() {
+        return {
+            url: "/auth/login",
+            login: null,
+            password: null,
+            submitting: false,
+            type_password: "password"
+        };
     },
-    validate: function validate() {
-      var _this = this;
 
-      var data = _extends({}, this.purchase, { payment_method: this.payment_method });
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(["isRegisterAllowed"])),
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapMutations */])({ authLogin: 'login' }), {
+        togglePassword: function togglePassword() {
+            this.type_password = this.type_password == 'password' ? 'text' : 'password';
+        },
+        validate: function validate() {
+            var _this = this;
 
-      this.send(this.purchase.url, data, function (data) {
-        _this.state = __WEBPACK_IMPORTED_MODULE_1__mixins_states__["a" /* STATES */].REDIRECT;
-        document.location.href = data;
-      }, function (data) {
-        console.log("error");
-      });
+            var data = { "login": this.login, "password": this.password };
+            var authLogin = this.authLogin;
+            this.submitting = true;
+            this.send(this.url, data, function (data) {
+                authLogin(new __WEBPACK_IMPORTED_MODULE_1__classes_User__["a" /* User */](data));
+            }, function (data) {
+                _this.submitting = false;
+            });
+        }
+    }),
+    locales: {
+        ru: {
+            'Login to your account': 'Войдите в ваш Личный кабинет',
+            'Password': 'Пароль',
+            'Login': 'Логин',
+            'Log In': 'Войти',
+            'Forgot password?': 'Забыли пароль?',
+            "Don't have an account?": 'У вас нет аккаунта?',
+            'Sign Up': ' Зарегистрируйтесь'
+        }
     }
-  }
 });
 
 /***/ }),
 
-/***/ 290:
+/***/ 212:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "login-page" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "clearfix", attrs: { id: "sign_in" } }, [
+        _c("div", { staticClass: "reg-header" }, [
+          _c(
+            "h2",
+            {
+              directives: [{ name: "translate", rawName: "v-translate" }],
+              staticClass: "text-primary"
+            },
+            [_vm._v("Login to your account")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            attrs: { autocomplete: "off", url: _vm.url },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                $event.stopPropagation()
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "reg-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { for: "login" }
+                  },
+                  [_vm._v("Login")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("login"),
+                        expression: "errors.has('login')"
+                      }
+                    ],
+                    staticClass: "help is-danger"
+                  },
+                  [_vm._v("*" + _vm._s(_vm.errors.first("login")))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.login,
+                      expression: "login"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:6",
+                      expression: "'required|min:6'"
+                    }
+                  ],
+                  staticClass: "form-control input-alg readonly",
+                  class: { error: _vm.errors.has("login") },
+                  attrs: {
+                    type: "text",
+                    id: "login",
+                    name: "login",
+                    placeholder: ""
+                  },
+                  domProps: { value: _vm.login },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.login = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }],
+                    attrs: { for: "password" }
+                  },
+                  [_vm._v("Password")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("password"),
+                        expression: "errors.has('password')"
+                      }
+                    ],
+                    staticClass: "help is-danger"
+                  },
+                  [_vm._v("*" + _vm._s(_vm.errors.first("password")))]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group" }, [
+                  _vm.type_password === "checkbox"
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.password,
+                            expression: "password"
+                          },
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required|min:6",
+                            expression: "'required|min:6'"
+                          }
+                        ],
+                        staticClass: "form-control input-alg",
+                        class: { error: _vm.errors.has("password") },
+                        attrs: {
+                          id: "password",
+                          name: "password",
+                          type: "checkbox"
+                        },
+                        domProps: {
+                          checked: Array.isArray(_vm.password)
+                            ? _vm._i(_vm.password, null) > -1
+                            : _vm.password
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.password,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.password = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.password = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.password = $$c
+                            }
+                          }
+                        }
+                      })
+                    : _vm.type_password === "radio"
+                      ? _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min:6",
+                              expression: "'required|min:6'"
+                            }
+                          ],
+                          staticClass: "form-control input-alg",
+                          class: { error: _vm.errors.has("password") },
+                          attrs: {
+                            id: "password",
+                            name: "password",
+                            type: "radio"
+                          },
+                          domProps: { checked: _vm._q(_vm.password, null) },
+                          on: {
+                            change: function($event) {
+                              _vm.password = null
+                            }
+                          }
+                        })
+                      : _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min:6",
+                              expression: "'required|min:6'"
+                            }
+                          ],
+                          staticClass: "form-control input-alg",
+                          class: { error: _vm.errors.has("password") },
+                          attrs: {
+                            id: "password",
+                            name: "password",
+                            type: _vm.type_password
+                          },
+                          domProps: { value: _vm.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password = $event.target.value
+                            }
+                          }
+                        }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "input-group-addon",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          $event.stopPropagation()
+                          return _vm.togglePassword($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon",
+                        class: {
+                          "glyphicon-eye-close":
+                            _vm.type_password == "password",
+                          "glyphicon-eye-open": _vm.type_password != "password"
+                        },
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "reg-body" },
+              [
+                _c("div", { staticClass: "captcha-wrapper" }),
+                _vm._v(" "),
+                _c("error-inform", {
+                  attrs: { err: _vm.err, state: _vm.state }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "reg-left" }, [
+              _c(
+                "button",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "btn btn-primary btn-lg",
+                  class: { submitting: _vm.submitting },
+                  attrs: { type: "submit", disabled: _vm.submitting },
+                  on: { click: _vm.validate }
+                },
+                [_vm._v("Log In")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "reg-right" }, [
+              _vm.isRegisterAllowed
+                ? _c(
+                    "p",
+                    { staticClass: "reg-choice" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          directives: [
+                            { name: "translate", rawName: "v-translate" }
+                          ],
+                          attrs: { to: { name: "forgot" }, tabindex: "-1" }
+                        },
+                        [_vm._v("Forgot password?")]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "reg-footer" }, [
+              _vm.isRegisterAllowed
+                ? _c(
+                    "p",
+                    { staticClass: "h4 text-center" },
+                    [
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            { name: "translate", rawName: "v-translate" }
+                          ]
+                        },
+                        [_vm._v("Don't have an account?")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          directives: [
+                            { name: "translate", rawName: "v-translate" }
+                          ],
+                          attrs: {
+                            to: { name: "registration" },
+                            tabindex: "-1"
+                          }
+                        },
+                        [_vm._v("Sign Up")]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6d4a7902", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(291)
+var __vue_script__ = __webpack_require__(211)
 /* template */
-var __vue_template__ = __webpack_require__(292)
+var __vue_template__ = __webpack_require__(212)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -161,7 +500,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\paymentMethods.vue"
+Component.options.__file = "resources\\assets\\js\\pages\\Login.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -170,9 +509,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e742003a", Component.options)
+    hotAPI.createRecord("data-v-6d4a7902", Component.options)
   } else {
-    hotAPI.reload("data-v-e742003a", Component.options)
+    hotAPI.reload("data-v-6d4a7902", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -184,290 +523,21 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 291:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'payment-methods',
-    props: {
-        lang: { type: String, default: "en" }
-
-    },
-    data: function data() {
-        return {
-            payments: [{ name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Other", value: "visa_mastercard" }],
-            choosen: {
-                name: "Bitcoin",
-                value: "bitcoin"
-            }
-        };
-    },
-
-    locales: {
-        ru: {
-            'Other': 'Другое',
-            'Bitcoin': 'Биткойн',
-            'Qiwi': 'Киви',
-            "Yandex.Money": "Яндекс.Деньги"
-        }
-    },
-    created: function created() {
-        this.$emit("choosen", { method: this.choosen.value });
-    },
-
-
-    methods: {
-        choose: function choose(payment) {
-            this.choosen.name = payment.name;
-            this.choosen.value = payment.value;
-            this.$emit("choosen", { method: this.choosen.value });
-        },
-        show: function show(payment) {
-            if (this.lang == payment.lang || typeof payment.lang == 'undefined') {
-                return true;
-            }
-            return false;
-        }
-    }
-});
-
-/***/ }),
-
-/***/ 292:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row choose_payment" },
-    [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.choosen.value,
-            expression: "choosen.value"
-          }
-        ],
-        attrs: { type: "hidden", name: "payment_method" },
-        domProps: { value: _vm.choosen.value },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.choosen, "value", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.payments, function(payment) {
-        return _vm.show(payment)
-          ? _c("div", { staticClass: "col-xs-4 pds0" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "choose",
-                  class: { active: payment.name == _vm.choosen.name }
-                },
-                [
-                  payment.img
-                    ? _c("img", {
-                        staticClass: "img-responsive",
-                        attrs: { alt: _vm.t(payment.name), src: payment.img },
-                        on: {
-                          click: function($event) {
-                            _vm.choose(payment)
-                          }
-                        }
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !payment.img
-                    ? _c(
-                        "div",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
-                          on: {
-                            click: function($event) {
-                              _vm.choose(payment)
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(payment.name))]
-                      )
-                    : _vm._e()
-                ]
-              )
-            ])
-          : _vm._e()
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e742003a", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 293:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "modal-window",
-    {
-      staticClass: "in",
-      staticStyle: { display: "block" },
-      attrs: { id: _vm.id, show: true },
-      on: { close: _vm.close }
-    },
-    [
-      _c(
-        "div",
-        {
-          directives: [{ name: "translate", rawName: "v-translate" }],
-          attrs: { slot: "title" },
-          slot: "title"
-        },
-        [_vm._v("Payment options")]
-      ),
-      _vm._v(" "),
-      _c(
-        "loading-inform",
-        { attrs: { state: _vm.state }, on: { close: _vm.close } },
-        [
-          _c(
-            "div",
-            {
-              directives: [{ name: "translate", rawName: "v-translate" }],
-              attrs: { slot: "ok-message-redirect" },
-              slot: "ok-message-redirect"
-            },
-            [_vm._v("Redirecting to payment details...")]
-          ),
-          _vm._v(" "),
-          _c("div", { attrs: { slot: "buttons" }, slot: "buttons" })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          attrs: { url: _vm.url },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              $event.stopPropagation()
-            }
-          }
-        },
-        [
-          _c("payment-methods", { on: { choosen: _vm.choosen } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("hr"),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [{ name: "translate", rawName: "v-translate" }],
-                  staticClass: "info"
-                },
-                [
-                  _vm._v(
-                    "By clicking NEXT you will be redirected to proceed with payment details"
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("error-inform", { attrs: { err: _vm.err, state: _vm.state } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" }, [
-            _c(
-              "button",
-              {
-                directives: [{ name: "translate", rawName: "v-translate" }],
-                staticClass: "btn btn-primary",
-                attrs: { type: "submit" },
-                on: { click: _vm.validate }
-              },
-              [_vm._v("Next")]
-            )
-          ])
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-55db7e1b", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 79:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(80)
-}
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(82)
+var __vue_script__ = __webpack_require__(80)
 /* template */
-var __vue_template__ = __webpack_require__(83)
+var __vue_template__ = __webpack_require__(81)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-12158cf6"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -478,7 +548,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\modalWindow.vue"
+Component.options.__file = "resources\\assets\\js\\mixins\\error-inform.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -487,9 +557,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12158cf6", Component.options)
+    hotAPI.createRecord("data-v-41c6c4ae", Component.options)
   } else {
-    hotAPI.reload("data-v-12158cf6", Component.options)
+    hotAPI.reload("data-v-41c6c4ae", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -502,167 +572,83 @@ module.exports = Component.exports
 /***/ }),
 
 /***/ 80:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-// load the styles
-var content = __webpack_require__(81);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(14)("81548b54", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12158cf6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modalWindow.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12158cf6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modalWindow.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'error-inform',
+  props: {
+    state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START },
+    err: { type: Object, default: function _default() {
+        return { validation: [], common: [] };
+      } }
+  },
+  data: function data() {
+    return {};
+  },
+
+  computed: {
+    showError: function showError() {
+      return (this.err.validation.length > 0 || this.err.common.length > 0) && this.state == __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].ERROR;
+    }
+  }
+});
 
 /***/ }),
 
 /***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.modal[data-v-12158cf6] {\n    overflow: auto;\n    overflow-y: scroll;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 82:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'modal-window',
-    props: {
-        id: { type: String, required: true },
-        show: { type: Boolean, required: false },
-        wide: { type: Boolean, default: false }
-    },
-    watch: {
-        show: function show() {
-            if (this.show) {
-                $('body').addClass('dialog-open');
-                $('body').addClass('modal-open');
-            } else {
-                $('body').removeClass('dialog-open');
-                $('body').removeClass('modal-open');
-            }
-        }
-    },
-    methods: {
-        close: function close(e) {
-            var el = typeof e.srcElement != "undefined" ? e.srcElement : e.target;
-            if (el == "input" && el.type == "radio") return;
-            e.stopPropagation();
-
-            this.$emit('close');
-        },
-        clickInside: function clickInside(e) {
-
-            var el = typeof e.srcElement != "undefined" ? e.srcElement : e.target;
-            if (el != "input" || el.type != "radio") e.stopPropagation();
-        },
-
-        bclose: function bclose() {
-            $("#" + this.id).trigger('click');
-        }
-
-    }
-});
-
-/***/ }),
-
-/***/ 83:
-/***/ (function(module, exports, __webpack_require__) {
-
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "modal fade modal-user",
-      attrs: { tabindex: "-1", role: "dialog", id: _vm.id },
-      on: { click: _vm.close }
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass: "modal-dialog",
-          class: { "modal-dialog-wide": _vm.wide },
-          attrs: { role: "document" },
-          on: { click: _vm.clickInside }
-        },
-        [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: {
-                    type: "button",
-                    "data-dismiss": "modal",
-                    "aria-label": "Close"
-                  },
-                  on: { click: _vm.bclose }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "h4",
-                { staticClass: "modal-title" },
-                [_vm._t("title", [_vm._v("Modal Title")])],
-                2
-              )
-            ]),
+  return _vm.showError
+    ? _c("div", { staticClass: "error-block" }, [
+        _c(
+          "div",
+          { staticClass: "alert alert-danger fade in" },
+          [
+            _vm._l(_vm.err.validation, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _vm._v(
+                  "\n             " +
+                    _vm._s(er.name) +
+                    " - " +
+                    _vm._s(er.description) +
+                    "\n         "
+                )
+              ])
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2)
-          ])
-        ]
-      )
-    ]
-  )
+            _vm._l(_vm.err.common, function(er) {
+              return _c("div", { staticClass: "top-10" }, [
+                _c("div", { staticClass: "top-10" }, [_vm._v(_vm._s(er))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -670,242 +656,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-12158cf6", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 84:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(85)
-/* template */
-var __vue_template__ = __webpack_require__(86)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\mixins\\loading-inform.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-29930135", Component.options)
-  } else {
-    hotAPI.reload("data-v-29930135", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 85:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'loading-inform',
-    props: {
-        state: { type: Number, default: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */].START }
-    },
-    data: function data() {
-        return {
-            STATES: __WEBPACK_IMPORTED_MODULE_0__states__["a" /* STATES */]
-        };
-    },
-
-    locales: {
-        ru: {
-            'Loading...': 'Отправляем запрос...'
-        }
-    },
-    methods: {
-        close: function close() {
-            this.$emit('close');
-        }
-    }
-});
-
-/***/ }),
-
-/***/ 86:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.state == _vm.STATES.LOADING
-      ? _c("div", { staticClass: "loading-info" }, [
-          _c("div", { staticClass: "window-center" }, [
-            _c("div", [
-              _c(
-                "div",
-                {
-                  directives: [{ name: "translate", rawName: "v-translate" }],
-                  staticClass: "processing_text"
-                },
-                [_vm._v("Loading...")]
-              )
-            ])
-          ])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.state == _vm.STATES.ANSWER
-      ? _c(
-          "div",
-          { staticClass: "ok-message" },
-          [
-            _c("div", { staticClass: "window-center" }, [
-              _c("div", { staticClass: "complete-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "complete-body_text" },
-                  [_vm._t("ok-message")],
-                  2
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._t("buttons", [
-              _c("div", { staticClass: "button-close" }, [
-                _c(
-                  "button",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    staticClass: "btn btn-green",
-                    attrs: { type: "button" },
-                    on: { click: _vm.close }
-                  },
-                  [_vm._v("Ok")]
-                )
-              ])
-            ])
-          ],
-          2
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.state == _vm.STATES.REDIRECT
-      ? _c("div", { staticClass: "ok-message" }, [
-          _c("div", { staticClass: "window-center" }, [
-            _c("div", { staticClass: "complete-body" }, [
-              _c(
-                "div",
-                { staticClass: "complete-body_text" },
-                [_vm._t("ok-message-redirect")],
-                2
-              )
-            ])
-          ])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.state == _vm.STATES.RELOAD
-      ? _c(
-          "div",
-          { staticClass: "ok-message" },
-          [
-            _c("div", { staticClass: "window-center" }, [
-              _c("div", { staticClass: "complete-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "complete-body_text" },
-                  [_vm._t("ok-message-reload")],
-                  2
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._t("buttons-reload")
-          ],
-          2
-        )
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-29930135", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-41c6c4ae", module.exports)
   }
 }
 

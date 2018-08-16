@@ -36,6 +36,12 @@ const mutations =  {
             }
         }
     },
+    logout: (state) => {
+        state.servers = [];
+        state.serversMap = new Map();
+        state.serverTypes = [];
+        state.loaded = false;
+    },
     cleanServers: (state) => {
         state.servers = [];
         state.serversMap = new Map();

@@ -9,10 +9,18 @@
                         </div>
                 </div>
                 <div   v-if="checked && !error" class="clearfix">
-                                <h2 class="text-primary" v-translate>Your Corporate VIPole account is successfully activated!</h2>
-                                <p class="complete-body">
-                                        <p class="lead"><span v-translate>Your login</span> - <strong>{{login}}</strong>.<br>
+                                <h2 class="text-primary tac" v-translate>Your Corporate VIPole account is successfully activated!</h2>
+                                <p class="complete-body tac">
+                                        <p class="lead tac"><span v-translate>Your login</span> - <strong>{{login}}</strong>.<br>
                                         <span v-translate>To manage you account and connected services go to your</span> <router-link :to="{name: 'login'}" v-translate>Profile page</router-link>.</p>
+
+                <p class="top-30 tac">
+                   <router-link :to="{name: 'shop', params: {makeDeal: 'new'}}" v-translate class="btn btn-lg  btn-green" style="min-width: 200px;">Continue</router-link>
+                </p>
+
+
+
+
                                 </div>
                  </div>
 
@@ -37,10 +45,14 @@
         created(){
             this.code = this.$route.params.code;
             let path =  '/registration/activate/' + this.code;
+            let authLogin = this.authLogin;
+
             this.uploadInfo(path, {}, (data) => {
                 this.checked = true;
                 this.error = false;
+                authLogin(new User(data));
                 this.login = data.login;
+
             }, {}, (data) => {
                 this.checked = true;
                 this.error = true;
@@ -64,6 +76,7 @@
             "error-inform": ErrorInform,
         },
         methods: {
+           ...mapMutations({authLogin: 'activate'}),
            togglePassword: function(type){
                 if(type == 'type_input_new')
                 {
@@ -85,7 +98,8 @@
                 "Please": 'Пожалуйста',
                 'try again': 'попробуйте',
                 'later or contact VIPole support team': 'позже или свяжитесь со службой поддержки VIPole',
-                'Please, wait until the activation process is complete...': 'Пожалуйста, подождите пока идет процесс активации'
+                'Please, wait until the activation process is complete...': 'Пожалуйста, подождите пока идет процесс активации',
+                'Continue': 'Продолжить'
             }
         }
 

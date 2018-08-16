@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Events\ForgetRequestUploaded;
 use App\Http\Requests\Registration\RegisterRequest as RegistrationRegisterRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -91,7 +92,15 @@ class RegisterController extends Controller
                 if($this->service->changeCredentials($client->getCustomerId(), $registeredClient->getLogin(), $registeredClient->getPassword()))
                 {
                     $this->service->removeTempClient($registeredClient);
-                    return response()->success(["login" => $registeredClient->getLogin()]);
+
+                    if(Auth::attempt(["login" => $registeredClient->getLogin(), "password" => $registeredClient->getPassword()]))
+                    {
+                        $client = Auth::user();
+                        Auth::login($client);
+                        return response()->success($client->toArray());
+                    }
+
+                    // return response()->success(["login" => $registeredClient->getLogin()]);
                 }
             }
 

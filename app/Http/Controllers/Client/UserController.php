@@ -45,7 +45,13 @@ class UserController extends Controller
 
     public function changeCompanyDetails(ChangeCompanyDetailsRequest $request)
     {
-        $result = $this->service->changeCompanyDetails(Auth::user()->getCustomerId(), $request->all());
+
+        $data = $request->all();
+        foreach ($data as $key => $value) {
+            if(is_null($value)) $data[$key] = "";
+        }
+
+        $result = $this->service->changeCompanyDetails(Auth::user()->getCustomerId(), $data);
         if($result) {
             $this->__generateEvent();
             return response()->success([]);

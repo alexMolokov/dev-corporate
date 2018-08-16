@@ -1,12 +1,17 @@
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue'
     import TicketLine from './tickets/ticketLine.vue';
+    import InvoiceLine from './payments/invoiceLine.vue';
+    import InvoiceAction from './payments/invoiceAction.vue';
 
     export default {
         components: {
-            TicketLine
+            TicketLine,
+            InvoiceLine,
+            InvoiceAction
         },
         mixins:[Vuetable],
+        props: ['deleteRow'],
         locales: {
             ru: {
                 'admin':'Администратор1',
@@ -16,6 +21,21 @@
             }
         },
         watch: {
+            deleteRow: function(row) { // watch it
+                let key = row['key'];
+                let value = row['value'];
+                if(typeof key == "undefined" || typeof value == "undefined") return;
+
+
+                let tableData =  this.tableData;
+                this.tableData.forEach(function(item,i,arr){
+                    if(item[key] == value)
+                    {
+                        tableData.splice(i,1);
+                    }
+                })
+            },
+
             dataReload: {
                 handler: function() {
                     this.dataChangeFunction(this)
@@ -24,7 +44,6 @@
             dataChange: {
                 handler: function() {
                     let len = this.dataChange.length;
-
 
                     for(let i = 0; i < len; i++)
                     {

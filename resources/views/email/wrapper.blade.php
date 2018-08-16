@@ -23,6 +23,7 @@
     .appleBody a {color: #68440a; text-decoration: none;}
     .appleFooter a {color: #999999; text-decoration: none;}
 
+
     @media screen and (max-width:600px) {
         .centerlist {
             padding-left: 10% !important;
@@ -51,6 +52,17 @@
         td[class="mobile-hide"]{
           display:none;}
         td.mobile-hide {display:none;}
+
+        td[class="left_logo"] {
+            border-right: none !important;
+        }
+        td.left_logo {
+            border-right: none !important;
+        }
+
+        td[class="mobile-unhide"]{
+            display:block !important;}
+        td.mobile-unhide {display:block; !important;}
 
         img[class="mobile-hide"]{
           display: none !important;
@@ -137,7 +149,7 @@
                         <td style="padding: 17px 15px 17px 15px;" class="logo" bgcolor="#00a0c8">
                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td bgcolor="#00a0c8" width="162" align="left" style="padding-left:35px;border-right: 1px solid #fff;"><a href="https://www.vipole.com" target="_blank"><img width="90" height="28" border="0" alt="VIPole" src="https://www.vipole.com/static/common/img/logo_email.png" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;"></a></td>
+                                    <td bgcolor="#00a0c8" width="162" align="left" style="padding-left:35px;border-right: 1px solid #fff;" class="left_logo"><a href="https://www.vipole.com" target="_blank"><img width="90" height="28" border="0" alt="VIPole" src="https://www.vipole.com/static/common/img/logo_email.png" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;"></a></td>
                                     <td bgcolor="#00a0c8" width="438" align="left" class="mobile-hide" style="padding-left:18px">
                                         <table border="0" cellpadding="0" cellspacing="0">
                                             <tr>
@@ -145,6 +157,7 @@
                                             </tr>
                                         </table>
                                     </td>
+                                    <td  bgcolor="#00a0c8" class="mobile-unhide" style="display:none;">&nbsp;</td>
                                 </tr>
                             </table>
                         </td>
@@ -176,7 +189,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0">    
                                         <tr>    
                                             <td align="center" bgcolor="#ffffff" valign="middle" style="font-size: 12px; line-height: 22px; font-family: Arial,  Helvetica, sans-serif; color:#969797;">
-                                                <span class="appleFooter" style="color:#969797;">&copy; VIPole International LP. All rights reserved.</span>
+                                                <span class="appleFooter" style="color:#969797;">&copy; VIPole LTD. All rights reserved.</span>
                                                 <br>
                                                 <span class="appleFooter" style="color:#969797;">You received this message because you are registered in VIPole.</span>
                                                                                                 

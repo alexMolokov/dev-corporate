@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 153:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(154)
+var __vue_script__ = __webpack_require__(236)
 /* template */
-var __vue_template__ = __webpack_require__(155)
+var __vue_template__ = __webpack_require__(237)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\formChangePassword.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formChangeTechContact.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cbc33734", Component.options)
+    hotAPI.createRecord("data-v-00b0f4af", Component.options)
   } else {
-    hotAPI.reload("data-v-cbc33734", Component.options)
+    hotAPI.reload("data-v-00b0f4af", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,14 +48,32 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 154:
+/***/ 236:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vee_validate__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__modalWindow_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -112,74 +130,87 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var ajaxform = __webpack_require__(15);
-var errorInform = __webpack_require__(76);
-var loadingInform = __webpack_require__(84);
+
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'form-change-password',
-    components: {
-        "modal-window": __WEBPACK_IMPORTED_MODULE_1__modalWindow_vue___default.a,
-        "error-inform": errorInform,
-        "loading-inform": loadingInform
-    },
-    data: function data() {
-        return {
-            id: "change-password",
-            url: "/user/password/change",
-            redirect: false,
-
-            // current password
-            password: '',
-            // new password
-            new_password: '',
-            // repeated password
-            check_password: '',
-
-            // password status checked or no
-            type_input_current: "password",
-            type_input_new: "password",
-            type_input_repeat: "password"
-
-        };
-    },
-
-    mixins: [ajaxform],
-    locales: {
-        ru: {
-            'Change password': 'Смена пароля',
-            'Your password has been changed.': 'Ваш пароль был изменен',
-            'Current password': 'Текущий пароль',
-            'New Password': 'Новый Пароль',
-            'Repeat new password': 'Повторить новый пароль',
-            'Password not valid': 'Неверный пароль',
-            'Next': 'Далее'
-        }
-    },
-    methods: {
-        togglePassword: function togglePassword(type) {
-            if (type == 'type_input_current') {
-                this.type_input_current = this.type_input_current == 'password' ? 'text' : 'password';
-            } else if (type == 'type_input_new') {
-                this.type_input_new = this.type_input_new == 'password' ? 'text' : 'password';
-            } else if (type == 'type_input_repeat') {
-                this.type_input_repeat = this.type_input_repeat == 'password' ? 'text' : 'password';
-            }
-        },
-        reload: function reload() {
-            document.location.reload(true);
-        },
-        validate: function validate() {
-            var data = { "new_password": this.new_password, "password": this.password, "check_password": this.check_password };
-            this.send(this.url, data);
-        }
-
+  name: 'form-change-contact',
+  components: {
+    "modal-window": __WEBPACK_IMPORTED_MODULE_2__modalWindow_vue___default.a,
+    "error-inform": __WEBPACK_IMPORTED_MODULE_1__mixins_error_inform_vue___default.a,
+    "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
+  },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["d" /* mapState */])({
+    tech: function tech(state) {
+      return state.user.tech;
     }
+  })),
+  mounted: function mounted() {
+    this.type = "tech";
+    this.firstName = this.tech.firstName;
+    this.lastName = this.tech.lastName;
+    this.jobTitle = this.tech.jobTitle;
+    this.email = this.tech.email;
+    this.contact_id = this.tech.id;
+  },
+  data: function data() {
+    return {
+      id: "change-contact",
+      url: "/user/contact/change",
+      redirect: false,
+      type_input: "password",
+      password: '',
+      type: "tech",
+      firstName: '',
+      lastName: '',
+      jobTitle: '',
+      email: '',
+      contact_id: ''
+    };
+  },
+
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_ajax_form_vue___default.a],
+  locales: {
+    ru: {
+      'Change Contact': "Изменить контакт",
+      'Password': 'Пароль',
+      'First Name': 'Имя',
+      'Last Name': 'Фамилия',
+      'Job title': 'Должность',
+      'Next': 'Далее',
+      'Contact has been changed.': 'Контакт был изменен.'
+    }
+  },
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapMutations */])(['setContact']), {
+    togglePassword: function togglePassword(type) {
+      this.type_input = this.type_input_current == 'password' ? 'text' : 'password';
+    },
+    validate: function validate() {
+      var _this = this;
+
+      var data = {
+        "id": this.contact_id,
+        "email": this.email,
+        "jobTitle": this.jobTitle,
+        "firstName": this.firstName,
+        "lastName": this.lastName,
+        "password": this.password,
+        "type": this.type
+      };
+
+      this.send(this.url, data, function () {
+        _this.setContact(data);
+      });
+    }
+
+  })
 });
 
 /***/ }),
 
-/***/ 155:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -191,7 +222,7 @@ var render = function() {
     {
       staticClass: "in",
       staticStyle: { display: "block" },
-      attrs: { id: "change-password", show: true },
+      attrs: { id: _vm.id, show: true },
       on: { close: _vm.close }
     },
     [
@@ -202,7 +233,7 @@ var render = function() {
           attrs: { slot: "title" },
           slot: "title"
         },
-        [_vm._v("Change password")]
+        [_vm._v("Change Contact")]
       ),
       _vm._v(" "),
       _c(
@@ -223,7 +254,7 @@ var render = function() {
                   directives: [{ name: "translate", rawName: "v-translate" }],
                   staticClass: "complete-body"
                 },
-                [_vm._v("Your password has been changed.")]
+                [_vm._v("Contact has been changed.")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "button-close-ok" }, [
@@ -257,19 +288,264 @@ var render = function() {
           }
         },
         [
+          _c("input", {
+            attrs: { type: "hidden", name: "type" },
+            domProps: { value: _vm.type }
+          }),
+          _vm._v(" "),
           _c("div", [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group top-10" }, [
+                _c("div", { staticClass: "form-group  top-10" }, [
                   _c(
                     "label",
                     {
                       directives: [
                         { name: "translate", rawName: "v-translate" }
                       ],
-                      attrs: { for: "old_password" }
+                      attrs: { for: "firstName" }
                     },
-                    [_vm._v("Current password")]
+                    [_vm._v("First Name")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("firstName"),
+                          expression: "errors.has('firstName')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("firstName")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.firstName,
+                          expression: "firstName"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, min: 3 } },
+                          expression: "{ rules: { required:true, min:3}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("firstName") },
+                      attrs: { name: "firstName" },
+                      domProps: { value: _vm.firstName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.firstName = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "lastName" }
+                    },
+                    [_vm._v("Last Name")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("lastName"),
+                          expression: "errors.has('lastName')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("lastName")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.lastName,
+                          expression: "lastName"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, min: 3 } },
+                          expression: "{ rules: { required:true, min:3}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("lastName") },
+                      attrs: { name: "lastName" },
+                      domProps: { value: _vm.lastName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.lastName = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "jobTitle" }
+                    },
+                    [_vm._v("Job title")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("job_title"),
+                          expression: "errors.has('job_title')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("job_title")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.jobTitle,
+                          expression: "jobTitle"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, min: 3 } },
+                          expression: "{ rules: { required:true, min:3}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("jobTitle") },
+                      attrs: { name: "jobTitle" },
+                      domProps: { value: _vm.jobTitle },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.jobTitle = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "email" }
+                    },
+                    [_vm._v("Email")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "help is-danger"
+                    },
+                    [_vm._v("*" + _vm._s(_vm.errors.first("email")))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: { rules: { required: true, email: true } },
+                          expression: "{ rules: { required:true, email:true}}"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { error: _vm.errors.has("email") },
+                      attrs: { name: "email" },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group  top-10" }, [
+                  _c(
+                    "label",
+                    {
+                      directives: [
+                        { name: "translate", rawName: "v-translate" }
+                      ],
+                      attrs: { for: "password" }
+                    },
+                    [_vm._v("Password")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -289,7 +565,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group" }, [
-                    _vm.type_input_current === "checkbox"
+                    _vm.type_input === "checkbox"
                       ? _c("input", {
                           directives: [
                             {
@@ -297,6 +573,12 @@ var render = function() {
                               rawName: "v-model",
                               value: _vm.password,
                               expression: "password"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: { rules: { required: true, min: 6 } },
+                              expression: "{ rules: { required:true, min:6}}"
                             }
                           ],
                           staticClass: "form-control",
@@ -329,7 +611,7 @@ var render = function() {
                             }
                           }
                         })
-                      : _vm.type_input_current === "radio"
+                      : _vm.type_input === "radio"
                         ? _c("input", {
                             directives: [
                               {
@@ -337,6 +619,12 @@ var render = function() {
                                 rawName: "v-model",
                                 value: _vm.password,
                                 expression: "password"
+                              },
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: { rules: { required: true, min: 6 } },
+                                expression: "{ rules: { required:true, min:6}}"
                               }
                             ],
                             staticClass: "form-control",
@@ -356,14 +644,17 @@ var render = function() {
                                 rawName: "v-model",
                                 value: _vm.password,
                                 expression: "password"
+                              },
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: { rules: { required: true, min: 6 } },
+                                expression: "{ rules: { required:true, min:6}}"
                               }
                             ],
                             staticClass: "form-control",
                             class: { error: _vm.errors.has("password") },
-                            attrs: {
-                              name: "password",
-                              type: _vm.type_input_current
-                            },
+                            attrs: { name: "password", type: _vm.type_input },
                             domProps: { value: _vm.password },
                             on: {
                               input: function($event) {
@@ -382,328 +673,7 @@ var render = function() {
                         click: function($event) {
                           $event.preventDefault()
                           $event.stopPropagation()
-                          _vm.togglePassword("type_input_current")
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group  top-10" }, [
-                  _c(
-                    "label",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: { for: "password" }
-                    },
-                    [_vm._v("New Password")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("new_password"),
-                          expression: "errors.has('new_password')"
-                        }
-                      ],
-                      staticClass: "help is-danger"
-                    },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("new_password")))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group" }, [
-                    _vm.type_input_new === "checkbox"
-                      ? _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.new_password,
-                              expression: "new_password"
-                            },
-                            {
-                              name: "validate",
-                              rawName: "v-validate",
-                              value: { rules: { required: true, min: 6 } },
-                              expression: "{ rules: { required:true,min:6}}"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: { error: _vm.errors.has("new_password") },
-                          attrs: { name: "new_password", type: "checkbox" },
-                          domProps: {
-                            checked: Array.isArray(_vm.new_password)
-                              ? _vm._i(_vm.new_password, null) > -1
-                              : _vm.new_password
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.new_password,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.new_password = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.new_password = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.new_password = $$c
-                              }
-                            }
-                          }
-                        })
-                      : _vm.type_input_new === "radio"
-                        ? _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.new_password,
-                                expression: "new_password"
-                              },
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: { rules: { required: true, min: 6 } },
-                                expression: "{ rules: { required:true,min:6}}"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: { error: _vm.errors.has("new_password") },
-                            attrs: { name: "new_password", type: "radio" },
-                            domProps: {
-                              checked: _vm._q(_vm.new_password, null)
-                            },
-                            on: {
-                              change: function($event) {
-                                _vm.new_password = null
-                              }
-                            }
-                          })
-                        : _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.new_password,
-                                expression: "new_password"
-                              },
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: { rules: { required: true, min: 6 } },
-                                expression: "{ rules: { required:true,min:6}}"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: { error: _vm.errors.has("new_password") },
-                            attrs: {
-                              name: "new_password",
-                              type: _vm.type_input_new
-                            },
-                            domProps: { value: _vm.new_password },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.new_password = $event.target.value
-                              }
-                            }
-                          }),
-                    _vm._v(" "),
-                    _c("a", {
-                      staticClass: "input-group-addon",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.togglePassword("type_input_new")
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group top-10" }, [
-                  _c(
-                    "label",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ],
-                      attrs: { for: "check_password" }
-                    },
-                    [_vm._v("Repeat new password")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("check_password"),
-                          expression: "errors.has('check_password')"
-                        }
-                      ],
-                      staticClass: "help is-danger"
-                    },
-                    [_vm._v("*" + _vm._s(_vm.errors.first("check_password")))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group" }, [
-                    _vm.type_input_repeat === "checkbox"
-                      ? _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.check_password,
-                              expression: "check_password"
-                            },
-                            {
-                              name: "validate",
-                              rawName: "v-validate",
-                              value: {
-                                rules: {
-                                  required: true,
-                                  min: 6,
-                                  is: _vm.new_password
-                                }
-                              },
-                              expression:
-                                "{ rules: {required:true,min:6, is: new_password }}"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: { error: _vm.errors.has("check_password") },
-                          attrs: { name: "check_password", type: "checkbox" },
-                          domProps: {
-                            checked: Array.isArray(_vm.check_password)
-                              ? _vm._i(_vm.check_password, null) > -1
-                              : _vm.check_password
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.check_password,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.check_password = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.check_password = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.check_password = $$c
-                              }
-                            }
-                          }
-                        })
-                      : _vm.type_input_repeat === "radio"
-                        ? _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.check_password,
-                                expression: "check_password"
-                              },
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: {
-                                  rules: {
-                                    required: true,
-                                    min: 6,
-                                    is: _vm.new_password
-                                  }
-                                },
-                                expression:
-                                  "{ rules: {required:true,min:6, is: new_password }}"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: { error: _vm.errors.has("check_password") },
-                            attrs: { name: "check_password", type: "radio" },
-                            domProps: {
-                              checked: _vm._q(_vm.check_password, null)
-                            },
-                            on: {
-                              change: function($event) {
-                                _vm.check_password = null
-                              }
-                            }
-                          })
-                        : _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.check_password,
-                                expression: "check_password"
-                              },
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: {
-                                  rules: {
-                                    required: true,
-                                    min: 6,
-                                    is: _vm.new_password
-                                  }
-                                },
-                                expression:
-                                  "{ rules: {required:true,min:6, is: new_password }}"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: { error: _vm.errors.has("check_password") },
-                            attrs: {
-                              name: "check_password",
-                              type: _vm.type_input_repeat
-                            },
-                            domProps: { value: _vm.check_password },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.check_password = $event.target.value
-                              }
-                            }
-                          }),
-                    _vm._v(" "),
-                    _c("a", {
-                      staticClass: "input-group-addon",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          $event.stopPropagation()
-                          _vm.togglePassword("type_input_repeat")
+                          _vm.togglePassword("type_input")
                         }
                       }
                     })
@@ -726,7 +696,28 @@ var render = function() {
               },
               [_vm._v("Next")]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.contact_id,
+                expression: "contact_id"
+              }
+            ],
+            attrs: { type: "hidden", name: "id" },
+            domProps: { value: _vm.contact_id },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.contact_id = $event.target.value
+              }
+            }
+          })
         ],
         1
       )
@@ -740,21 +731,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-cbc33734", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-00b0f4af", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 76:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(77)
+var __vue_script__ = __webpack_require__(80)
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(81)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -794,12 +785,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 77:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
 //
 //
 //
@@ -837,7 +828,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 78:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -885,19 +876,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 79:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(80)
+  __webpack_require__(84)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(82)
+var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(83)
+var __vue_template__ = __webpack_require__(87)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -937,17 +928,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 80:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(81);
+var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(14)("81548b54", content, false, {});
+var update = __webpack_require__(13)("81548b54", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -964,10 +955,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(12)(false);
 // imports
 
 
@@ -979,7 +970,7 @@ exports.push([module.i, "\n.modal[data-v-12158cf6] {\n    overflow: auto;\n    o
 
 /***/ }),
 
-/***/ 82:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1041,7 +1032,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 83:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1112,15 +1103,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 84:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(85)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(86)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1160,12 +1151,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 85:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states__ = __webpack_require__(14);
 //
 //
 //
@@ -1237,7 +1228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 86:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
