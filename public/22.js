@@ -1,4 +1,4 @@
-webpackJsonp([22],{
+webpackJsonp([22,31],{
 
 /***/ 232:
 /***/ (function(module, exports, __webpack_require__) {
@@ -413,8 +413,8 @@ var render = function() {
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: "min:3",
-                          expression: "'min:3'"
+                          value: "required|min:3",
+                          expression: "'required|min:3'"
                         }
                       ],
                       staticClass: "form-control",
@@ -533,8 +533,8 @@ var render = function() {
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: "min:3",
-                          expression: "'min:3'"
+                          value: "required|min:3",
+                          expression: "'required|min:3'"
                         }
                       ],
                       staticClass: "form-control",
@@ -593,8 +593,8 @@ var render = function() {
                         {
                           name: "validate",
                           rawName: "v-validate",
-                          value: "min:3",
-                          expression: "'min:3'"
+                          value: "required|min:3",
+                          expression: "'required|min:3'"
                         }
                       ],
                       staticClass: "form-control",

@@ -27,7 +27,11 @@ class ShopService  extends Service implements ShopInterface
         "getInvoice" => "get_invoice",
         "getUnpaidInvoices" => "get_unpaid_invoices",
         "cancelInvoice" => "cancel_invoice",
-        "confirmInvoice" => "confirm_invoice"
+        "confirmInvoice" => "confirm_invoice",
+        "buyServerInvoice" => "buy_corporate_server_invoice",
+        "renewLicenseInvoice" =>  "renew_corporate_license_invoice",
+        "upgradeLicenseInvoice" => "upgrade_corporate_license_invoice",
+        "newLicenseInvoice" => "new_corporate_license_invoice",
     ];
 
 
@@ -46,10 +50,24 @@ class ShopService  extends Service implements ShopInterface
             if($result->status) return $result->response;
         }
     }
+    public function buyServerInvoice (array $data)
+    {
+        if($result = $this->client->sendCommand(self::OPS["buyServerInvoice"], self::PATH, $data))
+        {
+            if($result->status) return $result->response;
+        }
+    }
 
     public function renewLicense(array $data)
     {
         if($result = $this->client->sendCommand(self::OPS["renewLicense"], self::PATH, $data))
+        {
+            if($result->status) return $result->response;
+        }
+    }
+    public function renewLicenseInvoice(array $data)
+    {
+        if($result = $this->client->sendCommand(self::OPS["renewLicenseInvoice"], self::PATH, $data))
         {
             if($result->status) return $result->response;
         }
@@ -62,10 +80,25 @@ class ShopService  extends Service implements ShopInterface
             if($result->status) return $result->response;
         }
     }
+    public function upgradeLicenseInvoice(array $data)
+    {
+        if($result = $this->client->sendCommand(self::OPS["upgradeLicenseInvoice"], self::PATH, $data))
+        {
+            if($result->status) return $result->response;
+        }
+    }
 
     public function newLicense(array $data)
     {
         if($result = $this->client->sendCommand(self::OPS["newLicense"], self::PATH, $data))
+        {
+            if($result->status) return $result->response;
+        }
+    }
+
+    public function newLicenseInvoice(array $data)
+    {
+        if($result = $this->client->sendCommand(self::OPS["newLicenseInvoice"], self::PATH, $data))
         {
             if($result->status) return $result->response;
         }
@@ -124,7 +157,6 @@ class ShopService  extends Service implements ShopInterface
         }
         return false;
     }
-
 
     public function getUnpaidInvoices($customerId)
     {

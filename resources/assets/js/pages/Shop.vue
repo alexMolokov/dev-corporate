@@ -94,8 +94,11 @@
                 </div>
             </div>
         </div>
-        <form-payment v-if="showFormPayment"  @close="showFormPayment = false" :purchase="purchase"></form-payment>
+        <form-payment v-if="showFormPayment"  @close="showFormPayment = false" :purchase="purchase" @billingdetails="showFormChangeDetails = false; showFormChangeDetails = true;"></form-payment>
         <form-get-trial v-if="showFormGetTrial"  @close="showFormGetTrial = false" :choice="choice" :basket="basket"></form-get-trial>
+        <form-change-details  v-if="showFormChangeDetails" @close="showFormChangeDetails = false"></form-change-details>
+
+
     </div>
     <div v-if="products.length == 0">
         <loading-page v-if="loadingConfig"></loading-page>
@@ -122,6 +125,8 @@
 
     const formPayment = () => System.import('../components/formPayment.vue');
     const formGetTrial = () => System.import('../components/formGetTrial.vue');
+    const formChangeCompanyDetails = () => System.import('../components/formChangeDetails.vue');
+
     import {STATES} from "../mixins/states";
     import ErrorInform from "../mixins/error-inform.vue";
 
@@ -139,6 +144,7 @@
                 stateLoading: STATES.START,
                 showFormPayment: false,
                 showFormGetTrial: false,
+                showFormChangeDetails:false,
                 choice: {
                     "period": PERIOD.ANNUAL,
                     "os": OS.WINDOWS,
@@ -167,7 +173,8 @@
             LoadingPage,
             "user-menu": userMenu,
             "form-payment": formPayment,
-            "form-get-trial": formGetTrial
+            "form-get-trial": formGetTrial,
+            "form-change-details":formChangeCompanyDetails
         },
         computed: {
             ...mapState("shop",["products","productsMap"]),

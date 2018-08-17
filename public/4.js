@@ -408,6 +408,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 var userMenu = __webpack_require__(98);
@@ -424,11 +427,15 @@ var ORDER_STATES = { "NEW_ORDER": "new", "NEW_LICENSE": "new-license", "RENEW_LI
 var loadingPage = __webpack_require__(120);
 
 var formPayment = function formPayment() {
-    return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 300));
+    return __webpack_require__.e/* import() */(29).then(__webpack_require__.bind(null, 300));
 };
 var formGetTrial = function formGetTrial() {
-    return __webpack_require__.e/* import() */(27).then(__webpack_require__.bind(null, 306));
+    return __webpack_require__.e/* import() */(30).then(__webpack_require__.bind(null, 306));
 };
+var formChangeCompanyDetails = function formChangeCompanyDetails() {
+    return __webpack_require__.e/* import() */(31).then(__webpack_require__.bind(null, 232));
+};
+
 
 
 
@@ -445,6 +452,7 @@ var formGetTrial = function formGetTrial() {
             stateLoading: __WEBPACK_IMPORTED_MODULE_7__mixins_states__["a" /* STATES */].START,
             showFormPayment: false,
             showFormGetTrial: false,
+            showFormChangeDetails: false,
             choice: {
                 "period": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["d" /* PERIOD */].ANNUAL,
                 "os": __WEBPACK_IMPORTED_MODULE_6__classes_shop_action_const__["c" /* OS */].WINDOWS,
@@ -474,7 +482,8 @@ var formGetTrial = function formGetTrial() {
         LoadingPage: __WEBPACK_IMPORTED_MODULE_0__components_loadingPage___default.a,
         "user-menu": userMenu,
         "form-payment": formPayment,
-        "form-get-trial": formGetTrial
+        "form-get-trial": formGetTrial,
+        "form-change-details": formChangeCompanyDetails
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapState */])("shop", ["products", "productsMap"]), Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapState */])("servers", ["serversMap"]), Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])("shop", ["getServers", "getServices", "getAddons", "getOs", "getPeriods", "getRenewDiscount", "getCurrency", "getShortCurrencySymbol", "getRate"]), {
         loadingConfig: function loadingConfig() {
@@ -1804,6 +1813,10 @@ var render = function() {
                   on: {
                     close: function($event) {
                       _vm.showFormPayment = false
+                    },
+                    billingdetails: function($event) {
+                      _vm.showFormChangeDetails = false
+                      _vm.showFormChangeDetails = true
                     }
                   }
                 })
@@ -1815,6 +1828,16 @@ var render = function() {
                   on: {
                     close: function($event) {
                       _vm.showFormGetTrial = false
+                    }
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showFormChangeDetails
+              ? _c("form-change-details", {
+                  on: {
+                    close: function($event) {
+                      _vm.showFormChangeDetails = false
                     }
                   }
                 })

@@ -1,6 +1,6 @@
 webpackJsonp([29],{
 
-/***/ 331:
+/***/ 300:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -10,15 +10,15 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(334)
+var __vue_script__ = __webpack_require__(301)
 /* template */
-var __vue_template__ = __webpack_require__(335)
+var __vue_template__ = __webpack_require__(338)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-76cc1b28"
+var __vue_scopeId__ = "data-v-55db7e1b"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\formCancelInvoice.vue"
+Component.options.__file = "resources\\assets\\js\\components\\formPayment.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-76cc1b28", Component.options)
+    hotAPI.createRecord("data-v-55db7e1b", Component.options)
   } else {
-    hotAPI.reload("data-v-76cc1b28", Component.options)
+    hotAPI.reload("data-v-55db7e1b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,20 +52,27 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 334:
+/***/ 301:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modalWindow_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_states__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -100,56 +107,418 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
-
-
+var ajaxform = __webpack_require__(15);
+var errorInform = __webpack_require__(78);
+var loadingInform = __webpack_require__(88);
+var paymentMethods = __webpack_require__(302);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'form-confirm-invoice',
+    name: 'form-payment',
+    props: {
+        purchase: { type: Object }
+    },
     components: {
         "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
-        "error-inform": __WEBPACK_IMPORTED_MODULE_2__mixins_error_inform_vue___default.a,
-        "loading-inform": __WEBPACK_IMPORTED_MODULE_3__mixins_loading_inform_vue___default.a
-    },
-    props: {
-        invoice_id: { "type": String }
+        "error-inform": errorInform,
+        "loading-inform": loadingInform,
+        "payment-methods": paymentMethods
     },
     data: function data() {
         return {
-            id: "confirm-invoice",
-            url: "/shop/invoice/cancel",
-            redirect: false,
+            id: "corporatePayment",
+            payment_method: "",
+            redirect: true,
+            forbiddenSend: false,
+            invoice_id: ""
 
-            files: []
         };
     },
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_ajax_form_vue___default.a],
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapState */])({ user: function user(state) {
+            return state.user;
+        } })),
+    mixins: [ajaxform],
     locales: {
         ru: {
-            'Cancel Invoice': 'Отмена счета',
-            'Invoice has been cancelled.': 'Выставленный счет был отменен',
-            "OK": "Да",
-            "Cancel": "Нет",
-            "Do you really want cancel invoice": "Вы действительно хотите отменить счет"
+            "Payment options": "Выбор оплаты",
+            "Redirecting to payment details...": "Перенаправляем на страницу платежной системы ...",
+            "Invoice": "Счет",
+            "has been created": "создан",
+            "We have sent it to email": "Счет выслан на email",
+            "To download invoice you can:": "Для того чтобы загрузить счет вы можете",
+            "Click the": "Перейти по ",
+            "following link": "нижеследующей ссылке",
+            "Visit the": "Перейти на страницу",
+            "page": " "
+
         }
     },
     methods: {
+        billingDetails: function billingDetails() {
+            this.$emit("billingdetails");
+        },
+        forbidden: function forbidden(data) {
+            this.forbiddenSend = data;
+        },
+        choosen: function choosen(data) {
+            this.payment_method = data.method;
+        },
         validate: function validate() {
             var _this = this;
 
-            this.send(this.url + "/" + this.invoice_id, {}, function (data) {
-                _this.$emit("cancel-invoice");
-            });
-        }
+            var data = _extends({}, this.purchase, { payment_method: this.payment_method });
 
+            this.invoice_id = "";
+            if (this.payment_method == "wiretransfer") {
+
+                this.send(this.purchase.url + "/invoice", data, function (data) {
+                    _this.state = __WEBPACK_IMPORTED_MODULE_1__mixins_states__["a" /* STATES */].REDIRECT;
+                    _this.invoice_id = data;
+                }, function (data) {
+                    console.log("error");
+                });
+            } else {
+                this.send(this.purchase.url, data, function (data) {
+                    _this.state = __WEBPACK_IMPORTED_MODULE_1__mixins_states__["a" /* STATES */].REDIRECT;
+                    document.location.href = data;
+                }, function (data) {
+                    console.log("error");
+                });
+            }
+        }
     }
 });
 
 /***/ }),
 
-/***/ 335:
+/***/ 302:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(303)
+/* template */
+var __vue_template__ = __webpack_require__(304)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\paymentMethods.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e742003a", Component.options)
+  } else {
+    hotAPI.reload("data-v-e742003a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 303:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'payment-methods',
+    props: {
+        lang: { type: String, default: "en" }
+
+    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(["isFillingBillingInfo"])),
+    watch: {
+        isFillingBillingInfo: function isFillingBillingInfo() {
+            this.$emit("forbidden", !this.isFillingBillingInfo);
+        }
+    },
+    data: function data() {
+        return {
+            payments: [{ name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Wire transfer", value: "wiretransfer", img: "/static/common/img/payment_methods_new/wiretransfer.png", check: "checkWireTransfer" }, { name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Other", value: "visa_mastercard" }],
+            choosen: {
+                name: "Bitcoin",
+                value: "bitcoin"
+            },
+            messageType: ''
+        };
+    },
+
+    locales: {
+        ru: {
+            'Other': 'Другое',
+            'Bitcoin': 'Биткойн',
+            'Qiwi': 'Киви',
+            "Yandex.Money": "Яндекс.Деньги",
+            'Wire transfer': "Банковский перевод",
+            'To pay by bank transfer please complete the required fields in': 'Для оплаты банковским переводом заполните поля формы',
+            'Billing details and contacts': 'Реквизиты оплаты и контакты',
+            'in your profile': 'в вашем профиле'
+        }
+    },
+    created: function created() {
+        this.$emit("choosen", { method: this.choosen.value });
+    },
+
+
+    methods: {
+        billingDetails: function billingDetails() {
+            this.$emit("billingdetails");
+        },
+        checkWireTransfer: function checkWireTransfer() {
+            return this.isFillingBillingInfo;
+        },
+        choose: function choose(payment) {
+            if (typeof payment.check != "undefined") {
+                if (!this[payment.check]()) {
+                    this.$emit("forbidden", true);
+                    this.messageType = payment.name;
+                } else {
+                    this.$emit("forbidden", false);
+                    this.messageType = "";
+                }
+            } else {
+                this.$emit("forbidden", false);
+                this.messageType = payment.name;
+            }
+
+            this.choosen.name = payment.name;
+            this.choosen.value = payment.value;
+            this.$emit("choosen", { method: this.choosen.value });
+        },
+        show: function show(payment) {
+            if (this.lang == payment.lang || typeof payment.lang == 'undefined') {
+                return true;
+            }
+            return false;
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 304:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "row choose_payment" },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.choosen.value,
+              expression: "choosen.value"
+            }
+          ],
+          attrs: { type: "hidden", name: "payment_method" },
+          domProps: { value: _vm.choosen.value },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.choosen, "value", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.payments, function(payment) {
+          return _vm.show(payment)
+            ? _c("div", { staticClass: "col-xs-4 pds0" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "choose",
+                    class: { active: payment.name == _vm.choosen.name }
+                  },
+                  [
+                    payment.img
+                      ? _c("img", {
+                          staticClass: "img-responsive",
+                          attrs: {
+                            alt: _vm.t(payment.name),
+                            title: _vm.t(payment.name),
+                            src: payment.img
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.choose(payment)
+                            }
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !payment.img
+                      ? _c(
+                          "div",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ],
+                            on: {
+                              click: function($event) {
+                                _vm.choose(payment)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(payment.name))]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ])
+            : _vm._e()
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _vm.messageType == "Wire transfer" && !_vm.isFillingBillingInfo
+      ? _c("div", { staticClass: "alert alert-danger" }, [
+          _c(
+            "span",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [
+              _vm._v(
+                "To pay by bank transfer please complete the required fields in"
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              directives: [{ name: "translate", rawName: "v-translate" }],
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  $event.stopPropagation()
+                  return _vm.billingDetails($event)
+                }
+              }
+            },
+            [_vm._v("Billing details and contacts")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [_vm._v("in your profile")]
+          ),
+          _vm._v(".\r\n    ")
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e742003a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 336:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(337);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(13)("b68a81f0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-55db7e1b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formPayment.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-55db7e1b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formPayment.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 337:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nul.square[data-v-55db7e1b] {\n  margin: 0px 0px;\n}\nul.square li[data-v-55db7e1b] {\n    list-style: none;\n    display: flex;\n}\nul.square li > span[data-v-55db7e1b] {\n      display: block;\n      margin: 0 0 0 22px;\n      line-height: 30px;\n}\nul.square li[data-v-55db7e1b]:before {\n    content: \"\\25A0\";\n    color: #00a0c8;\n    font-size: 15px;\n    font-weight: bold;\n    display: block;\n    line-height: 30px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 338:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -172,42 +541,186 @@ var render = function() {
           attrs: { slot: "title" },
           slot: "title"
         },
-        [_vm._v("Cancel Invoice")]
+        [_vm._v("Payment options")]
       ),
       _vm._v(" "),
       _c(
         "loading-inform",
-        { attrs: { state: _vm.state }, on: { close: _vm.close } },
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.payment_method != "wiretransfer",
+              expression: "payment_method != 'wiretransfer'"
+            }
+          ],
+          attrs: { state: _vm.state },
+          on: { close: _vm.close }
+        },
         [
           _c(
             "div",
             {
-              staticClass: "window-center",
-              attrs: { slot: "ok-message" },
-              slot: "ok-message"
+              directives: [{ name: "translate", rawName: "v-translate" }],
+              attrs: { slot: "ok-message-redirect" },
+              slot: "ok-message-redirect"
+            },
+            [_vm._v("Redirecting to payment details...")]
+          ),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "buttons" }, slot: "buttons" })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "loading-inform",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.payment_method == "wiretransfer",
+              expression: "payment_method == 'wiretransfer'"
+            }
+          ],
+          attrs: { state: _vm.state },
+          on: { close: _vm.close }
+        },
+        [
+          _c(
+            "div",
+            {
+              attrs: { slot: "ok-message-redirect" },
+              slot: "ok-message-redirect"
             },
             [
+              _c("div", [
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("Invoice")]
+                ),
+                _vm._v(" #" + _vm._s(_vm.invoice_id) + " "),
+                _c(
+                  "span",
+                  {
+                    directives: [{ name: "translate", rawName: "v-translate" }]
+                  },
+                  [_vm._v("has been created")]
+                ),
+                _vm._v(".")
+              ]),
+              _vm._v(" "),
               _c(
                 "div",
                 {
-                  directives: [{ name: "translate", rawName: "v-translate" }],
-                  staticClass: "complete-body"
+                  staticClass: "top-20",
+                  staticStyle: {
+                    "font-size": "14px",
+                    "font-weight": "400",
+                    "line-height": "1.5",
+                    "text-align": "left"
+                  }
                 },
-                [_vm._v("Invoice has been cancelled.")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "button-close-ok" }, [
-                _c(
-                  "button",
-                  {
-                    directives: [{ name: "translate", rawName: "v-translate" }],
-                    staticClass: "btn btn-green",
-                    attrs: { type: "button" },
-                    on: { click: _vm.close }
-                  },
-                  [_vm._v("Ok")]
-                )
-              ])
+                [
+                  _c("div", [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ]
+                      },
+                      [_vm._v("We have sent it to email")]
+                    ),
+                    _vm._v(" - "),
+                    _c("b", [_vm._v(_vm._s(_vm.user.billing.email))])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "top-20" }, [
+                    _c(
+                      "p",
+                      {
+                        directives: [
+                          { name: "translate", rawName: "v-translate" }
+                        ]
+                      },
+                      [_vm._v("To download invoice you can:")]
+                    ),
+                    _vm._v(" "),
+                    _c("ul", { staticClass: "square" }, [
+                      _c("li", [
+                        _c("span", [
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ]
+                            },
+                            [_vm._v("Click the")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              directives: [
+                                { name: "translate", rawName: "v-translate" }
+                              ],
+                              attrs: {
+                                href: "/shop/get-invoice/" + _vm.invoice_id
+                              }
+                            },
+                            [_vm._v("following link")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "span",
+                          [
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  { name: "translate", rawName: "v-translate" }
+                                ]
+                              },
+                              [_vm._v("Visit the")]
+                            ),
+                            _vm._v(' "'),
+                            _c(
+                              "router-link",
+                              {
+                                directives: [
+                                  { name: "translate", rawName: "v-translate" }
+                                ],
+                                attrs: { to: { name: "unpaid_invoices" } }
+                              },
+                              [_vm._v("Unpaid invoices")]
+                            ),
+                            _vm._v('" '),
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  { name: "translate", rawName: "v-translate" }
+                                ]
+                              },
+                              [_vm._v("page")]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
             ]
           ),
           _vm._v(" "),
@@ -227,24 +740,30 @@ var render = function() {
           }
         },
         [
-          _c("div", [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-12 top-20" }, [
-                _c("div", [
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        { name: "translate", rawName: "v-translate" }
-                      ]
-                    },
-                    [_vm._v("Do you really want cancel invoice")]
-                  ),
-                  _vm._v(" #"),
-                  _c("b", [_vm._v(_vm._s(_vm.invoice_id))]),
-                  _vm._v("?")
-                ])
-              ])
+          _c("payment-methods", {
+            on: {
+              choosen: _vm.choosen,
+              forbidden: _vm.forbidden,
+              billingdetails: _vm.billingDetails
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [{ name: "translate", rawName: "v-translate" }],
+                  staticClass: "info"
+                },
+                [
+                  _vm._v(
+                    "By clicking NEXT you will be redirected to proceed with payment details"
+                  )
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -254,36 +773,14 @@ var render = function() {
             _c(
               "button",
               {
-                directives: [
-                  { name: "translate", rawName: "v-translate" },
-                  { name: "translate", rawName: "v-translate" }
-                ],
+                directives: [{ name: "translate", rawName: "v-translate" }],
                 staticClass: "btn btn-primary",
-                attrs: { type: "button" },
-                on: { click: _vm.close }
-              },
-              [_vm._v("Cancel")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                directives: [
-                  { name: "translate", rawName: "v-translate" },
-                  { name: "translate", rawName: "v-translate" }
-                ],
-                staticClass: "btn btn-primary",
-                attrs: { type: "button" },
+                attrs: { type: "submit", disabled: _vm.forbiddenSend },
                 on: { click: _vm.validate }
               },
-              [_vm._v("OK")]
+              [_vm._v("Next")]
             )
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "hidden", name: "invoice_id" },
-            domProps: { value: _vm.invoice_id }
-          })
+          ])
         ],
         1
       )
@@ -297,67 +794,25 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-76cc1b28", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-55db7e1b", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 336:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(337);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(13)("69fe8541", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-76cc1b28\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formCancelInvoice.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-76cc1b28\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./formCancelInvoice.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 337:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.modal-footer button[data-v-76cc1b28] {\n  padding: 7px 15px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 84:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(85)
+  __webpack_require__(84)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(87)
+var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(88)
+var __vue_template__ = __webpack_require__(87)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -397,13 +852,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(86);
+var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -424,7 +879,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(false);
@@ -439,7 +894,7 @@ exports.push([module.i, "\n.modal[data-v-12158cf6] {\n    overflow: auto;\n    o
 
 /***/ }),
 
-/***/ 87:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -501,7 +956,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 88:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -572,15 +1027,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(90)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(91)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -620,7 +1075,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 90:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -697,7 +1152,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 91:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

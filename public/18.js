@@ -90,48 +90,52 @@ var loadingInform = __webpack_require__(88);
 var paymentMethods = __webpack_require__(302);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'form-payment',
-  props: {
-    purchase: { type: Object }
-  },
-  components: {
-    "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
-    "error-inform": errorInform,
-    "loading-inform": loadingInform,
-    "payment-methods": paymentMethods
-  },
-  data: function data() {
-    return {
-      id: "corporatePayment",
-      payment_method: "",
-      redirect: true
-    };
-  },
-
-  mixins: [ajaxform],
-  locales: {
-    ru: {
-      "Payment options": "Выбор оплаты",
-      "Redirecting to payment details...": "Перенаправляем на страницу платежной системы ..."
-    }
-  },
-  methods: {
-    choosen: function choosen(data) {
-      this.payment_method = data.method;
+    name: 'form-payment',
+    props: {
+        purchase: { type: Object }
     },
-    validate: function validate() {
-      var _this = this;
+    components: {
+        "modal-window": __WEBPACK_IMPORTED_MODULE_0__modalWindow_vue___default.a,
+        "error-inform": errorInform,
+        "loading-inform": loadingInform,
+        "payment-methods": paymentMethods
+    },
+    data: function data() {
+        return {
+            id: "corporatePayment",
+            payment_method: "",
+            redirect: true,
+            forbiddenSend: false
+        };
+    },
 
-      var data = _extends({}, this.purchase, { payment_method: this.payment_method });
+    mixins: [ajaxform],
+    locales: {
+        ru: {
+            "Payment options": "Выбор оплаты",
+            "Redirecting to payment details...": "Перенаправляем на страницу платежной системы ..."
+        }
+    },
+    methods: {
+        forbidden: function forbidden(data) {
+            this.forbiddenSend = data;
+        },
+        choosen: function choosen(data) {
+            this.payment_method = data.method;
+        },
+        validate: function validate() {
+            var _this = this;
 
-      this.send(this.purchase.url, data, function (data) {
-        _this.state = __WEBPACK_IMPORTED_MODULE_1__mixins_states__["a" /* STATES */].REDIRECT;
-        document.location.href = data;
-      }, function (data) {
-        console.log("error");
-      });
+            var data = _extends({}, this.purchase, { payment_method: this.payment_method });
+
+            this.send(this.purchase.url, data, function (data) {
+                _this.state = __WEBPACK_IMPORTED_MODULE_1__mixins_states__["a" /* STATES */].REDIRECT;
+                document.location.href = data;
+            }, function (data) {
+                console.log("error");
+            });
+        }
     }
-  }
 });
 
 /***/ }),
@@ -189,6 +193,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -201,6 +208,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'payment-methods',
@@ -208,13 +221,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         lang: { type: String, default: "en" }
 
     },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(["isFillingBillingInfo"])),
     data: function data() {
         return {
-            payments: [{ name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Other", value: "visa_mastercard" }],
+            payments: [{ name: "Bitcoin", value: "bitcoin", img: "/static/common/img/payment_methods_new/bitcoin.png" }, { name: "Wire transfer", value: "wiretransfer", img: "/static/common/img/payment_methods_new/wiretransfer.png", check: "checkWireTransfer" }, { name: "Visa", value: "visa_mastercard", img: "/static/common/img/payment_methods_new/visa.png" }, { name: "American Express", value: "card", img: "/static/common/img/payment_methods_new/americanexpress.png" }, { name: "Paypal", value: "paypal", img: "/static/common/img/payment_methods_new/paypal.png" }, { name: "Webmoney", value: "webmoney", img: "/static/common/img/payment_methods_new/webmoney.png", lang: "ru" }, { name: "Yandex.Money", value: "yandex", img: "/static/common/img/payment_methods_new/yandex.png", lang: "ru" }, { name: "Qiwi", value: "qiwi", img: "/static/common/img/payment_methods_new/qiwi.png", lang: "ru" }, { name: "Other", value: "visa_mastercard" }],
             choosen: {
                 name: "Bitcoin",
                 value: "bitcoin"
-            }
+            },
+            messageType: ''
         };
     },
 
@@ -223,7 +238,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             'Other': 'Другое',
             'Bitcoin': 'Биткойн',
             'Qiwi': 'Киви',
-            "Yandex.Money": "Яндекс.Деньги"
+            "Yandex.Money": "Яндекс.Деньги",
+            'Wire transfer': "Банковский перевод",
+            'To pay by bank transfer please complete the required fields in': 'Для оплаты банковским переводом заполните поля формы',
+            'Billing details and contacts': 'Реквизиты оплаты и контакты',
+            'in your profile': 'в вашем профиле'
         }
     },
     created: function created() {
@@ -232,7 +251,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
+        billingDetails: function billingDetails() {
+            this.$emit("billingDetails");
+        },
+        checkWireTransfer: function checkWireTransfer() {
+            return this.isFillingBillingInfo;
+        },
         choose: function choose(payment) {
+            if (typeof payment.check != "undefined") {
+                if (!this[payment.check]()) {
+                    this.$emit("forbidden", true);
+                } else {
+                    this.$emit("forbidden", false);
+                }
+            } else {
+                this.$emit("forbidden", false);
+            }
+            this.messageType = payment.name;
+
             this.choosen.name = payment.name;
             this.choosen.value = payment.value;
             this.$emit("choosen", { method: this.choosen.value });
@@ -255,77 +291,120 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row choose_payment" },
-    [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.choosen.value,
-            expression: "choosen.value"
-          }
-        ],
-        attrs: { type: "hidden", name: "payment_method" },
-        domProps: { value: _vm.choosen.value },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "row choose_payment" },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.choosen.value,
+              expression: "choosen.value"
             }
-            _vm.$set(_vm.choosen, "value", $event.target.value)
+          ],
+          attrs: { type: "hidden", name: "payment_method" },
+          domProps: { value: _vm.choosen.value },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.choosen, "value", $event.target.value)
+            }
           }
-        }
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.payments, function(payment) {
-        return _vm.show(payment)
-          ? _c("div", { staticClass: "col-xs-4 pds0" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "choose",
-                  class: { active: payment.name == _vm.choosen.name }
-                },
-                [
-                  payment.img
-                    ? _c("img", {
-                        staticClass: "img-responsive",
-                        attrs: { alt: _vm.t(payment.name), src: payment.img },
-                        on: {
-                          click: function($event) {
-                            _vm.choose(payment)
-                          }
-                        }
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !payment.img
-                    ? _c(
-                        "div",
-                        {
-                          directives: [
-                            { name: "translate", rawName: "v-translate" }
-                          ],
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.payments, function(payment) {
+          return _vm.show(payment)
+            ? _c("div", { staticClass: "col-xs-4 pds0" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "choose",
+                    class: { active: payment.name == _vm.choosen.name }
+                  },
+                  [
+                    payment.img
+                      ? _c("img", {
+                          staticClass: "img-responsive",
+                          attrs: {
+                            alt: _vm.t(payment.name),
+                            title: _vm.t(payment.name),
+                            src: payment.img
+                          },
                           on: {
                             click: function($event) {
                               _vm.choose(payment)
                             }
                           }
-                        },
-                        [_vm._v(_vm._s(payment.name))]
-                      )
-                    : _vm._e()
-                ]
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !payment.img
+                      ? _c(
+                          "div",
+                          {
+                            directives: [
+                              { name: "translate", rawName: "v-translate" }
+                            ],
+                            on: {
+                              click: function($event) {
+                                _vm.choose(payment)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(payment.name))]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ])
+            : _vm._e()
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _vm.messageType == "Wire transfer"
+      ? _c("div", { staticClass: "alert alert-danger" }, [
+          _c(
+            "span",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [
+              _vm._v(
+                "To pay by bank transfer please complete the required fields in"
               )
-            ])
-          : _vm._e()
-      })
-    ],
-    2
-  )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              directives: [{ name: "translate", rawName: "v-translate" }],
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  $event.stopPropagation()
+                  return _vm.billingDetails($event)
+                }
+              }
+            },
+            [_vm._v("Billing details and contacts")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            { directives: [{ name: "translate", rawName: "v-translate" }] },
+            [_vm._v("in your profile")]
+          ),
+          _vm._v(".\r\n    ")
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -395,7 +474,9 @@ var render = function() {
           }
         },
         [
-          _c("payment-methods", { on: { choosen: _vm.choosen } }),
+          _c("payment-methods", {
+            on: { choosen: _vm.choosen, forbidden: _vm.forbidden }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-12" }, [
@@ -424,7 +505,7 @@ var render = function() {
               {
                 directives: [{ name: "translate", rawName: "v-translate" }],
                 staticClass: "btn btn-primary",
-                attrs: { type: "submit" },
+                attrs: { type: "submit", disabled: _vm.forbiddenSend },
                 on: { click: _vm.validate }
               },
               [_vm._v("Next")]

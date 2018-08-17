@@ -59,12 +59,9 @@ class ShopController extends Controller
         return response()->error(__("Error"), []);
     }
 
-
-
-
-    public function buyServer(BuyServerRequest $request)
+    private function _buyServerData(BuyServerRequest $request)
     {
-        if($response = $this->service->buyServer([
+        return [
             "os" => $request->get("os"),
             "payment_method" => $request->get("payment_method"),
             "period" =>$request->get("period"),
@@ -72,7 +69,23 @@ class ShopController extends Controller
             "basket" => $request->get("basket"),
             "lang" => $request->get("lang"),
             "customer_id" => Auth::user()->getCustomerId()
-        ]))
+        ];
+    }
+
+    public function buyServerInvoice(BuyServerRequest $request)
+    {
+        return response()->success("20181222");
+
+        if($response = $this->service->buyServerInvoice($this->_buyServerData($request)))
+        {
+            return response()->success();
+        }
+        return response()->error(__("Error"), []);
+    }
+
+    public function buyServer(BuyServerRequest $request)
+    {
+        if($response = $this->service->buyServer($this->_buyServerData($request)))
         {
             $url = $response->url."?" .http_build_query((array)$response->parameters);
             return response()->success($url);
@@ -80,9 +93,10 @@ class ShopController extends Controller
         return response()->error(__("Error"), []);
     }
 
-    public function renewLicense(RenewLicenseRequest $request)
+
+    private function _renewLicenseData(RenewLicenseRequest $request)
     {
-        if($response = $this->service->renewLicense([
+        return [
             "license_id" => $request->get("license_id"),
             "server_id" => $request->get("server_id"),
             "payment_method" => $request->get("payment_method"),
@@ -91,7 +105,21 @@ class ShopController extends Controller
             "basket" => $request->get("basket"),
             "lang" => $request->get("lang"),
             "customer_id" => Auth::user()->getCustomerId()
-        ]))
+        ];
+    }
+
+    public function renewLicenseInvoice(RenewLicenseRequest $request)
+    {
+        if($response = $this->service->renewLicenseInvoice($this->_renewLicenseData($request)))
+        {
+            return response()->success();
+        }
+        return response()->error(__("Error"), []);
+    }
+
+    public function renewLicense(RenewLicenseRequest $request)
+    {
+        if($response = $this->service->renewLicense($this->_renewLicenseData($request)))
         {
             $url = $response->url."?" .http_build_query((array)$response->parameters);
             return response()->success($url);
@@ -99,9 +127,9 @@ class ShopController extends Controller
         return response()->error(__("Error"), []);
     }
 
-    public function upgradeLicense(UpgradeLicenseRequest $request)
-    {
-        if($response = $this->service->upgradeLicense([
+
+    private function _upgradeLicenseData(UpgradeLicenseRequest $request){
+        return [
             "license_id" => $request->get("license_id"),
             "server_id" => $request->get("server_id"),
             "payment_method" => $request->get("payment_method"),
@@ -110,7 +138,12 @@ class ShopController extends Controller
             "basket" => $request->get("basket"),
             "lang" => $request->get("lang"),
             "customer_id" => Auth::user()->getCustomerId()
-        ]))
+        ];
+    }
+
+    public function upgradeLicense(UpgradeLicenseRequest $request)
+    {
+        if($response = $this->service->upgradeLicense($this->_upgradeLicenseData($request)))
         {
             $url = $response->url."?" .http_build_query((array)$response->parameters);
             return response()->success($url);
@@ -118,9 +151,18 @@ class ShopController extends Controller
         return response()->error(__("Error"), []);
     }
 
-    public function newLicense(NewLicenseRequest $request)
+    public function upgradeLicenseInvoice(UpgradeLicenseRequest $request)
     {
-        if($response = $this->service->newLicense([
+        if($response = $this->service->upgradeLicenseInvoice($this->_upgradeLicenseData($request)))
+        {
+            return response()->success();
+        }
+        return response()->error(__("Error"), []);
+    }
+
+
+    private function _newLicenseData(NewLicenseRequest $request) {
+        return [
             "server_id" => $request->get("server_id"),
             "payment_method" => $request->get("payment_method"),
             "period" => $request->get("period"),
@@ -128,13 +170,29 @@ class ShopController extends Controller
             "basket" => $request->get("basket"),
             "lang" => $request->get("lang"),
             "customer_id" => Auth::user()->getCustomerId()
-        ]))
+        ];
+    }
+
+    public function newLicenseInvoice(NewLicenseRequest $request)
+    {
+        if($response = $this->service->newLicenseInvoice($this->_newLicenseData($request)))
+        {
+            return response()->success();
+        }
+        return response()->error(__("Error"), []);
+    }
+
+    public function newLicense(NewLicenseRequest $request)
+    {
+        if($response = $this->service->newLicense($this->_newLicenseData($request)))
         {
             $url = $response->url."?" .http_build_query((array)$response->parameters);
             return response()->success($url);
         }
         return response()->error(__("Error"), []);
     }
+
+
 
     public function getUnpaidInvoices()
     {

@@ -61,4 +61,29 @@ interface ShopInterface
      */
     public function confirmInvoice($id, $customerId);
 
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function buyServerInvoice(array $data);
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function renewLicenseInvoice(array $data);
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function upgradeLicenseInvoice(array $data);
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function newLicenseInvoice(array $data);
+
+
 }

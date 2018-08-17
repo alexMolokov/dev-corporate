@@ -119,6 +119,11 @@ const store = new Vuex.Store({
             return ar.join(', ');
 
         },
+        isFillingBillingInfo: state =>
+        {
+            let billing = state.user.billing;
+            return billing.address != '' && billing.zip != '' && billing.country != '' && billing.city != '' && billing.phone != '' && billing.email != ''
+        }
 
     },
     mutations: {

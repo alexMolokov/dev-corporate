@@ -10,7 +10,8 @@
             "paypal" => "Paypal",
             "webmoney" => "Webmoney",
             "yandex" => "Yandex.Money",
-            "qiwi" => "Qiwi"
+            "qiwi" => "Qiwi",
+            "wiretransfer" => "Wire Transfer"
         ],
         "os" => [
             "windows" => ["name" => "Windows Server"],

@@ -7892,6 +7892,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
             });
 
             return ar.join(', ');
+        },
+        isFillingBillingInfo: function isFillingBillingInfo(state) {
+            var billing = state.user.billing;
+            return billing.address != '' && billing.zip != '' && billing.country != '' && billing.city != '' && billing.phone != '' && billing.email != '';
         }
 
     },

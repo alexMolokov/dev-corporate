@@ -21,7 +21,7 @@
                         <div class="form-group  top-10">
                             <label for="address" v-translate>City</label> <span v-show="errors.has('city')" class="help is-danger">*{{errors.first('city')}}</span>
                             <div class="input-group">
-                                <input  v-model="city"  id="city" name="city" class="form-control" :class="{error: errors.has('city')}" v-validate="'min:3'">
+                                <input  v-model="city"  id="city" name="city" class="form-control" :class="{error: errors.has('city')}" v-validate="'required|min:3'">
                             </div>
                         </div>
                         <div class="form-group  top-10">
@@ -33,13 +33,13 @@
                         <div class="form-group  top-10">
                             <label for="address" v-translate>Country</label> <span v-show="errors.has('country')" class="help is-danger">*{{errors.first('country')}}</span>
                             <div class="input-group">
-                                <input  v-model="country"  id="country" name="country" class="form-control" :class="{error: errors.has('country')}" v-validate="'min:3'">
+                                <input  v-model="country"  id="country" name="country" class="form-control" :class="{error: errors.has('country')}" v-validate="'required|min:3'">
                             </div>
                         </div>
                         <div class="form-group  top-10">
                             <label for="address" v-translate>Zip code</label> <span v-show="errors.has('zip')" class="help is-danger">*{{errors.first('zip')}}</span>
                             <div class="input-group">
-                                <input  v-model="zip"  id="zip" name="zip" class="form-control" :class="{error: errors.has('zip')}" v-validate="'min:3'">
+                                <input  v-model="zip"  id="zip" name="zip" class="form-control" :class="{error: errors.has('zip')}" v-validate="'required|min:3'">
                             </div>
                         </div>
 

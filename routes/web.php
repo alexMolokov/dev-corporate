@@ -68,6 +68,11 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web', 'auth']], function ()
     Route::match(["post"],'/invoice/confirm', 'Client\ShopController@confirmInvoice')->name('invoice_confirm');
     Route::match(["post"],'/invoice/cancel/{id}', 'Client\ShopController@cancelInvoice')->where('id', '[0-9]+')->name('invoice_cancel');
 
+    Route::match(["get", "post"],'/buy-server/invoice', 'Client\ShopController@buyServerInvoice')->name('buy_server_invoice');
+    Route::match(["get", "post"],'/renew-license/invoice', 'Client\ShopController@renewLicenseInvoice')->name('renew_license_invoice');
+    Route::match(["get", "post"],'/upgrade-license/invoice', 'Client\ShopController@upgradeLicenseInvoice')->name('upgrade_license_invoice');
+    Route::match(["get", "post"],'/new-license/invoice', 'Client\ShopController@newLicenseInvoice')->name('new_license_invoice');
+
 });
 
 
